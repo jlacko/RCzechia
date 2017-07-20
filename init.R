@@ -13,3 +13,5 @@ devtools::use_data(okresy)
 devtools::use_data(obce)
 devtools::use_data(reky)
 devtools::use_data(plochy)
+
+build()

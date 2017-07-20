@@ -1,0 +1,16 @@
+Package: RCzechia
+Type: Package
+Title: A selection of spatial objects relevant to the Czech Republic
+Version: 0.1.0
+Author: Jindra Lacko
+Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
+Description: This package provides a set of spatial objects for easier work with geospatial data relevant to the Czech Republic.
+    Shapefile vychází z ArcČR 500 verze 3.3 ©ArcČR, ARCDATA PRAHA, 2016.
+    republika - a SpatialPolygonsDataFrame with national boundaries
+    okresy - a SpatialPolygonsDataFrame with district boundaries and basic data (e.g. population)
+    obce - a SpatialPolygonsDataFrame with populated places and basic data (e.g. population)
+    reky - a SpatialLinesDataFrame with rivers
+    plochy - a SpatialPolygonsDataFrame with water bodies
+License: MIT
+Encoding: UTF-8
+LazyData: true

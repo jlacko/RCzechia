@@ -14,3 +14,12 @@ Description: This package provides a set of spatial objects for easier work with
 License: MIT
 Encoding: UTF-8
 LazyData: true
+suggests:
+   ggplot2,
+   tmap,
+   tmaptools,
+   rgdal,
+   ggmap,
+   sp,
+   raster
+   

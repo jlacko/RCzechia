@@ -1,10 +1,12 @@
-# RCzechia
+# R-Czechia *neboli* R-Česko
 
 This project creates a set of shapefiles (or rather Large SpatialPolygonDataFrames in R) relevant to the Czech Republic. The description will therefore continue in the Czech language.
 - - - - 
-Cílem mého snažení bylo připravit set objektů pro snazší práci s geografickými daty o České republice v rámci R. K dispozici sice je Arc500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) se kterým se dá pomoci [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) docela dobře pracovat, ale není to úplně uživatelsky vstřícné ani triviální (například způsob kódování češtiny jsem vůbec nepochopil). 
+Cílem mého snažení bylo připravit set objektů pro snazší práci s geografickými daty o České republice v rámci R. 
 
-Souřadnicový systém je převedený z Křováka na WGS84, které se více kamarádí s google a ggplot2. Zastaralá a nepotřebná data jsem odstranil, populaci okresů a obcí aktualizovalk 1.1.2017.
+K dispozici sice je Arc500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) se kterým se z Rka dá pomoci [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) docela dobře pracovat, ale není to úplně uživatelsky vstřícné ani triviální (například způsob kódování češtiny jsem vůbec nepochopil). 
+
+Souřadnicový systém je převedený z Křováka na WGS84, které se více kamarádí s google a ggplot2. Zastaralá a nepotřebná data jsem odstranil, populaci okresů a obcí naopak aktualizoval k 1.1.2017.
 
 Tato package obsahuje několik shapefilů / Large Spatial objektů:
 * **republika**: Large SpatialPolygonDataFrame. Hranice České republiky.

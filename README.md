@@ -9,7 +9,7 @@ Souřadnicový systém je převedený z Křováka na WGS84, které se více kama
 Tato package obsahuje několik shapefilů / Large Spatial objektů:
   * **republika**: Large SpatialPolygonDataFrame. Hranice České republiky.
   * **okresy**: Large SpatialPolygonDataFrame. Vychází z okresů Arc500, oproti kterým jsou upravena datová pole (populace a populace 15+ aktualizovaná k 1.1.2017).
-  Pro doplnění dat doporučuju použít funkci `maptools::append_data`, například takto:  `outShape <- append_data(srcShape, frmData, key.shp = "KOD_LAU1", key.data = "LAU1")` LAU1 je okres.
+  Pro doplnění dat doporučuju použít funkci `tmaptools::append_data`, například takto:  `outShape <- append_data(srcShape, frmData, key.shp = "KOD_LAU1", key.data = "LAU1")` LAU1 je okres.
   * **obce**: Large SpatialPolygonDataFrame. Vychází z obcí Arc500, stejně jako u okresů jsou aktualizovány data o populaci a vyčištěna datová pole.
   pro párování dat doporučuju `KOD_OBEC`, což je kód obce podle statistického úřadu.
   * **reky**:Large SpatialLinesDataFrame. Řeky z Arc500. Pro snazší orientaci jsem doplnil příznak `Major`, což jsou řeky z výčtu `c('Labe', 'Vltava', 'Svratka', 'Morava', 'Berounka', 'Sazava', 'Odra', 'Dyje', 'Mze', 'Radbuza','Uslava', 'Ohre', 'Otava')`. Přidáním do mapy pomohou základní orientaci.  

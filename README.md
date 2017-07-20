@@ -17,10 +17,10 @@ Pro doplnění dat doporučuju použít funkci `tmaptools::append_data`, napří
 * **obce**: Large SpatialPolygonDataFrame. Název obce je v diakritické češtině. 
 Pro párování dat doporučuju `KOD_OBEC`, což je kód obce podle statistického úřadu. Číselník obcí ze staťáku je http://apl.czso.cz/iSMS/cisdata.jsp?kodcis=43, v data frame jsou informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POV, respektove PovObec názvem) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ROZ, respektive RozObec).
 
-* **reky**:Large SpatialLinesDataFrame. Řeky z Arc500. Název jsem ponechal v ASCII.
+* **reky**: Large SpatialLinesDataFrame. Řeky z Arc500. Název jsem ponechal v ASCII.
 Pro snazší orientaci jsem doplnil příznak `Major`, což jsou řeky z výčtu `%in% c('Labe', 'Vltava', 'Svratka', 'Morava', 'Berounka', 'Sazava', 'Odra', 'Dyje', 'Mze', 'Radbuza','Uslava', 'Ohre', 'Otava')`. Přidáním do mapy pomohou základní orientaci.  
 
-* **plochy**:Large SpatialPolygonDataFrame. Vodní plochy z Arc500.
+* **plochy**: Large SpatialPolygonDataFrame. Vodní plochy z Arc500.
 Pro snazší orientaci jsem doplnil příznak `Major`, což jsou Lipno, Orlík, Slapy, Nechranice a Novomlýnské nádrže. Přidáním do mapy pomohou základní orientaci.  
   
 Shapefily vycházejí z databáze Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016

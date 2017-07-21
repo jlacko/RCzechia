@@ -1,4 +1,4 @@
-# RCzechia (aneb *RČesko* :)
+# RCzechia
 
 This project creates a set of shapefiles (or rather Large SpatialPolygonDataFrames in R) relevant to the Czech Republic. The description will therefore continue in the Czech language.
 - - - - - 
@@ -11,16 +11,14 @@ Souřadnicový systém je převedený z Křováka na WGS84, které se více kama
 Package obsahuje tyto Large Spatial objekty:
 * **republika**: Large SpatialPolygonDataFrame. Hranice České republiky.
 
-* **okresy**: Large SpatialPolygonDataFrame. Název okresu je v diakritické češtině.  
-Klíč pro připojení dat je KOD_LAU1 (kód okresu), v data frame je informace o kraji (KOD_CZNUTS3)
+* **okresy**: Large SpatialPolygonDataFrame. 77 okresů České republiky + Praha jedním polygonem. Název okresu je v diakritické češtině.  
+Klíč pro připojení dat je KOD_LAU1 (kód okresu).
 
-* **obce**: Large SpatialPolygonDataFrame. Název obce je v diakritické češtině.   
-Klíč pro připojení dat je  KOD_OBEC, v data frame jsou naví informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POV, respektive PovObec) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ROZ, respektive RozObec) okresu (LAU1, respektive Okres) a kraji (CZ_NUTS3, respektive Kraj).
+* **obce**: Large SpatialPolygonDataFrame. Obce a vojenské újezdy České republiky. Název obce je v diakritické češtině.  
+Klíč pro připojení dat je  KOD_OBEC, v data frame jsou naví informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POV, respektive PovObec) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ROZ, respektive RozObec).
 
-* **reky**: Large SpatialLinesDataFrame. Řeky z Arc500. Název řeky je v ASCII.  
-Pro snazší orientaci jsem doplnil příznak Major, což jsou řeky z výčtu `%in% c('Labe', 'Vltava', 'Svratka', 'Morava', 'Berounka', 'Sazava', 'Odra', 'Dyje', 'Mze', 'Radbuza','Uslava', 'Ohre', 'Otava')`. Přidáním do mapy pomohou základní orientaci.  
+* **reky**: Large SpatialLinesDataFrame. Řeky České republiky. Přidáním do slepé pomohou základní orientaci.  
 
-* **plochy**: Large SpatialPolygonDataFrame. Vodní plochy z Arc500. Název vodní plochy je v ASCII.  
-Pro snazší orientaci jsem doplnil příznak Major, což jsou Lipno, Orlík, Slapy, Nechranice a Novomlýnské nádrže. Přidáním do mapy pomohou základní orientaci.  
+* **plochy**: Large SpatialPolygonDataFrame. Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci.
   
 Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016

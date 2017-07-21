@@ -1,4 +1,4 @@
-# RCzechia (neboli RČesko :)
+# RCzechia (aneb RČesko :)
 
 This project creates a set of shapefiles (or rather Large SpatialPolygonDataFrames in R) relevant to the Czech Republic. The description will therefore continue in the Czech language.
 - - - - - 

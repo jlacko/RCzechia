@@ -24,4 +24,7 @@ Klíč pro připojení dat je  KOD_OBEC, v data frame jsou navíc informace o p�
 Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
 
 ## Instalace  
-`devtools::install_github("jlacko/RCzechia")`
+``` R
+install.packages("devtools")  
+devtools::install_github("jlacko/RCzechia")
+```

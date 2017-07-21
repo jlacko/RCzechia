@@ -17,7 +17,7 @@ Klíč pro připojení dat je KOD_LAU1 (kód okresu).
 * **obce**: Large SpatialPolygonDataFrame. Obce a vojenské újezdy České republiky. Název obce je v diakritické češtině.  
 Klíč pro připojení dat je  KOD_OBEC, v data frame jsou navíc informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POV, respektive PovObec) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ROZ, respektive RozObec).
 
-* **reky**: Large SpatialLinesDataFrame. Řeky České republiky. Přidáním do slepé pomohou základní orientaci.  
+* **reky**: Large SpatialLinesDataFrame. Řeky České republiky. Přidáním do mapy pomohou základní orientaci.  
 
 * **plochy**: Large SpatialPolygonDataFrame. Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci.
   

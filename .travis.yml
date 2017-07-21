@@ -1,2 +1,14 @@
 language: r
 cache: packages
+<<<<<<< HEAD
+=======
+
+warnings_are_errors: true
+
+r_packages:
+  - sp
+  - rgdal
+  - rgeos
+  - roxygen2
+  - rmarkdown
+>>>>>>> 23bf9e3f1c9fd960536948f9cb22881c24b8fbcd

@@ -66,4 +66,4 @@ save_tmap(plot , filename = "krimi.png", width = 1600)
 ```
 ![](krimi.png)
 
-Nevím proč mám pocit, že po odsunu německy hovořícího obyvatelstva ze Sudet, zbyla po našich byvších spoluobčanech hořká pachuť a zvýšená hladina násilí...
+Nevím proč mám pocit že po odsunu německy hovořícího obyvatelstva ze Sudet zbyla po našich byvších spoluobčanech hořká pachuť a zvýšená hladina násilí... A co se děje po setmění v *Böhmisch-Leipa* mě raději nezajímá.

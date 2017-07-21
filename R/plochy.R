@@ -8,5 +8,5 @@
 #'   \item{VYSKA}{height, above sea level}
 #'   \item{Major}{Boolean indicating the major water bodies (Lipno, Orlík, Slapy, Nechranice, Novomlýnské nádrže.)}
 #' }
-#' @source \url{http://www.diamondse.info/}
-NULL
+#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+"plochy"

@@ -10,4 +10,4 @@
 #'   \item{Obyvatel}{Population, as at 2017-01-01. Source: Czech Statistial Office}
 #' }
 #' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
-NULL
+"okresy"

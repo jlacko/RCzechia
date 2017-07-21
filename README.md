@@ -6,7 +6,9 @@ Cílem mého snažení bylo připravit set objektů pro snazší práci s geogra
 
 K dispozici sice je Arc500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) se kterým se z Rka dá přes [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) docela dobře pracovat, ale není to ani úplně uživatelsky vstřícné ani triviální (například způsob kódování češtiny jsem vůbec nepochopil). Shapefily jsem trochu upravil pro snazší práci v R.
 
-Souřadnicový systém je převedený z Křováka na WGS84, které se více kamarádí s google aplikacemi a ggplot2. Zastaralá a nadbytečná datová pole jsem odstranil, populaci okresů a obcí naopak aktualizoval k 1.1.2017. Počty obvyvatel jsou 1) celkové a 2) patnáct plus.
+Souřadnicový systém je převedený z Křováka na WGS84, které se více kamarádí s google aplikacemi a ggplot2. Zastaralá a nadbytečná datová pole jsem odstranil, populaci okresů a obcí naopak aktualizoval k 1.1.2017. Počty obvyvatel jsou  
+1) celkové a  
+2) patnáct plus.
 
 Package obsahuje tyto Large Spatial objekty:
 * **republika**: Large SpatialPolygonDataFrame. Hranice České republiky.
@@ -40,7 +42,6 @@ library(raster)
 bbox <- extent(republika) # trochu víc místa nahoře a dole, aby se vešel nadpis & legenda
 bbox@ymax <- bbox@ymax + 0.35
 bbox@ymin <- bbox@ymin - 0.15
-
 wrkObce <- obce[obce$Obyvatel > 80000, ] # bez Pardubic by to nebylo ono...
 
 # Data o kriminalitě... ----
@@ -48,6 +49,7 @@ wrkObce <- obce[obce$Obyvatel > 80000, ] # bez Pardubic by to nebylo ono...
 #zdroj dat = CZSO, období = rok 2015 (poslední známé)
 frmData <- read.csv2("OkresniData.txt", sep="\t", header = TRUE, encoding = "UTF-8")
 
+# použití funkce tmaptools::append_data je zcela klíčové; jedině díky klíči jsou data konzistentní.
 okresy <- append_data(okresy, frmData, key.shp = "KOD_LAU1", key.data = "LAU1")
 
 # počet znásilnění na deset tisíc obyvatel

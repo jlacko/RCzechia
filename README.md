@@ -12,17 +12,12 @@ Souřadnicový systém je převedený z Křováka na WGS84, které se více kama
 
 Package obsahuje tyto Large Spatial objekty:
 * **republika**: Large SpatialPolygonDataFrame. Hranice České republiky.
-
 * **okresy**: Large SpatialPolygonDataFrame. 76 okresů České republiky + Praha. Název okresu je v diakritické češtině.  
 Klíč pro připojení dat je KOD_LAU1 (kód okresu).
-
 * **obce**: Large SpatialPolygonDataFrame. Obce a vojenské újezdy České republiky. Název obce je v diakritické češtině.  
 Klíč pro připojení dat je  KOD_OBEC, v data frame jsou navíc informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POV, respektive PovObec) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ROZ, respektive RozObec).
-
 * **reky**: Large SpatialLinesDataFrame. Řeky České republiky. Přidáním do mapy pomohou základní orientaci.  
-
-* **plochy**: Large SpatialPolygonDataFrame. Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci.
-  
+* **plochy**: Large SpatialPolygonDataFrame. Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci. 
 Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
 
 ## Instalace  
@@ -63,9 +58,12 @@ endCredits <- "zdroj dat: Český statistický úřad (https://www.czso.cz/csu/c
 plot <- tm_shape(republika, bbox = bbox)+tm_borders("grey30", lwd = 1) +
   tm_shape(okresy, bbox = bbox)+tm_fill(col = "Res", palette = "YlOrRd", title = nadpis)+
   tm_shape(okresy, bbox = bbox)+tm_borders("grey75", lwd = 0.25)+
-  tm_style_white("Kriminalita v České republice",frame = F, fontfamily = "Calibri", legend.text.size = 0.5, legend.title.size = 0.7, legend.format = list(text.separator=  "-"))+
+  tm_style_white("Kriminalita v České republice",frame = F, fontfamily = "Calibri", 
+  legend.text.size = 0.5, legend.title.size = 0.7, legend.format = list(text.separator=  "-"))+
   tm_credits(endCredits, position = c("RIGHT", "BOTTOM"), size = 0.4, col = "grey35")
 
 save_tmap(plot , filename = "krimi.png", width = 1600)
 ```
 ![](krimi.png)
+
+Nevím proč mám pocit, že po odsunu Německy hovořícího obyvatelstva ze Sudet, zbyla po našich bývalých spoluobčabech hořká pachuť a zvýšená hladina násilí...

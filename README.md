@@ -1,4 +1,4 @@
-# RCzechia
+# RCzechia  ![Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)
 
 This project creates a set of shapefiles (or rather Large SpatialPolygonDataFrames in R) relevant to the Czech Republic. The description will therefore continue in the Czech language.
 - - - - - 

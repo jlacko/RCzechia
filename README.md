@@ -11,7 +11,7 @@ Souřadnicový systém je převedený z Křováka na WGS84, které se více kama
 Package obsahuje tyto Large Spatial objekty:
 * **republika**: Large SpatialPolygonDataFrame. Hranice České republiky.
 
-* **okresy**: Large SpatialPolygonDataFrame. 77 okresů České republiky + Praha jedním polygonem. Název okresu je v diakritické češtině.  
+* **okresy**: Large SpatialPolygonDataFrame. 76 okresů České republiky + Praha. Název okresu je v diakritické češtině.  
 Klíč pro připojení dat je KOD_LAU1 (kód okresu).
 
 * **obce**: Large SpatialPolygonDataFrame. Obce a vojenské újezdy České republiky. Název obce je v diakritické češtině.  

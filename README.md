@@ -28,3 +28,42 @@ Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
 install.packages("devtools")  
 devtools::install_github("jlacko/RCzechia")
 ```
+
+## Příklad použití
+``` R
+# Environment ----
+library(tmap)
+library(tmaptools)
+library(RCzechia)
+library(raster)
+
+bbox <- extent(republika) # trochu víc místa nahoře a dole, aby se vešel nadpis & legenda
+bbox@ymax <- bbox@ymax + 0.35
+bbox@ymin <- bbox@ymin - 0.15
+
+wrkObce <- obce[obce$Obyvatel > 80000, ] # bez Pardubic by to nebylo ono...
+
+# Data o kriminalitě... ----
+
+#zdroj dat = CZSO, období = rok 2015 (poslední známé)
+frmData <- read.csv2("OkresniData.txt", sep="\t", header = TRUE, encoding = "UTF-8")
+
+okresy <- append_data(okresy, frmData, key.shp = "KOD_LAU1", key.data = "LAU1")
+
+# počet znásilnění na deset tisíc obyvatel
+okresy$Res <- okresy$Rape / (okresy$Obyvatel/10000)
+nadpis <- "Znásilnění na 10 tis. obyv." # nadpis legendy
+endCredits <- "zdroj dat: Český statistický úřad (https://www.czso.cz/csu/czso/okresy-ceske-republiky-2015)"
+
+
+# vlastí kreslení... ----
+
+plot <- tm_shape(republika, bbox = bbox)+tm_borders("grey30", lwd = 1) +
+  tm_shape(okresy, bbox = bbox)+tm_fill(col = "Res", palette = "YlOrRd", title = nadpis)+
+  tm_shape(okresy, bbox = bbox)+tm_borders("grey75", lwd = 0.25)+
+  tm_style_white("Kriminalita v České republice",frame = F, fontfamily = "Calibri", legend.text.size = 0.5, legend.title.size = 0.7, legend.format = list(text.separator=  "-"))+
+  tm_credits(endCredits, position = c("RIGHT", "BOTTOM"), size = 0.4, col = "grey35")
+
+save_tmap(plot , filename = "krimi.png", width = 1600)
+```
+![](krimi.png)

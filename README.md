@@ -6,16 +6,18 @@ Cílem mého snažení bylo připravit set objektů pro snazší práci s geogra
 
 K dispozici sice je Arc500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) se kterým se z Rka dá přes [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) docela dobře pracovat, ale není to ani úplně uživatelsky vstřícné ani triviální (například způsob kódování češtiny jsem vůbec nepochopil). Shapefily jsem trochu upravil pro snazší práci v R.
 
-Souřadnicový systém je převedený z Křováka na WGS84, které se více kamarádí s google aplikacemi a ggplot2. Zastaralá a nadbytečná datová pole jsem odstranil, populaci okresů a obcí naopak aktualizoval k 1.1.2017. Počty obvyvatel jsou  
+Souřadnicový systém je převedený z Křováka na WGS84, které se více kamarádí s google aplikacemi a ggplot2. Zastaralá a nadbytečná datová pole jsem odstranil, populaci okresů a obcí naopak aktualizoval k 1.1.2017. Počty obvyvatel jsou:  
 1) celkové a  
 2) patnáct plus.
+
+Pro práci s daty velmi doporučuju package `tmaptools`. Zejména funkce `append_data` pro připojení datových polí přes klíče je k nezaplacení.
 
 Package obsahuje tyto Large Spatial objekty:
 * **republika**: Large SpatialPolygonDataFrame. Hranice České republiky.
 * **okresy**: Large SpatialPolygonDataFrame. 76 okresů České republiky + Praha. Název okresu je v diakritické češtině.  
 Klíč pro připojení dat je KOD_LAU1 (kód okresu).
 * **obce**: Large SpatialPolygonDataFrame. Obce a vojenské újezdy České republiky. Název obce je v diakritické češtině.  
-Klíč pro připojení dat je  KOD_OBEC, v data frame jsou navíc informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POV, respektive PovObec) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ROZ, respektive RozObec).
+Klíč pro připojení dalších dat je  KOD_OBEC, v data frame jsou navíc informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POV, respektive PovObec) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ROZ, respektive RozObec).
 * **reky**: Large SpatialLinesDataFrame. Řeky České republiky. Přidáním do mapy pomohou základní orientaci.  
 * **plochy**: Large SpatialPolygonDataFrame. Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci. 
 Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
@@ -28,7 +30,8 @@ devtools::install_github("jlacko/RCzechia")
 
 ## Příklad použití
 ``` R
-# Environment ----
+# Nastavení prostředí ----
+
 library(tmap)
 library(tmaptools)
 library(RCzechia)
@@ -37,11 +40,10 @@ library(raster)
 bbox <- extent(republika) # trochu víc místa nahoře a dole, aby se vešel nadpis & legenda
 bbox@ymax <- bbox@ymax + 0.35
 bbox@ymin <- bbox@ymin - 0.15
-wrkObce <- obce[obce$Obyvatel > 80000, ] # bez Pardubic by to nebylo ono...
 
-# Data o kriminalitě... ----
+# Data o kriminalitě ----
 
-#zdroj dat = CZSO, období = rok 2015 (poslední známé)
+#zdroj dat = CZSO, období = rok 2015 (poslední známé). Data nejsou přiložena.
 frmData <- read.csv2("OkresniData.txt", sep="\t", header = TRUE, encoding = "UTF-8")
 
 # použití funkce tmaptools::append_data je zcela klíčové; jedině díky klíči jsou data konzistentní.
@@ -66,4 +68,4 @@ save_tmap(plot , filename = "krimi.png", width = 1600)
 ```
 ![](krimi.png)
 
-Nevím proč mám pocit že po odsunu německy hovořícího obyvatelstva ze Sudet zbyla po našich byvších spoluobčanech hořká pachuť a zvýšená hladina násilí... A co se děje po setmění v *Böhmisch-Leipa* mě raději nezajímá.
+Zdá se, že po odsunu německy hovořícího obyvatelstva ze Sudet zbyla v kraji hořká pachuť...

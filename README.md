@@ -68,4 +68,38 @@ save_tmap(plot , filename = "krimi.png", width = 1600)
 ```
 ![](krimi.png)
 
-Zdá se, že po odsunu německy hovořícího obyvatelstva ze Sudet zbyla v kraji hořká pachuť...
+
+``` R
+# Nastavení prostředí ----
+
+library(tmap)
+library(tmaptools)
+library(RCzechia)
+library(raster)
+
+bbox <- extent(republika) # trochu víc místa nahoře a dole, aby se vešel nadpis legenda
+bbox@ymax <- bbox@ymax + 0.35
+bbox@ymin <- bbox@ymin - 0.15
+
+
+wrkObce <- obce[obce$Obyvatel > 80000, ] # bez Pardubic by to nebylo ono...
+
+# Mládí vpřed - podíl osob do 14 let na celkových... ----
+
+obce$Res <- 100*(obce$Obyvatel - obce$Obyvatel15p)/obce$Obyvatel
+nadpis <- "Podíl obyvatel do 15 let (%)" # nadpis legendy
+endCredits <- "zdroj dat: Ministerstvo vnitra (http://www.mvcr.cz/clanek/statistiky-pocty-obyvatel-v-obcich.aspx)"
+
+
+# vlastí kreslení... ----
+
+plot <- tm_shape(republika, bbox = bbox)+tm_borders("grey30", lwd = 1) +
+  tm_shape(obce)+tm_fill(col = "Res", palette = "Greens", title = nadpis, textNA = "Jinak (vojenské újezdy)")+
+  tm_shape(wrkObce)+tm_fill("firebrick4", alpha = 0.25)+
+  tm_style_white("Mladé obce",frame = F, fontfamily = "Calibri", legend.text.size = 0.5, legend.title.size = 0.7, legend.format =  list(text.separator=  "-"))+
+  tm_credits(endCredits, position = c("RIGHT", "BOTTOM"), size = 0.4, col = "grey35")
+
+save_tmap(plot, filename = "mladi.png", width = 1600, type = "cairo")
+```
+![](mladi.png)
+Je vidět, že rodiny s dětmi mizí z Vysočiny a rozhraní jižních a středních Čech, a stěhují se do okolí Prahy.

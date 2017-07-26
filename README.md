@@ -69,6 +69,8 @@ save_tmap(plot , filename = "krimi.png", width = 1600)
 ```
 ![](krimi.png)
 
+Zdá se, že po odchodu německy hovořícího obyvatelstva ze Sudet zůstala v kraji pachuť násilí...
+
 ### Příklad druhý: podíl dětí (obyvatel do 15 let) z celkového počtu obyvatel obcí ČR
 
 ``` R
@@ -104,4 +106,5 @@ plot <- tm_shape(republika, bbox = bbox)+tm_borders("grey30", lwd = 1) +
 save_tmap(plot, filename = "mladi.png", width = 1600, type = "cairo")
 ```
 ![](mladi.png)
+
 Je vidět, že rodiny s dětmi mizí z Vysočiny a rozhraní jižních a středních Čech, a stěhují se do okolí Prahy.

@@ -29,6 +29,7 @@ devtools::install_github("jlacko/RCzechia")
 ```
 
 ## Příklad použití
+### Příklad první: kriminalita (počet znásilnění na 10 000 obyvatel) v okresech ČR
 ``` R
 # Nastavení prostředí ----
 
@@ -68,6 +69,7 @@ save_tmap(plot , filename = "krimi.png", width = 1600)
 ```
 ![](krimi.png)
 
+### Příklad druhý: podíl dětí (obyvatel do 15 let) z celkového počtu obyvatel obcí ČR
 
 ``` R
 # Nastavení prostředí ----
@@ -94,7 +96,7 @@ endCredits <- "zdroj dat: Ministerstvo vnitra (http://www.mvcr.cz/clanek/statist
 # vlastí kreslení... ----
 
 plot <- tm_shape(republika, bbox = bbox)+tm_borders("grey30", lwd = 1) +
-  tm_shape(obce)+tm_fill(col = "Res", palette = "Greens", title = nadpis, textNA = "Jinak (vojenské újezdy)")+
+  tm_shape(obce)+tm_fill(col = "Res", palette = "Greens", title = nadpis, textNA = "Jinak (vojenské újezdy)", legend.format=list(fun=function(x) paste0(formatC(x, digits=0, format="f"), " %")))+
   tm_shape(wrkObce)+tm_fill("firebrick4", alpha = 0.25)+
   tm_style_white("Mladé obce",frame = F, fontfamily = "Calibri", legend.text.size = 0.5, legend.title.size = 0.7, legend.format =  list(text.separator=  "-"))+
   tm_credits(endCredits, position = c("RIGHT", "BOTTOM"), size = 0.4, col = "grey35")

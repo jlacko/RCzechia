@@ -28,7 +28,7 @@ install.packages("devtools")
 devtools::install_github("jlacko/RCzechia")
 ```
 
-## Příklad použití
+## Příklady použití
 ### Příklad první: kriminalita (počet znásilnění na 10 000 obyvatel) v okresech ČR
 ``` R
 # Nastavení prostředí ----

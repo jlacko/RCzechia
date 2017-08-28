@@ -20,7 +20,8 @@ Klíč pro připojení dat je KOD_LAU1 (kód okresu).
 Klíč pro připojení dalších dat je  KOD_OBEC, v data frame jsou navíc informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POV, respektive PovObec) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ROZ, respektive RozObec).
 * **obce_body** stejné jako obce polygony, ale pouze středy (Large SpatialPointsDataFrame). Výrazně menší a k paměti vstřícnější než polygony.
 * **reky**: Large SpatialLinesDataFrame. Řeky České republiky. Přidáním do mapy pomohou základní orientaci.  
-* **plochy**: Large SpatialPolygonDataFrame. Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci. 
+* **plochy**: Large SpatialPolygonDataFrame. Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci.  
+
 Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
 
 ## Instalace  

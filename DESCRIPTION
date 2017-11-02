@@ -1,8 +1,8 @@
 Package: RCzechia
 Type: Package
 Title: A selection of spatial objects relevant to the Czech Republic
-Version: 0.1.2
-Date: 2017-08-28
+Version: 0.1.3
+Date: 2017-11-02
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: This package provides a set of spatial objects for easier work with geospatial data relevant to the Czech Republic.

@@ -8,6 +8,7 @@ obce_polygony <- readRDS("~/GeoCzech/ObceP.rds")
 orp_polygony <- readRDS("~/GeoCzech/ORP.rds")
 reky <- readRDS("~/GeoCzech/Reky.rds")
 plochy <- readRDS("~/GeoCzech/Plochy.rds")
+Praha <- readRDS("~/GeoCzech/Praha.rds")
 
 #save data...
 devtools::use_data(republika)
@@ -17,3 +18,4 @@ devtools::use_data(obce_polygony)
 devtools::use_data(orp_polygony)
 devtools::use_data(reky)
 devtools::use_data(plochy)
+devtools::use_data(Praha)

@@ -3,10 +3,10 @@
 \docType{data}
 \name{plochy}
 \alias{plochy}
-\title{Water bodies (vodní plochy) of the Czech Republic}
+\title{Water bodies (vodni plochy) of the Czech Republic}
 \format{480 water bodies of the Czech Repubic, as a Large SpatialPolygonsDataFrame.
 \describe{
-  \item{NAZEV}{Name, in ASCII}
+  \item{NAZEV}{Name, with Czech accents}
   \item{VYSKA}{water level, meters above sea level}
   \item{Major}{Boolean indicating the major water bodies (= Lipno, Orlík, Slapy, Nechranice, Novomlýnské nádrže.)}
 }}
@@ -17,6 +17,6 @@
 plochy
 }
 \description{
-A Large SpatialPolygonsDataFrame containing water bodies (vodní plochy) of the Czech Republic.
+A Large SpatialPolygonsDataFrame containing water bodies (vodni plochy) of the Czech Republic.
 }
 \keyword{datasets}

@@ -3,10 +3,10 @@
 \docType{data}
 \name{reky}
 \alias{reky}
-\title{Rivers (řeky) of the Czech Republic}
+\title{Rivers (reky) of the Czech Republic}
 \format{6.198 rivers of the Czech Repubic, as a Large SpatialLinesDataFrame.
 \describe{
-  \item{NAZEV}{Name, in ASCII}
+  \item{NAZEV}{Name, with Czech accents}
   \item{Major}{Boolean indicating the major rivers (= Labe, Vltava, Svratka, Morava, Berounka, Sazava, Odra, Dyje, Mze, Radbuza, Uslava, Ohre, Otava).}
 }}
 \source{
@@ -16,6 +16,6 @@
 reky
 }
 \description{
-A Large SpatialLinesDataFrame containing rivers (řeky) of the Czech Republic.
+A Large SpatialLinesDataFrame containing rivers (reky) of the Czech Republic.
 }
 \keyword{datasets}

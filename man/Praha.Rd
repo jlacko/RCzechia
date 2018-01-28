@@ -4,13 +4,10 @@
 \name{Praha}
 \alias{Praha}
 \title{Districts (mestske casti) of Prague.}
-\format{57 districts (mestske casti) of Prague:
+\format{57 districts (mestske casti) of Prague, as a sf data frame:
 \describe{
   \item{KOD_MOaMC}{Code of the city part / kod mestske casti}
   \item{NAZ_ZKR_MOaMC}{Short name of the city part / zkraceny nazev mestske casti}
-  \item{NAZ_MOaMC}{Full name of the city part / plny nazev mestske casti}
-  \item{KOD_ZUJ}{Kod zakladni uzemni jednotky}
-  \item{NAZ_ZUJ}{Nazev zakladni uzemni jednotky}
 }}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
@@ -19,6 +16,6 @@
 Praha
 }
 \description{
-A Large SpatialPolygonsDataFrame containing the administrative districts of Prague.
+Districts (mestske casti) of Prague.
 }
 \keyword{datasets}

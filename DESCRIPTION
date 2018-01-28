@@ -4,12 +4,12 @@ Title: A selection of spatial objects relevant to the Czech Republic
 Version: 1.0.1
 Date: 2018-01-28
 Author: Jindra Lacko
-Maintainer: Jindra Lacko <jindra.@jla-data.net>
+Maintainer: Jindra Lacko <jindra@jla-data.net>
 Description: Data package providing a set of spatial objects relevant to the Czech Republic in sf format.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Depends: 
+Depends:
   R (>= 3.0.0), 
   sf
 suggests:
@@ -18,3 +18,6 @@ suggests:
   rgeos,
   ggmap
 RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr

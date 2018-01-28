@@ -10,14 +10,15 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
-  R (>= 3.0.0), 
+  R (>= 3.0.0)
+Imports:
   sf
-suggests:
+Suggests:
   tmap,
   rgdal,
   rgeos,
-  ggmap
+  ggmap,
+  knitr,
+  rmarkdown
 RoxygenNote: 6.0.1
-Suggests: knitr,
-    rmarkdown
 VignetteBuilder: knitr

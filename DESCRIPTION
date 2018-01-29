@@ -10,9 +10,10 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
-  R (>= 3.0.0)
+  R (>= 3.3.0)
 Imports:
-  sf
+  sf,
+  units
 Suggests:
   tmap,
   rgdal,

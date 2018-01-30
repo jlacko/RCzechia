@@ -25,9 +25,9 @@ Klíč pro připojení dat je KOD_LAU1 (kód okresu).
 * **orp_polygony** 206 obcí s rozšířenou působností (trojkové obce).  
 Klíč připojení dat je KOD_ORP.
 * **obce_polygony**: 6.258 obcí a vojenských újezdů České republiky.  
-Klíč pro připojení dat je  KOD_OBEC, v data frame jsou navíc informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POU, respektive NAZ_POU) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ORP, respektive NAZ_ORP).
+Klíč pro připojení dat je  KOD_OBEC, v datech jsou navíc informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POU, respektive NAZ_POU) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ORP, respektive NAZ_ORP).
 * **obce_body** stejné jako obce polygony, ale pouze středy.
-* **casti**: primárně 57 městských částí Hlavního města Prahy, ale části jsou i pro Brno a další města.
+* **casti**: primárně 57 městských částí Hlavního města Prahy, ale části jsou i pro Brno a další města.  
 Klíč pro připojení dat je KOD.
 * **reky**: Řeky České republiky. Přidáním do mapy pomohou základní orientaci. 
 * **plochy**: Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci.

@@ -14,12 +14,59 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+## Unemployment in Czech regions
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+A visualization problem: show unemployment ratio per Czech municipality in December 2017
+
+```{r unempl, echo = T, eval = T, message = F}
+library(tidyverse)
+library(RCzechia)
+library(tmap)
+library(sf)
+
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+
+src <- src %>%
+  filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
+  mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are character type
+
+
+podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
+  inner_join(src, by = "KOD_OBEC")
+
+
+tm_shape(republika) + tm_borders(col = "grey40") +
+  tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment") +
+  tm_legend(position = c("RIGHT", "top"))
+ 
+```
+
+
+
+
+
+
+## Distnance - Prague to Brno
+
+A common problem - calculate distance between two cities; the `sf` package supports point to point, point to polygon and polygon to polygon distances.  
+For the sake of simplicity calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
+```{r distance, echo = T, eval = T, message = F}
+library(tidyverse)
+library(RCzechia)
+library(sf)
+library(units)
+
+praha <- obce_polygony[obce_polygony$NAZ_OBEC == "Praha", ]
+brno <- obce_polygony[obce_polygony$NAZ_OBEC == "Brno", ]
+vzdalenost <- st_distance(praha, brno) %>%
+  set_units("kilometers")
+print(vzdalenost)
+
+```
+
+
 
 

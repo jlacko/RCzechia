@@ -1,7 +1,7 @@
 Package: RCzechia
 Type: Package
 Title: A selection of spatial objects relevant to the Czech Republic
-Version: 1.0.1
+Version: 1.0.2
 Date: 2018-01-28
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra@jla-data.net>
@@ -10,9 +10,10 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
-  R (>= 3.0.0)
+  R (>= 3.3.0)
 Imports:
-  sf
+  sf,
+  units
 Suggests:
   tmap,
   rgdal,

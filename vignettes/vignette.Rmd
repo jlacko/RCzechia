@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 A visualization problem: show unemployment ratio per Czech municipality in December 2017
 
 ```{r unempl, echo = T, eval = T, message = F}
-library(tidyverse)
+library(dplyr)
 library(RCzechia)
 library(tmap)
 library(sf)
@@ -54,7 +54,7 @@ tm_shape(republika) + tm_borders(col = "grey40") +
 A common problem - calculate distance between two cities; the `sf` package supports point to point, point to polygon and polygon to polygon distances.  
 For the sake of simplicity calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
 ```{r distance, echo = T, eval = T, message = F}
-library(tidyverse)
+library(dplyr)
 library(RCzechia)
 library(sf)
 library(units)

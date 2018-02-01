@@ -1,12 +1,15 @@
 # RCzechia  [![Travis-CI Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)](https://travis-ci.org/jlacko/RCzechia)
 
-This project creates a set of shapefiles relevant to the Czech Republic. The description will therefore continue in the Czech language.
+This project creates a set of shapefiles relevant to the Czech Republic. 
 
-As of version 1.0.1 the package moved from *sp* format to *sf* format; the latest *sp* version is 0.1.4 - if in need of fallback run: 
-```r 
+As of version 1.0.1 the package moved from [`sp`](https://github.com/edzer/sp/) format to [`sf`](https://github.com/r-spatial/sf) format; the latest `sp` version is 0.1.4 - if in need of fallback run: 
+
+```R 
 devtools::install_github("jlacko/RCzechia", ref = "v0.1.4")
 
 ```  
+
+As the package is intended mainly for domestic Czech audience the detailed description will continue in Czech language.
 - - - - - 
 Cílem mého snažení bylo připravit set objektů pro snazší práci s geografickými daty o České republice v rámci R. 
 
@@ -32,6 +35,24 @@ Klíč pro připojení dat je KOD.
 * **reky**: Řeky České republiky. Přidáním do mapy pomohou základní orientaci. 
 * **plochy**: Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci.
 
+
+## Příklady použití package RCzechia
+<p align="center">
+  <img src="https://github.com/jlacko/RCzechia/blob/sf-dev/raw-data/tomio.png?raw=true" alt="Mapa v malém měřítku"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/jlacko/RCzechia/blob/sf-dev/raw-data/savviness.png?raw=true" alt="Mapa v malém měřítku"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/jlacko/RCzechia/blob/sf-dev/raw-data/haunted.png?raw=true" alt="Mapa v malém měřítku"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/jlacko/RCzechia/blob/sf-dev/raw-data/interactive.png?raw=true" alt="Mapa v malém měřítku"/>
+</p>
+
 Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
 
 ## Instalace  
@@ -40,7 +61,7 @@ install.packages("devtools")
 devtools::install_github("jlacko/RCzechia")
 ```
 
-V případě, že by sf verze dělala problémy je k dispozici verze v sp formátu:
+V případě, že by `sf` verze dělala problémy je k dispozici verze v `sp` formátu:
 ``` R
 devtools::install_github("jlacko/RCzechia", ref = "v0.1.4")
 ```

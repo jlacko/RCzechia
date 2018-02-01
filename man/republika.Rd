@@ -4,7 +4,7 @@
 \name{republika}
 \alias{republika}
 \title{Boundaries of the Czech Republic.}
-\format{A Large SpatialPolygonsDataFrame containing the Czech Republic.}
+\format{Boundaries of the Czech Republic, as a sf data frame:}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
@@ -12,6 +12,6 @@
 republika
 }
 \description{
-A Large SpatialPolygonsDataFrame containing the Czech Republic.
+Boundaries of the Czech Republic.
 }
 \keyword{datasets}

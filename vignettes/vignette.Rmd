@@ -1,0 +1,110 @@
+---
+title: "Solving real world problems with RCzechia"
+author: "Jindra Lacko"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+```
+
+## Unemployment in Czech Republic - a chloropleth
+
+A visualization problem: unemployment in the Czech Republic is in general low, but not uniformly low.  
+What are the hotspots?
+
+```{r unempl, echo = T, eval = T, message = F}
+library(tidyverse)
+library(RCzechia)
+library(tmap)
+library(sf)
+
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+
+src <- src %>%
+  filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
+  mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
+
+podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
+  inner_join(src, by = "KOD_OBEC") # linking by key
+
+
+vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
+  tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd") +
+  tm_legend(position = c("RIGHT", "top"),
+            legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %")))
+
+print(vystup)
+ 
+```
+
+## Distnance between Prague to Brno
+
+Calculate distance between two spatial objects; the `sf` package supports (via gdal) point to point, point to polygon and polygon to polygon distances.  
+
+Calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
+
+```{r distance, echo = T, eval = T, message = F}
+library(tidyverse)
+library(RCzechia)
+library(sf)
+library(units)
+
+praha <- obce_polygony[obce_polygony$NAZ_OBEC == "Praha", ]
+brno <- obce_polygony[obce_polygony$NAZ_OBEC == "Brno", ]
+
+vzdalenost <- st_distance(praha, brno) %>%
+  set_units("kilometers") # easier to interpret than meters, miles or decimal degrees..
+
+print(vzdalenost)
+
+```
+
+## Interactive Map 
+
+Interactive maps are powerful tools for data vizualization. They are easy to produce with the `tmap` package.
+
+I found the stamen toner a good company for interactive chloropleths - it gives enough context without distracting from the story of your data.
+
+A map of the whole Czech Republic in original resolution (the accuracy is about 1 meter) would be rather sizeable, and I found it better policy to either  
+* limit it to a single region (say a NUTS3) or  
+* to limit the size by applying `st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
+
+
+```{r interactive, echo = T, eval = T, message = F}
+library(tidyverse)
+library(RCzechia)
+library(tmap)
+library(sf)
+
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+
+src <- src %>%
+  filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
+  mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
+
+podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
+  inner_join(src, by = "KOD_OBEC") %>% # linking by key
+  filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
+
+vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
+  tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd", id = "NAZ_OBEC") +
+  tm_legend(position = c("RIGHT", "top"),
+            legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %"))) +
+  tm_view(basemaps = "Stamen.Toner")
+
+save_tmap(vystup, filename = "vystup.html")
+ 
+```
+<iframe src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/vignettes/vystup.html" width="800" height="600" style="border: none;"></iframe>
+<p>
+

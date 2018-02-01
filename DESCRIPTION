@@ -19,6 +19,7 @@ Suggests:
   tmap,
   rgdal,
   rgeos,
+  lwgeom,
   ggmap,
   knitr,
   rmarkdown

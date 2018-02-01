@@ -15,6 +15,7 @@ Imports:
   sf,
   units
 Suggests:
+  tidyverse,
   tmap,
   rgdal,
   rgeos,

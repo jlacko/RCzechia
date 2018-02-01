@@ -17,12 +17,14 @@ knitr::opts_chunk$set(
 
 ```
 
-## Unemployment in Czech regions
+## Unemployment in Czech Republic - a chloropleth
 
-A visualization problem: show unemployment ratio per Czech municipality in December 2017
+A visualization problem: unemployment in the Czech Republic is in general low, but not uniformly low.  
+
+What are the hotspots?
 
 ```{r unempl, echo = T, eval = T, message = F}
-library(dplyr)
+library(tidyverse)
 library(RCzechia)
 library(tmap)
 library(sf)
@@ -31,38 +33,36 @@ src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/da
 
 src <- src %>%
   filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
-  mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are character type
-
+  mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
 podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
-  inner_join(src, by = "KOD_OBEC")
+  inner_join(src, by = "KOD_OBEC") # linking by key
 
 
 tm_shape(republika) + tm_borders(col = "grey40") +
-  tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment") +
+  tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd") +
   tm_legend(position = c("RIGHT", "top"))
  
 ```
 
-
-
-
-
-
 ## Distnance - Prague to Brno
 
 A common problem - calculate distance between two cities; the `sf` package supports point to point, point to polygon and polygon to polygon distances.  
-For the sake of simplicity calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
+
+Calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
+
 ```{r distance, echo = T, eval = T, message = F}
-library(dplyr)
+library(tidyverse)
 library(RCzechia)
 library(sf)
 library(units)
 
 praha <- obce_polygony[obce_polygony$NAZ_OBEC == "Praha", ]
 brno <- obce_polygony[obce_polygony$NAZ_OBEC == "Brno", ]
+
 vzdalenost <- st_distance(praha, brno) %>%
-  set_units("kilometers")
+  set_units("kilometers") # the default unit
+
 print(vzdalenost)
 
 ```

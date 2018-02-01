@@ -38,19 +38,19 @@ Klíč pro připojení dat je KOD.
 
 ## Příklady použití package RCzechia
 <p align="center">
-  <img src="https://github.com/jlacko/RCzechia/blob/sf-dev/raw-data/tomio.png?raw=true" alt="Mapa v malém měřítku"/>
+  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/tomio.png" alt="Volební výsledek xenofoba Okamury"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/jlacko/RCzechia/blob/sf-dev/raw-data/savviness.png?raw=true" alt="Mapa v malém měřítku"/>
+  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/savviness.png" alt="Tech Savviness in the EU"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/jlacko/RCzechia/blob/sf-dev/raw-data/haunted.png?raw=true" alt="Mapa v malém měřítku"/>
+  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/haunted.png" alt="Prague Haunted Places"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/jlacko/RCzechia/blob/sf-dev/raw-data/interactive.png?raw=true" alt="Mapa v malém měřítku"/>
+  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/interactive.png" alt="Interactive Map"/>
 </p>
 
 Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016

@@ -41,7 +41,7 @@ podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia packag
 vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd") +
   tm_legend(position = c("RIGHT", "top"),
-            legend.format=list(fun=function(x) paste0(formatC(x, digits=0, format="f"), " %")))
+            legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %")))
 
 print(vystup)
  
@@ -63,7 +63,7 @@ praha <- obce_polygony[obce_polygony$NAZ_OBEC == "Praha", ]
 brno <- obce_polygony[obce_polygony$NAZ_OBEC == "Brno", ]
 
 vzdalenost <- st_distance(praha, brno) %>%
-  set_units("kilometers") # the default unit
+  set_units("kilometers") # easier to interpret than meters, miles or decimal degrees..
 
 print(vzdalenost)
 
@@ -80,7 +80,7 @@ A map of the whole Czech Republic in original resolution (the accuracy is about 
 * to limit the size by applying `st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
 
 
-```{r unempl, echo = T, eval = T, message = F}
+```{r interactive, echo = T, eval = T, message = F}
 library(tidyverse)
 library(RCzechia)
 library(tmap)
@@ -99,11 +99,12 @@ podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia packag
 vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd", id = "NAZ_OBEC") +
   tm_legend(position = c("RIGHT", "top"),
-            legend.format=list(fun=function(x) paste0(formatC(x, digits=0, format="f"), " %"))) +
+            legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %"))) +
   tm_view(basemaps = "Stamen.Toner")
 
 save_tmap(vystup, filename = "vystup.html")
  
 ```
-
+<iframe src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/vignettes/vystup.html" width="800" height="600" style="border: none;"></iframe>
+<p>
 

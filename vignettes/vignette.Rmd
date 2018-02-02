@@ -96,7 +96,10 @@ podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia packag
   inner_join(src, by = "KOD_OBEC") %>% # linking by key
   filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
 
-vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
+kraj <- kraje %>%
+  filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
+
+vystup <- tm_shape(kraj) + tm_borders(col = "grey40", lwd = 1.5) +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd", id = "NAZ_OBEC") +
   tm_legend(position = c("RIGHT", "top"),
             legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %"))) +
@@ -105,6 +108,3 @@ vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
 save_tmap(vystup, filename = "vystup.html")
  
 ```
-<iframe src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/vignettes/vystup.html" width="800" height="600" style="border: none;"></iframe>
-<p>
-

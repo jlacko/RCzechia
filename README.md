@@ -42,10 +42,6 @@ Klíč pro připojení dat je KOD.
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/savviness.png" alt="Tech Savviness in the EU"/>
-</p>
-
-<p align="center">
   <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/haunted.png" alt="Prague Haunted Places"/>
 </p>
 

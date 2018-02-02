@@ -17,7 +17,7 @@ K dispozici sice je Arc500 (https://www.arcdata.cz/produkty/geograficka-data/arc
 
 Shapefily jsem trochu upravil pro snazší práci v R a vstřícnější chování k paměti.
 
-Souřadnicový systém je převedený z Křováka na WGS84, které se více kamarádí s google aplikacemi a `ggplot2`. Vzhledem k tomu, jak snadné je v prostředí `sf` světa obohacovat shapefily o data (viz. vignette) jsem pro verzi 1 demografické údaje vynechal.
+Souřadnicový systém je převedený z Křováka na WGS84, které se více kamarádí s google aplikacemi a `ggplot2`. Vzhledem k tomu, jak snadné je v prostředí `sf` světa obohacovat shapefily o data (viz. vignette a [popis na mém blogu](http://www.jla-data.net/cze/package-rczechia/)) jsem pro verzi 1 rychle zastarávající demografické údaje vynechal.
 
 Package obsahuje tyto objekty:
 * **republika**: hranice České republiky.

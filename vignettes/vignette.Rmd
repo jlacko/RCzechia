@@ -28,7 +28,7 @@ library(RCzechia)
 library(tmap)
 library(sf)
 
-src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
 
 src <- src %>%
   filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
@@ -41,7 +41,9 @@ podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia packag
 vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd") +
   tm_legend(position = c("RIGHT", "top"),
-            legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %")))
+            legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %"))) +
+  tm_view(basemaps = "Stamen.Toner")
+
 
 print(vystup)
  
@@ -86,7 +88,7 @@ library(RCzechia)
 library(tmap)
 library(sf)
 
-src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
 
 src <- src %>%
   filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...

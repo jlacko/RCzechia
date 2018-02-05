@@ -1,5 +1,5 @@
 ---
-title: "Solving real world problems with RCzechia"
+title: "Solving real world situations with RCzechia"
 author: "Jindra Lacko"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -76,8 +76,8 @@ Interactive maps are powerful tools for data vizualization. They are easy to pro
 I found the stamen toner a good company for interactive chloropleths - it gives enough context without distracting from the story of your data.
 
 A map of the whole Czech Republic in original resolution (the accuracy is about 1 meter) would be rather sizeable, and I found it better policy to either  
-* limit it to a single region (say a NUTS3) or  
-* to limit the size by applying `st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
+ * limit it to a single region (say a NUTS3) or  
+ * to limit the size by applying `st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
 
 
 ```{r interactive, echo = T, eval = T, message = F}
@@ -105,6 +105,5 @@ vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
 save_tmap(vystup, filename = "vystup.html")
  
 ```
-<iframe src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/vignettes/vystup.html" width="800" height="600" style="border: none;"></iframe>
-<p>
+
 

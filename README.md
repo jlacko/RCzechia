@@ -1,4 +1,4 @@
-# RCzechia  [![Travis-CI Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)](https://travis-ci.org/jlacko/RCzechia)
+# RCzechia  [![Travis-CI Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)](https://travis-ci.org/jlacko/RCzechia) [![Github Downloads (total)](https://img.shields.io/github/downloads/jlacko/RCzechia/total.svg)]()
 
 This project creates a set of shapefiles relevant to the Czech Republic. 
 

@@ -8,7 +8,7 @@ The shapefiles are based on Arc500 (https://www.arcdata.cz/produkty/geograficka-
  * demographic data were removed, as they get out of date rather fast and are very easy to re-attach using the sf package workflow  
  * the shapefiles were slightly simplified to fit into memory better (still, the package comes over 50 MB)
 
-##The following spatial objects are included as data:
+###The following spatial objects are included :  
 * **republika**: borders of the Czech Republic
 * **kraje**: 14 regions of the Czech Republic + Prague.  
 Key is KOD_CZNUTS3 (CZ NUTS3 code).

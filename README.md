@@ -38,15 +38,15 @@ Klíč pro připojení dat je KOD.
 
 ## Příklady použití package RCzechia
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/tomio.png" alt="Volební výsledek xenofoba Okamury"/>
+  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/tomio.png" alt="Volební výsledek xenofoba Okamury"/>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/haunted.png" alt="Prague Haunted Places"/>
+  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/haunted.png" alt="Prague Haunted Places"/>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/interactive.png" alt="Interactive Map"/>
+  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/interactive.png" alt="Interactive Map"/>
 </p>
 
 Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016

@@ -13,10 +13,10 @@ Copyright: ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
 Encoding: UTF-8
 LazyData: true
 Depends:
-  R (>= 3.3.0),
-  sf
+  R (>= 3.3.0)
 Suggests:
   tidyverse,
+  sf,
   units,
   tmap,
   lwgeom,

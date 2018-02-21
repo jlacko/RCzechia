@@ -5,9 +5,11 @@ Version: 1.0.3
 Date: 2018-02-20
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
-Copyright: ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
-Description: Data package providing a set of spatial objects relevant to the Czech Republic in sf (simple feature) format.
+Description: Data package providing a set of spatial objects relevant to the Czech Republic in `sf` format.
+URL: https://github.com/jlacko/RCzechia
+BugReports: https://github.com/jlacko/RCzechia/issues
 License: MIT + file LICENSE
+Copyright: ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
 Encoding: UTF-8
 LazyData: true
 Depends:

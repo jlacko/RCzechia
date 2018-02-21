@@ -24,6 +24,3 @@ Key is again KOD_OBEC.
 Key is KOD.
 * **reky**: streams and rivers
 * **plochy**: stillwaters (lakes and ponds).
-
-
-

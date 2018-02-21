@@ -11,8 +11,8 @@
   \item{NAZ_ORP}{Full name of the level III commune (obec s rozsirenou pusobnosti).}
   \item{KOD_RUIAN}{RUIAN (Registr uzemní identifikace, adres a nemovitosti) code.}
   \item{KOD_OKRES}{Code of the district (okres).}
-  \item{KOD_LAU1}{Code of the level 1 administrative unit (okres).}
-  \item{NAZ_LAU1}{Name of the level 1 administrative unit (okres).}
+  \item{KOD_LAU1}{Code of the LAU1 administrative unit (okres).}
+  \item{NAZ_LAU1}{Name of the LAU1 administrative unit (okres).}
   \item{KOD_KRAJ}{Code of the region (kraj).}
   \item{KOD_KRAJ}{Code of the region (kraj).}
   \item{KOD_CZNUTS2}{Code of the NUTS3 unit (kraj)}

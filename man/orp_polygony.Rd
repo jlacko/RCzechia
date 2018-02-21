@@ -3,8 +3,8 @@
 \docType{data}
 \name{orp_polygony}
 \alias{orp_polygony}
-\title{Level III Municipalities / communes (obce s rozsirenou pusobnosti) of the Czech Republic}
-\format{205 level III municipalities of the Czech Republic , as a sf data frame:
+\title{Municipalities with extended powers (obce s rozsirenou pusobnosti) of the Czech Republic}
+\format{205 municipalities with extended powers of the Czech Republic , as a sf data frame:
 \describe{
   \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}
   \item{NAZ_ZKR_ORP}{Short name of the level III commune (obec s rozsirenou pusobnosti).}
@@ -25,6 +25,6 @@
 orp_polygony
 }
 \description{
-Level III Municipalities / communes (obce s rozsirenou pusobnosti) of the Czech Republic
+Municipalities with extended powers (obce s rozsirenou pusobnosti) of the Czech Republic
 }
 \keyword{datasets}

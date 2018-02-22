@@ -1,9 +1,9 @@
 ## Resubmission
-This is a resubmission; compared to previous version I have
+This is a resubmission; compared to previous version I have:
 
 * fixed the encoding issues that led to failure of build of pdf manuals
 * slightly amended vignette to speed up generation
-* the note about large size of data remains; there is no workaround for that
+* the NOTE about large size of data remains; there is no workaround for that
 
 
 ## First submission
@@ -11,9 +11,9 @@ This is a first submission both for me as person and for the package. I apprecia
 
 It is a data package - it contains data files in sf data frame format only; no code intended for execution is included (the only "code" are dummy R files for documentation of datasets via Roxygen). 
 
-It is likely to be of interest mainly to Czech R users, but in local context has - hopefuly - value. It has lived for a while on GitHub and received positive feedback.
+It is likely to be of interest mainly to Czech R users, but in this local context - hopefully - has value. It has lived for a while on GitHub and received positive feedback.
 
-Written consent of the copyright holder for the source data was requested and given; it is available (in Czech language only) on https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/confirmation.pdf
+Written consent of the copyright holder for the underlying map data was requested and given; it is available (in Czech language only) on https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/confirmation.pdf
 
 ## Test environments
 * ubuntu 16.04 (RStudio Server on AWS), R 3.4.3

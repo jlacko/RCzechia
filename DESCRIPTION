@@ -9,7 +9,7 @@ Description: Data package providing a set of spatial objects relevant to the Cze
 URL: https://github.com/jlacko/RCzechia
 BugReports: https://github.com/jlacko/RCzechia/issues
 License: MIT + file LICENSE
-Copyright: ArcCR, ARCDATA PRAHA, ZU, CSU, 2016
+Copyright: ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
 Encoding: UTF-8
 LazyData: true
 Depends:
@@ -20,8 +20,6 @@ Suggests:
   units,
   tmap,
   lwgeom,
-  ggmap,
-  knitr,
-  rmarkdown
+  ggmap
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

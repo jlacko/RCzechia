@@ -12,9 +12,6 @@
   \item{VYSKA}{water level, meters above sea level}
   \item{Major}{Boolean indicating the major water bodies (= Lipno, Orlik, Slapy, Nechranice, Novomlynske nadrze.)}
 }}
-\source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
-}
 \usage{
 plochy
 }

@@ -11,9 +11,6 @@
   \item{KOD_OBEC}{Code of the city}
   \item{NAZ_OBEC}{Name of the city}
 }}
-\source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
-}
 \usage{
 casti
 }

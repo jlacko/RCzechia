@@ -9,5 +9,4 @@
 #'   \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
 #'   \item{NAZ_CZNUTS3}{Name of the region (kraj).}
 #' }
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 "okresy"

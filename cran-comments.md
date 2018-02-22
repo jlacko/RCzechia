@@ -1,3 +1,11 @@
+## Resubmission
+This is a resubmission; compared to previous version I have
+
+* fixed the encoding issues that led to failure of build of pdf manuals
+* slightly amended vignette to speed up generation
+* the note about large size of data remains; there is no workaround for that
+
+
 ## First submission
 This is a first submission both for me as person and for the package. I appreciate the attention of reviewers and thank in advance for their patience.
 
@@ -18,8 +26,9 @@ There were no ERRORs or WARNINGs.
 There was 1 NOTE:
 
 * checking installed package size ... NOTE
-  installed size is 57.4Mb
-  sub-directories of 1Mb or more:
+    installed size is 57.3Mb
+    sub-directories of 1Mb or more:
+      data  57.2Mb
     
 This is a data package; size can not really be helped given the level of spatial detail included. The 50+ MB size is explained in readme and should be acceptable to the target user group.
 

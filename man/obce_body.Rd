@@ -7,7 +7,7 @@
 \format{6.258 municipalities of the Czech Republic, as a sf data frame:
 \describe{
   \item{KOD_OBEC}{Code of the level I commune (obec).}
-  \item{NAZ_OBEC}{Name name of the level I commune (obec).}
+  \item{NAZ_OBEC}{Name of the level I commune (obec).}
   \item{KOD_ZUJ}{Code of the basic administrative unit (ICZUJ).}
   \item{NAZ_ZUJ}{Name of the basic administrative unit (ICZUJ).}
   \item{KOD_POU}{Code of the level II commune (obec s poverenym uradem).}

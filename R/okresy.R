@@ -1,6 +1,5 @@
 #' Districts (okresy) of the Czech Republic. LAU1 administrative unit for the Czech Republic.
 #'
-#'
 #' @format 77 districts of the Czech Republic, as a sf data frame:
 #' \describe{
 #'   \item{KOD_OKRES}{Code of the district (okres).}

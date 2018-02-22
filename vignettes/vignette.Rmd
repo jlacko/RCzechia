@@ -28,11 +28,11 @@ library(RCzechia)
 library(tmap)
 library(sf)
 
-src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/250169-17data011518.csv"), stringsAsFactors = F) 
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/unempl.csv"), stringsAsFactors = F) 
 # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+# lightly edited for size (rows filtered)
 
 src <- src %>%
-  filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
 podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
@@ -87,10 +87,12 @@ library(RCzechia)
 library(tmap)
 library(sf)
 
-src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/unempl.csv"), stringsAsFactors = F) 
+# open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+# lightly edited for size (rows filtered)
+
 
 src <- src %>%
-  filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
 podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package

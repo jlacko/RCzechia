@@ -11,6 +11,9 @@
   \item{NAZEV_ASCII}{Name, without Czech accents}
   \item{Major}{Boolean indicating the major rivers (= Labe, Vltava, Svratka, Morava, Berounka, Sazava, Odra, Dyje, Mze, Radbuza, Uslava, Ohre, Otava).}
 }}
+\source{
+ArcČR 500
+}
 \usage{
 reky
 }

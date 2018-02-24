@@ -14,4 +14,5 @@
 #'   \item{KOD_CZNUTS2}{Code of the NUTS3 unit (kraj)}
 #'   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
 #' }
+#' @source ArcČR 500
 "orp_polygony"

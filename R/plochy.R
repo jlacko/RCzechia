@@ -6,6 +6,6 @@
 #'   \item{NAZEV}{Name, with Czech accents}
 #'   \item{NAZEV_ASCII}{Name, without Czech accents}
 #'   \item{VYSKA}{water level, meters above sea level}
-#'   \item{Major}{Boolean indicating the major water bodies (= Lipno, Orlik, Slapy, Nechranice, Novomlynske nadrze.)}
+#'   \item{Major}{Boolean indicating the major water bodies}
 #' }
 "plochy"

@@ -7,4 +7,5 @@
 #'   \item{KOD_OBEC}{Code of the city}
 #'   \item{NAZ_OBEC}{Name of the city}
 #' }
+#' @source ArcČR 500
 "casti"

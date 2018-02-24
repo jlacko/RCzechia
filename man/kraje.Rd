@@ -10,6 +10,9 @@
   \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
   \item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
 }}
+\source{
+ArcČR 500
+}
 \usage{
 kraje
 }

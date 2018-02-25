@@ -9,7 +9,7 @@ Description: Administrative regions of the Czech Republic as sf data frames.
 URL: https://github.com/jlacko/RCzechia
 BugReports: https://github.com/jlacko/RCzechia/issues
 License: MIT + file LICENSE
-Copyright: ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
+Copyright: ArcCR, ARCDATA PRAHA, ZU, CSU, 2016
 Encoding: UTF-8
 LazyData: true
 Depends:

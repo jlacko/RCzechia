@@ -2,7 +2,7 @@ Package: RCzechia
 Type: Package
 Title: A Set of Spatial Objects Relevant to the Czech Republic
 Version: 1.0.4
-Date: 2018-02-24
+Date: 2018-02-25
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: Administrative regions of the Czech Republic as sf data frames.

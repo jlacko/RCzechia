@@ -1,4 +1,4 @@
-#' Water bodies (vodni plochy) of the Czech Republic
+#' Water bodies (vodní plochy) of the Czech Republic
 #'
 #' @format 480 water bodies of the Czech Repubic, as a sf data frame:
 #' \describe{
@@ -8,4 +8,16 @@
 #'   \item{VYSKA}{water level, meters above sea level}
 #'   \item{Major}{Boolean indicating the major water bodies}
 #' }
-"plochy"
+#' @format sf data frame with 480 rows of 5 variables + geometry:
+#'
+#' @source ArcČR 500
+#'
+#' @example {
+#'
+#'
+#' }
+plochy <- function() {
+  remote_df <- url('http://rczechia.jla-data.net/Plochy.rds')
+  local_df <- readRDS(remote_df)
+  local_df
+}

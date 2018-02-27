@@ -1,6 +1,6 @@
-#' Districts (okresy) of the Czech Republic. LAU1 administrative unit for the Czech Republic.
+#' Districts (okresy) of the Czech Republic.
+#' LAU1 administrative unit for the Czech Republic.
 #'
-#' @format 77 districts of the Czech Republic, as a sf data frame:
 #' \describe{
 #'   \item{KOD_OKRES}{Code of the district (okres).}
 #'   \item{KOD_LAU1}{Code of the district as LAU1 unit (okres), primary key. Use this as key to add other data items.}
@@ -9,5 +9,16 @@
 #'   \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
 #'   \item{NAZ_CZNUTS3}{Name of the region (kraj).}
 #' }
+#' @format sf data frame with 77 rows of 6 variables + geometry:
+#'
 #' @source ArcČR 500
-"okresy"
+#'
+#' @example {
+#'
+#'
+#' }
+okresy <- function() {
+  remote_df <- url('http://rczechia.jla-data.net/Okresy.rds')
+  local_df <- readRDS(remote_df)
+  local_df
+}

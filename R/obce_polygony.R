@@ -1,7 +1,7 @@
-#' Municipalities / communes (obce) of the Czech Republic. LAU2 administrative unit for the Czech Republic.
+#' Municipalities / communes (obce) of the Czech Republic.
+#' LAU2 administrative unit for the Czech Republic.
 #'
-#' @format 6.258 municipalities of the Czech Republic, as a sf data frame:
-#' \describe{
+#' \itemize{
 #'   \item{KOD_OBEC}{Code of the level I commune (obec).}
 #'   \item{NAZ_OBEC}{Name of the level I commune (obec).}
 #'   \item{KOD_ZUJ}{Code of the basic administrative unit (ICZUJ).}
@@ -17,4 +17,19 @@
 #'   \item{KOD_CZNUTS2}{Code of the NUTS3 unit (kraj)}
 #'   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
 #' }
-"obce_polygony"
+#'
+#' @format sf data frame with 6.258 rows of 14 variables + geometry:
+#'
+#' @source ArcČR 500
+#'
+#' @example {
+#'   praha <- obce_polygony() %>%
+#'      filter(NAZ_LAU1 == "Praha")
+#'
+#'   plot(praha, max.plot = 1)
+#' }
+obce_polygony <- function() {
+  remote_df <- url('http://rczechia.jla-data.net/ObceP.rds')
+  local_df <- readRDS(remote_df)
+  local_df
+}

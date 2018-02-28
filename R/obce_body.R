@@ -1,7 +1,11 @@
 #' Municipalities / communes (obce) of the Czech Republic.
 #' LAU2 administrative unit for the Czech Republic.
 #'
+<<<<<<< HEAD
 #' \itemize{
+=======
+#'  \itemize{
+>>>>>>> 689341d79d655b73a3603192a19deac28436cae4
 #'   \item{KOD_OBEC}{Code of the level I commune (obec).}
 #'   \item{NAZ_OBEC}{Name of the level I commune (obec).}
 #'   \item{KOD_ZUJ}{Code of the basic administrative unit (ICZUJ).}

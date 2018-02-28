@@ -10,11 +10,8 @@
 #'
 #' @source ArcČR 500
 #'
-#' @example {
-#'
-#'
+#' @examples {
 #' }
-library("httr")
 
 reky <- function() {
   remote_df <- 'http://rczechia.jla-data.net/Reky.rds'

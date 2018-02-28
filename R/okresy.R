@@ -13,10 +13,9 @@
 #'
 #' @source ArcČR 500
 #'
-#' @example {
+#' @examples {
 #'
 #' }
-library("httr")
 
 okresy <- function() {
   remote_df <- 'http://rczechia.jla-data.net/Okresy.rds'

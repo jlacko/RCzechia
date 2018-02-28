@@ -28,7 +28,9 @@ library(RCzechia)
 library(tmap)
 library(sf)
 
-reky <- reky[reky$Major == T, ]
+rivers <- reky()
+
+rivers <- rivers[rivers$Major == T, ]
 
 mista <- data.frame(misto = c('kramarova vila', 'arcibiskupske zahrady v kromerizi', 'becov nad teplou'),
                     lon = c(14.41030, 17.39353, 12.83833),
@@ -41,7 +43,7 @@ POI <- mista %>% # geocode using ggmap
 
 tm_plot <- tm_shape(republika()) + tm_borders("grey30", lwd = 1) +
   tm_shape(POI) + tm_symbols(col = "firebrick3", shape = 20, size = 0.5) +
-  tm_shape(reky()) + tm_lines(col = 'steelblue', lwd = 1.5)
+  tm_shape(rivers) + tm_lines(col = 'steelblue', lwd = 1.5)
   
 
 print(tm_plot)

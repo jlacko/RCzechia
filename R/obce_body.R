@@ -22,11 +22,11 @@
 #'
 #' @source ArcČR 500
 #'
-#' @example {
+#' @examples {
 #'
 #' }
 #'
-library("httr")
+
 
 obce_body <- function() {
   remote_df <- 'http://rczechia.jla-data.net/ObceB.rds'

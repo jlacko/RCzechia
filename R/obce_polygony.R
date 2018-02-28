@@ -22,13 +22,12 @@
 #'
 #' @source ArcČR 500
 #'
-#' @example {
+#' @examples {
 #'   praha <- obce_polygony() %>%
 #'      filter(NAZ_LAU1 == "Praha")
 #'
 #'   plot(praha, max.plot = 1)
 #' }
-library("httr")
 
 obce_polygony <- function() {
   remote_df <- 'http://rczechia.jla-data.net/ObceP.rds'

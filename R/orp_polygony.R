@@ -18,11 +18,11 @@
 #'
 #' @source ArcČR 500
 #'
-#' @example {
+#' @examples {
 #'
 #'
 #' }
-library("httr")
+
 
 orp_polygony <- function() {
   remote_df <- 'http://rczechia.jla-data.net/ORP.rds'

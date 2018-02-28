@@ -1,10 +1,10 @@
 ---
-title: "Solving real world situations with RCzechia"
+title: "Examples of using RCzechia"
 author: "Jindra Lacko"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Solving real world issues with RCzechia}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,6 +16,38 @@ knitr::opts_chunk$set(
 )
 
 ```
+## Geocoding locations & drawing them on a map
+
+Drawing a map: three semi-random landmarks on map, with rivers shown for better orientation.
+
+To get the geocoded data frame you can consider using `geocode()` function from `ggmap` package, which implies consent with Google terms of use.
+
+```{r geocode, options}
+library(tidyverse)
+library(RCzechia)
+library(tmap)
+library(sf)
+
+reky <- reky[reky$Major == T, ]
+
+mista <- data.frame(misto = c('kramarova vila', 'arcibiskupske zahrady v kromerizi', 'becov nad teplou'),
+                    lon = c(14.41030, 17.39353, 12.83833),
+                    lat = c(50.09380, 49.30048, 50.08346))
+
+# to geocode a list of locations consider ggmap::geocode()
+
+POI <- mista %>% # geocode using ggmap
+  st_as_sf(coords = c("lon", "lat"), crs = 4326) # convert plain data to spatial CRS = WGS84, used by Google
+
+tm_plot <- tm_shape(republika) + tm_borders("grey30", lwd = 1) +
+  tm_shape(POI) + tm_symbols(col = "firebrick3", shape = 20, size = 0.5) +
+  tm_shape(reky) + tm_lines(col = 'steelblue', lwd = 1.5)
+  
+
+print(tm_plot)
+
+```
+
 
 ## Unemployment in Czech Republic - a chloropleth
 
@@ -28,10 +60,11 @@ library(RCzechia)
 library(tmap)
 library(sf)
 
-src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/unempl.csv"), stringsAsFactors = F) 
+# open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+# lightly edited for size (rows filtered)
 
 src <- src %>%
-  filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
 podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
@@ -86,10 +119,12 @@ library(RCzechia)
 library(tmap)
 library(sf)
 
-src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/unempl.csv"), stringsAsFactors = F) 
+# open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+# lightly edited for size (rows filtered)
+
 
 src <- src %>%
-  filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
 podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package

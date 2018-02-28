@@ -11,7 +11,7 @@
   \item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
 }}
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+ArcČR 500
 }
 \usage{
 kraje

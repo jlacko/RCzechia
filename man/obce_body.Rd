@@ -7,7 +7,11 @@
 \format{6.258 municipalities of the Czech Republic, as a sf data frame:
 \describe{
   \item{KOD_OBEC}{Code of the level I commune (obec).}
+<<<<<<< HEAD
   \item{NAZ_OBEC}{Name name of the level I commune (obec).}
+=======
+  \item{NAZ_OBEC}{Name of the level I commune (obec).}
+>>>>>>> 689341d79d655b73a3603192a19deac28436cae4
   \item{KOD_ZUJ}{Code of the basic administrative unit (ICZUJ).}
   \item{NAZ_ZUJ}{Name of the basic administrative unit (ICZUJ).}
   \item{KOD_POU}{Code of the level II commune (obec s poverenym uradem).}
@@ -22,7 +26,7 @@
   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
 }}
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+ArcČR 500
 }
 \usage{
 obce_body

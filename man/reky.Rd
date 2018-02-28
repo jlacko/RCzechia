@@ -12,7 +12,7 @@
   \item{Major}{Boolean indicating the major rivers (= Labe, Vltava, Svratka, Morava, Berounka, Sazava, Odra, Dyje, Mze, Radbuza, Uslava, Ohre, Otava).}
 }}
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+ArcČR 500
 }
 \usage{
 reky

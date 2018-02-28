@@ -1,11 +1,11 @@
 Package: RCzechia
 Type: Package
 Title: A set of spatial objects relevant to the Czech Republic
-Version: 1.0.3
+Version: 1.1.0
 Date: 2018-02-20
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
-Description: Data package providing a set of spatial objects relevant to the Czech Republic in sf package format.
+Description: Administrative regions of the Czech Republic in sf data frame format.
 URL: https://github.com/jlacko/RCzechia
 BugReports: https://github.com/jlacko/RCzechia/issues
 License: MIT + file LICENSE
@@ -21,7 +21,6 @@ Suggests:
   tmap,
   lwgeom,
   ggmap,
-  knitr,
-  rmarkdown
+  knitr
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

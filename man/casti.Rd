@@ -12,7 +12,7 @@
   \item{NAZ_OBEC}{Name of the city}
 }}
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+ArcČR 500
 }
 \usage{
 casti

@@ -1,4 +1,4 @@
-#' Water bodies (vodni plochy) of the Czech Republic
+#' Water bodies (vodní plochy) of the Czech Republic
 #'
 #' @format 480 water bodies of the Czech Repubic, as a sf data frame:
 #' \describe{
@@ -6,7 +6,18 @@
 #'   \item{NAZEV}{Name, with Czech accents}
 #'   \item{NAZEV_ASCII}{Name, without Czech accents}
 #'   \item{VYSKA}{water level, meters above sea level}
-#'   \item{Major}{Boolean indicating the major water bodies (= Lipno, Orlík, Slapy, Nechranice, Novomlýnské nádrže.)}
+#'   \item{Major}{Boolean indicating the major water bodies}
 #' }
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
-"plochy"
+#' @format sf data frame with 480 rows of 5 variables + geometry:
+#'
+#' @source ArcČR 500
+#'
+#' @example {
+#'
+#'
+#' }
+plochy <- function() {
+  remote_df <- url('http://rczechia.jla-data.net/Plochy.rds')
+  local_df <- readRDS(remote_df)
+  local_df
+}

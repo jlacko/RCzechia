@@ -67,11 +67,11 @@ src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/da
 src <- src %>%
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
-podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
+podklad <- obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
   inner_join(src, by = "KOD_OBEC") # linking by key
 
 
-vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
+vystup <- tm_shape(republika()) + tm_borders(col = "grey40") +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd") +
   tm_legend(position = c("RIGHT", "top"),
             legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %")))
@@ -91,6 +91,8 @@ library(tidyverse)
 library(RCzechia)
 library(sf)
 library(units)
+
+obce_polygony <- obce_polygony()
 
 praha <- obce_polygony[obce_polygony$NAZ_OBEC == "Praha", ]
 brno <- obce_polygony[obce_polygony$NAZ_OBEC == "Brno", ]
@@ -127,11 +129,11 @@ src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/da
 src <- src %>%
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
-podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
+podklad <- obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
   inner_join(src, by = "KOD_OBEC") %>% # linking by key
   filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
 
-vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
+vystup <- tm_shape(republika()) + tm_borders(col = "grey40") +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd", id = "NAZ_OBEC") +
   tm_legend(position = c("RIGHT", "top"),
             legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %"))) +

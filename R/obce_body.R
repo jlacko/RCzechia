@@ -1,11 +1,7 @@
 #' Municipalities / communes (obce) of the Czech Republic.
 #' LAU2 administrative unit for the Czech Republic.
 #'
-<<<<<<< HEAD
 #' \itemize{
-=======
-#'  \itemize{
->>>>>>> 689341d79d655b73a3603192a19deac28436cae4
 #'   \item{KOD_OBEC}{Code of the level I commune (obec).}
 #'   \item{NAZ_OBEC}{Name of the level I commune (obec).}
 #'   \item{KOD_ZUJ}{Code of the basic administrative unit (ICZUJ).}
@@ -30,9 +26,15 @@
 #'
 #' }
 #'
-#'
+library("httr")
+
 obce_body <- function() {
-  remote_df <- url('http://rczechia.jla-data.net/ObceB.rds')
-  local_df <- readRDS(remote_df)
+  remote_df <- 'http://rczechia.jla-data.net/ObceB.rds'
+  if (http_error(remote_df)) {
+    warning('No internet connection or data source broken.')
+    return(NA)
+  } else {
+    local_df <- readRDS(url(remote_df))
+  }
   local_df
 }

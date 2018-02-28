@@ -16,8 +16,15 @@
 #'
 #'
 #' }
+library("httr")
+
 plochy <- function() {
-  remote_df <- url('http://rczechia.jla-data.net/Plochy.rds')
-  local_df <- readRDS(remote_df)
+  remote_df <- 'http://rczechia.jla-data.net/Plochy.rds'
+  if (http_error(remote_df)) {
+    warning('No internet connection or data source broken.')
+    return(NA)
+  } else {
+    local_df <- readRDS(url(remote_df))
+  }
   local_df
 }

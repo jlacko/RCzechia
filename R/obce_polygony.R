@@ -28,8 +28,15 @@
 #'
 #'   plot(praha, max.plot = 1)
 #' }
+library("httr")
+
 obce_polygony <- function() {
-  remote_df <- url('http://rczechia.jla-data.net/ObceP.rds')
-  local_df <- readRDS(remote_df)
+  remote_df <- 'http://rczechia.jla-data.net/ObceP.rds'
+  if (http_error(remote_df)) {
+    warning('No internet connection or data source broken.')
+    return(NA)
+  } else {
+    local_df <- readRDS(url(remote_df))
+  }
   local_df
 }

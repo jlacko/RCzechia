@@ -2,7 +2,7 @@ Package: RCzechia
 Type: Package
 Title: A set of spatial objects relevant to the Czech Republic
 Version: 1.1.0
-Date: 2018-02-20
+Date: 2018-0X-XX
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: Administrative regions of the Czech Republic in sf data frame format.
@@ -13,7 +13,8 @@ Copyright: ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
 Encoding: UTF-8
 LazyData: true
 Depends:
-  R (>= 3.3.0)
+  R (>= 3.3.0),
+  httr
 Suggests:
   tidyverse,
   sf,
@@ -21,6 +22,7 @@ Suggests:
   tmap,
   lwgeom,
   ggmap,
-  knitr
+  knitr,
+  testthat
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

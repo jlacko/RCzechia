@@ -12,8 +12,8 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
-)
+  comment = "#>")
+library(httr)
 
 ```
 ## Geocoding locations & drawing them on a map
@@ -22,9 +22,9 @@ Drawing a map: three semi-random landmarks on map, with rivers shown for better 
 
 To get the geocoded data frame you can consider using `geocode()` function from `ggmap` package, which implies consent with Google terms of use.
 
-```{r geocode, options}
+```{r geocode, echo = T, eval = T, message = F}
+devtools::load_all()
 library(tidyverse)
-library(RCzechia)
 library(tmap)
 library(sf)
 
@@ -38,7 +38,7 @@ mista <- data.frame(misto = c('kramarova vila', 'arcibiskupske zahrady v kromeri
 
 # to geocode a list of locations consider ggmap::geocode()
 
-POI <- mista %>% # geocode using ggmap
+POI <- mista %>% # or geocode using ggmap
   st_as_sf(coords = c("lon", "lat"), crs = 4326) # convert plain data to spatial CRS = WGS84, used by Google
 
 tm_plot <- tm_shape(republika()) + tm_borders("grey30", lwd = 1) +
@@ -58,7 +58,7 @@ What are the hotspots?
 
 ```{r unempl, echo = T, eval = T, message = F}
 library(tidyverse)
-library(RCzechia)
+devtools::load_all()
 library(tmap)
 library(sf)
 
@@ -90,14 +90,14 @@ Calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
 
 ```{r distance, echo = T, eval = T, message = F}
 library(tidyverse)
-library(RCzechia)
+devtools::load_all()
 library(sf)
 library(units)
 
-obce_polygony <- obce_polygony()
+obce <- obce_polygony()
 
-praha <- obce_polygony[obce_polygony$NAZ_OBEC == "Praha", ]
-brno <- obce_polygony[obce_polygony$NAZ_OBEC == "Brno", ]
+praha <- obce[obce$NAZ_OBEC == "Praha", ]
+brno <- obce[obce$NAZ_OBEC == "Brno", ]
 
 vzdalenost <- st_distance(praha, brno) %>%
   set_units("kilometers") # easier to interpret than meters, miles or decimal degrees..
@@ -119,7 +119,7 @@ A map of the whole Czech Republic in original resolution (the accuracy is about 
 
 ```{r interactive, echo = T, eval = T, message = F}
 library(tidyverse)
-library(RCzechia)
+devtools::load_all()
 library(tmap)
 library(sf)
 

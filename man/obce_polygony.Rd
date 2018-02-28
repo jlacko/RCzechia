@@ -31,6 +31,7 @@ obce_polygony()
 }
 \examples{
 {
+  library(tidyverse)
   praha <- obce_polygony() \%>\%
      filter(NAZ_LAU1 == "Praha")
 

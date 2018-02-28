@@ -22,7 +22,9 @@
 #'
 #' @source ArcČR 500
 #'
-#' @examples {
+#' @example {
+#'  library(magrittr)
+#'
 #'   praha <- obce_polygony() %>%
 #'      filter(NAZ_LAU1 == "Praha")
 #'

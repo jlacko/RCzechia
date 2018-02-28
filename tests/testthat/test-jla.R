@@ -1,4 +1,6 @@
 library(testthat)
+library(httr)
+
 asdf <- casti()
 expect_that(is.data.frame(asdf), is_true())
 

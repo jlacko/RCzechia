@@ -2,7 +2,7 @@
 This is a resubmission; compared to previous version I have:
 
 * fixed the package size issue - data are stored remotely (Amazon S3) and loaded from the internet
-* used the proper CRAN template of MIT license
+* used the standard CRAN template of MIT license
 * added examples as appropriate
 
 

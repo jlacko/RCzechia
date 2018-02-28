@@ -15,7 +15,7 @@ reky()
   \item{TYP}{Type of river: 1 =  natural, 2 = man-made, 3 = fictional}
   \item{NAZEV}{Name, with Czech accents}
   \item{NAZEV_ASCII}{Name, without Czech accents}
-  \item{Major}{Boolean indicating the major rivers (= Labe, Vltava, Svratka, Morava, Berounka, Sazava, Odra, Dyje, Mze, Radbuza, Uslava, Ohre, Otava).}
+  \item{Major}{Boolean indicating one of the major rivers.}
 }
 }
 \examples{

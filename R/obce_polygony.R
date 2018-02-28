@@ -22,7 +22,7 @@
 #'
 #' @source ArcČR 500
 #'
-#' @example {
+#' @examples  {
 #'  library(magrittr)
 #'
 #'   praha <- obce_polygony() %>%

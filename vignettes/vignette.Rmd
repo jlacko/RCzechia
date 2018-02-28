@@ -39,9 +39,9 @@ mista <- data.frame(misto = c('kramarova vila', 'arcibiskupske zahrady v kromeri
 POI <- mista %>% # geocode using ggmap
   st_as_sf(coords = c("lon", "lat"), crs = 4326) # convert plain data to spatial CRS = WGS84, used by Google
 
-tm_plot <- tm_shape(republika) + tm_borders("grey30", lwd = 1) +
+tm_plot <- tm_shape(republika()) + tm_borders("grey30", lwd = 1) +
   tm_shape(POI) + tm_symbols(col = "firebrick3", shape = 20, size = 0.5) +
-  tm_shape(reky) + tm_lines(col = 'steelblue', lwd = 1.5)
+  tm_shape(reky()) + tm_lines(col = 'steelblue', lwd = 1.5)
   
 
 print(tm_plot)

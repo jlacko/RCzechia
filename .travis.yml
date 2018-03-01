@@ -5,6 +5,10 @@ sudo: false
 cache:
   packages: yes
 
+r_packages:
+  - testthat
+  - roxygen2
+
 addons:
   apt:
     packages:

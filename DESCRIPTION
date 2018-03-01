@@ -8,7 +8,7 @@ Author:
 Maintainer: 
   Jindra Lacko <jindra.lacko@gmail.com>
 Description:
-  RCzechia package provides administrative regions, rivers and water bodies of the Czech Republic in sf data frame format. Due to package size constraints the data is stored externally, so a working internet connection is required to use the package.
+  Administrative regions, rivers and water bodies of the Czech Republic in sf data frame format. Due to package size constraints the data is stored externally, so a working internet connection is required to use the package.
 URL: https://github.com/jlacko/RCzechia
 BugReports: https://github.com/jlacko/RCzechia/issues
 License: 

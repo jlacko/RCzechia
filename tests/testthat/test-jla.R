@@ -1,7 +1,7 @@
 library(testthat)
 library(httr)
 
-context("casti")
+context("městské části")
   expect_that(is.data.frame(casti()), is_true())
   expect_equal(nrow(casti()), 142)
 

@@ -2,21 +2,23 @@
 % Please edit documentation in R/republika.R
 \name{republika}
 \alias{republika}
-\title{Boundaries of the Czech Republic.}
+\title{Boundaries of the Czech Republic}
 \format{sf data frame with 1 row of 1 variable + geometry:}
 \source{
-ArcČR 500
+\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
 republika()
 }
 \description{
-Boundaries of the Czech Republic.
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 949.7 KB.
+}
+\details{
+republika() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 }
 \examples{
-{
-
-
-}
+library(sf)
+hranice <- republika()
+plot(hranice, col = "white")
 
 }

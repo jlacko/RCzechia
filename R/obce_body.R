@@ -1,7 +1,14 @@
-#' Municipalities / communes (obce) of the Czech Republic.
+#' Municipalities / communes (obce) as centerpoints
+#'
 #' LAU2 administrative unit for the Czech Republic.
 #'
-#' \itemize{
+#'  Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 270 KB.
+#'
+#'  obce_body() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
+#'
+#' @format sf data frame with 6.258 rows of 14 variables + geometry
+#'
+#' \describe{
 #'   \item{KOD_OBEC}{Code of the level I commune (obec).}
 #'   \item{NAZ_OBEC}{Name of the level I commune (obec).}
 #'   \item{KOD_ZUJ}{Code of the basic administrative unit (ICZUJ).}
@@ -18,16 +25,12 @@
 #'   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
 #'   }
 #'
-#' @format sf data frame with 6.258 rows of 14 variables + geometry:
 #'
-#' @source ArcČR 500
+#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 #'
-#' @examples {
-#'
-#' }
 #'
 #' @export
-
+#' @importFrom httr http_error
 
 obce_body <- function() {
   remote_df <- 'http://rczechia.jla-data.net/ObceB.rds'

@@ -2,16 +2,10 @@
 % Please edit documentation in R/orp_polygony.R
 \name{orp_polygony}
 \alias{orp_polygony}
-\title{Municipalities with extended powers (obce s rozšířenou působností) of the Czech Republic}
-\format{sf data frame with 206 rows of 10 variables + geometry:}
-\source{
-ArcČR 500
-}
-\usage{
-orp_polygony()
-}
-\description{
-\itemize{
+\title{Municipalities with extended powers (obce s rozsirenou pusobnosti)}
+\format{sf data frame with 206 rows of 10 variables + geometry
+
+\describe{
   \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}
   \item{NAZ_ZKR_ORP}{Short name of the level III commune (obec s rozsirenou pusobnosti).}
   \item{NAZ_ORP}{Full name of the level III commune (obec s rozsirenou pusobnosti).}
@@ -23,12 +17,16 @@ orp_polygony()
   \item{KOD_KRAJ}{Code of the region (kraj).}
   \item{KOD_CZNUTS2}{Code of the NUTS3 unit (kraj)}
   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
+}}
+\source{
+\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
+\usage{
+orp_polygony()
 }
-\examples{
-{
-
-
+\description{
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 9 MB (so use with caution, and patience).
 }
-
+\details{
+orp_polygony() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 }

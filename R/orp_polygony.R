@@ -1,6 +1,12 @@
-#' Municipalities with extended powers (obce s rozšířenou působností) of the Czech Republic
+#' Municipalities with extended powers (obce s rozsirenou pusobnosti)
 #'
-#' \itemize{
+#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 9 MB (so use with caution, and patience).
+#'
+#'  orp_polygony() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
+#'
+#' @format sf data frame with 206 rows of 10 variables + geometry
+#'
+#' \describe{
 #'   \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}
 #'   \item{NAZ_ZKR_ORP}{Short name of the level III commune (obec s rozsirenou pusobnosti).}
 #'   \item{NAZ_ORP}{Full name of the level III commune (obec s rozsirenou pusobnosti).}
@@ -14,17 +20,12 @@
 #'   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
 #' }
 #'
-#' @format sf data frame with 206 rows of 10 variables + geometry:
 #'
-#' @source ArcČR 500
+#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 #'
-#' @examples {
-#'
-#'
-#' }
 #'
 #' @export
-
+#' @importFrom httr http_error
 
 orp_polygony <- function() {
   remote_df <- 'http://rczechia.jla-data.net/ORP.rds'

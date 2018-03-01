@@ -3,12 +3,9 @@ Type: Package
 Title: Spatial Objects of the Czech Republic
 Version: 1.1.0
 Date: 2018-03-01
-Author: 
-  Jindra Lacko
-Maintainer: 
-  Jindra Lacko <jindra.lacko@gmail.com>
-Description:
-  Administrative regions, rivers and water bodies of the Czech Republic in sf data frame format. Due to package size constraints the data is stored externally, so a working internet connection is required to use the package.
+Author: Jindra Lacko
+Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
+Description: Administrative regions, rivers and water bodies of the Czech Republic.
 URL: https://github.com/jlacko/RCzechia
 BugReports: https://github.com/jlacko/RCzechia/issues
 License: 

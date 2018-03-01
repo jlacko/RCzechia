@@ -2,24 +2,24 @@
 % Please edit documentation in R/reky.R
 \name{reky}
 \alias{reky}
-\title{Rivers (řeky) of the Czech Republic}
+\title{Rivers of the Czech Republic}
 \format{sf data frame with 6.198 rows of 4 variables + geometry:}
 \source{
-ArcČR 500
+\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
 reky()
 }
 \description{
-\itemize{
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 1 MB.
+}
+\details{
+reky() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
+
+\describe{
   \item{TYP}{Type of river: 1 =  natural, 2 = man-made, 3 = fictional}
   \item{NAZEV}{Name, with Czech accents}
   \item{NAZEV_ASCII}{Name, without Czech accents}
   \item{Major}{Boolean indicating one of the major rivers.}
 }
-}
-\examples{
-{
-}
-
 }

@@ -2,25 +2,25 @@
 % Please edit documentation in R/kraje.R
 \name{kraje}
 \alias{kraje}
-\title{Regions (kraje) of the Czech Republic. NUTS3 administrative unit for the Czech Republic.}
-\format{sf data frame with 14 rows of 3 variables + geometry:}
+\title{Regions (kraje) of the Czech Republic}
+\format{sf data frame with 14 rows of 3 variables + geometry
+
+\describe{
+  \item{KOD_KRAJ}{Code of the region, primary key. Use this as key to add other data items.}
+  \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
+  \item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
+}}
 \source{
-ArcČR 500
+\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
 kraje()
 }
 \description{
-\itemize{
-  \item{KOD_KRAJ}{Code of the region, primary key. Use this as key to add other data items.}
-  \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
-  \item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
+NUTS3 administrative unit for the Czech Republic.
 }
-}
-\examples{
-{
+\details{
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 2.9 MB (so use with caution, and patience).
 
-
-}
-
+kraje() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 }

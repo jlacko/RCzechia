@@ -2,17 +2,10 @@
 % Please edit documentation in R/obce_body.R
 \name{obce_body}
 \alias{obce_body}
-\title{Municipalities / communes (obce) of the Czech Republic.
-LAU2 administrative unit for the Czech Republic.}
-\format{sf data frame with 6.258 rows of 14 variables + geometry:}
-\source{
-ArcČR 500
-}
-\usage{
-obce_body()
-}
-\description{
-\itemize{
+\title{Municipalities / communes (obce) as centerpoints}
+\format{sf data frame with 6.258 rows of 14 variables + geometry
+
+\describe{
   \item{KOD_OBEC}{Code of the level I commune (obec).}
   \item{NAZ_OBEC}{Name of the level I commune (obec).}
   \item{KOD_ZUJ}{Code of the basic administrative unit (ICZUJ).}
@@ -27,11 +20,18 @@ obce_body()
   \item{KOD_KRAJ}{Code of the region (kraj).}
   \item{KOD_CZNUTS2}{Code of the NUTS3 unit (kraj)}
   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
-  }
+  }}
+\source{
+\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
-\examples{
-{
-
+\usage{
+obce_body()
 }
+\description{
+LAU2 administrative unit for the Czech Republic.
+}
+\details{
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 270 KB.
 
+obce_body() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 }

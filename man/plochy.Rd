@@ -2,8 +2,9 @@
 % Please edit documentation in R/plochy.R
 \name{plochy}
 \alias{plochy}
-\title{Water bodies (vodní plochy) of the Czech Republic}
-\format{480 water bodies of the Czech Repubic, as a sf data frame:
+\title{Water bodies of the Czech Republic}
+\format{sf data frame with 480 rows of 5 variables + geometry
+
 \describe{
   \item{TYP}{Type of water body: 1 = dam, 2 = pond, 3 = lake}
   \item{NAZEV}{Name, with Czech accents}
@@ -12,18 +13,14 @@
   \item{Major}{Boolean indicating the major water bodies}
 }}
 \source{
-ArcČR 500
+\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
 plochy()
 }
 \description{
-Water bodies (vodní plochy) of the Czech Republic
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 118.6 KB.
 }
-\examples{
-{
-
-
-}
-
+\details{
+plochy() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 }

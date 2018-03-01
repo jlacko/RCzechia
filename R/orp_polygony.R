@@ -14,7 +14,7 @@
 #'   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
 #' }
 #'
-#' @format sf data frame with 205 rows of 10 variables + geometry:
+#' @format sf data frame with 206 rows of 10 variables + geometry:
 #'
 #' @source ArcČR 500
 #'

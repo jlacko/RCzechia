@@ -12,6 +12,9 @@
 #'
 #' @examples {
 #' }
+#'
+#' @export
+
 
 reky <- function() {
   remote_df <- 'http://rczechia.jla-data.net/Reky.rds'

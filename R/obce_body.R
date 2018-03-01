@@ -26,6 +26,7 @@
 #'
 #' }
 #'
+#' @export
 
 
 obce_body <- function() {

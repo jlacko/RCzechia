@@ -13,6 +13,8 @@
 #'
 #'
 #' }
+#'
+#' @export
 
 kraje <- function() {
   remote_df <- 'http://rczechia.jla-data.net/Kraje.rds'

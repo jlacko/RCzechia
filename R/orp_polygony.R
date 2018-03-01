@@ -22,6 +22,8 @@
 #'
 #'
 #' }
+#'
+#' @export
 
 
 orp_polygony <- function() {

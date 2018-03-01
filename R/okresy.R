@@ -16,6 +16,8 @@
 #' @examples {
 #'
 #' }
+#'
+#' @export
 
 okresy <- function() {
   remote_df <- 'http://rczechia.jla-data.net/Okresy.rds'

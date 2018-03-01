@@ -12,6 +12,8 @@
 #'
 #' @examples  {
 #' }
+#'
+#' @export
 
 casti <- function() {
   remote_df <- 'http://rczechia.jla-data.net/casti.rds'

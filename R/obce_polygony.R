@@ -30,6 +30,8 @@
 #'
 #'   plot(praha, max.plot = 1)
 #' }
+#'
+#' @export
 
 obce_polygony <- function() {
   remote_df <- 'http://rczechia.jla-data.net/ObceP.rds'

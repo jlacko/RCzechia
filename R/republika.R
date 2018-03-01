@@ -9,6 +9,8 @@
 #'
 #'
 #' }
+#'
+#' @export
 
 
 republika <- function() {

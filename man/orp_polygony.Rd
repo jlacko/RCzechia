@@ -3,7 +3,7 @@
 \name{orp_polygony}
 \alias{orp_polygony}
 \title{Municipalities with extended powers (obce s rozšířenou působností) of the Czech Republic}
-\format{sf data frame with 205 rows of 10 variables + geometry:}
+\format{sf data frame with 206 rows of 10 variables + geometry:}
 \source{
 ArcČR 500
 }
@@ -30,4 +30,5 @@ orp_polygony()
 
 
 }
+
 }

@@ -31,11 +31,13 @@ obce_polygony()
 }
 \examples{
  {
- library(magrittr)
+  \dontrun{
 
-  praha <- obce_polygony() \%>\%
-     filter(NAZ_LAU1 == "Praha")
+  praha <- filter(obce_polygony(), NAZ_LAU1 == "Praha")
 
   plot(praha, max.plot = 1)
+
+  }
 }
+
 }

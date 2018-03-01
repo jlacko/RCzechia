@@ -23,6 +23,9 @@ Suggests:
   tmap,
   lwgeom,
   ggmap,
-  knitr
+  knitr,
+  testthat,
+  roxygen2,
+  devtools
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

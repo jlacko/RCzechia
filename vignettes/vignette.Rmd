@@ -24,7 +24,7 @@ Drawing a map: three semi-random landmarks on map, with rivers shown for better 
 To get the geocoded data frame you can consider using `geocode()` function from `ggmap` package, which implies consent with Google terms of use.
 
 ```{r geocode, echo = T, eval = T, message = F}
-devtools::load_all()
+library(RCzechia)
 library(tidyverse)
 library(tmap)
 library(sf)
@@ -59,7 +59,7 @@ What are the hotspots?
 
 ```{r unempl, echo = T, eval = T, message = F}
 library(tidyverse)
-devtools::load_all()
+library(RCzechia)
 library(tmap)
 library(sf)
 
@@ -91,7 +91,7 @@ Calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
 
 ```{r distance, echo = T, eval = T, message = F}
 library(tidyverse)
-devtools::load_all()
+library(RCzechia)
 library(sf)
 library(units)
 
@@ -120,7 +120,7 @@ A map of the whole Czech Republic in original resolution (the accuracy is about 
 
 ```{r interactive, echo = T, eval = T, message = F}
 library(tidyverse)
-devtools::load_all()
+library(RCzechia)
 library(tmap)
 library(sf)
 

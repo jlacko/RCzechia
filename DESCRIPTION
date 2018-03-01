@@ -1,15 +1,16 @@
 Package: RCzechia
 Type: Package
-Title: A set of spatial objects relevant to the Czech Republic
+Title: Spatial Objects of the Czech Republic
 Version: 1.1.0
 Date: 2018-03-01
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
-Description: Administrative regions of the Czech Republic in sf data frame format.
+Description: 
+  Administrative regions, rivers and water bodies of the Czech Republic in sf data frame format.
 URL: https://github.com/jlacko/RCzechia
 BugReports: https://github.com/jlacko/RCzechia/issues
 License: MIT + file LICENSE
-Copyright: ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
+Copyright: ArcCR, ARCDATA PRAHA, ZU, CSU, 2016
 Encoding: UTF-8
 LazyData: true
 Depends:

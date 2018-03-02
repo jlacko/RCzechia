@@ -1,12 +1,11 @@
 ## Resubmission
 This is a resubmission; compared to previous version I have:
 
-* fixed the package size issue - data are stored remotely (Amazon S3) and loaded from the internet
-* used the standard CRAN template of MIT license - via devtools::use_mit_license()
-* added examples as appropriate
+* amended the description to 1) include link to ArcČR 500 in angle brackets and 2) specified that the data is from 2016
+* increased version number in description and news 1.1.0 -> 1.1.1
 
 
-It is likely to be of interest mainly to Czech R users, but in local context has - hopefuly - value. It has lived for a while on GitHub and received positive feedback.
+The package is likely to be of interest mainly to Czech R users, but in local context has - hopefuly - value. It has lived for a while on GitHub and received positive feedback.
 
 Written consent of the copyright holder for the source data was requested and given; it is available (in Czech language only) on https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/confirmation.pdf
 

@@ -1,4 +1,4 @@
-version 1.1.0
+version 1.1.1
   - [!] this is the the first CRAN version
   - [!] to make the package pass CRAN size requirements data files were changed from internal to external (internet connection required to load)
   - a development version is available on https://github.com/jlacko/RCzechia

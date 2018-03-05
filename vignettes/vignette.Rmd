@@ -12,8 +12,9 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
-)
+  comment = "#>")
+library(httr)
+library(roxygen2)
 
 ```
 ## Geocoding locations & drawing them on a map
@@ -22,13 +23,15 @@ Drawing a map: three semi-random landmarks on map, with rivers shown for better 
 
 To get the geocoded data frame you can consider using `geocode()` function from `ggmap` package, which implies consent with Google terms of use.
 
-```{r geocode, options}
-library(tidyverse)
+```{r geocode, echo = T, eval = T, message = F}
 library(RCzechia)
+library(tidyverse)
 library(tmap)
 library(sf)
 
-reky <- reky[reky$Major == T, ]
+rivers <- reky()
+
+rivers <- rivers[rivers$Major == T, ]
 
 mista <- data.frame(misto = c('kramarova vila', 'arcibiskupske zahrady v kromerizi', 'becov nad teplou'),
                     lon = c(14.41030, 17.39353, 12.83833),
@@ -36,12 +39,12 @@ mista <- data.frame(misto = c('kramarova vila', 'arcibiskupske zahrady v kromeri
 
 # to geocode a list of locations consider ggmap::geocode()
 
-POI <- mista %>% # geocode using ggmap
+POI <- mista %>% # or geocode using ggmap
   st_as_sf(coords = c("lon", "lat"), crs = 4326) # convert plain data to spatial CRS = WGS84, used by Google
 
-tm_plot <- tm_shape(republika) + tm_borders("grey30", lwd = 1) +
+tm_plot <- tm_shape(republika()) + tm_borders("grey30", lwd = 1) +
   tm_shape(POI) + tm_symbols(col = "firebrick3", shape = 20, size = 0.5) +
-  tm_shape(reky) + tm_lines(col = 'steelblue', lwd = 1.5)
+  tm_shape(rivers) + tm_lines(col = 'steelblue', lwd = 1.5)
   
 
 print(tm_plot)
@@ -67,11 +70,11 @@ src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/da
 src <- src %>%
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
-podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
+podklad <- obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
   inner_join(src, by = "KOD_OBEC") # linking by key
 
 
-vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
+vystup <- tm_shape(republika()) + tm_borders(col = "grey40") +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd") +
   tm_legend(position = c("RIGHT", "top"),
             legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %")))
@@ -92,8 +95,10 @@ library(RCzechia)
 library(sf)
 library(units)
 
-praha <- obce_polygony[obce_polygony$NAZ_OBEC == "Praha", ]
-brno <- obce_polygony[obce_polygony$NAZ_OBEC == "Brno", ]
+obce <- obce_polygony()
+
+praha <- obce[obce$NAZ_OBEC == "Praha", ]
+brno <- obce[obce$NAZ_OBEC == "Brno", ]
 
 vzdalenost <- st_distance(praha, brno) %>%
   set_units("kilometers") # easier to interpret than meters, miles or decimal degrees..
@@ -127,11 +132,11 @@ src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/da
 src <- src %>%
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
-podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
+podklad <- obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
   inner_join(src, by = "KOD_OBEC") %>% # linking by key
   filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
 
-vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
+vystup <- tm_shape(republika()) + tm_borders(col = "grey40") +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd", id = "NAZ_OBEC") +
   tm_legend(position = c("RIGHT", "top"),
             legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %"))) +

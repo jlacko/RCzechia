@@ -1,6 +1,13 @@
-#' Districts (okresy) of the Czech Republic. LAU1 administrative unit for the Czech Republic.
+#' Districts (okresy)
 #'
-#' @format 77 districts of the Czech Republic, as a sf data frame:
+#' LAU1 administrative unit for the Czech Republic.
+#'
+#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 6.1 MB (so use with caution, and patience).
+#'
+#'  okresy() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
+#'
+#' @format sf data frame with 77 rows of 6 variables + geometry
+#'
 #' \describe{
 #'   \item{KOD_OKRES}{Code of the district (okres).}
 #'   \item{KOD_LAU1}{Code of the district as LAU1 unit (okres), primary key. Use this as key to add other data items.}
@@ -9,5 +16,25 @@
 #'   \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
 #'   \item{NAZ_CZNUTS3}{Name of the region (kraj).}
 #' }
-#' @source ArcČR 500
-"okresy"
+#'
+#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#'
+#' @examples
+#' library(sf)
+#'
+#' hranice <- okresy()
+#' plot(hranice, col = "white", max.plot = 1)
+#'
+#' @export
+#' @importFrom httr http_error
+
+okresy <- function() {
+  remote_df <- 'http://rczechia.jla-data.net/Okresy.rds'
+  if (http_error(remote_df)) {
+    warning('No internet connection or data source broken.')
+    return(NA)
+  } else {
+    local_df <- readRDS(url(remote_df))
+  }
+  local_df
+}

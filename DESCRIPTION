@@ -1,19 +1,24 @@
 Package: RCzechia
 Type: Package
-Title: A Set of Spatial Objects Relevant to the Czech Republic
-Version: 1.0.4
-Date: 2018-02-25
+Title: Spatial Objects of the Czech Republic
+Version: 1.1.1
+Date: 2018-03-02
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
-Description: Administrative regions of the Czech Republic as sf data frames.
+Description: 
+  Administrative regions, rivers and water bodies of the Czech Republic. Based on <https://www.arcdata.cz/produkty/geograficka-data/arccr-500>, originally created in 2016.
 URL: https://github.com/jlacko/RCzechia
 BugReports: https://github.com/jlacko/RCzechia/issues
-License: MIT + file LICENSE
-Copyright: ArcCR, ARCDATA PRAHA, ZU, CSU, 2016
+License: 
+  MIT + file LICENSE
+Copyright: 
+  ArcCR, ARCDATA PRAHA, ZU, CSU, 2016
 Encoding: UTF-8
 LazyData: true
 Depends:
   R (>= 3.3.0)
+Imports:
+  httr
 Suggests:
   tidyverse,
   sf,
@@ -21,6 +26,9 @@ Suggests:
   tmap,
   lwgeom,
   ggmap,
-  knitr
+  knitr,
+  testthat,
+  roxygen2,
+  devtools
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

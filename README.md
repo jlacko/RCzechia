@@ -1,4 +1,4 @@
-# RCzechia  [![Travis-CI Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)](https://travis-ci.org/jlacko/RCzechia)
+# RCzechia  [![Travis-CI Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)](https://travis-ci.org/jlacko/RCzechia) [![CRAN](http://www.r-pkg.org/badges/version/RCzechia)](https://cran.r-project.org/package=RCzechia) [![Downloads](http://cranlogs.r-pkg.org/badges/RCzechia?color=brightgreen)](http://www.r-pkg.org/pkg/RCzechia)
 
 This project creates a set of shapefiles relevant to the Czech Republic.  
 

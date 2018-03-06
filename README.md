@@ -7,6 +7,13 @@ The shapefiles are based on ArcČR 500 (https://www.arcdata.cz/produkty/geografi
  * coordinate reference system was changed from a local CRS (S-JSTK) to global WGS84 ([EPSG:4326](https://epsg.io/4326))   
  * demographic data were removed, as they get out of date rather fast and are very easy to re-attach using the `sf` package workflow  
  * the shapefiles were slightly simplified to fit into memory better
+ 
+### Installation
+The package is on CRAN (as of March 2018) so to get a stable version simply run:
+```r 
+install.packages("RCzechia")
+```
+You can also get the latest development version by running `devtools::install_github("jlacko/RCzechia")` and the last version built on [`sp`](https://github.com/edzer/sp) instead of [`sf`](https://github.com/r-spatial/sf) package by running  `devtools::install_github("jlacko/RCzechia", ref = "v0.1.4")`. 
 
 ### The following spatial objects are included:  
 * **republika**: borders of the Czech Republic
@@ -24,3 +31,5 @@ Key is again KOD_OBEC.
 Key is KOD.
 * **reky**: streams and rivers
 * **plochy**: stillwaters (lakes and ponds).
+
+All objects are functions returning data frames, so must be followed by empty brackets (i.e. `hranice <- republika()`).

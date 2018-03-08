@@ -7,7 +7,10 @@ The shapefiles are based on ArcČR 500 (https://www.arcdata.cz/produkty/geografi
  * coordinate reference system was changed from a local CRS (S-JSTK) to global WGS84 ([EPSG:4326](https://epsg.io/4326))   
  * demographic data were removed, as they get out of date rather fast and are very easy to re-attach using the `sf` package workflow  
  * the shapefiles were slightly simplified to fit into memory better
- 
+
+### A note to Czech users
+Tohle je "oficiální", a tedy anglické, readme. Českou verzi naleznete na http://www.jla-data.net/cze/package-rczechia/
+
 ### Installation
 The package is on CRAN (as of March 2018) so to get a stable version simply run:
 ```r 

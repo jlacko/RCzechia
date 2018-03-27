@@ -19,7 +19,12 @@ context("obce polygony")
 
 context("okresy")
   expect_that(is.data.frame(okresy()), is_true())
+  expect_that(is.data.frame(okresy("low")), is_true())
+  expect_that(is.data.frame(okresy("high")), is_true())
+  expect_error(okresy("bflm")) # neznámé rozlišení - očekávám high(default) / low
   expect_equal(nrow(okresy()), 77)
+  expect_equal(nrow(okresy("high")), 77)
+  expect_equal(nrow(okresy("low")), 77)
 
 context("ORP")
   expect_that(is.data.frame(orp_polygony()), is_true())

@@ -25,6 +25,7 @@ context("okresy")
   expect_equal(nrow(okresy()), 77)
   expect_equal(nrow(okresy("high")), 77)
   expect_equal(nrow(okresy("low")), 77)
+  expect_that(object.size(okresy("low")) < object.size(okresy("high")), is_true()) # low res je menší než high res
 
 context("ORP")
   expect_that(is.data.frame(orp_polygony()), is_true())

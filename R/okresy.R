@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 6.1 MB (so use with caution, and patience).
 #'
-#' okresy() is a function returning a data frame; remember to use (empty) brackets in your call.
+#' okresy() is a function returning a data frame; remember to use (possibly empty) brackets in your call.
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
@@ -38,15 +38,18 @@ okresy <- function(resolution = "high") {
 
     return(okresy_low_res)
 
-    } else {
+        } else {
 
     remote_df <- 'http://rczechia.jla-data.net/Okresy.rds'
     if (http_error(remote_df)) {
-      warning('No internet connection or data source broken.')
-      return(NA)
+
+      stop('No internet connection or data source broken.')
+
     } else {
+
       local_df <- readRDS(url(remote_df))
+      local_df
+
     }
-    local_df
   }
 }

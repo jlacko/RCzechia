@@ -19,13 +19,16 @@
 \usage{
 okresy(resolution = "high")
 }
+\arguments{
+\item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
+}
 \description{
 LAU1 administrative unit for the Czech Republic.
 }
 \details{
-Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 6.1 MB (so use with caution, and patience).
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 6.1 MB (so use with caution, and patience).
 
-okresy() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
+okresy() is a function returning a data frame; remember to use (possibly empty) brackets in your call.
 }
 \examples{
 library(sf)

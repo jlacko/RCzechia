@@ -8,7 +8,9 @@ The shapefiles are based on ArcČR 500 (https://www.arcdata.cz/produkty/geografi
  * demographic data were removed, as they get out of date rather fast and are very easy to re-attach using the `sf` package workflow  
  * the shapefiles were slightly simplified to fit into memory better  
 
-The default resolution is 1 meter; for the most commonly used shapes(*republika*, *kraje* and *okresy*) a low resolution shapefile is included. This lo-res shapefile does not require a working internet connection. To use the high resolution (default) shapefile a working intenet connection is required, as the data files were too big to meet CRAN requirements on package size and must be stored externally.
+The default resolution is 1 meter; for the most commonly used shapes (*republika*, *kraje* and *okresy*) a low resolution shapefile is also included. 
+
+This lo-res shapefile does not require a working internet connection. To use the high resolution (default) shapefile a working intenet connection is necessary, as the data files were too big to meet the CRAN requirements on package size and must be stored externally.
 
 ### A note to Czech users
 Tohle je "oficiální", a tedy anglické, readme. Českou verzi naleznete na http://www.jla-data.net/cze/package-rczechia/

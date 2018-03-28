@@ -17,7 +17,7 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-okresy()
+okresy(resolution = "high")
 }
 \description{
 LAU1 administrative unit for the Czech Republic.

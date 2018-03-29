@@ -5,7 +5,7 @@
 #'  republika() is a function returning a data frame; remember to use (possibly empty) brackets in your call.
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
-#' #'
+#'
 #' @format sf data frame with 1 row of 1 variable + geometry:
 #'
 #' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}

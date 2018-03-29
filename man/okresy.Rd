@@ -36,4 +36,7 @@ library(sf)
 hranice <- okresy()
 plot(hranice, col = "white", max.plot = 1)
 
+object.size(okresy("low"))
+object.size(okresy("high"))
+
 }

@@ -52,9 +52,9 @@ republika_low_res <- okresy_low_res %>% # select the non-central parts
   mutate(NAZ_STAT = 'Česká republika') # return back the data value
 
 # úklid
-st_transform(okresy_low_res, 4326)  # WGS84
-st_transform(kraje_low_res, 4326)  # WGS84
-st_transform(republika_low_res, 4326)  # WGS84
+okresy_low_res <- st_transform(okresy_low_res, 4326)  # WGS84
+kraje_low_res <- st_transform(kraje_low_res, 4326)  # WGS84
+republika_low_res <- st_transform(republika_low_res, 4326)  # WGS84
 
 # use data
 use_data(okresy_low_res,

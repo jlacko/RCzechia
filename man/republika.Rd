@@ -22,6 +22,7 @@ republika() is a function returning a data frame; remember to use (possibly empt
 }
 \examples{
 library(sf)
+
 hranice <- republika()
 plot(hranice, col = "white")
 

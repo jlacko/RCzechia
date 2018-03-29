@@ -12,6 +12,12 @@
 }}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+
+#' @examples
+library(sf)
+
+hranice <- kraje()
+plot(hranice, col = "white", max.plot = 1)
 }
 \usage{
 kraje(resolution = "high")

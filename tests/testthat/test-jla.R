@@ -1,5 +1,7 @@
 library(testthat)
 library(httr)
+library(tidyverse)
+library(sf)
 
 context("republika")
   expect_that(is.data.frame(republika()), is_true())
@@ -64,4 +66,15 @@ context("vodní plochy")
 context("řeky")
   expect_that(is.data.frame(reky()), is_true())
   expect_equal(nrow(reky()), 6198)
+
+context("integrace")
+
+  obec_praha <- obce_body() %>% # bod Praha (určitě správně)
+    filter(KOD_LAU1 == "CZ0100")
+
+  okres_praha <- okresy("low") %>% # low res "okres" Praha (zjednodušovaný)
+    filter(KOD_LAU1 == "CZ0100")
+
+  expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
+  expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1)  # bod Praha je v okresu Praha
 

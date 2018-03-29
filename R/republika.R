@@ -12,6 +12,7 @@
 #'
 #' @examples
 #' library(sf)
+#'
 #' hranice <- republika()
 #' plot(hranice, col = "white")
 #'

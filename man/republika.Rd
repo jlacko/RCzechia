@@ -8,13 +8,17 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-republika()
+republika(resolution = "high")
+}
+\arguments{
+\item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
+#'}
 }
 \description{
-Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 949.7 KB.
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 949.7 KB.
 }
 \details{
-republika() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
+republika() is a function returning a data frame; remember to use (possibly empty) brackets in your call.
 }
 \examples{
 library(sf)

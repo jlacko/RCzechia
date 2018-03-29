@@ -57,9 +57,11 @@ st_transform(kraje_low_res, 4326)  # WGS84
 st_transform(republika_low_res, 4326)  # WGS84
 
 # use data
-use_data(okresy_low_res, internal = T, overwrite = T)
-use_data(kraje_low_res, internal = T, overwrite = T)
-use_data(republika_low_res, internal = T, overwrite = T)
+use_data(okresy_low_res,
+         kraje_low_res,
+         republika_low_res,
+         internal = T,
+         overwrite = T)
 
 # ověřit...
 plot(republika_low_res)

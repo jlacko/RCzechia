@@ -3,11 +3,30 @@ library(httr)
 
 context("republika")
   expect_that(is.data.frame(republika()), is_true())
+  expect_that(is.data.frame(republika("low")), is_true())
+  expect_that(is.data.frame(republika("high")), is_true())
+
   expect_equal(nrow(republika()), 1)
+  expect_equal(nrow(republika("low")), 1)
+  expect_equal(nrow(republika("high")), 1)
+
+  expect_error(republika("bflm")) # neznámé rozlišení - očekávám high(default) / low
+  expect_that(object.size(republika("low")) < object.size(republika("high")), is_true()) # low res je menší než high res
+
 
 context("kraje")
   expect_that(is.data.frame(kraje()), is_true())
+  expect_that(is.data.frame(kraje("low")), is_true())
+  expect_that(is.data.frame(kraje("high")), is_true())
+
+
   expect_equal(nrow(kraje()), 14)
+  expect_equal(nrow(kraje("low")), 14)
+  expect_equal(nrow(kraje("high")), 14)
+
+  expect_error(kraje("bflm")) # neznámé rozlišení - očekávám high(default) / low
+  expect_that(object.size(kraje("low")) < object.size(kraje("high")), is_true()) # low res je menší než high res
+
 
 
 context("okresy")

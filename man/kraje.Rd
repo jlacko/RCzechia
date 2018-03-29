@@ -12,12 +12,6 @@
 }}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
-
-#' @examples
-library(sf)
-
-hranice <- kraje()
-plot(hranice, col = "white", max.plot = 1)
 }
 \usage{
 kraje(resolution = "high")
@@ -32,4 +26,12 @@ NUTS3 administrative unit for the Czech Republic.
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 2.9 MB (so use with caution, and patience).
 
 kraje() is a function returning a data frame; remember to use (possibly empty) brackets in your call.
+}
+\examples{
+library(sf)
+
+hranice <- kraje()
+plot(hranice, col = "white", max.plot = 1)
+
+
 }

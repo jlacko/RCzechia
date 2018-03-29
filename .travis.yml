@@ -2,15 +2,13 @@ language: r
 dist: trusty
 sudo: false
 
-install:
-  - ./travis-tool.sh github_package jimhester/covr
-
 cache:
   packages: yes
 
 r_packages:
   - testthat
   - roxygen2
+  - covr
 
 addons:
   apt:

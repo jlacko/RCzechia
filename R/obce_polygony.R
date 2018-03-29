@@ -38,7 +38,6 @@
 #'
 #'
 #' @export
-#' @importFrom httr http_error
 
 obce_polygony <- function() {
   remote_df <- 'http://rczechia.jla-data.net/ObceP.rds'

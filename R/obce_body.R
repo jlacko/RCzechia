@@ -30,7 +30,6 @@
 #'
 #'
 #' @export
-#' @importFrom httr http_error
 
 obce_body <- function() {
   remote_df <- 'http://rczechia.jla-data.net/ObceB.rds'

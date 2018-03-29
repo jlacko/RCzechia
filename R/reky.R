@@ -15,7 +15,6 @@
 #' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 #'
 #' @export
-#' @importFrom httr http_error
 
 reky <- function() {
   remote_df <- 'http://rczechia.jla-data.net/Reky.rds'

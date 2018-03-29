@@ -2,9 +2,11 @@
 #'
 #' LAU1 administrative unit for the Czech Republic.
 #'
-#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 6.1 MB (so use with caution, and patience).
+#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 6.1 MB (so use with caution, and patience).
 #'
-#'  okresy() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
+#' okresy() is a function returning a data frame; remember to use (possibly empty) brackets in your call.
+#'
+#' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
 #' @format sf data frame with 77 rows of 6 variables + geometry
 #'
@@ -25,16 +27,31 @@
 #' hranice <- okresy()
 #' plot(hranice, col = "white", max.plot = 1)
 #'
+#' object.size(okresy("low"))
+#' object.size(okresy("high"))
+#'
 #' @export
-#' @importFrom httr http_error
 
-okresy <- function() {
-  remote_df <- 'http://rczechia.jla-data.net/Okresy.rds'
-  if (http_error(remote_df)) {
-    warning('No internet connection or data source broken.')
-    return(NA)
-  } else {
-    local_df <- readRDS(url(remote_df))
+okresy <- function(resolution = "high") {
+
+  if (!is.element(resolution, c("high", "low"))) stop("Unknown resolution!")
+
+  if (resolution == "low") {
+
+    return(okresy_low_res)
+
+        } else {
+
+    remote_df <- 'http://rczechia.jla-data.net/Okresy.rds'
+    if (http_error(remote_df)) {
+
+      stop('No internet connection or data source broken.')
+
+    } else {
+
+      local_df <- readRDS(url(remote_df))
+      local_df
+
+    }
   }
-  local_df
 }

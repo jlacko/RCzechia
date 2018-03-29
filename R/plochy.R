@@ -18,7 +18,6 @@
 #'
 #'
 #' @export
-#' @importFrom httr http_error
 
 plochy <- function() {
   remote_df <- 'http://rczechia.jla-data.net/Plochy.rds'

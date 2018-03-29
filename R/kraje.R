@@ -27,7 +27,6 @@
 #'
 #'
 #' @export
-#' @importFrom httr http_error
 
 kraje <- function(resolution = "high") {
 

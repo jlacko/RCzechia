@@ -31,7 +31,6 @@
 #' object.size(okresy("high"))
 #'
 #' @export
-#' @importFrom httr http_error
 
 okresy <- function(resolution = "high") {
 

@@ -17,7 +17,6 @@
 #' plot(hranice, col = "white")
 #'
 #' @export
-#' @importFrom httr http_error
 
 republika <- function(resolution = "high") {
 

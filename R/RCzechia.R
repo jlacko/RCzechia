@@ -1,19 +1,29 @@
-#' RCzechia: package providing spatial objects relevant to the Czech Republic
+#' RCzechia: Spatial Objects of the Czech Republic
 #'
-#' The RCzechia package provides
+#' A selection of spatial objects relevant to the Czech Republic. Due to CRAN package size requirements the objects are stored externally - and thus could not be implemented as datasets, but are functions returning data frames instead.
+#'
+#' This means that 1) a working internet connection is required to use the full resolution objects and 2) all objects need to be called with (possibly empty) braces.
+#'
+#' For the most frequently used objects - republika, kraje and okresy - a low resolution version is implemented. The low resolution data sets are stored locally (and working intenet connection is not necessary to use them).
+#'
+#' All objects are implemented as `sf` data frames.
 #'
 #' @section Administrative units:
-#' *republika* - borders of the Czech Republic
-#' *kraje* - regions / NUTS3 units
-#' *okresy* - districts / LAU1 units
-#' *ORP* - municipalities with extended powers (obce s rozšířenou působností)
-#' *obce_polygony* - municipalities as polygons
-#' *obce_body* - municipalities as centroids (points)
-#' *casti* - city districts (where relevant)
+#' \itemize{
+#'   \item republika - borders of the Czech Republic
+#'   \item kraje - regions / NUTS3 units
+#'   \item okresy - districts / LAU1 units
+#'   \item orp_polygony - municipalities with extended powers (obce s rozšířenou působností)
+#'   \item obce_polygony - municipalities as polygons
+#'   \item obce_body - municipalities as centroids (points)
+#'   \item casti - city districts (only for major cities)
+#' }
 #'
 #' @section Natural objects:
-#' *reky* - rivers
-#' *plochy* - water bodies
+#' \itemize{
+#'   \item reky - rivers
+#'   \item plochy - water bodies
+#' }
 #'
 #' @docType package
 #' @name RCzechia

@@ -1,7 +1,7 @@
 Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
-Version: 1.2.1
+Version: 1.2.2
 Date: 2018-03-29
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
@@ -29,6 +29,7 @@ Suggests:
   knitr,
   testthat,
   roxygen2,
-  devtools
+  devtools,
+  readxl
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr

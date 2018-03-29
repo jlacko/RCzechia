@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Solving real world issues with RCzechia}
+  %\VignetteDepends{readxl}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -22,7 +23,7 @@ library(roxygen2)
 Population of the Czech Republic as per the [latest census](https://www.czso.cz/csu/czso/zakladni-vysledky-scitani-lidu-domu-a-bytu-2011-ceska-republika-2011-eihs9d4gp3) in 2011, per district (okres).
 
 
-```{r census, echo = T, eval = T, message = F, cache = T}
+```{r census, echo = T, eval = T, message = F}
 library(RCzechia)
 library(tidyverse)
 library(readxl)
@@ -46,7 +47,7 @@ okresni_data <- okresy("low") %>% # data shapefile
   inner_join(src, by = "NAZ_LAU1") 
     # key for data connection - note the use of inner (i.e. filtering) join
 
-vystup <- tm_shape(okresni_data) + tm_fill(col = "obyvatel", title = "Počet obyvatel", 
+vystup <- tm_shape(okresni_data) + tm_fill(col = "obyvatel", title = "Population", 
                                            palette = "Blues", style = "quantile", n = 5) +
   tm_shape(okresni_data) + tm_borders("grey40", lwd = 0.5) + # thin edges of districts
   tm_shape(republika("low")) + tm_borders("grey30", lwd = 1.5) # thick national borders

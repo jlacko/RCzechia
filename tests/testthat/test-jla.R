@@ -1,6 +1,5 @@
 library(dplyr)
 library(httr)
-library(tidyverse)
 library(sf)
 
 context("republika")

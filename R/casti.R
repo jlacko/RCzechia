@@ -21,8 +21,7 @@
 casti <- function() {
   remote_df <- 'http://rczechia.jla-data.net/casti.rds'
   if (http_error(remote_df)) {
-    warning('No internet connection or data source broken.')
-    return(NA)
+    stop('No internet connection or data source broken.')
   } else {
     local_df <- readRDS(url(remote_df))
   }

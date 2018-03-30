@@ -25,7 +25,7 @@ Population of the Czech Republic as per the [latest census](https://www.czso.cz/
 
 ```{r census, echo = T, eval = T, message = F}
 library(RCzechia)
-library(tidyverse)
+library(dplyr)
 library(readxl)
 library(httr)
 library(tmap)
@@ -64,7 +64,7 @@ To get the geocoded data frame you can consider using `geocode()` function from 
 
 ```{r geocode, echo = T, eval = T, message = F}
 library(RCzechia)
-library(tidyverse)
+library(dplyr)
 library(tmap)
 library(sf)
 
@@ -97,7 +97,7 @@ A visualization problem: unemployment in the Czech Republic is in general low, b
 What are the hotspots?
 
 ```{r unempl, echo = T, eval = T, message = F}
-library(tidyverse)
+library(dplyr)
 library(RCzechia)
 library(tmap)
 library(sf)
@@ -129,7 +129,7 @@ Calculate distance between two spatial objects; the `sf` package supports (via g
 Calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
 
 ```{r distance, echo = T, eval = T, message = F}
-library(tidyverse)
+library(dplyr)
 library(RCzechia)
 library(sf)
 library(units)
@@ -158,7 +158,7 @@ A map of the whole Czech Republic in original resolution (the accuracy is about 
 
 
 ```{r interactive, echo = T, eval = T, message = F}
-library(tidyverse)
+library(dplyr)
 library(RCzechia)
 library(tmap)
 library(sf)

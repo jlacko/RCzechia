@@ -20,7 +20,7 @@ Depends:
 Imports:
   httr
 Suggests:
-  tidyverse,
+  dplyr,
   sf,
   units,
   tmap,

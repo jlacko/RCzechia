@@ -8,7 +8,7 @@
 #'
 #' All objects are implemented as `sf` data frames.
 #'
-#' @section Administrative units:
+#' @section Administrative regions:
 #' \itemize{
 #'   \item republika - borders of the Czech Republic
 #'   \item kraje - regions / NUTS3 units
@@ -16,7 +16,7 @@
 #'   \item orp_polygony - municipalities with extended powers (obce s rozšířenou působností)
 #'   \item obce_polygony - municipalities as polygons
 #'   \item obce_body - municipalities as centroids (points)
-#'   \item casti - city districts (only for major cities)
+#'   \item casti - city districts (for cities that implement them)
 #' }
 #'
 #' @section Natural objects:

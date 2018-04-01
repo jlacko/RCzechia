@@ -1,4 +1,6 @@
-#' Municipalities with extended powers (obce s rozsirenou pusobnosti)
+#' Obce s rozsirenou pusobnosti
+#'
+#' Municipalities with extended powers (obce s rozšířenou pusobností) as polygons.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 9 MB (so use with caution, and patience).
 #'

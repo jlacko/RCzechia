@@ -1,4 +1,6 @@
-#' Boundaries of the Czech Republic
+#' Republika
+#'
+#' Boundaries of the Czech Republic as polygon.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 949.7 KB.
 #'

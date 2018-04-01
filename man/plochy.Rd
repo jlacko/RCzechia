@@ -2,7 +2,7 @@
 % Please edit documentation in R/plochy.R
 \name{plochy}
 \alias{plochy}
-\title{Water bodies of the Czech Republic}
+\title{Water Bodies}
 \format{sf data frame with 480 rows of 5 variables + geometry
 
 \describe{
@@ -19,8 +19,10 @@
 plochy()
 }
 \description{
-Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 118.6 KB.
+Water bodies of the Czech Republic as polygons.
 }
 \details{
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 118.6 KB.
+
 plochy() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 }

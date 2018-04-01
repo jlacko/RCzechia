@@ -1,6 +1,7 @@
-version 1.2.X
+version 1.2.3
   - low resolution shapefiles added for republika, kraje and okresy
-  - active internet connection not required for low resolution shapefiles
+  - internet connection not required for using low resolution shapefiles
+  - dependency on tidverse replaced by dplyr
 
 version 1.1.1
   - [!] this is the the first CRAN version

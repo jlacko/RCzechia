@@ -1,4 +1,6 @@
-#' Rivers of the Czech Republic
+#' Rivers
+#'
+#' Rivers of the Czech Republic as lines.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 1 MB.
 #'

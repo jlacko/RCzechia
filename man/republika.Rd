@@ -2,7 +2,7 @@
 % Please edit documentation in R/republika.R
 \name{republika}
 \alias{republika}
-\title{Boundaries of the Czech Republic}
+\title{Republika}
 \format{sf data frame with 1 row of 1 variable + geometry:}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
@@ -14,9 +14,11 @@ republika(resolution = "high")
 \item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
 }
 \description{
-Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 949.7 KB.
+Boundaries of the Czech Republic as polygon.
 }
 \details{
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 949.7 KB.
+
 republika() is a function returning a data frame; remember to use (possibly empty) brackets in your call.
 }
 \examples{

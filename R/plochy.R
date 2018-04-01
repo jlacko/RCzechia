@@ -1,4 +1,6 @@
-#' Water bodies of the Czech Republic
+#' Water Bodies
+#'
+#' Water bodies of the Czech Republic as polygons.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 118.6 KB.
 #'

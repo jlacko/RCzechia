@@ -1,4 +1,6 @@
-#' Districts of Prague and other major cities
+#' City Parts
+#'
+#' Districts of Prague and other major cities as polygons.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 593.6 KB.
 #'

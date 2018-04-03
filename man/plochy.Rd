@@ -19,10 +19,8 @@
 plochy()
 }
 \description{
-Water bodies of the Czech Republic as polygons.
+Function returning data frame of water bodies of the Czech Republic as sf polygons. It takes no parameters.
 }
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 118.6 KB.
-
-plochy() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 }

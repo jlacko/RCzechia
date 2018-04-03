@@ -11,7 +11,7 @@
 reky()
 }
 \description{
-Rivers of the Czech Republic as lines.
+Function returning data frame of rivers of the Czech Republic as sf lines It takes no parameters.
 }
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 1 MB.

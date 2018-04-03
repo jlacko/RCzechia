@@ -1,10 +1,8 @@
 #' Obce s rozsirenou pusobnosti
 #'
-#' Municipalities with extended powers (obce s rozšířenou pusobností) as polygons.
+#' Function returning data frame of municipalities with extended powers (obce s rozšířenou pusobností) as sf polygons. It takes no parameters.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 9 MB (so use with caution, and patience).
-#'
-#'  orp_polygony() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 #'
 #' @format sf data frame with 206 rows of 10 variables + geometry
 #'

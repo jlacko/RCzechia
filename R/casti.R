@@ -1,10 +1,8 @@
 #' City Parts
 #'
-#' Districts of Prague and other major cities as polygons.
+#' Function taking no parameters and returning data frame of districts of Prague and other major cities as sf polygons.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 593.6 KB.
-#'
-#' casti() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 #'
 #' @format sf data frame with 142 rows of 4 variables + geometry
 #'

@@ -1,10 +1,8 @@
 #' Municipalities / communes (obce) as centerpoints
 #'
-#' LAU2 administrative unit for the Czech Republic.
+#' Function returning data frame of LAU2 administrative units for the Czech Republic as sf points. It takes no parameters.
 #'
 #'  Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 270 KB.
-#'
-#'  obce_body() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 #'
 #' @format sf data frame with 6.258 rows of 14 variables + geometry
 #'

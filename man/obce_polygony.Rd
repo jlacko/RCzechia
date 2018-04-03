@@ -28,12 +28,10 @@
 obce_polygony()
 }
 \description{
-LAU2 administrative unit for the Czech Republic.
+Function returning data frame of LAU2 administrative units for the Czech Republic as sf polygons. It takes no parameters.
 }
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 36.3 MB (so use with caution, and patience).
-
-obce_polygony() is a function taking no parameters and returning a data frame; remember to use (empty) brackets in your call.
 }
 \examples{
 \dontrun{

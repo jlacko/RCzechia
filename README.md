@@ -1,6 +1,10 @@
 # RCzechia  [![Travis-CI Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)](https://travis-ci.org/jlacko/RCzechia)  [![Coverage Status](https://coveralls.io/repos/github/jlacko/RCzechia/badge.svg?branch=master)](https://coveralls.io/github/jlacko/RCzechia?branch=master) [![CRAN](http://www.r-pkg.org/badges/version/RCzechia)](https://cran.r-project.org/package=RCzechia) [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RCzechia?color=brightgreen)](http://www.r-pkg.org/pkg/RCzechia)
 This project creates a set of shapefiles relevant to the Czech Republic.  
 
+<p align="center">
+  <img src="https://github.com/jlacko/RCzechia/blob/master/data-raw/kraje-lo-res.png?raw=true" alt="Kraje České republiky"/>
+</p>
+
 The shapefiles are based on ArcČR 500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) with some adjustments:  
  * the encoding was adjusted to handle Czech accents correctly in R  
  * coordinate reference system was changed from a local CRS ([S-JSTK](https://epsg.io/5513-1623)) to global WGS84 ([EPSG:4326](https://epsg.io/4326))   

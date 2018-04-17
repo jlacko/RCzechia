@@ -65,10 +65,13 @@ context("obce body")
   expect_equal(st_crs(obce_body())$epsg, 4326)
 
 context("obce polygony")
-  expect_that(is.data.frame(obce_polygony()), is_true())
-  expect_equal(nrow(obce_polygony()), 6258)
 
-  expect_equal(st_crs(obce_polygony())$epsg, 4326)
+  obce_poly_loc <- obce_polygony() # jedno stažení místo tří...
+
+  expect_that(is.data.frame(obce_poly_loc), is_true())
+  expect_equal(nrow(obce_poly_loc), 6258)
+
+  expect_equal(st_crs(obce_poly_loc)$epsg, 4326)
 
 context("městské části")
   expect_that(is.data.frame(casti()), is_true())

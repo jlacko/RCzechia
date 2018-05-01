@@ -1,10 +1,11 @@
 ---
-title: "Solving real world problems with RCzechia"
+title: "Examples of using RCzechia"
 author: "Jindra Lacko"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Solving real world issues with RCzechia}
+  %\VignetteDepends{readxl}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -12,10 +13,83 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
-)
+  comment = "#>")
+library(httr)
+library(roxygen2)
 
 ```
+### Czech Republic population
+
+Population of the Czech Republic as per the [latest census](https://www.czso.cz/csu/czso/zakladni-vysledky-scitani-lidu-domu-a-bytu-2011-ceska-republika-2011-eihs9d4gp3) in 2011, per district (okres).
+
+
+```{r census, echo = T, eval = T, message = F}
+library(RCzechia)
+library(dplyr)
+library(readxl)
+library(httr)
+library(tmap)
+library(sf)
+
+GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls", 
+    write_disk(tf <- tempfile(fileext = ".xls")))
+      # original (ugly!!) format from the Czech Statistical Office
+
+src <- read_excel(tf, sheet = 1, col_names = F) %>% # read in with fake column names
+  select(NAZ_LAU1 = X__1, # key for the shapefile
+         obyvatel = X__2) %>% # population (as text)
+  mutate(obyvatel = suppressWarnings(as.double(obyvatel))) %>% 
+    # convert from text to number; ignore errors
+  mutate(NAZ_LAU1 = ifelse(NAZ_LAU1 == "Hlavní město Praha", "Praha", NAZ_LAU1)) 
+    # rename Prague (from The Capital to a regular city)
+  
+okresni_data <- okresy("low") %>% # data shapefile
+  inner_join(src, by = "NAZ_LAU1") 
+    # key for data connection - note the use of inner (i.e. filtering) join
+
+vystup <- tm_shape(okresni_data) + tm_fill(col = "obyvatel", title = "Population", 
+                                           palette = "Blues", style = "quantile", n = 5) +
+  tm_shape(okresni_data) + tm_borders("grey40", lwd = 0.5) + # thin edges of districts
+  tm_shape(republika("low")) + tm_borders("grey30", lwd = 1.5) # thick national borders
+
+print(vystup)
+
+```
+
+## Geocoding locations & drawing them on a map
+
+Drawing a map: three semi-random landmarks on map, with rivers shown for better orientation.
+
+To get the geocoded data frame you can consider using `geocode()` function from `ggmap` package, which implies consent with Google terms of use.
+
+```{r geocode, echo = T, eval = T, message = F}
+library(RCzechia)
+library(dplyr)
+library(tmap)
+library(sf)
+
+rivers <- reky()
+
+rivers <- rivers[rivers$Major == T, ]
+
+mista <- data.frame(misto = c('kramarova vila', 'arcibiskupske zahrady v kromerizi', 'becov nad teplou'),
+                    lon = c(14.41030, 17.39353, 12.83833),
+                    lat = c(50.09380, 49.30048, 50.08346))
+
+# to geocode a list of locations consider ggmap::geocode()
+
+POI <- mista %>% # or geocode using ggmap
+  st_as_sf(coords = c("lon", "lat"), crs = 4326) # convert plain data to spatial CRS = WGS84, used by Google
+
+tm_plot <- tm_shape(republika("low")) + tm_borders("grey30", lwd = 1) +
+  tm_shape(POI) + tm_symbols(col = "firebrick3", shape = 20, size = 0.5) +
+  tm_shape(rivers) + tm_lines(col = 'steelblue', lwd = 1.5)
+  
+
+print(tm_plot)
+
+```
+
 
 ## Unemployment in Czech Republic - a chloropleth
 
@@ -23,27 +97,26 @@ A visualization problem: unemployment in the Czech Republic is in general low, b
 What are the hotspots?
 
 ```{r unempl, echo = T, eval = T, message = F}
-library(tidyverse)
+library(dplyr)
 library(RCzechia)
 library(tmap)
 library(sf)
 
-src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/unempl.csv"), stringsAsFactors = F) 
+# open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+# lightly edited for size (rows filtered)
 
 src <- src %>%
-  filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
-podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
+podklad <- obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
   inner_join(src, by = "KOD_OBEC") # linking by key
 
 
-vystup <- tm_shape(republika) + tm_borders(col = "grey40") +
+vystup <- tm_shape(republika()) + tm_borders(col = "grey40") +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd") +
   tm_legend(position = c("RIGHT", "top"),
-            legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %"))) +
-  tm_view(basemaps = "Stamen.Toner")
-
+            legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %")))
 
 print(vystup)
  
@@ -56,13 +129,15 @@ Calculate distance between two spatial objects; the `sf` package supports (via g
 Calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
 
 ```{r distance, echo = T, eval = T, message = F}
-library(tidyverse)
+library(dplyr)
 library(RCzechia)
 library(sf)
 library(units)
 
-praha <- obce_polygony[obce_polygony$NAZ_OBEC == "Praha", ]
-brno <- obce_polygony[obce_polygony$NAZ_OBEC == "Brno", ]
+obce <- obce_polygony()
+
+praha <- obce[obce$NAZ_OBEC == "Praha", ]
+brno <- obce[obce$NAZ_OBEC == "Brno", ]
 
 vzdalenost <- st_distance(praha, brno) %>%
   set_units("kilometers") # easier to interpret than meters, miles or decimal degrees..
@@ -78,30 +153,29 @@ Interactive maps are powerful tools for data vizualization. They are easy to pro
 I found the stamen toner a good company for interactive chloropleths - it gives enough context without distracting from the story of your data.
 
 A map of the whole Czech Republic in original resolution (the accuracy is about 1 meter) would be rather sizeable, and I found it better policy to either  
-* limit it to a single region (say a NUTS3) or  
-* to limit the size by applying `st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
+ * limit it to a single region (say a NUTS3) or  
+ * to limit the size by applying `st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
 
 
 ```{r interactive, echo = T, eval = T, message = F}
-library(tidyverse)
+library(dplyr)
 library(RCzechia)
 library(tmap)
 library(sf)
 
-src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/250169-17data011518.csv"), stringsAsFactors = F) # open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/unempl.csv"), stringsAsFactors = F) 
+# open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
+# lightly edited for size (rows filtered)
+
 
 src <- src %>%
-  filter(rok == 2017 & mesic == 12 & vuk == "NEZ0004") %>% # December 2017 unemployment ratio only...
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
-podklad <- obce_polygony %>% # obce_polygony = municipalities in RCzechia package
+podklad <- obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
   inner_join(src, by = "KOD_OBEC") %>% # linking by key
   filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
 
-kraj <- kraje %>%
-  filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
-
-vystup <- tm_shape(kraj) + tm_borders(col = "grey40", lwd = 1.5) +
+vystup <- tm_shape(republika()) + tm_borders(col = "grey40") +
   tm_shape(podklad) + tm_fill(col = "hodnota", title = "Unemployment", palette = "YlOrRd", id = "NAZ_OBEC") +
   tm_legend(position = c("RIGHT", "top"),
             legend.format = list(fun = function(x) paste0(formatC(x, digits = 0, format = "f"), " %"))) +
@@ -110,3 +184,4 @@ vystup <- tm_shape(kraj) + tm_borders(col = "grey40", lwd = 1.5) +
 save_tmap(vystup, filename = "vystup.html")
  
 ```
+

@@ -1,67 +1,45 @@
-# RCzechia  [![Travis-CI Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)](https://travis-ci.org/jlacko/RCzechia)
-
-This project creates a set of shapefiles relevant to the Czech Republic. 
-
-As of version 1.0.1 the package moved from [`sp`](https://github.com/edzer/sp/) format to [`sf`](https://github.com/r-spatial/sf) format; the latest `sp` version is 0.1.4 - if in need of fallback run: 
-
-```R 
-devtools::install_github("jlacko/RCzechia", ref = "v0.1.4")
-
-```  
-
-As the package is intended mainly for domestic Czech audience the detailed description will continue in Czech language.
-- - - - - 
-Cílem mého snažení bylo připravit set objektů pro snazší práci s geografickými daty o České republice v rámci R. 
-
-K dispozici sice je Arc500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) se kterým se z Rka dá přes [rgdal](https://cran.r-project.org/web/packages/rgdal/index.html) docela dobře pracovat, ale není to ani úplně uživatelsky vstřícné ani triviální (například způsob kódování češtiny jsem vůbec nepochopil). 
-
-Shapefily jsem trochu upravil pro snazší práci v R a vstřícnější chování k paměti.
-
-Souřadnicový systém je převedený z Křováka na WGS84, které se více kamarádí s google aplikacemi a `ggplot2`. Vzhledem k tomu, jak snadné je v prostředí `sf` světa obohacovat shapefily o data (viz. vignette) jsem pro verzi 1 demografické údaje vynechal.
-
-Package obsahuje tyto objekty:
-* **republika**: hranice České republiky.
-* **kraje**: 14 krajů České republiky, včetně Hlavního města Prahy.  
-Klíč pro připojení dat je KOD_CZNUTS3 (kód kraje).
-* **okresy**: 76 okresů České republiky + Praha (která technicky není okres). 
-Klíč pro připojení dat je KOD_LAU1 (kód okresu).
-* **orp_polygony** 206 obcí s rozšířenou působností (trojkové obce).  
-Klíč připojení dat je KOD_ORP.
-* **obce_polygony**: 6.258 obcí a vojenských újezdů České republiky.  
-Klíč pro připojení dat je  KOD_OBEC, v datech jsou navíc informace o příslušné obci s pověřeným obecním úřadem (tzv. dvojkové obce - KOD_POU, respektive NAZ_POU) a příslušné obci s rozšířenou působností (tzv. trojkové obce - KOD_ORP, respektive NAZ_ORP).
-* **obce_body** stejné jako obce polygony, ale pouze středy.
-* **casti**: primárně 57 městských částí Hlavního města Prahy, ale části jsou i pro Brno a další města.  
-Klíč pro připojení dat je KOD.
-* **reky**: Řeky České republiky. Přidáním do mapy pomohou základní orientaci. 
-* **plochy**: Vodní plochy České republiky. Přidáním do mapy pomohou základní orientaci.
-
-
-## Příklady použití package RCzechia
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/tomio.png" alt="Volební výsledek xenofoba Okamury"/>
-</p>
+# RCzechia  [![Travis-CI Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)](https://travis-ci.org/jlacko/RCzechia)  [![Coverage Status](https://coveralls.io/repos/github/jlacko/RCzechia/badge.svg?branch=master)](https://coveralls.io/github/jlacko/RCzechia?branch=master) [![CRAN](http://www.r-pkg.org/badges/version/RCzechia)](https://cran.r-project.org/package=RCzechia) [![Downloads-total](http://cranlogs.r-pkg.org/badges/grand-total/RCzechia?color=brightgreen)](http://www.r-pkg.org/pkg/RCzechia) [![Downloads-weekly](http://cranlogs.r-pkg.org/badges/last-week/RCzechia?color=brightgreen)](http://www.r-pkg.org/pkg/RCzechia)
+This project creates a set of shapefiles relevant to the Czech Republic.  
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/savviness.png" alt="Tech Savviness in the EU"/>
+  <img src="https://github.com/jlacko/RCzechia/blob/master/data-raw/kraje-lo-res.png?raw=true" alt="Kraje České republiky"/>
 </p>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/haunted.png" alt="Prague Haunted Places"/>
-</p>
+The shapefiles are based on ArcČR 500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) with some adjustments:  
+ * the encoding was adjusted to handle Czech accents correctly in R  
+ * coordinate reference system was changed from a local CRS ([S-JSTK](https://epsg.io/5513-1623)) to global WGS84 ([EPSG:4326](https://epsg.io/4326))   
+ * demographic data were removed, as they get out of date rather fast and are very easy to re-attach using the `sf` and `tidyverse` workflow  
+ * the shapefiles were slightly simplified to fit into memory better  
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/jlacko/RCzechia/sf-dev/data-raw/interactive.png" alt="Interactive Map"/>
-</p>
+The default resolution is 1 meter; this makes the shapefiles 1) very accurate and 2) rather large. This level of detail is not always necessary, and often not beneficial - a lower resolution shapefile is not only smaller in memory, but also smoother and more aesthetically pleasing. For the most commonly used shapes (*republika*, *kraje* and *okresy*) an optional low resolution version is also included. To access it specify the value of `resolution` parameter as `"low"` (default is `"high"`).
 
-Shapefily vycházejí z Arc500, ©ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016
+Using of the lo-res versions does not require a working internet connection. To use the high resolution (default) shapefile a working intenet connection is necessary, as the data files were too big to meet the CRAN requirements on package size and must be stored externally. Access to the external files is logged, from time to time I check the logs (mainly to understand my bandwidth charges).
 
-## Instalace  
-``` R
-install.packages("devtools")  
-devtools::install_github("jlacko/RCzechia")
+### A note to Czech users
+Tohle je "oficiální", a tedy anglické, readme. Českou verzi naleznete na http://www.jla-data.net/cze/package-rczechia/
+
+### Installation
+The package is on CRAN (as of March 2018) so to get a stable version simply run:
+```r 
+install.packages("RCzechia")
 ```
+You can also get the latest development version by running `devtools::install_github("jlacko/RCzechia")` and the last version built on [`sp`](https://github.com/edzer/sp) instead of [`sf`](https://github.com/r-spatial/sf) package by running  `devtools::install_github("jlacko/RCzechia", ref = "v0.1.4")`. 
 
-V případě, že by `sf` verze dělala problémy je k dispozici verze v `sp` formátu:
-``` R
-devtools::install_github("jlacko/RCzechia", ref = "v0.1.4")
-```
+### The following spatial objects are included:  
+* **republika**: borders of the Czech Republic
+* **kraje**: 14 regions of the Czech Republic + Prague.  
+Key is KOD_CZNUTS3 (CZ NUTS3 code).
+* **okresy**: 76 districts (LAU1 areas) of the Czech Republic + Prague (legally not *a district* but *the capital*).  
+Key is KOD_LAU1 (CZ LAU1 code).
+* **orp_polygony** 205 municipalities with extended powers (in Czech: obce s rozšířenou působností) + Prague (legally not *a city* but *the capital*).  
+Key is KOD_ORP.
+* **obce_polygony**: 6.258 municipalities of the Czech Republic.  
+Key is KOD_OBEC, also contained are KOD_ORP (code of municipality with extended powers; see above) and KOD_POV (kód pověřené obce)
+* **obce_body** the same as obce_polygony, but centroids instead of polygons.  
+Key is again KOD_OBEC.
+* **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava..).  
+Key is KOD.
+* **reky**: streams and rivers
+* **plochy**: stillwaters (lakes and ponds).
+
+All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).

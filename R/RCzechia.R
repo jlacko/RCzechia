@@ -26,7 +26,7 @@
 #' }
 #'
 #' @docType package
-#' @name RCzechia
+#' @name RCzechia-package
 #'
 #' @importFrom httr http_error
 

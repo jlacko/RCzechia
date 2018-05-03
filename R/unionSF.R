@@ -51,5 +51,5 @@ unionSF <- function(.data, key, tolerance = 1, planarCRS = 5514) {
       res <- rbind(res, wrk) # append current working data frame to the result
     }
   }
-  st_transform(res, wrk_crs) # return res in original CRS
+  sf::st_transform(res, wrk_crs) # return res in original CRS
 }

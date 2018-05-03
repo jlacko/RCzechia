@@ -117,7 +117,8 @@ context("unionSF")
 
   expect_equal(st_contains(republika("high"), united_praha)[[1]], 1) # spojený kraj Praha je v republice
   expect_equal(st_contains(united_praha, obec_praha)[[1]], 1)  # bod Praha je ve spojeném kraji Praha
-  expect_equal(st_crs(okresy("low")), st_crs(united_praha)) # CRS vstupu = CRS výstupu
+
+  expect_equal(st_crs(okresy("low")), st_crs(united_praha)) # CRS na vstupu = CRS na výstupu
 
 
 

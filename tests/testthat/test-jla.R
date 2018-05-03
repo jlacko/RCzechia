@@ -102,3 +102,22 @@ context("integrace")
   expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
   expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1)  # bod Praha je v okresu Praha
 
+context("unionSF")
+
+  wtf <- data.frame(col = c(1,2,3)) # data frame se sloupcem col
+
+  expect_error(unionSF(wtf, "col")) # čekám chybu - není spatial
+  expect_error(unionSF(okresy("low"))) # čekám chybu - chybí key
+  expect_error(unionSF(key = "col")) # čekám chybu - chybí .data
+  expect_error(unionSF(okresy("low"), "bflm")) # čekám chybu - není sloupec z data frame
+
+  united_praha <- okresy("low") %>% # kraj Praha vzniklý spojením z okresů
+    unionSF("KOD_CZNUTS3") %>%
+    filter(key == 'CZ010')
+
+  expect_equal(st_contains(republika("high"), united_praha)[[1]], 1) # spojený kraj Praha je v republice
+  expect_equal(st_contains(united_praha, obec_praha)[[1]], 1)  # bod Praha je ve spojeném kraji Praha
+  expect_equal(st_crs(okresy("low")), st_crs(united_praha)) # CRS vstupu = CRS výstupu
+
+
+

@@ -4,24 +4,29 @@
 \alias{unionSF}
 \title{Aggregate Polygons in a sf object}
 \usage{
-unionSF(.data, key)
+unionSF(.data, key, tolerance = 1, planarCRS = 5514)
 }
 \arguments{
 \item{.data}{sf data frame to be aggregated}
 
 \item{key}{name of column to define the output objects}
+
+\item{tolerance}{tolerance for avoiding artefacts (slivers); default is one meterooo}
+
+\item{planarCRS}{planar CRS for avoiding artefacts (slivers); default is EPSG:5514 = ing. Křovák}
 }
 \description{
-The function aggregates polygons of a sf data frame according to values of a single column. It has outcome comparable to `unionSpatialPolygons` from `maptools` package, except that it works for sf and not sp objects.
+The function aggregates polygons of a sf data frame according to values of a single column. It has outcome comparable to \code{unionSpatialPolygons} from \code{maptools} package, except that it works for \code{sf} and not \code{sp} objects.
 }
 \details{
 The function has data frame on the first position, so it is pipe friendly. It retains only geometry and key value, dropping all other columns.
+
+To avoid creating artefacts (slivers) at the former boundaries the data is temporarily tranformed to a planar CRS and buffered; the default values of \code{planarCRS} and \code{tolerance} should cover most situations in the Czech Republic and near abroad.
 }
 \examples{
 library(sf)
 
 kraje <- unionSF(okresy(), "KOD_CZNUTS3")
-  # returns CZ NUTS3 regions of Czech Republic = equivalent to kraje() in geometry, with a bunch of columns missing
-
+  # returns CZ NUTS3 regions of Czech Republic = equivalent to kraje() in geometry
 
 }

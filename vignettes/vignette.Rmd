@@ -185,4 +185,3 @@ save_tmap(vystup, filename = "vystup.html")
  
 ```
 
-

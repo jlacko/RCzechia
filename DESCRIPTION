@@ -16,12 +16,14 @@ Copyright:
 Encoding: UTF-8
 LazyData: true
 Depends:
-  R (>= 3.3.0)
+  R (>= 3.3.0),
+  sf
 Imports:
-  httr
+  httr,
+  lwgeom,
+  magrittr
 Suggests:
   dplyr,
-  sf,
   units,
   tmap,
   lwgeom,

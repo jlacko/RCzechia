@@ -8,7 +8,7 @@
 #'
 #' @param .data sf data frame to be aggregated
 #' @param key name of column to define the output objects
-#' @param tolerance tolerance for avoiding artefacts (slivers); default is one meterooo
+#' @param tolerance buffer size for avoiding artefacts (slivers); default is one meter
 #' @param planarCRS planar CRS for avoiding artefacts (slivers); default is EPSG:5514 = ing. Křovák
 #'
 #' @examples

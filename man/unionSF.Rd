@@ -11,7 +11,7 @@ unionSF(.data, key, tolerance = 1, planarCRS = 5514)
 
 \item{key}{name of column to define the output objects}
 
-\item{tolerance}{tolerance for avoiding artefacts (slivers); default is one meterooo}
+\item{tolerance}{buffer size for avoiding artefacts (slivers); default is one meter}
 
 \item{planarCRS}{planar CRS for avoiding artefacts (slivers); default is EPSG:5514 = ing. Křovák}
 }

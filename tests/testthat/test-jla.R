@@ -38,19 +38,23 @@ context("kraje")
 
 
 context("okresy")
+
+  okresy_high_loc <- okresy("high") # lokální verze okresů hi res - jedno stažení místo čtyř
+
   expect_that(is.data.frame(okresy()), is_true())
   expect_that(is.data.frame(okresy("low")), is_true())
-  expect_that(is.data.frame(okresy("high")), is_true())
+  expect_that(is.data.frame(okresy_high_loc), is_true())
 
   expect_equal(nrow(okresy()), 77)
   expect_equal(nrow(okresy("low")), 77)
-  expect_equal(nrow(okresy("high")), 77)
+  expect_equal(nrow(okresy_high_loc), 77)
 
   expect_equal(st_crs(okresy("low"))$epsg, 4326)
-  expect_equal(st_crs(okresy("high"))$epsg, 4326)
+  expect_equal(st_crs(okresy_high_loc)$epsg, 4326)
 
   expect_error(okresy("bflm")) # neznámé rozlišení - očekávám high(default) / low
-  expect_that(object.size(okresy("low")) < object.size(okresy("high")), is_true()) # low res je menší než high res
+
+  expect_that(object.size(okresy("low")) < object.size(okresy_high_loc), is_true()) # low res je menší než high res
 
 context("ORP")
   expect_that(is.data.frame(orp_polygony()), is_true())
@@ -104,21 +108,24 @@ context("integrace")
 
 context("unionSF")
 
-  wtf <- data.frame(col = c(1,2,3)) # data frame se sloupcem col
+  wtf <- data.frame(col = c(1,2,3)) # data frame se sloupcem col - má se rozbít, proto wtf :)
 
   expect_error(unionSF(wtf, "col")) # čekám chybu - není spatial
   expect_error(unionSF(okresy("low"))) # čekám chybu - chybí key
   expect_error(unionSF(key = "col")) # čekám chybu - chybí .data
   expect_error(unionSF(okresy("low"), "bflm")) # čekám chybu - není sloupec z data frame
 
-  united_praha <- okresy("low") %>% # kraj Praha vzniklý spojením z okresů
-    unionSF("KOD_CZNUTS3") %>%
-    filter(key == 'CZ010')
+  united_praha <- casti() %>% # Praha vzniklá spojením z městských částí
+    unionSF('NAZ_OBEC') %>%
+    filter(key == 'Praha')
 
-  expect_equal(st_contains(republika("high"), united_praha)[[1]], 1) # spojený kraj Praha je v republice
-  expect_equal(st_contains(united_praha, obec_praha)[[1]], 1)  # bod Praha je ve spojeném kraji Praha
+  expect_equal(st_contains(republika("high"), united_praha)[[1]], 1) # Praha z částí je v republice
+  expect_equal(st_contains(united_praha, obec_praha)[[1]], 1)  # bod Praha je ve spojené Praze
 
   expect_equal(st_crs(okresy("low")), st_crs(united_praha)) # CRS na vstupu = CRS na výstupu
+
+  expect_equal(st_area(united_praha), st_area(okres_praha), tolerance = 5)
+      # Praha z částí a Praha jako low res okres jsou stejně velké, plus mínus pět m^2
 
 
 

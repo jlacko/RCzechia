@@ -2,7 +2,7 @@
 % Please edit documentation in R/unionSF.R
 \name{unionSF}
 \alias{unionSF}
-\title{Aggregate Polygons in a sf Object}
+\title{Aggregate Polygons in a \code{sf} Object}
 \usage{
 unionSF(data, key, tolerance = 1, planarCRS = 5514)
 }
@@ -16,7 +16,7 @@ unionSF(data, key, tolerance = 1, planarCRS = 5514)
 \item{planarCRS}{planar CRS for avoiding artefacts (slivers); default is EPSG:5514 = ing. Křovák}
 }
 \description{
-The function aggregates polygons of geometry column of a sf data frame according to values of a single data column. It has outcome comparable to unionSpatialPolygons from maptools package, except that it works for sf and not sp objects.
+The function aggregates polygons of geometry column of a \code{sf} data frame according to values of a single data column. It has outcome comparable to \code{unionSpatialPolygons} from \code{maptools} package, except that it works for \code{sf} and not \code{sp} objects.
 }
 \details{
 The function has data frame as the first argument, so it is pipe friendly. It retains only geometry and key value, dropping all other columns (they are easy to re-attach using tidyverse/dplyr workflow if required).

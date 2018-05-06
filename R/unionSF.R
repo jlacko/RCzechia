@@ -1,6 +1,6 @@
-#' Aggregate Polygons in a sf Object
+#' Aggregate Polygons in a \code{sf} Object
 #'
-#' The function aggregates polygons of geometry column of a sf data frame according to values of a single data column. It has outcome comparable to unionSpatialPolygons from maptools package, except that it works for sf and not sp objects.
+#' The function aggregates polygons of geometry column of a \code{sf} data frame according to values of a single data column. It has outcome comparable to \code{unionSpatialPolygons} from \code{maptools} package, except that it works for \code{sf} and not \code{sp} objects.
 #'
 #' The function has data frame as the first argument, so it is pipe friendly. It retains only geometry and key value, dropping all other columns (they are easy to re-attach using tidyverse/dplyr workflow if required).
 #'
@@ -24,7 +24,7 @@ unionSF <- function(data, key, tolerance = 1, planarCRS = 5514) {
 
   if (missing(data)) stop("required argument .data is missing")
   if (missing(key)) stop("required argument key is missing")
-  if (!is.element("sf", class(data))) stop("data is not a sf object")
+  if (!inherits(data, "sf")) stop("data is not a sf object")
   if (!is.element(key, colnames(data))) stop("key is not a recognized column of .data")
 
   wrk_crs <- sf::st_crs(data) # save the current CRS
@@ -43,7 +43,7 @@ unionSF <- function(data, key, tolerance = 1, planarCRS = 5514) {
       sf::st_union() %>% # unite!
       sf::st_buffer(-tolerance) %>% # remove the magical dust to preserve area
       sf::st_sf() %>% # extract geometry only
-      dplyr::mutate(key = ids[i,])
+      dplyr::mutate(key = ids[i,]) # add key column
 
     if (i == 1) { # is this the first row?
       res <- wrk # assing current working data frame as result

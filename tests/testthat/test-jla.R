@@ -122,7 +122,7 @@ context("unionSF")
   expect_equal(st_contains(republika("high"), united_praha)[[1]], 1) # Praha z částí je v republice
   expect_equal(st_contains(united_praha, obec_praha)[[1]], 1)  # bod Praha je ve spojené Praze
 
-  expect_equal(st_crs(okresy("low")), st_crs(united_praha)) # CRS na vstupu = CRS na výstupu
+  expect_equal(st_crs(casti()), st_crs(united_praha)) # CRS na vstupu = CRS na výstupu
 
   expect_equal(st_area(united_praha), st_area(okres_praha), tolerance = 5)
       # Praha z částí a Praha jako low res okres jsou stejně velké, plus mínus pět m^2

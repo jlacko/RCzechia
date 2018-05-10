@@ -3,7 +3,7 @@
 \name{obce_polygony}
 \alias{obce_polygony}
 \title{Municipalities / communes (obce) as polygons}
-\format{sf data frame with 6.258 rows of 14 variables + geometry
+\format{\code{sf} data frame with 6.258 rows of 14 variables + geometry
 
 \describe{
   \item{KOD_OBEC}{Code of the level I commune (obec).}
@@ -28,13 +28,13 @@
 obce_polygony()
 }
 \description{
-Function returning data frame of LAU2 administrative units for the Czech Republic as sf polygons. It takes no parameters.
+Function returning data frame of LAU2 administrative units for the Czech Republic as \code{sf} polygons. It takes no parameters.
 }
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 36.3 MB (so use with caution, and patience).
 }
 \examples{
-\dontrun{
+\donttest{
 praha <- obce_polygony() \%>\%
    filter(NAZ_LAU1 == "Praha")
 

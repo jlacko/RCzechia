@@ -3,7 +3,7 @@
 \name{casti}
 \alias{casti}
 \title{City Parts}
-\format{sf data frame with 142 rows of 4 variables + geometry
+\format{\code{sf} data frame with 142 rows of 4 variables + geometry
 
 \describe{
   \item{KOD}{Code of the city part / kod mestske casti}
@@ -18,7 +18,7 @@
 casti()
 }
 \description{
-Function taking no parameters and returning data frame of districts of Prague and other major cities as sf polygons.
+Function taking no parameters and returning data frame of districts of Prague and other major cities as \code{sf} polygons.
 }
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 593.6 KB.

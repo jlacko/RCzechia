@@ -24,9 +24,9 @@ The function has data frame as the first argument, so it is pipe friendly. It re
 During processing the sf data frame is temporarily transformed to planar coordinates and - to avoid artefacts (slivers) at the place of former boundaries - buffered; the default values of \code{planarCRS} and \code{tolerance} should cover most situations in the Czech Republic and near abroad.
 }
 \examples{
-library(sf)
+\donttest{
 
 kraje <- union_sf(okresy(), "KOD_CZNUTS3")
   # assembles NUTS3 regions from LAU1 regions of Czech Republic = equivalent to kraje() in geometry
-
+}
 }

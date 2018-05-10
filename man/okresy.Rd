@@ -3,7 +3,7 @@
 \name{okresy}
 \alias{okresy}
 \title{Districts (okresy)}
-\format{sf data frame with 77 rows of 6 variables + geometry
+\format{\code{sf} data frame with 77 rows of 6 variables + geometry
 
 \describe{
   \item{KOD_OKRES}{Code of the district (okres).}
@@ -23,12 +23,13 @@ okresy(resolution = "high")
 \item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
 }
 \description{
-Function returning data frame of LAU1 administrative units for the Czech Republic as sf polygons. It takes a single parameter resolution - high res (default) or low res polygons.
+Function returning data frame of LAU1 administrative units for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.
 }
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 6.1 MB (so use with caution, and patience).
 }
 \examples{
+\donttest{
 library(sf)
 
 hranice <- okresy()
@@ -36,5 +37,5 @@ plot(hranice, col = "white", max.plot = 1)
 
 object.size(okresy("low"))
 object.size(okresy("high"))
-
+}
 }

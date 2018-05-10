@@ -1,10 +1,10 @@
 #' Obce s rozsirenou pusobnosti
 #'
-#' Function returning data frame of municipalities with extended powers (obce s rozšířenou pusobností) as sf polygons. It takes no parameters.
+#' Function returning data frame of municipalities with extended powers (obce s rozšířenou působností) as \code{sf} polygons. It takes no parameters.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 9 MB (so use with caution, and patience).
 #'
-#' @format sf data frame with 206 rows of 10 variables + geometry
+#' @format \code{sf} data frame with 206 rows of 10 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}

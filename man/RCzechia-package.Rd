@@ -8,11 +8,13 @@
 A selection of spatial objects relevant to the Czech Republic. Due to CRAN package size requirements the objects are stored externally - and thus could not be implemented as datasets, but are functions returning data frames instead.
 }
 \details{
-This means that 1) a working internet connection is required to use the full resolution objects and 2) all objects need to be called with (possibly empty) braces.
+This means that:
+1. a working internet connection is required to use the full resolution objects
+2. all objects need to be called with (possibly empty) braces.
 
 For the most frequently used objects - republika, kraje and okresy - a low resolution version is implemented. The low resolution data sets are stored locally (and working intenet connection is not necessary to use them).
 
-All objects are implemented as `sf` data frames.
+All objects are implemented as \code{sf} data frames.
 }
 \section{Administrative regions}{
 

@@ -15,11 +15,12 @@
 #' @importFrom magrittr %>%
 #'
 #' @examples
-#' library(sf)
+#' \donttest{
+#  library(sf)
 #'
 #' kraje <- union_sf(okresy(), "KOD_CZNUTS3")
 #'   # assembles NUTS3 regions from LAU1 regions of Czech Republic = equivalent to kraje() in geometry
-#'
+#'}
 
 union_sf <- function(data, key, tolerance = 1, planarCRS = 5514) {
 

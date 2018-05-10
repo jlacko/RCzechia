@@ -20,9 +20,9 @@ Depends:
 Imports:
   sf,
   httr,
+  lwgeom,
   magrittr
 Suggests:
-  lwgeom,
   dplyr,
   units,
   tmap,

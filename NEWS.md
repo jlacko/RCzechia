@@ -1,7 +1,7 @@
 version 1.2.4  
-  - added function unionSF to aggregate sf data frames
+  - added function union_sf to aggregate sf data frames
   - corrected typos in documentation (NUTS2 vs. NUTS3 in obce)
-  - unit tests optimized for bandwidth
+  - unit tests optimized
 
 version 1.2.3  
   - low resolution shapefiles added for republika, kraje and okresy  

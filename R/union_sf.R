@@ -1,6 +1,6 @@
 #' Aggregate Polygons in a \code{sf} Object
 #'
-#' The function aggregates polygons of geometry column of a \code{sf} data frame according to values of a single data column. It has outcome comparable to \code{unionSpatialPolygons} from \code{maptools} package, except that it works for \code{sf} and not \code{sp} objects.
+#' The function aggregates polygons of geometry column of a \code{sf} data frame according to values of a single data column. It has outcome comparable to \code{unionSpatialPolygons} from \code{maptools} package, except that it works on \code{sf} and not \code{sp} objects.
 #'
 #' The function has data frame as the first argument, so it is pipe friendly. It retains only geometry and key value, dropping all other columns (they are easy to re-attach using tidyverse/dplyr workflow if required).
 #'
@@ -14,13 +14,13 @@
 #' @examples
 #' library(sf)
 #'
-#' kraje <- unionSF(okresy(), "KOD_CZNUTS3")
-#'   # returns CZ NUTS3 regions of Czech Republic = equivalent to kraje() in geometry
+#' kraje <- union_sf(okresy(), "KOD_CZNUTS3")
+#'   # assembles NUTS3 regions from LAU1 regions of Czech Republic = equivalent to kraje() in geometry
 #'
 #' @export
 #' @importFrom magrittr %>%
 
-unionSF <- function(data, key, tolerance = 1, planarCRS = 5514) {
+union_sf <- function(data, key, tolerance = 1, planarCRS = 5514) {
 
   if (missing(data)) stop("required argument .data is missing")
   if (missing(key)) stop("required argument key is missing")

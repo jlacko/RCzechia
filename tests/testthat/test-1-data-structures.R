@@ -1,6 +1,5 @@
 library(dplyr)
 library(httr)
-library(sf)
 
 context("republika")
   expect_that(is.data.frame(republika()), is_true())
@@ -16,7 +15,8 @@ context("republika")
 
 
   expect_error(republika("bflm")) # neznámé rozlišení - očekávám high(default) / low
-  expect_that(object.size(republika("low")) < object.size(republika("high")), is_true()) # low res je menší než high res
+  expect_that(object.size(republika("low")) < object.size(republika("high")), is_true())
+    # low res je menší než high res
 
 
 context("kraje")
@@ -33,7 +33,8 @@ context("kraje")
   expect_equal(st_crs(kraje("high"))$epsg, 4326)
 
   expect_error(kraje("bflm")) # neznámé rozlišení - očekávám high(default) / low
-  expect_that(object.size(kraje("low")) < object.size(kraje("high")), is_true()) # low res je menší než high res
+  expect_that(object.size(kraje("low")) < object.size(kraje("high")), is_true())
+    # low res je menší než high res
 
 
 
@@ -105,30 +106,3 @@ context("integrace")
 
   expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
   expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1)  # bod Praha je v okresu Praha
-
-context("unionSF")
-
-  wtf <- data.frame(col = c(1,2,3)) # data frame se sloupcem col - má se rozbít, proto wtf :)
-
-  expect_error(unionSF(wtf, "col")) # čekám chybu - není spatial
-  expect_error(unionSF(okresy("low"))) # čekám chybu - chybí key
-  expect_error(unionSF(key = "col")) # čekám chybu - chybí .data
-  expect_error(unionSF(okresy("low"), "bflm")) # čekám chybu - není sloupec z data frame
-
-  united_praha <- casti() %>% # Praha vzniklá spojením z městských částí
-    unionSF('NAZ_OBEC') %>%
-    filter(key == 'Praha')
-
-  ofiko_praha <- kraje() %>% # Praha jako kraj
-    filter(KOD_CZNUTS3 == "CZ010")
-
-  expect_equal(st_contains(republika("high"), united_praha)[[1]], 1) # Praha z částí je v republice
-  expect_equal(st_contains(united_praha, obec_praha)[[1]], 1)  # bod Praha je ve spojené Praze
-
-  expect_equal(st_crs(casti()), st_crs(united_praha)) # CRS na vstupu = CRS na výstupu
-
-  expect_equal(st_area(united_praha), st_area(ofiko_praha), tolerance = 1e-6)
-      # Praha z částí a Praha jako kraj jsou stejně velké, plus mínus jedna miliontina
-
-
-

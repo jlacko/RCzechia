@@ -11,14 +11,15 @@
 #' @param tolerance buffer size for avoiding artefacts (slivers); default is one meter
 #' @param planarCRS planar CRS for avoiding artefacts (slivers); default is EPSG:5514 = ing. Křovák
 #'
+#' @export
+#' @importFrom magrittr %>%
+#'
 #' @examples
 #' library(sf)
 #'
 #' kraje <- union_sf(okresy(), "KOD_CZNUTS3")
 #'   # assembles NUTS3 regions from LAU1 regions of Czech Republic = equivalent to kraje() in geometry
 #'
-#' @export
-#' @importFrom magrittr %>%
 
 union_sf <- function(data, key, tolerance = 1, planarCRS = 5514) {
 

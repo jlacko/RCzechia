@@ -1,5 +1,6 @@
 library(dplyr)
 library(httr)
+library(sf)
 
 context("republika")
   expect_that(is.data.frame(republika()), is_true())

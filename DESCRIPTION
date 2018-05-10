@@ -2,7 +2,7 @@ Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
 Version: 1.2.4
-Date: 2018-04-05
+Date: 2018-05-10
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: 
@@ -16,17 +16,16 @@ Copyright:
 Encoding: UTF-8
 LazyData: true
 Depends:
-  R (>= 3.3.0),
-  sf
+  R (>= 3.3.0)
 Imports:
+  sf,
   httr,
-  lwgeom,
   magrittr
 Suggests:
+  lwgeom,
   dplyr,
   units,
   tmap,
-  lwgeom,
   ggmap,
   knitr,
   testthat,

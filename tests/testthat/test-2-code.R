@@ -1,4 +1,5 @@
 library(dplyr)
+library(sf)
 
 context("union_sf")
 

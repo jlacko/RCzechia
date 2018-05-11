@@ -28,6 +28,9 @@
 #'
 #' @examples
 #' \donttest{
+#' library(sf)
+#' library(dplyr)
+#'
 #' praha <- obce_polygony() %>%
 #'    filter(NAZ_LAU1 == "Praha")
 #'

@@ -26,7 +26,10 @@ During processing the sf data frame is temporarily transformed to planar coordin
 \examples{
 \donttest{
 
-kraje <- union_sf(okresy(), "KOD_CZNUTS3")
+NUTS3 <- union_sf(okresy(), "KOD_CZNUTS3")
   # assembles NUTS3 regions from LAU1 regions of Czech Republic = equivalent to kraje() in geometry
+
+plot(NUTS3)
+
 }
 }

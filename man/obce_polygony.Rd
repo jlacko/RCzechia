@@ -35,6 +35,9 @@ Due to package size constraints the data are stored externally (and a working in
 }
 \examples{
 \donttest{
+library(sf)
+library(dplyr)
+
 praha <- obce_polygony() \%>\%
    filter(NAZ_LAU1 == "Praha")
 

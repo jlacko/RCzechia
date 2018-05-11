@@ -1,3 +1,6 @@
+version 1.2.5
+  - nothing, so far...
+
 version 1.2.4
   - added function union_sf to aggregate sf data frames
   - corrected typos in documentation (NUTS2 vs. NUTS3 in obce)

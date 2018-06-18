@@ -18,11 +18,32 @@
 #' @export
 
 reky <- function() {
-  remote_df <- 'http://rczechia.jla-data.net/Reky.rds'
-  if (http_error(remote_df)) {
-    stop('No internet connection or data source broken.')
+
+  local_path <- paste0(tempdir(),'/')
+  remote_path <- 'http://rczechia.jla-data.net/'
+
+  file <- 'Reky.rds'
+
+  remote_file <- paste0(remote_path, file)
+  local_file <- paste0(local_path, file)
+
+  if (file.exists(local_file)) {
+
+    message('RCzechia: using temporary local dataset.')
+
   } else {
-    local_df <- readRDS(url(remote_df))
+
+    if (http_error(remote_file)) {
+
+      stop('No internet connection or data source broken.')
+
+    } else {
+
+      message('RCzechia: downloading remote dataset.')
+      download.file(url = remote_file, destfile = local_file)
+    }
   }
+
+  local_df <- readRDS(local_file)
   local_df
 }

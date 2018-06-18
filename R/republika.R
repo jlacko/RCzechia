@@ -41,7 +41,6 @@ republika <- function(resolution = "high") {
     if (file.exists(local_file)) {
 
       message('RCzechia: using temporary local dataset.')
-      local_df <- readRDS(local_file)
 
     } else {
 
@@ -52,12 +51,11 @@ republika <- function(resolution = "high") {
       } else {
 
         message('RCzechia: downloading remote dataset.')
-        local_df <- readRDS(url(remote_file))
-        saveRDS(local_df, local_file)
-
+        download.file(url = remote_file, destfile = local_file)
       }
     }
-  }
 
-  local_df
+    local_df <- readRDS(local_file)
+    local_df
+  }
 }

@@ -27,7 +27,7 @@
 
 union_sf <- function(data, key, tolerance = 1, planarCRS = 5514) {
 
-  if (missing(data)) stop("required argument .data is missing")
+  if (missing(data)) stop("required argument data is missing")
   if (missing(key)) stop("required argument key is missing")
   if (!inherits(data, "sf")) stop("data is not a sf object")
   if (!is.element(key, colnames(data))) stop("key is not a recognized column of .data")

@@ -41,22 +41,20 @@ context("kraje")
 
 context("okresy")
 
-  okresy_high_loc <- okresy("high") # lokální verze okresů hi res - jedno stažení místo čtyř
-
   expect_that(is.data.frame(okresy()), is_true())
   expect_that(is.data.frame(okresy("low")), is_true())
-  expect_that(is.data.frame(okresy_high_loc), is_true())
+  expect_that(is.data.frame(okresy("high")), is_true())
 
   expect_equal(nrow(okresy()), 77)
   expect_equal(nrow(okresy("low")), 77)
-  expect_equal(nrow(okresy_high_loc), 77)
+  expect_equal(nrow(okresy("high")), 77)
 
   expect_equal(st_crs(okresy("low"))$epsg, 4326)
-  expect_equal(st_crs(okresy_high_loc)$epsg, 4326)
+  expect_equal(st_crs(okresy("high"))$epsg, 4326)
 
   expect_error(okresy("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
-  expect_that(object.size(okresy("low")) < object.size(okresy_high_loc), is_true()) # low res je menší než high res
+  expect_that(object.size(okresy("low")) < object.size(okresy("high")), is_true()) # low res je menší než high res
 
 context("ORP")
   expect_that(is.data.frame(orp_polygony()), is_true())
@@ -72,12 +70,10 @@ context("obce body")
 
 context("obce polygony")
 
-  obce_poly_loc <- obce_polygony() # jedno stažení místo tří...
+  expect_that(is.data.frame(obce_polygony()), is_true())
+  expect_equal(nrow(obce_polygony()), 6258)
 
-  expect_that(is.data.frame(obce_poly_loc), is_true())
-  expect_equal(nrow(obce_poly_loc), 6258)
-
-  expect_equal(st_crs(obce_poly_loc)$epsg, 4326)
+  expect_equal(st_crs(obce_polygony())$epsg, 4326)
 
 context("městské části")
   expect_that(is.data.frame(casti()), is_true())

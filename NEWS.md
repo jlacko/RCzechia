@@ -1,5 +1,5 @@
 version 1.2.5
-  - nothing, so far...
+  - added support for local cache to speed up calculation and save bandwidth
 
 version 1.2.4
   - added function union_sf to aggregate sf data frames

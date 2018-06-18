@@ -19,7 +19,16 @@
 #' }
 #' @export
 
+
 republika <- function(resolution = "high") {
+
+  local_path <- paste0(tempdir(),'/')
+  remote_path <- 'http://rczechia.jla-data.net/'
+
+  file <- 'Republika.rds'
+
+  remote_file <- paste0(remote_path, file)
+  local_file <- paste0(local_path, file)
 
   if (!is.element(resolution, c("high", "low"))) stop("Unknown resolution!")
 
@@ -29,16 +38,26 @@ republika <- function(resolution = "high") {
 
   } else {
 
-    remote_df <- 'http://rczechia.jla-data.net/Republika.rds'
-    if (http_error(remote_df)) {
+    if (file.exists(local_file)) {
 
-      stop('No internet connection or data source broken.')
+      message('RCzechia: using temporary local dataset.')
+      local_df <- readRDS(local_file)
 
     } else {
 
-      local_df <- readRDS(url(remote_df))
-      local_df
+      if (http_error(remote_file)) {
 
+        stop('No internet connection or data source broken.')
+
+      } else {
+
+        message('RCzechia: downloading remote dataset.')
+        local_df <- readRDS(url(remote_file))
+        saveRDS(local_df, local_file)
+
+      }
     }
   }
+
+  local_df
 }

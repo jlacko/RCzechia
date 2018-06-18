@@ -10,4 +10,3 @@ There were no NOTES, ERRORs or WARNINGs.
 
 ## Downstream dependencies
 There are no downstream dependencies.
-

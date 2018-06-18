@@ -62,7 +62,7 @@ obce_polygony <- function() {
     } else {
 
       message('RCzechia: downloading remote dataset.')
-      download.file(url = remote_file, destfile = local_file)
+      download.file(url = remote_file, destfile = local_file, quiet = T)
     }
   }
 

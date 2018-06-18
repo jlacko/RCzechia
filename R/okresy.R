@@ -61,7 +61,7 @@ okresy <- function(resolution = "high") {
       } else {
 
         message('RCzechia: downloading remote dataset.')
-        download.file(url = remote_file, destfile = local_file)
+        download.file(url = remote_file, destfile = local_file, quiet = T)
       }
     }
 

@@ -35,5 +35,6 @@
 #' @name RCzechia-package
 #'
 #' @importFrom httr http_error
+#' @importFrom utils download.file
 
 NULL

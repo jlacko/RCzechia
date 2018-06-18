@@ -22,13 +22,12 @@
 
 republika <- function(resolution = "high") {
 
-  local_path <- paste0(tempdir(),'/')
   remote_path <- 'http://rczechia.jla-data.net/'
 
   file <- 'Republika.rds'
 
   remote_file <- paste0(remote_path, file)
-  local_file <- paste0(local_path, file)
+  local_file <- file.path(tempdir(), file)
 
   if (!is.element(resolution, c("high", "low"))) stop("Unknown resolution!")
 

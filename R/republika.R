@@ -29,7 +29,7 @@ republika <- function(resolution = "high") {
   remote_file <- paste0(remote_path, file)
   local_file <- file.path(tempdir(), file)
 
-  if (!is.element(resolution, c("high", "low"))) stop("Unknown resolution!")
+  if (!is.element(resolution, c("high", "low"))) stop(paste("Error:", resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
 
   if (resolution == "low") {
 

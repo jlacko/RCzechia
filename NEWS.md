@@ -1,3 +1,6 @@
+version 1.2.6
+  - fixing of bugs introduced by 1.2.5 on some windows machines
+
 version 1.2.5
   - added support for local cache to speed up calculation and save bandwidth
 

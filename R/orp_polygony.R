@@ -48,7 +48,7 @@ orp_polygony <- function() {
     } else {
 
       message('RCzechia: downloading remote dataset.')
-      download.file(url = remote_file, destfile = local_file, quiet = T)
+      download.file(url = remote_file, destfile = local_file, method = "curl", quiet = T)
     }
   }
 

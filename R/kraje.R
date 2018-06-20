@@ -5,6 +5,7 @@
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 2.9 MB (so use with caution, and patience).
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
+#' @param method Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.
 #'
 #' @format \code{sf} data frame with 14 rows of 3 variables + geometry
 #'
@@ -26,7 +27,7 @@
 #'
 #' @export
 
-kraje <- function(resolution = "high") {
+kraje <- function(resolution = "high", method = "curl") {
 
   remote_path <- 'http://rczechia.jla-data.net/'
 
@@ -56,7 +57,7 @@ kraje <- function(resolution = "high") {
       } else {
 
         message('RCzechia: downloading remote dataset.')
-        download.file(url = remote_file, destfile = local_file, method = "curl", quiet = T)
+        download.file(url = remote_file, destfile = local_file, method = method, quiet = T)
       }
     }
 

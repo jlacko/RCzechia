@@ -17,10 +17,12 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-okresy(resolution = "high")
+okresy(resolution = "high", method = "curl")
 }
 \arguments{
 \item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
+
+\item{method}{Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.}
 }
 \description{
 Function returning data frame of LAU1 administrative units for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.

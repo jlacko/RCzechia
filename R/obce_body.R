@@ -4,6 +4,8 @@
 #'
 #'  Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 270 KB.
 #'
+#' @param method Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.
+#'
 #' @format \code{sf} data frame with 6.258 rows of 14 variables + geometry
 #'
 #' \describe{
@@ -29,7 +31,7 @@
 #'
 #' @export
 
-obce_body <- function() {
+obce_body <- function(method = "curl") {
 
   remote_path <- 'http://rczechia.jla-data.net/'
 
@@ -51,7 +53,7 @@ obce_body <- function() {
     } else {
 
       message('RCzechia: downloading remote dataset.')
-      download.file(url = remote_file, destfile = local_file, method = "curl", quiet = T)
+      download.file(url = remote_file, destfile = local_file, method = method, quiet = T)
     }
   }
 

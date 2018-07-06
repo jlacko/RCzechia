@@ -41,5 +41,9 @@ Key is again KOD_OBEC.
 Key is KOD.
 * **reky**: streams and rivers
 * **plochy**: stillwaters (lakes and ponds).
+* **silnice**: roads (highways, speedways etc.)
+* **zeleznice**: railroads
+* **chr_uzemi**: protected natural areas (Chráněná území)
+* **lesy**: woodland areas (more than 30 ha in area)
 
 All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).

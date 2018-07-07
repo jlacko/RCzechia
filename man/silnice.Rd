@@ -2,7 +2,7 @@
 % Please edit documentation in R/silnice.R
 \name{silnice}
 \alias{silnice}
-\title{Silnice}
+\title{Road Network}
 \format{\code{sf} data frame with 18.979 rows of 4 variables + geometry:
 
 \describe{

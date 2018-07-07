@@ -1,4 +1,4 @@
-#' Železnice
+#' Railroad Network
 #'
 #' Function returning data frame of railorads of the Czech Republic as \code{sf} lines. It has no obligatory parameters.
 #'

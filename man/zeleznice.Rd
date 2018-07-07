@@ -2,7 +2,7 @@
 % Please edit documentation in R/zeleznice.R
 \name{zeleznice}
 \alias{zeleznice}
-\title{Železnice}
+\title{Railroad Network}
 \format{\code{sf} data frame with 3.525 rows of 4 variables + geometry:
 
 \describe{

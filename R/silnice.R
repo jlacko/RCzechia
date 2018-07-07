@@ -1,4 +1,4 @@
-#' Silnice
+#' Road Network
 #'
 #' Function returning data frame of roads of the Czech Republic as \code{sf} lines. It has no obligatory parameters.
 #'

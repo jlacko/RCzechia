@@ -1,5 +1,6 @@
 version 1.3.0  
-  - new functions added: silnice, zeleznice, chr_uzemi and lesy
+  - new functions added: silnice, zeleznice, chr_uzemi and lesy  
+  - updated vignette to reflect changes in tmap package (v.1.x -> v.2.0)
 
 version 1.2.6  
   - fixing of bugs introduced by 1.2.5 on some windows machines

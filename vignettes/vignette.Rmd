@@ -1,5 +1,5 @@
 ---
-title: "Examples of using RCzechia"
+title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
 date: "`r Sys.Date()`"
 output: 
@@ -34,7 +34,6 @@ library(sf)
 
 GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls", 
     write_disk(tf <- tempfile(fileext = ".xls")))
-      # original (ugly!!) format from the Czech Statistical Office
 
 src <- read_excel(tf, sheet = 1, col_names = F) %>% # read in with fake column names
   select(NAZ_LAU1 = X__1, # key for the shapefile
@@ -87,6 +86,7 @@ POI <- mista %>% # or geocode using ggmap
 tm_plot <- tm_shape(republika("low")) + tm_borders("grey30", lwd = 1) +
   tm_shape(POI) + tm_symbols(col = "firebrick3", shape = 20, size = 0.5) +
   tm_shape(rivers) + tm_lines(col = 'steelblue', lwd = 1.5, alpha = 0.5) +
+  tm_legend(title = "Very Special Places") + # ... or whatever :)
   tm_layout(frame = F)
   
 

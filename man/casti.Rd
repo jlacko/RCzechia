@@ -15,10 +15,7 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-casti(method = "curl")
-}
-\arguments{
-\item{method}{Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.}
+casti()
 }
 \description{
 Function taking no parameters and returning data frame of districts of Prague and other major cities as \code{sf} polygons.

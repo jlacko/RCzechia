@@ -22,10 +22,7 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-orp_polygony(method = "curl")
-}
-\arguments{
-\item{method}{Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.}
+orp_polygony()
 }
 \description{
 Function returning data frame of municipalities with extended powers (obce s rozšířenou působností) as \code{sf} polygons. It takes no parameters.

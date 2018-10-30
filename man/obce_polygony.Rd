@@ -25,10 +25,7 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-obce_polygony(method = "curl")
-}
-\arguments{
-\item{method}{Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.}
+obce_polygony()
 }
 \description{
 Function returning data frame of LAU2 administrative units for the Czech Republic as \code{sf} polygons. It takes no parameters.

@@ -14,10 +14,7 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-silnice(method = "curl")
-}
-\arguments{
-\item{method}{Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.}
+silnice()
 }
 \description{
 Function returning data frame of roads of the Czech Republic as \code{sf} lines. It has no obligatory parameters.

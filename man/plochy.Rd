@@ -16,10 +16,7 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-plochy(method = "curl")
-}
-\arguments{
-\item{method}{Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.}
+plochy()
 }
 \description{
 Function returning data frame of water bodies of the Czech Republic as \code{sf} polygons. It takes no parameters.

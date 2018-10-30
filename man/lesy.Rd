@@ -8,10 +8,7 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-lesy(method = "curl")
-}
-\arguments{
-\item{method}{Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.}
+lesy()
 }
 \description{
 Function returning data frame of woodland areas (lesy) of more than 30 hectares in are of the Czech Republic as \code{sf} polygons. It has no obligatory parameters.

@@ -22,10 +22,8 @@ addons:
       - libprotobuf-dev
       - protobuf-compiler
       - libudunits2-dev
-      - netcdf
+      - libnetcdf-dev
       - libjq-dev
-
-
 
 before_install:
     - sudo add-apt-repository ppa:ubuntugis/ppa --yes

@@ -1,3 +1,6 @@
+version 1.3.1  
+  - replaced internally utils::download.file() by curl::curl_download() to improve compatibility
+
 version 1.3.0  
   - new objects / functions added: silnice, zeleznice, chr_uzemi and lesy  
   - updated vignette to reflect changes in tmap package (v.1.x -> v.2.0)

@@ -2,4 +2,5 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^data-raw$
+^data-backup$
 cran-comments.md

@@ -1,7 +1,7 @@
 ## Test environments
-* ubuntu 16.04 (RStudio Server on AWS), R 3.5.1
+* ubuntu 18.04.1 LTS R version 3.5.1 (2018-07-02)
 * ubuntu 14.04 (Travis), R 3.5.0
-* win-builder R devel (unstable)
+* win-builder R 3.5.1 (2018-07-02)
 
 ## R CMD check results
 Status: OK

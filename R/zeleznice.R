@@ -4,8 +4,6 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 285 KB.
 #'
-#' @param method Method argument for `download.file()`. The default (i.e. "curl") should be appropriate in most situations.
-#'
 #' @format \code{sf} data frame with 3.525 rows of 4 variables + geometry:
 #'
 #' \describe{
@@ -19,7 +17,7 @@
 #'
 #' @export
 
-zeleznice <- function(method = "curl") {
+zeleznice <- function() {
 
   remote_path <- 'http://rczechia.jla-data.net/'
 
@@ -41,8 +39,9 @@ zeleznice <- function(method = "curl") {
     } else {
 
       message('RCzechia: downloading remote dataset.')
-      download.file(url = remote_file, destfile = local_file, method = method, quiet = T)
-    }
+      curl_download(url = remote_file, destfile = local_file, quiet = T)
+
+      }
   }
 
   local_df <- readRDS(local_file)

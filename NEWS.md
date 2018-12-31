@@ -1,3 +1,6 @@
+version 1.3.2
+  - updated vignette (Czech Population) to reflect changes in readxl package
+
 version 1.3.1  
   - replaced internally utils::download.file() by curl::curl_download() to improve compatibility
 

@@ -36,8 +36,8 @@ GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.x
     write_disk(tf <- tempfile(fileext = ".xls")))
 
 src <- read_excel(tf, sheet = 1, col_names = F) %>% # read in with fake column names
-  select(NAZ_LAU1 = X__1, # key for the shapefile
-         obyvatel = X__2) %>% # population (as text)
+  select(NAZ_LAU1 = "..1", # key for the shapefile
+         obyvatel = "..2") %>% # population (as text)
   mutate(obyvatel = as.double(obyvatel)) %>% 
     # convert from text to number
   mutate(NAZ_LAU1 = ifelse(NAZ_LAU1 == "Hlavní město Praha", "Praha", NAZ_LAU1)) 

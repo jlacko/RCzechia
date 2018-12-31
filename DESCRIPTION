@@ -22,13 +22,12 @@ Imports:
   curl
 Suggests:
   dplyr,
+  readxl,
   units,
   tmap,
-  ggmap,
   knitr,
   testthat,
   roxygen2,
-  devtools,
-  readxl
-RoxygenNote: 6.1.0
+  devtools
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr

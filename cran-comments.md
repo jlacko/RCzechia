@@ -1,7 +1,7 @@
 ## Test environments
-* ubuntu 18.04.1 LTS R version 3.5.1 (2018-07-02)
-* ubuntu 14.04 (Travis), R 3.5.0
-* win-builder R 3.5.1 (2018-07-02)
+* ubuntu 18.04.1 LTS R version 3.5.2  
+* ubuntu 14.04.5 LTS, R 3.5.1 (Travis)  
+* Windows Server 2008 R2 SP1, R-devel, 32/64 bit (rhub)  
 
 ## R CMD check results
 Status: OK

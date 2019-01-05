@@ -1,5 +1,5 @@
 # RCzechia  [![Travis-CI Build Status](https://travis-ci.org/jlacko/RCzechia.svg?branch=master)](https://travis-ci.org/jlacko/RCzechia)  [![Coverage Status](https://coveralls.io/repos/github/jlacko/RCzechia/badge.svg?branch=master)](https://coveralls.io/github/jlacko/RCzechia?branch=master) [![CRAN](http://www.r-pkg.org/badges/version/RCzechia)](https://cran.r-project.org/package=RCzechia) [![Downloads-total](http://cranlogs.r-pkg.org/badges/grand-total/RCzechia?color=brightgreen)](http://www.r-pkg.org/pkg/RCzechia) [![Downloads-weekly](http://cranlogs.r-pkg.org/badges/last-week/RCzechia?color=brightgreen)](http://www.r-pkg.org/pkg/RCzechia)
-This project creates a set of shapefiles relevant to the Czech Republic.  
+This project downloads a set of shapefiles relevant to the Czech Republic. It was inspired by the popular [`tigris`](https://github.com/walkerke/tigris) package for US datasets.  
 
 <p align="center">
   <img src="https://github.com/jlacko/RCzechia/blob/master/data-raw/kraje-lo-res.png?raw=true" alt="Kraje České republiky"/>

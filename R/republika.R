@@ -22,7 +22,7 @@
 
 republika <- function(resolution = "high") {
 
-  remote_path <- 'http://rczechia.jla-data.net/'
+  remote_path <- 'https://rczechia.jla-data.net/'
 
   file <- 'Republika.rds'
 
@@ -43,14 +43,14 @@ republika <- function(resolution = "high") {
 
     } else {
 
-      if (http_error(remote_file)) {
+      if (httr::http_error(remote_file)) {
 
         stop('No internet connection or data source broken.')
 
       } else {
 
         message('RCzechia: downloading remote dataset.')
-        curl_download(url = remote_file, destfile = local_file, quiet = T)
+        curl::curl_download(url = remote_file, destfile = local_file, quiet = T)
 
         }
     }

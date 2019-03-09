@@ -19,7 +19,8 @@ Imports:
   httr,
   lwgeom,
   magrittr,
-  curl
+  curl,
+  jsonlite
 Suggests:
   dplyr,
   readxl,

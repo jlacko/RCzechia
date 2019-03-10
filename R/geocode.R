@@ -19,7 +19,8 @@ geocode <- function(address, crs = 4326) {
   for (i in seq_along(address)) {
 
     cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
-      URLencode() # get rid of funny Czech characters
+#      utils::enc2utf8() %>% # do UTF-8
+      utils::URLencode() # get rid of funny Czech characters
 
     query <- paste0("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find",
               "?text=", cil, "&outSR=", crs, "&maxLocations50=&f=pjson")
@@ -28,7 +29,7 @@ geocode <- function(address, crs = 4326) {
 
     httr::stop_for_status(resp)
 
-    if (resp$status_code != 200) stop("error in connection to ČÚZK API")
+    if (resp$status_code != 200) stop("error in connection to CUZK API")
       # error in connection
 
     # geocoding was successful, now digest the json results!

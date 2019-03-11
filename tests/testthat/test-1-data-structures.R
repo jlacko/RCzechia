@@ -7,9 +7,9 @@ context("republika")
   expect_that(is.data.frame(republika("low")), is_true())
   expect_that(is.data.frame(republika("high")), is_true())
 
-  expect_that(inherits(republika(), "sf"), is_true())
-  expect_that(inherits(republika("high"), "sf"), is_true())
-  expect_that(inherits(republika("low"), "sf"), is_true())
+  expect_s3_class(republika(), "sf")
+  expect_s3_class(republika("high"), "sf")
+  expect_s3_class(republika("low"), "sf")
 
   expect_equal(nrow(republika()), 1)
   expect_equal(nrow(republika("low")), 1)
@@ -29,9 +29,9 @@ context("kraje")
   expect_that(is.data.frame(kraje("low")), is_true())
   expect_that(is.data.frame(kraje("high")), is_true())
 
-  expect_that(inherits(kraje(), "sf"), is_true())
-  expect_that(inherits(kraje("high"), "sf"), is_true())
-  expect_that(inherits(kraje("low"), "sf"), is_true())
+  expect_s3_class(kraje(), "sf")
+  expect_s3_class(kraje("high"), "sf")
+  expect_s3_class(kraje("low"), "sf")
 
   expect_equal(nrow(kraje()), 14)
   expect_equal(nrow(kraje("low")), 14)
@@ -52,9 +52,9 @@ context("okresy")
   expect_that(is.data.frame(okresy("low")), is_true())
   expect_that(is.data.frame(okresy("high")), is_true())
 
-  expect_that(inherits(okresy(), "sf"), is_true())
-  expect_that(inherits(okresy("high"), "sf"), is_true())
-  expect_that(inherits(okresy("low"), "sf"), is_true())
+  expect_s3_class(okresy(), "sf")
+  expect_s3_class(okresy("high"), "sf")
+  expect_s3_class(okresy("low"), "sf")
 
   expect_equal(nrow(okresy()), 77)
   expect_equal(nrow(okresy("low")), 77)
@@ -70,7 +70,7 @@ context("okresy")
 context("ORP")
   expect_that(is.data.frame(orp_polygony()), is_true())
 
-  expect_that(inherits(orp_polygony(), "sf"), is_true())
+  expect_s3_class(orp_polygony(), "sf")
 
   expect_equal(nrow(orp_polygony()), 206)
 
@@ -86,7 +86,7 @@ context("obce polygony")
 
   expect_that(is.data.frame(obce_polygony()), is_true())
 
-  expect_that(inherits(obce_polygony(), "sf"), is_true())
+  expect_s3_class(obce_polygony(), "sf")
 
   expect_equal(nrow(obce_polygony()), 6258)
 
@@ -95,7 +95,7 @@ context("obce polygony")
 context("městské části")
   expect_that(is.data.frame(casti()), is_true())
 
-  expect_that(inherits(casti(), "sf"), is_true())
+  expect_s3_class(casti(), "sf")
 
   expect_equal(nrow(casti()), 142)
 
@@ -104,7 +104,7 @@ context("městské části")
 context("vodní plochy")
   expect_that(is.data.frame(plochy()), is_true())
 
-  expect_that(inherits(plochy(), "sf"), is_true())
+  expect_s3_class(plochy(), "sf")
 
   expect_equal(nrow(plochy()), 480)
 
@@ -113,7 +113,7 @@ context("vodní plochy")
 context("řeky")
   expect_that(is.data.frame(reky()), is_true())
 
-  expect_that(inherits(reky(), "sf"), is_true())
+  expect_s3_class(reky(), "sf")
 
   expect_equal(nrow(reky()), 6198)
 
@@ -122,7 +122,7 @@ context("řeky")
 context("silnice")
   expect_that(is.data.frame(silnice()), is_true())
 
-  expect_that(inherits(silnice(), "sf"), is_true())
+  expect_s3_class(silnice(), "sf")
 
   expect_equal(nrow(silnice()), 18979)
 
@@ -131,7 +131,7 @@ context("silnice")
 context("železnice")
   expect_that(is.data.frame(zeleznice()), is_true())
 
-  expect_that(inherits(zeleznice(), "sf"), is_true())
+  expect_s3_class(zeleznice(), "sf")
 
   expect_equal(nrow(zeleznice()), 3525)
 
@@ -140,7 +140,7 @@ context("železnice")
 context("chráněná území")
   expect_that(is.data.frame(chr_uzemi()), is_true())
 
-  expect_that(inherits(chr_uzemi(), "sf"), is_true())
+  expect_s3_class(chr_uzemi(), "sf")
 
   expect_equal(nrow(chr_uzemi()), 36)
 
@@ -149,7 +149,7 @@ context("chráněná území")
 context("lesy")
   expect_that(is.data.frame(lesy()), is_true())
 
-  expect_that(inherits(lesy(), "sf"), is_true())
+  expect_s3_class(lesy(), "sf")
 
   expect_equal(nrow(lesy()), 2366)
 

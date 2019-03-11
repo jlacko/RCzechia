@@ -53,18 +53,29 @@ geocode <- function(address, crs = 4326) {
       magrittr::extract2("geometry")
 
 
-    # rbind the current iteration of results to dataframe of global results
-    result <- result %>%
-      rbind(cbind(target = address[i], # string queried
-                  typ = typ["Type"], # type of response, as per ČÚZK
-                  address = adresa["Match_addr"], # address matched
-                  s3["x"],  # x coordinate
-                  s3["y"])) # y coordinate
+
+    if (!is.null(s3)) { # was the current geocoding successful?
+
+      # if yes, rbind the current result to global
+      result <- result %>%
+        rbind(cbind(target = address[i], # string queried
+                    typ = typ["Type"], # type of response, as per ČÚZK
+                    address = adresa["Match_addr"],   # address matched
+                    x = s3["x"],  # x coordinate
+                    y = s3["y"])) # y coordinate
+    }
+
   }
 
-  # convert to a sf object
-  result <- sf::st_as_sf(result, coords = c("x", "y")) %>%
-    sf::st_set_crs(crs) # set CRS as required
+  if(nrow(result) > 0) { # was the global geocoding successful?
+
+    # if yes thenconvert to a sf object
+    result <- sf::st_as_sf(result, coords = c("x", "y")) %>%
+      sf::st_set_crs(crs) # set CRS as required
+  } else {
+    # if no, then report a failure
+    result <- NA
+  }
 
   result # all set :)
 }

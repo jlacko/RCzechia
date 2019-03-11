@@ -15,6 +15,7 @@ addons:
   apt:
     packages:
       - gdal-bin
+      - proj-bin
       - libgdal-dev
       - libproj-dev
       - libgeos-dev

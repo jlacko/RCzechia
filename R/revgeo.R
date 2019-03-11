@@ -20,7 +20,7 @@ revgeo <- function(coords) {
                             ",",
                             sf::st_coordinates(coords)[,"Y"])
 
-  result <- vector(mode = "character") # initiation; empty character vector
+  result <- character() # initiation; empty character vector
 
   for (i in seq_along(coords)) {
 
@@ -40,9 +40,8 @@ revgeo <- function(coords) {
       jsonlite::fromJSON() %>%
       magrittr::extract2("address")
 
-    # rbind the current iteration of results to vector of global results
-    result <- result %>%
-      rbind(adresa["Address"]) # address matched
+    # bind the current iteration of results to vector of global results
+    result <- c(result, adresa["Address"]$Address) # address matched
   }
 
   # convert to a sf object

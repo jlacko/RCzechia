@@ -28,7 +28,7 @@ addons:
       - libjq-dev
 
 before_install:
-    - sudo add-apt-repository ppa:ubuntugis/ppa --yes
+    - sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
     - sudo add-apt-repository -y ppa:opencpu/jq
     - sudo apt-get --yes --force-yes update -qq
 

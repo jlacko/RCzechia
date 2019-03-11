@@ -73,7 +73,7 @@ expect_error(revgeo("bflm")) # čekám chybu - zadání není sf
 expect_error(revgeo(kraje())) # čekám chybu - nejsou body ale polygony
 
 # vrací se sf objekt
-expect_s3_class(revgeo(sochor_wgs), "character") # vrací se vektor charů
+expect_equal(class(revgeo(sochor_wgs)), "character") # vrací se vektor charů
 
 # koordináty v WGS84
 expect_equal(revgeo(sochor_wgs), "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")

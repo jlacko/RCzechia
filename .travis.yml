@@ -16,6 +16,7 @@ addons:
     packages:
       - gdal-bin
       - proj-bin
+      - libgdal-dev
       - libgdal1-dev
       - libproj-dev
       - libgeos-dev

@@ -6,7 +6,6 @@ cache:
   packages: yes
 
 r_packages:
-  - rgdal
   - testthat
   - roxygen2
   - covr

@@ -65,6 +65,12 @@ context("revgeo")
 sochor_wgs <- geocode(dos_sochoros[1]) # podle WGS84
 sochor_krovak <- geocode(dos_sochoros[1], 5514) # totéž, podle Křováka
 
+amerika <- data.frame(place = c("Statue of Liberty", "Golden Gate Bridge"), # zcela jasně out of scope pro ČÚZK
+                            x = c(-74.044444, -122.478611),
+                            y = c(40.689167, 37.819722)) %>%
+  st_as_sf(coords = c("x", "y")) %>%
+  st_set_crs(4326)
+
 tres_sochoros <- geocode(rep(dos_sochoros[1], 3)) # tři stejné adresy
 
 # očekávané chyby - špatné zadání
@@ -82,8 +88,10 @@ expect_equal(revgeo(sochor_wgs), "Pplk. Sochora 1391/4, Holešovice, 17000 Praha
 expect_equal(revgeo(sochor_krovak), "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
 
 # třikrát stejné koordináty = funguje vektorizace
-expect_equal(unique(revgeo(tres_sochoros)), "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
+expect_equal(revgeo(tres_sochoros), rep("Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7", 3))
 
-
+# platný sf objekt, ale out of scope českého katastru
+expect_equal(revgeo(amerika) %>% is.na() %>% unique(), T) # vrací se pouze NA ...
+expect_equal(revgeo(amerika) %>% length(), nrow(amerika)) # ... stejně NAček jako řádků
 
 

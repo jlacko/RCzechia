@@ -13,15 +13,11 @@ r_packages:
 addons:
   apt:
     packages:
-      - gdal-bin
-      - libgdal-dev
-      - libgdal1-dev
       - libgeos-dev
       - r-cran-ncdf4
       - libv8-3.14-dev
       - libprotobuf-dev
       - protobuf-compiler
-      - libudunits2-dev
       - libnetcdf-dev
       - libjq-dev
 

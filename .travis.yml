@@ -16,6 +16,7 @@ addons:
       - libgeos-dev
       - r-cran-ncdf4
       - libv8-3.14-dev
+      - libudunits2-dev
       - libprotobuf-dev
       - protobuf-compiler
       - libnetcdf-dev

@@ -14,10 +14,8 @@ addons:
   apt:
     packages:
       - gdal-bin
-      - proj-bin
       - libgdal-dev
       - libgdal1-dev
-      - libproj-dev
       - libgeos-dev
       - r-cran-ncdf4
       - libv8-3.14-dev

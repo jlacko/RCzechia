@@ -14,11 +14,12 @@ addons:
   apt:
     packages:
       - gdal-bin
+      - proj-bin
       - libgdal-dev
+      - libgdal1-dev
       - libproj-dev
       - libgeos-dev
       - r-cran-ncdf4
-      - gcc-4.8
       - libv8-3.14-dev
       - libprotobuf-dev
       - protobuf-compiler
@@ -27,7 +28,7 @@ addons:
       - libjq-dev
 
 before_install:
-    - sudo add-apt-repository ppa:ubuntugis/ppa --yes
+    - sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
     - sudo add-apt-repository -y ppa:opencpu/jq
     - sudo apt-get --yes --force-yes update -qq
 

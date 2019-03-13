@@ -1,5 +1,5 @@
 language: r
-dist: trusty
+dist: xenial
 sudo: false
 
 cache:
@@ -24,9 +24,7 @@ addons:
       - libjq-dev
 
 before_install:
-    - sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
-    - sudo add-apt-repository -y ppa:opencpu/jq
-    - sudo apt-get --yes --force-yes update -qq
+  - Rscript -e 'install.packages("rgdal", repos="http://R-Forge.R-project.org")'
 
 after_success:
   - Rscript -e 'covr::coveralls()'

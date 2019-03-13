@@ -6,7 +6,7 @@ context("union_sf")
 obec_praha <- obce_body() %>% # bod Praha (určitě správně)
   filter(KOD_LAU1 == "CZ0100")
 
-wtf <- data.frame(col = c(1,2,3)) # data frame se sloupcem col - má se rozbít, proto wtf :)
+wtf <- data.frame(col = c(1, 2, 3)) # data frame se sloupcem col - má se rozbít, proto wtf :)
 
 # očekávané chyby - špatné zadání
 expect_error(union_sf(wtf, "col")) # čekám chybu - není spatial
@@ -44,7 +44,6 @@ dos_sochoros <- c("pplk. Sochora 4, Praha", # platná adresa
 
 # očekávané chyby - špatné zadání
 expect_error(geocode()) # čekám chybu - není cíl
-expect_error(geocode(rep(dos_sochoros[1], 648))) # čekám chybu - 648 > 500
 
 # vrací se sf objekt
 expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf

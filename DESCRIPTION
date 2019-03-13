@@ -32,4 +32,3 @@ Suggests:
   devtools
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
-Remotes: cran/rgdal@1.3-9

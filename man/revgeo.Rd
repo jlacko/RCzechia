@@ -7,8 +7,22 @@
 revgeo(coords)
 }
 \arguments{
-\item{coords}{coordinates to be reverse geocoded; expected as sf spatial_points format}
+\item{coords}{coordinates to be reverse geocoded; expected as \code{sf} data
+frame of spatial points}
 }
 \description{
-tohle jednou bude vooostrá geokódovací funkce nad RÚIAN
+This function connects to Czech State Administration of Land Surveying and
+Cadastre (\url{https://www.cuzk.cz/en}) API to reversely geocode an address.
+As consequence it is implemented only for Czech addresses.
+}
+\details{
+As an input the function takes a \code{sf} data frame of spatial points, and
+returns a vector of characters.
+
+The function returns the same \code{sf} data frame as input, with added field
+revgeocoded; it contains the result of operation. If the data frame contained
+a column named revgeocoded it gets overwritten.
+
+In case of reverse geocoding failures (e.g. coordinates outside of the Czech
+Republic and therefore scope of ČÚZK) NA is returned.
 }

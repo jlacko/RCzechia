@@ -5,7 +5,7 @@
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 114 KB.
 #'
 #'
-#' @format \code{sf} data frame with 36 rows of 5 variables + geometry
+#' @format \code{sf} data frame with 36 rows of 2 variables + geometry
 #'
 #' \describe{
 #'   \item{TYP}{Type of protected area: Národní park, Chráněná krajinná oblast}

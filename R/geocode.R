@@ -1,9 +1,42 @@
 #' Geocode a Czech Address
 #'
-#' tohle jednou bude vooostrá geokódovací funkce nad RÚIAN
+#' This function connects to Czech State Administration of Land Surveying and
+#' Cadastre (\url{https://www.cuzk.cz/en}) API to geocode an address. As
+#' consequence it is implemented only for Czech addresses.
 #'
-#' @param address point to be geocoded
+#' As input the function takes an address to geocode (or a vector of addresses)
+#' and expected Coordinate Reference System of output (mainly intended for, but
+#' not limited to, either WGS84 = EPSG:4326 or inž. Křovák = EPSG:5514).
+#'
+#' It returns a \code{sf} data frame of spatial points.
+#'
+#' Depending on the outcome of matching the address to RÚIAN data there is a
+#' number of possible outcomes:
+#'
+#' \itemize{
+#'    \item{All items were matched exactly: the returned \code{sf} data
+#'    frame has the same number of rows as there were elements in vector to
+#'    be geocoded. The field \emph{target} will have zero duplicates.}
+#'    \item{Some items had multiple matches: the returned \code{sf} data
+#'    frame has more rows than the there were elements in vector to be geocoded.
+#'    In the field \emph{target} will be duplicate values. Note that the RÚIAN API
+#'    limits multiple matches to 10.}
+#'    \item{Some (but not all) items had no match in RUIAN data: the returned
+#'    \code{sf} data frame will have fewer rows than the vector
+#'    to be geocoded elements. Some values will be missing from field \emph{target}}.
+#'    \item{No items were matched at all: the function returns NA.
+#' }}
+#'
+#'
+#' @param address point to be geocoded, as character (vector)
 #' @param crs coordinate reference system of output
+#'
+#' @format \code{sf} data frame with 3 variables + geometry
+#'
+#'   \describe{ \item{target}{the address searched (address input)}
+#'   \item{typ}{type of record matched by API} \item{address}{address as
+#'   recorded by RÚIAN}  \item{geometry}{hidden column with spatial point data}
+#'   }
 #'
 #' @export
 #' @importFrom magrittr %>%
@@ -12,7 +45,6 @@
 
 geocode <- function(address, crs = 4326) {
   if (missing(address)) stop("required argument address is missing")
-  if (length(address)>500) stop("geocoding is limited to 500 points")
 
   result <- data.frame() # initiation; empty...
 
@@ -63,9 +95,9 @@ geocode <- function(address, crs = 4326) {
                     address = adresa["Match_addr"],   # address matched
                     x = s3["x"],  # x coordinate
                     y = s3["y"])) # y coordinate
-    }
+    } # /if
 
-  }
+  } # /for
 
   if(nrow(result) > 0) { # was the global geocoding successful?
 
@@ -75,7 +107,7 @@ geocode <- function(address, crs = 4326) {
   } else {
     # if no, then report a failure
     result <- NA
-  }
+  } # /if
 
   result # all set :)
-}
+} # /function

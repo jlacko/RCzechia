@@ -83,19 +83,18 @@ expect_error(revgeo("bflm")) # čekám chybu - zadání není sf
 expect_error(revgeo(kraje())) # čekám chybu - nejsou body ale polygony
 
 # vrací se sf objekt
-expect_equal(class(revgeo(sochor_wgs)), "character") # vrací se vektor charů
+expect_s3_class(revgeo(sochor_wgs), "sf") # vrací se class sf
 
 # koordináty v WGS84
-expect_equal(revgeo(sochor_wgs), "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
+expect_equal(revgeo(sochor_wgs)$revgeocoded, "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
 
 # koordináty ve Křovákovi
-expect_equal(revgeo(sochor_krovak), "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
+expect_equal(revgeo(sochor_krovak)$revgeocoded, "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
 
 # třikrát stejné koordináty = funguje vektorizace
-expect_equal(revgeo(tres_sochoros), rep("Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7", 3))
+expect_equal(revgeo(tres_sochoros)$revgeocoded, rep("Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7", 3))
 
 # platný sf objekt, ale out of scope českého katastru
-expect_equal(revgeo(amerika) %>% is.na() %>% unique(), T) # vrací se pouze NA ...
-expect_equal(revgeo(amerika) %>% length(), nrow(amerika)) # ... stejně NAček jako řádků
+expect_equal(revgeo(amerika)$revgeocoded %>% is.na() %>% unique(), T) # vrací se pouze NA ...
 
 

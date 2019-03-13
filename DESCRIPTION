@@ -16,17 +16,16 @@ Depends:
   R (>= 3.3.0),
   rgdal
 Imports:
-  sf,
+
   httr,
-  lwgeom,
+
   magrittr,
   curl,
   jsonlite
 Suggests:
   dplyr,
   readxl,
-  units,
-  tmap,
+
   knitr,
   testthat,
   roxygen2,

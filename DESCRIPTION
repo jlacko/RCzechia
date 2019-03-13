@@ -16,16 +16,13 @@ Depends:
   R (>= 3.3.0),
   rgdal
 Imports:
-
   httr,
-
   magrittr,
   curl,
   jsonlite
 Suggests:
   dplyr,
   readxl,
-
   knitr,
   testthat,
   roxygen2,

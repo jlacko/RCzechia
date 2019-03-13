@@ -25,8 +25,10 @@ addons:
       - libnetcdf-dev
       - libjq-dev
 
-before_install:
-  - Rscript -e 'install.packages("rgdal", repos="http://R-Forge.R-project.org")'
+install:
+  - wget http://download.osgeo.org/proj/proj-6.0.0.tar.gz
+  - tar -xzvf proj-6.0.0.tar.gz
+  - cd proj-6.0.0 && ./configure && make && make install
 
 after_success:
   - Rscript -e 'covr::coveralls()'

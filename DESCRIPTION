@@ -13,16 +13,19 @@ Copyright: ArcCR, ARCDATA PRAHA, ZU, CSU, 2016
 Encoding: UTF-8
 LazyData: true
 Depends:
-  R (>= 3.3.0),
-  rgdal
+  R (>= 3.3.0)
 Imports:
+  sf,
   httr,
+  lwgeom,
   magrittr,
   curl,
   jsonlite
 Suggests:
   dplyr,
   readxl,
+  units,
+  tmap,
   knitr,
   testthat,
   roxygen2,

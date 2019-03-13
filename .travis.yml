@@ -8,7 +8,6 @@ r_packages:
   - devtools
   - testthat
   - roxygen2
-  - knitr
   - covr
 
 addons:
@@ -26,7 +25,7 @@ addons:
       - libnetcdf-dev
       - libjq-dev
 
-install:
+before_install:
   - wget http://download.osgeo.org/proj/proj-6.0.0.tar.gz
   - tar -xzvf proj-6.0.0.tar.gz
   - cd proj-6.0.0 && ./configure && make && sudo make install && cd ..

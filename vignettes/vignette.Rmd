@@ -159,9 +159,12 @@ The metaphysical center of the Brno City is [well known](https://en.wikipedia.or
 
 But where is the geographical center?
 
+The center is calculated using `sf::st_centroid()` and reversely geocoded via `RCzechia::revgeo()`.
+
 ```{r brno-center, echo = T, eval = T, message = F, fig.align="center", dpi = 100, out.width = "100%"}
 library(dplyr)
 library(RCzechia)
+library(tmap)
 library(sf)
 
 brno <- obce_polygony() %>%
@@ -169,7 +172,16 @@ brno <- obce_polygony() %>%
 
 pupek_brna <- sf::st_centroid(brno)
 
+tm_plot <- tm_shape(brno) + tm_borders(col = "grey40") +
+  tm_shape(pupek_brna) + tm_dots(size = 1/3, col = "red", shape = 4) +
+  tm_legend(title = "Center of Brno") + 
+  tm_layout(frame = F)
+  
 print(revgeo(pupek_brna)$Address)
+
+print(tm_plot)
+
+
 
 ```
 
@@ -183,7 +195,7 @@ I found the stamen toner basemap a good company for interactive chloropleths - i
 A map of the whole Czech Republic in original resolution (the accuracy is about 1 meter) would be rather sizeable, and I found it better policy to either:  
 
  * limit it to a single region (say a NUTS3) or  
- * limit the size by applying `st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
+ * limit the size by applying `sf::st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `sf::st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
 
 
 ```{r interactive, echo = T, eval = F}
@@ -219,7 +231,7 @@ print(vystup)
 
 ## Dissolving `sf` Polygons
 
-Creating custom polygons by aggregating administrative units is a common use case in sales reporting and analysis. Function `union_sf()` makes this task easier by dissolving polygons accoring to a value of a data column.
+Creating custom polygons by aggregating administrative units is a common use case in sales reporting and analysis. Function `RCzechia::union_sf()` makes this task easier by dissolving polygons accoring to a value of a data column.
 
 In this demonstration the Czech LAU1 units are grouped into two categories: those with odd lettered names, and those with even letters. They are then dissolved into two multipolygons.
 

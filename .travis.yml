@@ -15,7 +15,6 @@ addons:
     packages:
       - gdal-bin
       - libgdal-dev
-      - libproj-dev
       - libgeos-dev
       - r-cran-ncdf4
       - libv8-3.14-dev
@@ -29,7 +28,6 @@ before_install:
   - wget http://download.osgeo.org/proj/proj-5.2.0.tar.gz
   - tar -xzvf proj-5.2.0.tar.gz
   - cd proj-5.2.0 && ./configure && make && sudo make install && cd ..
-  - sudo ln -s /usr/lib/libproj.so /usr/lib/libproj.so.13
   - Rscript -e 'install.packages("sp")'
   - Rscript -e 'install.packages("rgdal", repos="http://R-Forge.R-project.org")'
 

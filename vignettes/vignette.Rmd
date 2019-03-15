@@ -19,7 +19,7 @@ library(httr)
 library(roxygen2)
 
 ```
-### Czech Republic population
+### Visualizing Czech Population
 
 Population of the Czech Republic as per the [latest census](https://www.czso.cz/csu/czso/zakladni-vysledky-scitani-lidu-domu-a-bytu-2011-ceska-republika-2011-eihs9d4gp3) in 2011, per district (okres).
 
@@ -45,7 +45,7 @@ src <- src %>%
   mutate(NAZ_LAU1 = ifelse(NAZ_LAU1 == "Hlavní město Praha", "Praha", NAZ_LAU1)) 
     # rename Prague (from The Capital to a regular city)
   
-okresni_data <- okresy("low") %>% # data shapefile
+okresni_data <- RCzechia::okresy("low") %>% # data shapefile
   inner_join(src, by = "NAZ_LAU1") 
     # key for data connection - note the use of inner (i.e. filtering) join
 
@@ -59,7 +59,7 @@ print(vystup)
 
 ```
 
-## Geocoding locations & drawing them on a map
+## Geocoding Locations & Drawing them on a Map
 
 Drawing a map: three semi-random landmarks on map, with rivers shown for better orientation.
 
@@ -71,7 +71,9 @@ library(dplyr)
 library(tmap)
 library(sf)
 
-rivers <- reky()
+borders <- RCzechia::republika("low")
+
+rivers <- RCzechia::reky()
 
 rivers <- rivers %>%
   filter(Major == T)
@@ -83,10 +85,11 @@ mista <- data.frame(misto =  c("Kramářova vila",
                                "Sněmovní náměstí 1, Kroměříž",
                                "nám. 5. května 1, Bečov nad Teplou"))
 
-POI <- geocode(mista$adresa)
+# from a string vector to sf spatial points object
+POI <- RCzechia::geocode(mista$adresa) 
 
 
-tm_plot <- tm_shape(republika("low")) + tm_borders("grey30", lwd = 1) +
+tm_plot <- tm_shape(borders) + tm_borders("grey30", lwd = 1) +
   tm_shape(POI) + tm_symbols(col = "firebrick3", shape = 20, size = 0.5) +
   tm_shape(rivers) + tm_lines(col = "steelblue", lwd = 1.5, alpha = 0.5) +
   tm_legend(title = "Very Special Places") + # ... or whatever :)
@@ -98,9 +101,9 @@ print(tm_plot)
 ```
 
 
-## Unemployment in Czech Republic - a chloropleth
+## Unemployment in the Czech Republic - a Chloropleth
 
-A visualization problem: unemployment in the Czech Republic is in general low, but not uniformly low.  
+A visualization problem: unemployment in the Czech Republic is in low in general, but not uniformly so.  
 What are the hotspots?
 
 ```{r unempl,  echo = T, eval = T, message = F, out.width = "100%", fig.align="center", dpi = 300}
@@ -116,7 +119,7 @@ src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/da
 src <- src %>%
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
-podklad <- obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
+podklad <- RCzechia::obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
   inner_join(src, by = "KOD_OBEC") # linking by key
 
 
@@ -129,7 +132,7 @@ print(vystup)
  
 ```
 
-## Distnance between Prague to Brno
+## Distance Between Prague and Brno
 
 Calculate distance between two spatial objects; the `sf` package supports (via gdal) point to point, point to polygon and polygon to polygon distances.  
 
@@ -141,13 +144,16 @@ library(RCzechia)
 library(sf)
 library(units)
 
-obce <- obce_polygony()
+obce <- RCzechia::obce_polygony()
 
-praha <- obce[obce$NAZ_OBEC == "Praha", ]
-brno <- obce[obce$NAZ_OBEC == "Brno", ]
+praha <- obce %>%
+  filter(NAZ_OBEC == "Praha")
 
-vzdalenost <- st_distance(praha, brno) %>%
-  set_units("kilometers") # easier to interpret than meters, miles or decimal degrees..
+brno <- obce %>%
+  filter(NAZ_OBEC == "Brno")
+
+vzdalenost <- sf::st_distance(praha, brno) %>%
+  units::set_units("kilometers") # easier to interpret than meters, miles or decimal degrees..
 
 print(vzdalenost)
 
@@ -167,17 +173,21 @@ library(RCzechia)
 library(tmap)
 library(sf)
 
-brno <- obce_polygony() %>%
+brno <- RCzechia::obce_polygony() %>%
   filter(NAZ_OBEC == "Brno") 
 
-pupek_brna <- sf::st_centroid(brno)
+pupek_brna <- sf::st_centroid(brno) # calculate central point of a polygon
+
+# the revgeo() function takes a sf points data frame and returns it back
+# with address data in "revgeocoded"" column
+adresa_pupku <- RCzechia::revgeo(pupek_brna)$revgeocoded
 
 tm_plot <- tm_shape(brno) + tm_borders(col = "grey40") +
   tm_shape(pupek_brna) + tm_dots(size = 1/3, col = "red", shape = 4) +
   tm_legend(title = "Center of Brno") + 
   tm_layout(frame = F)
   
-print(revgeo(pupek_brna)$Address)
+print(adresa_pupku)
 
 print(tm_plot)
 
@@ -198,6 +208,8 @@ A map of the whole Czech Republic in original resolution (the accuracy is about 
  * limit the size by applying `sf::st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `sf::st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
 
 
+*Note*: it is technically impossible to make html in vignette interactive. As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
+
 ```{r interactive, echo = T, eval = F}
 library(dplyr)
 library(RCzechia)
@@ -212,7 +224,7 @@ src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/da
 src <- src %>%
   mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
 
-podklad <- obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
+podklad <- RCzechia::obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
   inner_join(src, by = "KOD_OBEC") %>% # linking by key
   filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
 
@@ -226,7 +238,7 @@ print(vystup)
 
 ```
 <p align="center">
-<img src="http://github.com/jlacko/RCzechia/blob/master/data-raw/interactive-screenshot.png?raw=true"" alt="sigma" data-toggle="tooltip" data-placement="right" title="" data-original-title="Note this is just a screenshot of the visualization so it's not interactive. You can play with the interactive version by running the code above." onload="$(this).tooltip()">
+<img src="http://github.com/jlacko/RCzechia/blob/master/data-raw/interactive-screenshot.png?raw=true"" alt="This is just a screenshot of the visualization, so it's not interactive. You can play with the interactive version by running the code shown.">
 </p>
 
 ## Dissolving `sf` Polygons
@@ -241,9 +253,9 @@ library(dplyr)
 library(sf)
 
 
-poly <- okresy("low") %>% # Czech LAU1 regions as sf data frame
+poly <- RCzechia::okresy("low") %>% # Czech LAU1 regions as sf data frame
   mutate(oddeven = ifelse(nchar(NAZ_LAU1) %% 2 == 1, "odd", "even" )) %>% # odd or even?
-  union_sf("oddeven") # ... et facta est lux
+  RCzechia::union_sf("oddeven") # ... et facta est lux
 
 plot(poly, key.pos = 1)
 ```

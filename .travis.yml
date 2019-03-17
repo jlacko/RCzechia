@@ -25,9 +25,5 @@ addons:
       - libnetcdf-dev
       - libjq-dev
 
-before_install:
-  - Rscript -e 'install.packages("sp")'
-  - Rscript -e 'install.packages("rgdal", repos="http://R-Forge.R-project.org")'
-
 after_success:
   - Rscript -e 'covr::coveralls()'

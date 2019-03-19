@@ -34,7 +34,6 @@ Function returning data frame of LAU2 administrative units for the Czech Republi
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 36.3 MB (so use with caution, and patience).
 }
 \examples{
-\donttest{
 library(sf)
 library(dplyr)
 
@@ -42,7 +41,5 @@ praha <- obce_polygony() \%>\%
    filter(NAZ_LAU1 == "Praha")
 
 plot(praha, max.plot = 1)
-}
-
 
 }

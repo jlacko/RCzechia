@@ -20,7 +20,6 @@
 #' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 #'
 #' @examples
-#' \donttest{
 #' library(sf)
 #'
 #' hranice <- okresy()
@@ -28,7 +27,7 @@
 #'
 #' object.size(okresy("low"))
 #' object.size(okresy("high"))
-#' }
+#'
 #' @export
 
 okresy <- function(resolution = "high") {

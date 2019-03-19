@@ -29,7 +29,6 @@ Function returning data frame of LAU1 administrative units for the Czech Republi
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 6.1 MB (so use with caution, and patience).
 }
 \examples{
-\donttest{
 library(sf)
 
 hranice <- okresy()
@@ -37,5 +36,5 @@ plot(hranice, col = "white", max.plot = 1)
 
 object.size(okresy("low"))
 object.size(okresy("high"))
-}
+
 }

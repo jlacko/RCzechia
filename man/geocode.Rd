@@ -51,7 +51,6 @@ Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 }
 \examples{
-
 asdf <- geocode("Pod sídlištěm 9") # physical address of ČÚZK
 
 }

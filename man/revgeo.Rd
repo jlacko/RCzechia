@@ -30,12 +30,14 @@ Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 }
 \examples{
+library(dplyr)
+library(sf)
 
-brno <- RCzechia::obce_polygony() \%>\% # shapefile of Brno
+brno <- obce_polygony() \%>\% # shapefile of Brno
    filter(NAZ_OBEC == "Brno")
 
-pupek_brna <- sf::st_centroid(brno) # calculate centroid
+pupek_brna <- st_centroid(brno) # calculate centroid
 
-adresa_pupku <- RCzechia::revgeo(pupek_brna)$revgeocoded # address of the center
+adresa_pupku <- revgeo(pupek_brna)$revgeocoded # address of the center
 
 }

@@ -43,7 +43,6 @@
 #'
 #'
 #' @examples
-#'
 #' asdf <- geocode("Pod sídlištěm 9") # physical address of ČÚZK
 #'
 #' @export

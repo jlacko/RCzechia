@@ -15,7 +15,7 @@ geocode(address, crs = 4326)
 \arguments{
 \item{address}{point to be geocoded, as character (vector)}
 
-\item{crs}{coordinate reference system of output}
+\item{crs}{coordinate reference system of output; default = WGS84}
 }
 \description{
 This function connects to Czech State Administration of Land Surveying and
@@ -23,11 +23,12 @@ Cadastre (\url{https://www.cuzk.cz/en}) API to geocode an address. As
 consequence it is implemented only for Czech addresses.
 }
 \details{
-As input the function takes an address to geocode (or a vector of addresses)
-and expected Coordinate Reference System of output (mainly intended for, but
-not limited to, either WGS84 = EPSG:4326 or inž. Křovák = EPSG:5514).
+Input of the function are an address to geocode (or a vector of addresses)
+and expected Coordinate Reference System of output (default is WGS84 =
+EPSG:4326, but in some use cases inž. Křovák = EPSG:5514 may be more
+relevant).
 
-It returns a \code{sf} data frame of spatial points.
+Output is a \code{sf} data frame of spatial points.
 
 Depending on the outcome of matching the address to RÚIAN data there is a
 number of possible outcomes:
@@ -45,4 +46,12 @@ number of possible outcomes:
    to be geocoded elements. Some values will be missing from field \emph{target}}.
    \item{No items were matched at all: the function returns NA.
 }}
+
+Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
+\url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
+}
+\examples{
+
+asdf <- geocode("Pod sídlištěm 9") # physical address of ČÚZK
+
 }

@@ -4,8 +4,8 @@
 #' Cadastre (\url{https://www.cuzk.cz/en}) API to reversely geocode an address.
 #' As consequence it is implemented only for Czech addresses.
 #'
-#' As an input the function takes a \code{sf} data frame of spatial points, and
-#' returns a vector of characters.
+#' Input of the function is a \code{sf} data frame of spatial points, and
+#' output a vector of characters.
 #'
 #' The function returns the same \code{sf} data frame as input, with added field
 #' revgeocoded; it contains the result of operation. If the data frame contained
@@ -14,8 +14,20 @@
 #' In case of reverse geocoding failures (e.g. coordinates outside of the Czech
 #' Republic and therefore scope of ČÚZK) NA is returned.
 #'
+#' Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
+#' \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
+#'
 #' @param coords coordinates to be reverse geocoded; expected as \code{sf} data
 #'   frame of spatial points
+#'
+#' @examples
+#'
+#' brno <- RCzechia::obce_polygony() %>% # shapefile of Brno
+#'    filter(NAZ_OBEC == "Brno")
+#'
+#' pupek_brna <- sf::st_centroid(brno) # calculate centroid
+#'
+#' adresa_pupku <- RCzechia::revgeo(pupek_brna)$revgeocoded # address of the center
 #'
 #' @export
 #' @importFrom magrittr %>%

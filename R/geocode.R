@@ -4,11 +4,12 @@
 #' Cadastre (\url{https://www.cuzk.cz/en}) API to geocode an address. As
 #' consequence it is implemented only for Czech addresses.
 #'
-#' As input the function takes an address to geocode (or a vector of addresses)
-#' and expected Coordinate Reference System of output (mainly intended for, but
-#' not limited to, either WGS84 = EPSG:4326 or inž. Křovák = EPSG:5514).
+#' Input of the function are an address to geocode (or a vector of addresses)
+#' and expected Coordinate Reference System of output (default is WGS84 =
+#' EPSG:4326, but in some use cases inž. Křovák = EPSG:5514 may be more
+#' relevant).
 #'
-#' It returns a \code{sf} data frame of spatial points.
+#' Output is a \code{sf} data frame of spatial points.
 #'
 #' Depending on the outcome of matching the address to RÚIAN data there is a
 #' number of possible outcomes:
@@ -27,9 +28,11 @@
 #'    \item{No items were matched at all: the function returns NA.
 #' }}
 #'
+#' Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
+#' \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 #'
 #' @param address point to be geocoded, as character (vector)
-#' @param crs coordinate reference system of output
+#' @param crs coordinate reference system of output; default = WGS84
 #'
 #' @format \code{sf} data frame with 3 variables + geometry
 #'
@@ -37,6 +40,11 @@
 #'   \item{typ}{type of record matched by API} \item{address}{address as
 #'   recorded by RÚIAN}  \item{geometry}{hidden column with spatial point data}
 #'   }
+#'
+#'
+#' @examples
+#'
+#' asdf <- geocode("Pod sídlištěm 9") # physical address of ČÚZK
 #'
 #' @export
 #' @importFrom magrittr %>%
@@ -46,7 +54,12 @@
 geocode <- function(address, crs = 4326) {
   if (missing(address)) stop("required argument address is missing")
 
-  result <- data.frame() # initiation; empty...
+
+  result <- data.frame(target = character(),
+                       typ = character(),
+                       address = character(),
+                       x = double(),
+                       y= double()) # initiation; empty...
 
   for (i in seq_along(address)) {
 
@@ -86,22 +99,25 @@ geocode <- function(address, crs = 4326) {
 
 
 
-    if (!is.null(s3)) { # was the current geocoding successful?
+    if (!is.null(s3)) { # was the *current* geocoding successful?
 
-      # if yes, rbind the current result to global
+      # if yes, rbind the current result to glo bal
       result <- result %>%
-        rbind(cbind(target = address[i], # string queried
-                    typ = typ["Type"], # type of response, as per ČÚZK
-                    address = adresa["Match_addr"],   # address matched
-                    x = s3["x"],  # x coordinate
-                    y = s3["y"])) # y coordinate
+        rbind(data.frame(target = address[i], # string queried
+                         typ = typ["Type"], # type of response, as per ČÚZK
+                         address = adresa["Match_addr"],   # address matched
+                         x = s3["x"],  # x coordinate
+                         y = s3["y"])) # y coordinate
     } # /if
 
   } # /for
 
-  if(nrow(result) > 0) { # was the global geocoding successful?
+  if(nrow(result) > 0) { # was the *global* geocoding successful?
 
     # if yes thenconvert to a sf object
+
+    colnames(result) <- c("target", "typ", "address", "x", "y") # get the names right
+
     result <- sf::st_as_sf(result, coords = c("x", "y")) %>%
       sf::st_set_crs(crs) # set CRS as required
   } else {

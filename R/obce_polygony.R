@@ -27,7 +27,6 @@
 #' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 #'
 #' @examples
-#' \donttest{
 #' library(sf)
 #' library(dplyr)
 #'
@@ -35,8 +34,6 @@
 #'    filter(NAZ_LAU1 == "Praha")
 #'
 #' plot(praha, max.plot = 1)
-#' }
-#'
 #'
 #' @export
 

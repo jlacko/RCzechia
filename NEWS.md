@@ -1,3 +1,7 @@
+version 1.4.0
+  - introduced geocode and revgeo functions (via ČÚZK API)
+  - optimization of documentation and vignette
+
 version 1.3.3
   - upgraded shapefile downloads from http:// to https://
 

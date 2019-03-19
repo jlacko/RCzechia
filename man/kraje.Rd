@@ -26,11 +26,9 @@ Function returning data frame of NUTS3 administrative units for the Czech Republ
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 2.9 MB (so use with caution, and patience).
 }
 \examples{
-\donttest{
 library(sf)
 
 hranice <- kraje()
 plot(hranice, col = "white", max.plot = 1)
-}
 
 }

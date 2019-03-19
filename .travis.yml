@@ -1,5 +1,6 @@
 language: r
 dist: xenial
+sudo: false
 
 cache:
   packages: yes
@@ -13,15 +14,13 @@ r_packages:
 addons:
   apt:
     packages:
-      - gdal-bin
       - libgdal-dev
-      - libproj-dev
       - libgeos-dev
       - r-cran-ncdf4
       - libv8-3.14-dev
+      - libudunits2-dev
       - libprotobuf-dev
       - protobuf-compiler
-      - libudunits2-dev
       - libnetcdf-dev
       - libjq-dev
 

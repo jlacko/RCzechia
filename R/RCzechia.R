@@ -1,8 +1,14 @@
 #' RCzechia: Spatial Objects of the Czech Republic
 #'
-#' A selection of spatial objects relevant to the Czech Republic. Due to CRAN package size requirements (5 MB) the objects are stored externally (on Amazon S3) - and therefore could not be implemented as datasets, they are functions returning data frames instead.
+#' A selection of spatial objects relevant to the Czech Republic. Due to CRAN
+#' package size requirements (5 MB) the objects are stored externally (on Amazon
+#' S3) - and therefore could not be implemented as datasets, they are functions
+#' returning data frames instead.
 #'
-#' To save time (and bandwidth) the downloaded objects are saved locally in `tempdir` directory when requested and downloaded at most once \emph{per R session}; out of respect to CRAN Repository Policy a more permanent caching on user's side is not implemented.
+#' To save time (and bandwidth) the downloaded objects are saved locally in
+#' `tempdir` directory when requested and downloaded at most once \emph{per R
+#' session}; out of respect to CRAN Repository Policy a more permanent caching
+#' on user's side is not attempted.
 #'
 #' This means that:
 #' \itemize{
@@ -38,7 +44,15 @@
 #'   \item zeleznice - railoads
 #' }
 #'
-#'In addition a utility function \strong{union_sf} is implemented to perform merging of administrative areas to custom regions.
+#' @section Utility functions:
+#' In addition three utility functions are implemented to support spatial
+#' workflow:
+#'
+#' \itemize{
+#'   \item union_sf - merging polygons based on a key value
+#'   \item geocode - geocoding (address to coordinates)
+#'   \item revgeo - reversely gecoding (coordinates to address)
+#' }
 #'
 #' @docType package
 #' @name RCzechia-package

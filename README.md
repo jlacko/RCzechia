@@ -47,3 +47,9 @@ Key is KOD.
 * **lesy**: woodland areas (more than 30 ha in area)
 
 All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).
+
+### In addition a number of utility functions is provided:  
+* **union_sf**: dissolves `sf` polygons according to a key value
+* **geocode**: interfaces to geocoding API of [ČÚZK](https://cuzk.cz/en).
+* **revgeo**: interfaces to reverse geocoding API of [ČÚZK](https://cuzk.cz/en).
+

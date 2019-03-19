@@ -6,6 +6,7 @@ cache:
   packages: yes
 
 r_packages:
+  - devtools
   - testthat
   - roxygen2
   - covr

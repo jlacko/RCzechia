@@ -161,9 +161,7 @@ print(vzdalenost)
 
 ## Geographical Center of the City of Brno
 
-The metaphysical center of the Brno City is [well known](https://en.wikipedia.org/wiki/Brno_astronomical_clock).  
-
-But where is the geographical center?
+The *metaphysical* center of the Brno City is [well known](https://en.wikipedia.org/wiki/Brno_astronomical_clock). But where is the geographical center?
 
 The center is calculated using `sf::st_centroid()` and reversely geocoded via `RCzechia::revgeo()`.
 

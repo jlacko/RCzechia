@@ -2,7 +2,7 @@ Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
 Version: 1.4.0
-Date: 2019-04-??
+Date: 2019-04-05
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: Administrative regions, rivers and water bodies of the Czech Republic.

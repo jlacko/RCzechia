@@ -63,7 +63,6 @@ geocode <- function(address, crs = 4326) {
   for (i in seq_along(address)) {
 
     cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
-#      utils::enc2utf8() %>% # do UTF-8
       utils::URLencode() # get rid of funny Czech characters
 
     query <- paste0("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find",
@@ -100,7 +99,7 @@ geocode <- function(address, crs = 4326) {
 
     if (!is.null(s3)) { # was the *current* geocoding successful?
 
-      # if yes, rbind the current result to glo bal
+      # if yes, rbind the current result to global
       result <- result %>%
         rbind(data.frame(target = address[i], # string queried
                          typ = typ["Type"], # type of response, as per ČÚZK

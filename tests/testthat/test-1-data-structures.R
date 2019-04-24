@@ -3,9 +3,9 @@ library(httr)
 library(sf)
 
 context("republika")
-  expect_that(is.data.frame(republika()), is_true())
-  expect_that(is.data.frame(republika("low")), is_true())
-  expect_that(is.data.frame(republika("high")), is_true())
+  expect_true(is.data.frame(republika()))
+  expect_true(is.data.frame(republika("low")))
+  expect_true(is.data.frame(republika("high")))
 
   expect_s3_class(republika(), "sf")
   expect_s3_class(republika("high"), "sf")
@@ -20,14 +20,14 @@ context("republika")
 
 
   expect_error(republika("bflm")) # neznámé rozlišení - očekávám high(default) / low
-  expect_that(object.size(republika("low")) < object.size(republika("high")), is_true())
+  expect_true(object.size(republika("low")) < object.size(republika("high")))
     # low res je menší než high res
 
 
 context("kraje")
-  expect_that(is.data.frame(kraje()), is_true())
-  expect_that(is.data.frame(kraje("low")), is_true())
-  expect_that(is.data.frame(kraje("high")), is_true())
+  expect_true(is.data.frame(kraje()))
+  expect_true(is.data.frame(kraje("low")))
+  expect_true(is.data.frame(kraje("high")))
 
   expect_s3_class(kraje(), "sf")
   expect_s3_class(kraje("high"), "sf")
@@ -41,16 +41,16 @@ context("kraje")
   expect_equal(st_crs(kraje("high"))$epsg, 4326)
 
   expect_error(kraje("bflm")) # neznámé rozlišení - očekávám high(default) / low
-  expect_that(object.size(kraje("low")) < object.size(kraje("high")), is_true())
+  expect_true(object.size(kraje("low")) < object.size(kraje("high")))
     # low res je menší než high res
 
 
 
 context("okresy")
 
-  expect_that(is.data.frame(okresy()), is_true())
-  expect_that(is.data.frame(okresy("low")), is_true())
-  expect_that(is.data.frame(okresy("high")), is_true())
+  expect_true(is.data.frame(okresy()))
+  expect_true(is.data.frame(okresy("low")))
+  expect_true(is.data.frame(okresy("high")))
 
   expect_s3_class(okresy(), "sf")
   expect_s3_class(okresy("high"), "sf")
@@ -65,10 +65,10 @@ context("okresy")
 
   expect_error(okresy("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
-  expect_that(object.size(okresy("low")) < object.size(okresy("high")), is_true()) # low res je menší než high res
+  expect_true(object.size(okresy("low")) < object.size(okresy("high"))) # low res je menší než high res
 
 context("ORP")
-  expect_that(is.data.frame(orp_polygony()), is_true())
+  expect_true(is.data.frame(orp_polygony()))
 
   expect_s3_class(orp_polygony(), "sf")
 
@@ -77,14 +77,14 @@ context("ORP")
   expect_equal(st_crs(orp_polygony())$epsg, 4326)
 
 context("obce body")
-  expect_that(is.data.frame(obce_body()), is_true())
+  expect_true(is.data.frame(obce_body()))
   expect_equal(nrow(obce_body()), 6258)
 
   expect_equal(st_crs(obce_body())$epsg, 4326)
 
 context("obce polygony")
 
-  expect_that(is.data.frame(obce_polygony()), is_true())
+  expect_true(is.data.frame(obce_polygony()))
 
   expect_s3_class(obce_polygony(), "sf")
 
@@ -93,7 +93,7 @@ context("obce polygony")
   expect_equal(st_crs(obce_polygony())$epsg, 4326)
 
 context("městské části")
-  expect_that(is.data.frame(casti()), is_true())
+  expect_true(is.data.frame(casti()))
 
   expect_s3_class(casti(), "sf")
 
@@ -102,7 +102,7 @@ context("městské části")
   expect_equal(st_crs(casti())$epsg, 4326)
 
 context("vodní plochy")
-  expect_that(is.data.frame(plochy()), is_true())
+  expect_true(is.data.frame(plochy()))
 
   expect_s3_class(plochy(), "sf")
 
@@ -111,7 +111,7 @@ context("vodní plochy")
   expect_equal(st_crs(plochy())$epsg, 4326)
 
 context("řeky")
-  expect_that(is.data.frame(reky()), is_true())
+  expect_true(is.data.frame(reky()))
 
   expect_s3_class(reky(), "sf")
 
@@ -120,7 +120,7 @@ context("řeky")
   expect_equal(st_crs(reky())$epsg, 4326)
 
 context("silnice")
-  expect_that(is.data.frame(silnice()), is_true())
+  expect_true(is.data.frame(silnice()))
 
   expect_s3_class(silnice(), "sf")
 
@@ -129,7 +129,7 @@ context("silnice")
   expect_equal(st_crs(silnice())$epsg, 4326)
 
 context("železnice")
-  expect_that(is.data.frame(zeleznice()), is_true())
+  expect_true(is.data.frame(zeleznice()))
 
   expect_s3_class(zeleznice(), "sf")
 
@@ -138,7 +138,7 @@ context("železnice")
   expect_equal(st_crs(zeleznice())$epsg, 4326)
 
 context("chráněná území")
-  expect_that(is.data.frame(chr_uzemi()), is_true())
+  expect_true(is.data.frame(chr_uzemi()))
 
   expect_s3_class(chr_uzemi(), "sf")
 
@@ -147,7 +147,7 @@ context("chráněná území")
   expect_equal(st_crs(chr_uzemi())$epsg, 4326)
 
 context("lesy")
-  expect_that(is.data.frame(lesy()), is_true())
+  expect_true(is.data.frame(lesy()))
 
   expect_s3_class(lesy(), "sf")
 

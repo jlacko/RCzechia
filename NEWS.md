@@ -1,15 +1,15 @@
 version 1.4.1  
-  - updated tests to reflect changes in test_that package
+  - updated tests to reflect changes in test_that package  
 
 version 1.4.0  
-  - introduced geocode and revgeo functions (via ČÚZK API)
-  - optimization of documentation and vignette
+  - introduced geocode and revgeo functions (via ČÚZK API)  
+  - optimization of documentation and vignette  
 
-version 1.3.3
+version 1.3.3  
   - upgraded shapefile downloads from http:// to https://
 
-version 1.3.2
-  - updated vignette (Czech Population) to reflect changes in readxl package
+version 1.3.2  
+  - updated vignette (Czech Population) to reflect changes in readxl package  
 
 version 1.3.1  
   - replaced internally utils::download.file() by curl::curl_download() to improve compatibility

@@ -1,4 +1,7 @@
-version 1.4.0
+version 1.4.1  
+  - updated tests to reflect changes in test_that package
+
+version 1.4.0  
   - introduced geocode and revgeo functions (via ČÚZK API)
   - optimization of documentation and vignette
 

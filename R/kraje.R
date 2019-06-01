@@ -26,13 +26,6 @@
 
 kraje <- function(resolution = "high") {
 
-  remote_path <- 'https://rczechia.jla-data.net/'
-
-  file <- 'Kraje.rds'
-
-  remote_file <- paste0(remote_path, file)
-  local_file <- file.path(tempdir(), file)
-
   if (!is.element(resolution, c("high", "low"))) stop(paste(resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
 
   if (resolution == "low") {
@@ -41,24 +34,8 @@ kraje <- function(resolution = "high") {
 
   } else {
 
-    if (file.exists(local_file)) {
-
-      message('RCzechia: using temporary local dataset.')
-
-    } else {
-
-      if (httr::http_error(remote_file)) {
-
-        stop('No internet connection or data source broken.')
-
-      } else {
-
-        message('RCzechia: downloading remote dataset.')
-        curl::curl_download(url = remote_file, destfile = local_file, quiet = T)      }
-    }
-
-    local_df <- readRDS(local_file)
-    local_df
+    result <- downloader("Kraje.rds")
+    result
   }
 }
 

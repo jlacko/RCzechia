@@ -13,29 +13,6 @@
 #' @export
 lesy  <- function() {
 
-  remote_path <- 'https://rczechia.jla-data.net/'
-
-  file <- 'Lesy.rds'
-
-  remote_file <- paste0(remote_path, file)
-  local_file <- file.path(tempdir(), file)
-
-  if (file.exists(local_file)) {
-
-    message('RCzechia: using temporary local dataset.')
-
-  } else {
-
-    if (httr::http_error(remote_file)) {
-
-      stop('No internet connection or data source broken.')
-
-    } else {
-
-      message('RCzechia: downloading remote dataset.')
-      curl::curl_download(url = remote_file, destfile = local_file, quiet = T)    }
-  }
-
-  local_df <- readRDS(local_file)
-  local_df
+  result <- downloader("Lesy.rds")
+  result
 }

@@ -1,0 +1,37 @@
+#' Internal function - generic downloader, used to serve the rds files from S3
+#'
+#' @param file file to be downloaded (or not...) from S3
+#' @keywords internal
+
+downloader <- function(file) {
+
+  network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
+
+  remote_path <- 'https://rczechia.jla-data.net/'
+
+  remote_file <- paste0(remote_path, file)
+  local_file <- file.path(tempdir(), file)
+
+  if (file.exists(local_file)) {
+
+    message('RCzechia: using temporary local dataset.')
+
+  } else {
+
+    if (httr::http_error(remote_file) | !network) {
+
+      message('No internet connection or data source broken.')
+      return(NULL)
+
+    } else {
+
+      message('RCzechia: downloading remote dataset.')
+      curl::curl_download(url = remote_file, destfile = local_file, quiet = T)
+
+    }
+  }
+
+  local_df <- readRDS(local_file)
+  local_df
+
+}

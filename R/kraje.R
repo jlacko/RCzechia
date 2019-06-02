@@ -26,7 +26,11 @@
 
 kraje <- function(resolution = "high") {
 
-  if (!is.element(resolution, c("high", "low"))) stop(paste(resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
+  if (!is.element(resolution, c("high", "low"))) {
+
+      stop(paste(resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
+
+    }
 
   if (resolution == "low") {
 

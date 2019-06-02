@@ -21,6 +21,7 @@
 #'   frame of spatial points
 #'
 #' @examples
+#'
 #' library(dplyr)
 #' library(sf)
 #'
@@ -37,15 +38,20 @@
 
 
 revgeo <- function(coords) {
+
+  network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
+
   if (missing(coords)) stop("required argument coords is missing")
+
   if (!inherits(coords, "sf")) stop("coords is expected in sf format")
+
   if (sf::st_geometry_type(coords)[1] != 'POINT') stop("reverse geocoding is limited to sf point objects")
 
   coords$revgeocoded <- NULL # initiate result column in coords data frame
 
   coords_krovak <- sf::st_transform(coords, crs = 5514) # a temporary version of coords, in a very specific CRS
 
-  # coordinates as a stirng understood by CUZK API
+  # coordinates as a string understood by CUZK API
   coords_krovak$modified <- paste0(sf::st_coordinates(coords_krovak)[,"X"],
                             ",",
                             sf::st_coordinates(coords_krovak)[,"Y"])
@@ -59,9 +65,10 @@ revgeo <- function(coords) {
 
     httr::stop_for_status(resp)
 
-    if (resp$status_code != 200) stop("error in connection to CUZK API")
-      # error in connection
-
+    if (resp$status_code != 200 | !network) {
+      message("error in connection to CUZK API") # error in connection
+      return(NULL)
+    }
     # reverse geocoding was successful, now digest the json results!
 
     adresa <- httr::content(resp) %>%

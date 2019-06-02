@@ -3,6 +3,11 @@ library(httr)
 library(sf)
 
 context("republika")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(republika(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(republika()))
   expect_true(is.data.frame(republika("low")))
   expect_true(is.data.frame(republika("high")))
@@ -24,7 +29,13 @@ context("republika")
     # low res je menší než high res
 
 
+
 context("kraje")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(kraje(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(kraje()))
   expect_true(is.data.frame(kraje("low")))
   expect_true(is.data.frame(kraje("high")))
@@ -48,6 +59,10 @@ context("kraje")
 
 context("okresy")
 
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(okresy(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(okresy()))
   expect_true(is.data.frame(okresy("low")))
   expect_true(is.data.frame(okresy("high")))
@@ -68,6 +83,11 @@ context("okresy")
   expect_true(object.size(okresy("low")) < object.size(okresy("high"))) # low res je menší než high res
 
 context("ORP")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(orp_polygony(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(orp_polygony()))
 
   expect_s3_class(orp_polygony(), "sf")
@@ -77,12 +97,24 @@ context("ORP")
   expect_equal(st_crs(orp_polygony())$epsg, 4326)
 
 context("obce body")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(obce_body(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(obce_body()))
+
+  expect_s3_class(obce_body(), "sf")
+
   expect_equal(nrow(obce_body()), 6258)
 
   expect_equal(st_crs(obce_body())$epsg, 4326)
 
 context("obce polygony")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(obce_polygony(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
 
   expect_true(is.data.frame(obce_polygony()))
 
@@ -93,6 +125,11 @@ context("obce polygony")
   expect_equal(st_crs(obce_polygony())$epsg, 4326)
 
 context("městské části")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(casti(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(casti()))
 
   expect_s3_class(casti(), "sf")
@@ -102,6 +139,11 @@ context("městské části")
   expect_equal(st_crs(casti())$epsg, 4326)
 
 context("vodní plochy")
+
+Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(plochy(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(plochy()))
 
   expect_s3_class(plochy(), "sf")
@@ -111,6 +153,11 @@ context("vodní plochy")
   expect_equal(st_crs(plochy())$epsg, 4326)
 
 context("řeky")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(reky(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(reky()))
 
   expect_s3_class(reky(), "sf")
@@ -120,6 +167,11 @@ context("řeky")
   expect_equal(st_crs(reky())$epsg, 4326)
 
 context("silnice")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(silnice(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(silnice()))
 
   expect_s3_class(silnice(), "sf")
@@ -129,6 +181,11 @@ context("silnice")
   expect_equal(st_crs(silnice())$epsg, 4326)
 
 context("železnice")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(zeleznice(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(zeleznice()))
 
   expect_s3_class(zeleznice(), "sf")
@@ -138,6 +195,11 @@ context("železnice")
   expect_equal(st_crs(zeleznice())$epsg, 4326)
 
 context("chráněná území")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(chr_uzemi(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(chr_uzemi()))
 
   expect_s3_class(chr_uzemi(), "sf")
@@ -147,6 +209,11 @@ context("chráněná území")
   expect_equal(st_crs(chr_uzemi())$epsg, 4326)
 
 context("lesy")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(lesy(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
   expect_true(is.data.frame(lesy()))
 
   expect_s3_class(lesy(), "sf")

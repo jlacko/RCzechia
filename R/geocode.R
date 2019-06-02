@@ -51,6 +51,9 @@
 
 
 geocode <- function(address, crs = 4326) {
+
+  network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
+
   if (missing(address)) stop("required argument address is missing")
 
 
@@ -72,7 +75,10 @@ geocode <- function(address, crs = 4326) {
 
     httr::stop_for_status(resp)
 
-    if (resp$status_code != 200) stop("error in connection to CUZK API")
+    if (resp$status_code != 200 | !network) {
+      message("error in connection to CUZK API")
+      return(NULL)
+    }
       # error in connection
 
     # geocoding was successful, now digest the json results!

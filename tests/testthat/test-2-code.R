@@ -45,6 +45,10 @@ dos_sochoros <- c("pplk. Sochora 4, Praha", # platná adresa
 # očekávané chyby - špatné zadání
 expect_error(geocode()) # čekám chybu - není cíl
 
+Sys.setenv("NETWORK_UP" = FALSE)
+expect_message(geocode(dos_sochoros[1]), "error in connection") # není síť
+Sys.setenv("NETWORK_UP" = TRUE)
+
 # vrací se sf objekt
 expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
 
@@ -83,6 +87,10 @@ tres_sochoros <- geocode(rep(dos_sochoros[1], 3)) # tři stejné adresy
 expect_error(revgeo()) # čekám chybu - nejsou koordináty
 expect_error(revgeo("bflm")) # čekám chybu - zadání není sf
 expect_error(revgeo(kraje())) # čekám chybu - nejsou body ale polygony
+
+Sys.setenv("NETWORK_UP" = FALSE)
+expect_message(revgeo(sochor_wgs), "error in connection") # není síť
+Sys.setenv("NETWORK_UP" = TRUE)
 
 # vrací se sf objekt
 expect_s3_class(revgeo(sochor_wgs), "sf") # vrací se class sf

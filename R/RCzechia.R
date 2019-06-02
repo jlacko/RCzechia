@@ -59,5 +59,7 @@
 #'
 #' @importFrom httr http_error
 #' @importFrom curl curl_download
+#'
+#' @keywords internal
 
-NULL
+##

@@ -104,6 +104,9 @@ context("obce body")
   Sys.setenv("NETWORK_UP" = TRUE)
 
   expect_true(is.data.frame(obce_body()))
+
+  expect_s3_class(obce_body(), "sf")
+
   expect_equal(nrow(obce_body()), 6258)
 
   expect_equal(st_crs(obce_body())$epsg, 4326)

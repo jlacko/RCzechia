@@ -172,9 +172,11 @@ library(tmap)
 library(sf)
 
 brno <- RCzechia::obce_polygony() %>%
-  filter(NAZ_OBEC == "Brno") 
+  filter(NAZ_OBEC == "Brno")
 
-pupek_brna <- sf::st_centroid(brno) # calculate central point of a polygon
+pupek_brna <- brno %>%
+  st_transform(5514) %>% # planar CRS (eastings & northings)
+  sf::st_centroid(brno) # calculate central point of a polygon
 
 # the revgeo() function takes a sf points data frame and returns it back
 # with address data in "revgeocoded"" column

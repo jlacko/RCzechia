@@ -8,7 +8,6 @@ context("republika")
   expect_message(republika(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-
   expect_true(is.data.frame(republika()))
   expect_true(is.data.frame(republika("low")))
   expect_true(is.data.frame(republika("high")))
@@ -141,7 +140,7 @@ context("městské části")
 
 context("vodní plochy")
 
-  Sys.setenv("NETWORK_UP" = FALSE)
+Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(plochy(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 

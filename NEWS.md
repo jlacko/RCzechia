@@ -5,8 +5,7 @@
   - internal optimalization
   
   - unit tests optimized
-  
-
+ 
 ## version 1.4.0
 
   - introduced geocode and revgeo functions (via ČÚZK API)

@@ -5,9 +5,11 @@
 \title{Geocode a Czech Address}
 \format{\code{sf} data frame with 3 variables + geometry
 
-  \describe{ \item{target}{the address searched (address input)}
-  \item{typ}{type of record matched by API} \item{address}{address as
-  recorded by RÚIAN}  \item{geometry}{hidden column with spatial point data}
+  \describe{
+    \item{target}{the address searched (address input)}
+    \item{typ}{type of record matched by API}
+    \item{address}{address as recorded by RÚIAN}
+    \item{geometry}{hidden column with spatial point data}
   }}
 \usage{
 geocode(address, crs = 4326)
@@ -34,15 +36,15 @@ Depending on the outcome of matching the address to RÚIAN data there is a
 number of possible outcomes:
 
 \itemize{
-   \item{All items were matched exactly: the returned \code{sf} data
+   \item{All items were *matched exactly*: the returned \code{sf} data
    frame has the same number of rows as there were elements in vector to
    be geocoded. The field \emph{target} will have zero duplicates.}
-   \item{Some items had multiple matches: the returned \code{sf} data
+   \item{Some items had *multiple matches*: the returned \code{sf} data
    frame has more rows than the there were elements in vector to be geocoded.
    In the field \emph{target} will be duplicate values. Note that the RÚIAN API
    limits multiple matches to 10.}
-   \item{Some (but not all) items had no match in RUIAN data: the returned
-   \code{sf} data frame will have fewer rows than the vector
+   \item{Some (but not all) items had *no match* in RUIAN data: the returned
+   \code{sf} data frame will have fewer rows than the vector sent.
    to be geocoded elements. Some values will be missing from field \emph{target}}.
    \item{No items were matched at all: the function returns NA.
 }}
@@ -51,6 +53,7 @@ Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 }
 \examples{
-asdf <- geocode("Pod sídlištěm 9") # physical address of ČÚZK
+asdf <- geocode("Pod sídlištěm 9, Praha 8") # physical address of ČÚZK
+print(asdf)
 
 }

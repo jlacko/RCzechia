@@ -1,9 +1,9 @@
 ## Test environments
-* ubuntu 18.04.2 LTS R version 3.5.3  
-* ubuntu 16.04.5 LTS, R 3.5.2 (Travis)  
-* macOS 10.11 El Capitan, R 3.5.2 (rhub)
-* Windows R version 3.5.3 (2019-03-11) (win_builder) 
-* Windows R version 3.6.0 alpha (2019-04-04 r76316) (win_builder) 
+* ubuntu 18.04.2 LTS, R 3.6.0 (desktop)
+* ubuntu 16.04.6 LTS, R 3.6.0 (Travis)  
+* macOS 10.11 El Capitan, R-release (rhub)
+* Windows R version 3.6.0 (2019-04-26) (win_builder) 
+* Windows R Under development (unstable) (2019-06-27 r76748)
 
 ## R CMD check results
 Status: OK

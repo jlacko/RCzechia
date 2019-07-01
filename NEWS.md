@@ -3,8 +3,6 @@
   - downgraded error on unavailable internet to message in line with updates to CRAN policy
   
   - internal optimalization
-  
-  - unit tests optimized
  
 ## version 1.4.0
 

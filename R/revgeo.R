@@ -21,7 +21,6 @@
 #'   frame of spatial points
 #'
 #' @examples
-#'
 #' library(dplyr)
 #' library(sf)
 #'
@@ -59,14 +58,14 @@ revgeo <- function(coords) {
   for (i in seq_along(coords_krovak$modified)) {
 
     query <- paste0("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/tables/1/reverseGeocode",
-              "?location=",coords_krovak$modified[i], "&f=pjson")
+              "?location=", coords_krovak$modified[i], "&f=pjson")
 
     resp <- httr::GET(query)
 
     httr::stop_for_status(resp)
 
-    if (resp$status_code != 200 | !network) {
-      message("error in connection to CUZK API") # error in connection
+    if (resp$status_code != 200 | !network) { # error in connection
+      message("error in connection to CUZK API")
       return(NULL)
     }
     # reverse geocoding was successful, now digest the json results!

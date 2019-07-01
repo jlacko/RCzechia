@@ -15,15 +15,15 @@
 #' number of possible outcomes:
 #'
 #' \itemize{
-#'    \item{All items were matched exactly: the returned \code{sf} data
+#'    \item{All items were *matched exactly*: the returned \code{sf} data
 #'    frame has the same number of rows as there were elements in vector to
 #'    be geocoded. The field \emph{target} will have zero duplicates.}
-#'    \item{Some items had multiple matches: the returned \code{sf} data
+#'    \item{Some items had *multiple matches*: the returned \code{sf} data
 #'    frame has more rows than the there were elements in vector to be geocoded.
 #'    In the field \emph{target} will be duplicate values. Note that the RÚIAN API
 #'    limits multiple matches to 10.}
-#'    \item{Some (but not all) items had no match in RUIAN data: the returned
-#'    \code{sf} data frame will have fewer rows than the vector
+#'    \item{Some (but not all) items had *no match* in RUIAN data: the returned
+#'    \code{sf} data frame will have fewer rows than the vector sent.
 #'    to be geocoded elements. Some values will be missing from field \emph{target}}.
 #'    \item{No items were matched at all: the function returns NA.
 #' }}
@@ -36,14 +36,17 @@
 #'
 #' @format \code{sf} data frame with 3 variables + geometry
 #'
-#'   \describe{ \item{target}{the address searched (address input)}
-#'   \item{typ}{type of record matched by API} \item{address}{address as
-#'   recorded by RÚIAN}  \item{geometry}{hidden column with spatial point data}
+#'   \describe{
+#'     \item{target}{the address searched (address input)}
+#'     \item{typ}{type of record matched by API}
+#'     \item{address}{address as recorded by RÚIAN}
+#'     \item{geometry}{hidden column with spatial point data}
 #'   }
 #'
 #'
 #' @examples
-#' asdf <- geocode("Pod sídlištěm 9") # physical address of ČÚZK
+#' asdf <- geocode("Pod sídlištěm 9, Praha 8") # physical address of ČÚZK
+#' print(asdf)
 #'
 #' @export
 #' @importFrom magrittr %>%
@@ -61,7 +64,7 @@ geocode <- function(address, crs = 4326) {
                        typ = character(),
                        address = character(),
                        x = double(),
-                       y= double()) # initiation; empty...
+                       y = double()) # initiation; empty...
 
   for (i in seq_along(address)) {
 
@@ -75,11 +78,10 @@ geocode <- function(address, crs = 4326) {
 
     httr::stop_for_status(resp)
 
-    if (resp$status_code != 200 | !network) {
+    if (resp$status_code != 200 | !network) { # error in connection?
       message("error in connection to CUZK API")
       return(NULL)
     }
-      # error in connection
 
     # geocoding was successful, now digest the json results!
 
@@ -101,14 +103,12 @@ geocode <- function(address, crs = 4326) {
       magrittr::extract2("feature") %>%
       magrittr::extract2("geometry")
 
-
-
     if (!is.null(s3)) { # was the *current* geocoding successful?
 
       # if yes, rbind the current result to global
       result <- result %>%
         rbind(data.frame(target = address[i], # string queried
-                         typ = typ["Type"], # type of response, as per ČÚZK
+                         typ = typ["Type"], # type of response, as per https://cuzk.cz/
                          address = adresa["Match_addr"],   # address matched
                          x = s3["x"],  # x coordinate
                          y = s3["y"])) # y coordinate
@@ -116,7 +116,7 @@ geocode <- function(address, crs = 4326) {
 
   } # /for
 
-  if(nrow(result) > 0) { # was the *global* geocoding successful?
+  if (nrow(result) > 0) { # was the *global* geocoding successful?
 
     # if yes thenconvert to a sf object
 

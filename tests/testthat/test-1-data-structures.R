@@ -222,6 +222,13 @@ context("lesy")
 
   expect_equal(st_crs(lesy())$epsg, 4326)
 
+context("faunistické čtverce")
+
+  expect_true(is.data.frame(ctverce()))
+  expect_s3_class(ctverce(), "sf")
+  expect_equal(nrow(ctverce()), 26*42)
+  expect_equal(st_crs(lesy())$epsg, 4326)
+
 context("integrace")
 
   obec_praha <- obce_body() %>% # bod Praha (určitě správně)
@@ -230,5 +237,10 @@ context("integrace")
   okres_praha <- okresy("low") %>% # low res "okres" Praha (zjednodušovaný)
     filter(KOD_LAU1 == "CZ0100")
 
+  ctverec_praha <- ctverce() %>%
+    filter(ctverec == 5952) # čtverec "střed Prahy
+
   expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
   expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1)  # bod Praha je v okresu Praha
+
+  expect_equal(st_contains(okres_praha, ctverec_praha)[[1]], 1)  # čtverec Praha je v okresu Praha

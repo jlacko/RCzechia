@@ -2,6 +2,7 @@
 
 export(casti)
 export(chr_uzemi)
+export(ctverce)
 export(geocode)
 export(kraje)
 export(lesy)

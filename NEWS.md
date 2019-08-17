@@ -1,3 +1,6 @@
+## version 1.4.2
+  -  KFME grid cells (faunistické čtverce) object added
+
 ## version 1.4.1
 
   - downgraded error on unavailable internet to message in line with updates to CRAN policy

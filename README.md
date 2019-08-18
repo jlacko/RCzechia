@@ -55,7 +55,7 @@ Key is KOD.
 * **zeleznice**: railroads
 * **chr_uzemi**: protected natural areas (Chráněná území)
 * **lesy**: woodland areas (more than 30 ha in area)
-* **ctverce**: KFME grid cells (faunistické čtverce)
+* **KFME_grid**: KFME grid cells (faunistické čtverce)
 
 All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).
 

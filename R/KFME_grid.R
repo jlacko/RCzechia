@@ -1,4 +1,4 @@
-#' Grids (faunistické čtverce) of the Czech Republic
+#' KFME grid cells (faunistické čtverce) of the Czech Republic
 #'
 #' Function returning grid covering the Czech Republic according to the Kartierung der Flora Mitteleuropas methodology.
 #'
@@ -16,11 +16,11 @@
 #'
 #' ggplot() +
 #'    geom_sf(data = republika("low")) +
-#'    geom_sf(data = ctverce(), fill = NA)
+#'    geom_sf(data = KFME_grid(), fill = NA)
 #'
 #' @export
 
-ctverce <- function() {
+KFME_grid <- function() {
   return(faunisticke_ctverce)
 }
 

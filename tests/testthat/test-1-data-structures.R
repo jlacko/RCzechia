@@ -224,10 +224,15 @@ context("lesy")
 
 context("faunistické čtverce")
 
-  expect_true(is.data.frame(ctverce()))
-  expect_s3_class(ctverce(), "sf")
-  expect_equal(nrow(ctverce()), 26*42)
-  expect_equal(st_crs(lesy())$epsg, 4326)
+  expect_true(is.data.frame(KFME_grid()))
+
+  expect_s3_class(KFME_grid(), "sf")
+
+  expect_equal(nrow(KFME_grid()), 26*42) # čtverce jsou všechny
+
+  expect_equal(KFME_grid()$ctverec %>% unique() %>% length(), 26*42) # názvy jsou unikátní
+
+  expect_equal(st_crs(KFME_grid())$epsg, 4326)
 
 context("integrace")
 
@@ -237,8 +242,8 @@ context("integrace")
   okres_praha <- okresy("low") %>% # low res "okres" Praha (zjednodušovaný)
     filter(KOD_LAU1 == "CZ0100")
 
-  ctverec_praha <- ctverce() %>%
-    filter(ctverec == 5952) # čtverec "střed Prahy
+  ctverec_praha <- KFME_grid() %>%
+    filter(ctverec == 5952) # čtverec "střed Prahy"
 
   expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
   expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1)  # bod Praha je v okresu Praha

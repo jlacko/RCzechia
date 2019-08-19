@@ -198,11 +198,11 @@ print(tm_plot)
 
 ## Interactive Map 
 
-Interactive maps are powerful tools for data vizualization. They are easy to produce with the `tmap` package.
+Interactive maps are powerful tools for data visualization. They are easy to produce with the `tmap` package.
 
 I found the stamen toner basemap a good company for interactive chloropleths - it gives enough context without distracting from the story of your data.
 
-A map of the whole Czech Republic in original resolution (the accuracy is about 1 meter) would be rather sizeable, and I found it better policy to either:  
+A map of the whole Czech Republic in original resolution (the accuracy is about 1 meter) would be rather sizable, and I found it better policy to either:  
 
  * limit it to a single region (say a NUTS3) or  
  * limit the size by applying `sf::st_simplify()` to the shapefile. Note that RCzechia uses EPSG:4326 projection, with decimal degrees as unit. To simplify to given tolerance in meters you need to first  `sf::st_transform()` it to a different projection, e.g. EPSG:5513 (ing. Křovák).
@@ -243,7 +243,7 @@ print(vystup)
 
 ## Dissolving `sf` Polygons
 
-Creating custom polygons by aggregating administrative units is a common use case in sales reporting and analysis. Function `RCzechia::union_sf()` makes this task easier by dissolving polygons accoring to a value of a data column.
+Creating custom polygons by aggregating administrative units is a common use case in sales reporting and analysis. Function `RCzechia::union_sf()` makes this task easier by dissolving polygons according to a value of a data column.
 
 In this demonstration the Czech LAU1 units are grouped into two categories: those with odd lettered names, and those with even letters. They are then dissolved into two multipolygons.
 
@@ -258,4 +258,48 @@ poly <- RCzechia::okresy("low") %>% # Czech LAU1 regions as sf data frame
   RCzechia::union_sf("oddeven") # ... et facta est lux
 
 plot(poly, key.pos = 1)
+```
+
+## KFME Grid Cells
+
+The Kartierung der Flora Mitteleuropas (KFME) grid is a commonly used technique in biogeography of the Central Europe. It uses a grid of 10" longitude by 6" latitude, with cells numbered from north to south and west to east.
+
+A selection of the grid cells appropriate for faunistical mapping of the Czech Republic is available in the RCzechia package.
+
+This example covers a frequent use case: 
+
+* geocoding a location (via `RCzechia::geocode()`)
+* placing it in a KFME grid cell (via `sf::st_intersection`)
+* plotting the outcome – both as a grid cell and exact location – on a map
+
+
+```{r ctverce, echo = T, eval = T, message = F, warning = F, out.width = "100%",fig.asp = 0.7, dpi = 100}
+library(RCzechia)
+library(ggplot2)
+library(dplyr)
+library(sf)
+
+obec <- "Telč" # a Czech location
+
+# geolocate centroid of a place
+place <- RCzechia::geocode(obec) %>% 
+  filter(typ == "Obec")
+
+# ID of the KFME square containg place geocoded
+ctverec_id <- sf::st_intersection(RCzechia::KFME_grid(), place)$ctverec
+cat(paste0("Location found in grid cell number: ", ctverec_id, "."))
+
+# a summary plot
+ggplot() +
+  geom_sf(data = RCzechia::republika(), size = .85) + # Czech borders
+  geom_sf(data = KFME_grid() %>% filter(ctverec == ctverec_id), # a specific KFME cell
+          fill = "limegreen", alpha = .5) + 
+  geom_sf(data = RCzechia::KFME_grid(), size = .33,
+          color = "gray80", fill = NA) + # all KFME grid cells
+  geom_sf(data = place,  color = "red", pch = 4) +  # actual location
+
+  ggtitle(paste("Location", obec, "in grid cell number", ctverec_id))
+
+
+
 ```

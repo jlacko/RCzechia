@@ -269,7 +269,7 @@ A selection of the grid cells appropriate for faunistical mapping of the Czech R
 This example covers a frequent use case: 
 
 * geocoding a location (via `RCzechia::geocode()`)
-* placing it in a KFME grid cell (via `sf::st_intersection`)
+* assigning it to a KFME grid cell (via `sf::st_intersection`)
 * plotting the outcome – both as a grid cell and exact location – on a map
 
 
@@ -297,7 +297,6 @@ ggplot() +
   geom_sf(data = RCzechia::KFME_grid(), size = .33,
           color = "gray80", fill = NA) + # all KFME grid cells
   geom_sf(data = place,  color = "red", pch = 4) +  # actual location
-
   ggtitle(paste("Location", obec, "in grid cell number", ctverec_id))
 
 

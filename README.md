@@ -6,16 +6,18 @@ This project downloads a set of shapefiles relevant to the Czech Republic. It wa
 </p>
 
 For examples of RCzechia in action please see the package vignette:
-* [Visualizing Czech Population](https://cran.r-project.org/web/packages/RCzechia/vignettes/vignette.html#visualizing-czech-population)
-* [Geocoding Locations & Drawing them on a Map](https://cran.r-project.org/web/packages/RCzechia/vignettes/vignette.html#geocoding-locations-drawing-them-on-a-map)
-* [Unemployment in the Czech Republic - a Chloropleth](https://cran.r-project.org/web/packages/RCzechia/vignettes/vignette.html#unemployment-in-the-czech-republic---a-chloropleth)
-* [Distance Between Prague and Brno](https://cran.r-project.org/web/packages/RCzechia/vignettes/vignette.html#distance-between-prague-and-brno)
-* [Geographical Center of the City of Brno](https://cran.r-project.org/web/packages/RCzechia/vignettes/vignette.html#geographical-center-of-the-city-of-brno)
-* [Interactive Map](https://cran.r-project.org/web/packages/RCzechia/vignettes/vignette.html#interactive-map)
-* [Dissolving sf Polygons](https://cran.r-project.org/web/packages/RCzechia/vignettes/vignette.html#dissolving-sf-polygons)
+
+* [Visualizing Czech Population](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#visualizing-czech-population)
+* [Geocoding Locations & Drawing them on a Map](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#geocoding-locations-drawing-them-on-a-map)
+* [Unemployment in the Czech Republic - a Chloropleth](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#unemployment-in-the-czech-republic---a-chloropleth)
+* [Distance Between Prague and Brno](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#distance-between-prague-and-brno)
+* [Geographical Center of the City of Brno](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#geographical-center-of-the-city-of-brno)
+* [Interactive Map](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#interactive-map)
+* [Dissolving sf Polygons](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#dissolving-sf-polygons)
 
 
 The shapefiles are based on ArcČR 500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) with some adjustments:  
+
  * the encoding was adjusted to handle Czech accents correctly in R  
  * coordinate reference system was changed from a local CRS ([S-JSTK](https://epsg.io/5513-1623)) to global WGS84 ([EPSG:4326](https://epsg.io/4326))   
  * demographic data were removed, as they get out of date rather fast and are very easy to re-attach using the `sf` and `tidyverse` workflow  

@@ -123,6 +123,7 @@ geocode <- function(address, crs = 4326) {
     colnames(result) <- c("target", "typ", "address", "x", "y") # get the names right
 
     result <- sf::st_as_sf(result, coords = c("x", "y")) %>%
+      sf::st_set_agr("constant") %>% # to avoid those pesky warnings
       sf::st_set_crs(crs) # set CRS as required
   } else {
     # if no, then report a failure

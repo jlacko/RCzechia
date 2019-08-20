@@ -67,16 +67,12 @@ To get the geocoded data frame function `RCzechia::geocode()` is used.
 
 ```{r geocode, echo = T, eval = T, message = F, fig.align="center", dpi = 100, out.width = "100%"}
 library(RCzechia)
-library(dplyr)
 library(tmap)
 library(sf)
 
 borders <- RCzechia::republika("low")
 
-rivers <- RCzechia::reky()
-
-rivers <- rivers %>%
-  filter(Major == T)
+rivers <- subset(RCzechia::reky(), Major == T)
 
 mista <- data.frame(misto =  c("Kramářova vila", 
                                "Arcibiskupské zahrady v Kromeříži", 
@@ -146,11 +142,9 @@ library(units)
 
 obce <- RCzechia::obce_polygony()
 
-praha <- obce %>%
-  filter(NAZ_OBEC == "Praha")
+praha <- subset(obce, NAZ_OBEC == "Praha")
 
-brno <- obce %>%
-  filter(NAZ_OBEC == "Brno")
+brno <- subset(obce, NAZ_OBEC == "Brno")
 
 vzdalenost <- sf::st_distance(praha, brno) %>%
   units::set_units("kilometers") # easier to interpret than meters, miles or decimal degrees..
@@ -171,8 +165,7 @@ library(RCzechia)
 library(tmap)
 library(sf)
 
-brno <- RCzechia::obce_polygony() %>%
-  filter(NAZ_OBEC == "Brno")
+brno <- subset(RCzechia::obce_polygony(), NAZ_OBEC == "Brno")
 
 pupek_brna <- brno %>%
   st_transform(5514) %>% # planar CRS (eastings & northings)
@@ -262,9 +255,9 @@ plot(poly, key.pos = 1)
 
 ## KFME Grid Cells
 
-The Kartierung der Flora Mitteleuropas (KFME) grid is a commonly used technique in biogeography of the Central Europe. It uses a grid of 10 × 6 arc-minutes, with cells numbered from north to south and west to east.
+The Kartierung der Flora Mitteleuropas (KFME) grid is a commonly used technique in biogeography of the Central Europe. It uses a grid of 10×6 arc-minutes (in Central European lattitudes this translates to near squares), with cells numbered from north to south and west to east.
 
-A selection of the grid cells appropriate for faunistical mapping of the Czech Republic is available in the RCzechia package.
+A selection of the grid cells relevant for faunistical mapping of the Czech Republic is available in the RCzechia package.
 
 This example covers a frequent use case: 
 
@@ -279,7 +272,7 @@ library(ggplot2)
 library(dplyr)
 library(sf)
 
-obec <- "Vlkov pod Oškobrhem" # a Czech location
+obec <- "Humpolec" # a Czech location
 
 # geolocate centroid of a place
 place <- RCzechia::geocode(obec) %>% 
@@ -290,14 +283,18 @@ ctverec_id <- sf::st_intersection(RCzechia::KFME_grid(), place)$ctverec
 
 print(paste0("Location found in grid cell number ", ctverec_id, "."))
 
+# a single KFME square to be highlighted
+highlighted_cell <- KFME_grid() %>% 
+  filter(ctverec == ctverec_id) 
+
 # a summary plot
 ggplot() +
   geom_sf(data = RCzechia::republika(), size = .85) + # Czech borders
-  geom_sf(data = filter(KFME_grid(), ctverec == ctverec_id), # a specific KFME cell
-          fill = "limegreen", alpha = .5) + 
-  geom_sf(data = RCzechia::KFME_grid(), size = .33,
-          color = "gray80", fill = NA) + # all KFME grid cells
-  geom_sf(data = place,  color = "red", pch = 4) +  # actual location
+  geom_sf(data = highlighted_cell, # a specific KFME cell ...
+          fill = "limegreen", alpha = .5) +  # ... highlighted in lime green
+  geom_sf(data = KFME_grid(), size = .33, # all KFME grid cells, thin
+          color = "gray80", fill = NA) + # in gray and without fill
+  geom_sf(data = place,  color = "red", pch = 4) +  # X marks the spot!
   ggtitle(paste("Location", obec, "in grid cell number", ctverec_id))
 
 ```

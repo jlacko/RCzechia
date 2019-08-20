@@ -241,6 +241,27 @@ context("faunistické čtverce")
 
   expect_error(KFME_grid("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
+  telc <- geocode("Telč") %>%
+    filter(typ == "Obec") %>%  # bod Telč
+    st_set_agr("constant")
+
+  hrcava <- geocode("Hrčava") %>%
+    filter(typ == "Obec") %>%  # bod Hrčava
+    st_set_agr("constant")
+
+  cernousy <- geocode("Černousy") %>%
+    filter(typ == "Obec") %>%  # bod Hrčava
+    st_set_agr("constant")
+
+  expect_equal(sf::st_intersection(KFME_grid("low"), telc)$ctverec, 6858) # bod Telč je ve velkém čtverci 6858
+  expect_equal(sf::st_intersection(KFME_grid("high"), telc)$ctverec, "6858b") # bod Telč je v malém čtverci 6858b
+
+  expect_equal(sf::st_intersection(KFME_grid("low"), hrcava)$ctverec, 6479) # bod Hrčava je ve velkém čtverci 6479
+  expect_equal(sf::st_intersection(KFME_grid("high"), hrcava)$ctverec, "6479c") # bod Hrčava je v malém čtverci 6479c
+
+  expect_equal(sf::st_intersection(KFME_grid("low"), cernousy)$ctverec, 4956) # bod Černousy je ve velkém čtverci 6479
+  expect_equal(sf::st_intersection(KFME_grid("high"), cernousy)$ctverec, "4956c") # bod Černousy je v malém čtverci 6479c
+
 context("integrace")
 
   obec_praha <- obce_body() %>% # bod Praha (určitě správně)
@@ -252,13 +273,8 @@ context("integrace")
   ctverec_praha <- KFME_grid() %>%
     filter(ctverec == 5952) # čtverec "střed Prahy"
 
-  telc <- geocode("Telč") %>%
-    filter(typ == "Obec") %>%  # bod Telč
-    st_set_agr("constant")
-
   expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
   expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1)  # bod Praha je v okresu Praha
 
   expect_equal(st_contains(okres_praha, ctverec_praha)[[1]], 1)  # čtverec Praha je v okresu Praha
 
-  expect_equal(sf::st_intersection(KFME_grid("high"), telc)$ctverec, "6858b") # bod Telč je ve čtverci 6858b

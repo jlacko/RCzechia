@@ -14,6 +14,7 @@ For examples of RCzechia in action please see the package vignette:
 * [Geographical Center of the City of Brno](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#geographical-center-of-the-city-of-brno)
 * [Interactive Map](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#interactive-map)
 * [Dissolving sf Polygons](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#dissolving-sf-polygons)
+* [KFME Grid Cells - faunistické čtverce](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#kfme-grid-cells)
 
 
 The shapefiles are based on ArcČR 500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) with some adjustments:  

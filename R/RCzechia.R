@@ -42,6 +42,7 @@
 #' \itemize{
 #'   \item silnice - roads
 #'   \item zeleznice - railoads
+#'   \item KFME_grid - grid cells (faunistické čtverce) according to Kartierung der Flora Mitteleuropas methodology
 #' }
 #'
 #' @section Utility functions:

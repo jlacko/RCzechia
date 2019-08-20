@@ -88,7 +88,29 @@ faunisticke_ctverce  <- st_make_grid(republika_low_res,
                      5238:5279,
                      5138:5179,
                      5038:5079,
-                     4938:4979))
+                     4938:4979)) %>%
+  st_set_agr("constant")
+
+# faunistické čtverečky = podčtverce
+faunisticke_ctverecky  <- st_make_grid(st_union(faunisticke_ctverce),
+                                       cellsize = c(1/12, 1/20), # velikost čtverce
+                                       offset = c(12, 48.5)) %>% # počátek (= vlevo dole :)
+  st_sf() %>%
+  mutate(id = row_number())
+
+asdf <- faunisticke_ctverce %>%
+  st_contains(faunisticke_ctverecky) %>%
+  as.data.frame() %>%
+  set_names(c("idx_ctverec", "idx_ctverecek"))
+
+asdf$ctverec <- faunisticke_ctverce$ctverec[asdf$idx_ctverec]
+
+asdf$ctverecek <- paste0(asdf$ctverec, c("c", "d", "a", "b"))
+
+faunisticke_ctverecky <- faunisticke_ctverecky %>%
+  inner_join(asdf, by = c("id" = "idx_ctverecek")) %>%
+  select(ctverec = ctverecek) %>%
+  st_set_agr("constant")
 
 
 # use data
@@ -96,6 +118,7 @@ use_data(okresy_low_res,
          kraje_low_res,
          republika_low_res,
          faunisticke_ctverce,
+         faunisticke_ctverecky,
          internal = T,
          overwrite = T)
 

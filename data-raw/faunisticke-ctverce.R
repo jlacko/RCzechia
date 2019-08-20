@@ -1,13 +1,10 @@
 library(sf)
-library(RCzechia)
 library(tidyverse)
-library(devtools)
 
-obrys <- republika("low")
 
-ctverce  <- st_make_grid(obrys,
-                         cellsize = c(1/6, 1/10), # velikost čtverce
-                         offset = c(12, 48.5)) %>% # počátek (= vlevo dole :)
+faunisticke_ctverce  <- st_make_grid(RCzechia::republika("low"),
+                                     cellsize = c(1/6, 1/10), # velikost čtverce
+                                     offset = c(12, 48.5)) %>% # počátek (= vlevo dole :)
   st_sf() %>%
   mutate(ctverec = c(7438:7479,
                      7338:7379,
@@ -36,6 +33,35 @@ ctverce  <- st_make_grid(obrys,
                      5038:5079,
                      4938:4979))
 
-# use data
-use_data(ctverce,
-         internal = T)
+
+faunisticke_ctverecky  <- st_make_grid(st_union(faunisticke_ctverce),
+                                     cellsize = c(1/12, 1/20), # velikost čtverce
+                                     offset = c(12, 48.5)) %>% # počátek (= vlevo dole :)
+  st_sf() %>%
+  mutate(id = row_number())
+
+asdf <- faunisticke_ctverce %>%
+  st_contains(faunisticke_ctverecky) %>%
+  as.data.frame() %>%
+  set_names(c("idx_ctverec", "idx_ctverecek"))
+
+asdf$ctverec <- faunisticke_ctverce$ctverec[asdf$idx_ctverec]
+
+asdf$ctverecek <- paste0(asdf$ctverec, c("c", "d", "a", "b"))
+
+faunisticke_ctverecky <- faunisticke_ctverecky %>%
+  inner_join(asdf, by = c("id" = "idx_ctverecek")) %>%
+  select(ctverec = ctverecek)
+
+
+obec <- "Hrčava" # a Czech location
+
+# geolocate centroid of a place
+place <- RCzechia::geocode(obec) %>%
+  filter(typ == "Obec")
+
+# ID of the KFME square containg place geocoded
+ctverec_id <- sf::st_intersection(faunisticke_ctverecky, place)$ctverec
+cat(paste0("Location found in grid cell number: ", ctverec_id, "."))
+
+# telč = 6858b

@@ -229,10 +229,17 @@ context("faunistické čtverce")
   expect_s3_class(KFME_grid(), "sf")
 
   expect_equal(nrow(KFME_grid()), 26*42) # čtverce jsou všechny
+  expect_equal(nrow(KFME_grid("low")), 26*42) # čtverce jsou všechny
+  expect_equal(nrow(KFME_grid("high")), 4*26*42) # čtverce jsou všechny
 
-  expect_equal(KFME_grid()$ctverec %>% unique() %>% length(), 26*42) # názvy jsou unikátní
+  expect_equal(KFME_grid("low")$ctverec %>% unique() %>% length(), 26*42) # názvy jsou unikátní
+  expect_equal(KFME_grid("high")$ctverec %>% unique() %>% length(), 4*26*42) # názvy jsou unikátní
 
   expect_equal(st_crs(KFME_grid())$epsg, 4326)
+  expect_equal(st_crs(KFME_grid("high"))$epsg, 4326)
+  expect_equal(st_crs(KFME_grid("low"))$epsg, 4326)
+
+  expect_error(KFME_grid("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
 context("integrace")
 
@@ -245,7 +252,13 @@ context("integrace")
   ctverec_praha <- KFME_grid() %>%
     filter(ctverec == 5952) # čtverec "střed Prahy"
 
+  telc <- geocode("Telč") %>%
+    filter(typ == "Obec") %>%  # bod Telč
+    st_set_agr("constant")
+
   expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
   expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1)  # bod Praha je v okresu Praha
 
   expect_equal(st_contains(okres_praha, ctverec_praha)[[1]], 1)  # čtverec Praha je v okresu Praha
+
+  expect_equal(sf::st_intersection(KFME_grid("high"), telc)$ctverec, "6858b") # bod Telč je ve čtverci 6858b

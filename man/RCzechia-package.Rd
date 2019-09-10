@@ -7,12 +7,12 @@
 \description{
 A selection of spatial objects relevant to the Czech Republic. Due to CRAN
 package size requirements (5 MB) the objects are stored externally (on Amazon
-S3) - and therefore could not be implemented as datasets, they are functions
+S3) - and therefore could not be implemented as datasets. They are functions
 returning data frames instead.
 }
 \details{
 To save time (and bandwidth) the downloaded objects are saved locally in
-`tempdir` directory when requested and downloaded at most once \emph{per R
+`tempdir` directory when requested, and downloaded at most once \emph{per R
 session}; out of respect to CRAN Repository Policy a more permanent caching
 on user's side is not attempted.
 
@@ -22,7 +22,10 @@ This means that:
   \item all objects need to be called with (possibly empty) braces
 }
 
-For the most frequently used objects - \strong{republika}, \strong{kraje} and \strong{okresy} - a low resolution version is also implemented. The low resolution data sets are stored locally (and working intenet connection is not necessary to use them).
+For the most frequently used objects - \strong{republika}, \strong{kraje} and
+\strong{okresy} - a low resolution version is also implemented. The low
+resolution data sets are stored locally (and working intenet connection is
+not necessary to use them).
 
 All objects are implemented as \code{sf} data frames.
 }
@@ -53,6 +56,8 @@ All objects are implemented as \code{sf} data frames.
 \itemize{
   \item silnice - roads
   \item zeleznice - railoads
+  \item KFME_grid - grid cells (faunistické čtverce) according to Kartierung
+  der Flora Mitteleuropas methodology
 }
 }
 
@@ -63,8 +68,8 @@ workflow:
 
 \itemize{
   \item union_sf - merging polygons based on a key value
-  \item geocode - geocoding (address to coordinates)
-  \item revgeo - reversely gecoding (coordinates to address)
+  \item geocode - geocoding (from address to coordinates)
+  \item revgeo - reverse gecoding (from coordinates to address)
 }
 }
 

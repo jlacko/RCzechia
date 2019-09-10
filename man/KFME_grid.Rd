@@ -8,9 +8,6 @@
 \describe{
   \item{ctverec}{KFME code of the grid cell; depending on value of `resolution` parameter either 4 digits, or 4 digits + 1 letter}
 }}
-\source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
-}
 \usage{
 KFME_grid(resolution = "low")
 }

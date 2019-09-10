@@ -1,4 +1,9 @@
+## version 1.4.3
+
+  - dependency on {sf} changed from Imports to Depends (loading RCzechia triggers a call of library(sf))
+
 ## version 1.4.2
+
   - KFME grid cells (faunistické čtverce) object added
   
   - minor optimization of geocode() and tests 

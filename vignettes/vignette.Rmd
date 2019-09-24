@@ -14,18 +14,17 @@ vignette: >
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(collapse = T, fig.width = 8, fig.height = 6)
+knitr::opts_chunk$set(collapse = T, fig.align="center", dpi = 150, out.width = "100%", fig.width = 8, fig.height = 4)
 library(httr)
 library(roxygen2)
-
 ```
 ### Visualizing Czech Population
 
 Population of the Czech Republic as per the [latest census](https://www.czso.cz/csu/czso/zakladni-vysledky-scitani-lidu-domu-a-bytu-2011-ceska-republika-2011-eihs9d4gp3) in 2011, per district (okres).
 
 As the population distributed unevenly a log scale is used.
-
-```{r census, echo = T, eval = T, message = F, fig.align="center", dpi = 100, out.width = "100%"}
+  
+```{r census, echo = T, eval = T, message = F}
 library(RCzechia)
 library(ggplot2)
 library(readxl)
@@ -53,9 +52,12 @@ okresni_data <- RCzechia::okresy("low") %>% # data shapefile
 ggplot(data = okresni_data) +
   geom_sf(aes(fill = obyvatel), colour = NA) +
   geom_sf(data = republika(), color = "grey30", fill = NA) +
-  scale_fill_gradient(trans = "log", guide = "colourbar") +
+  scale_fill_viridis_c(trans = "log", labels = scales::comma) +
   labs(title = "Czech population",
-       fill = "pop - log scale")
+       fill = "pop - log scale") +
+  theme_bw() +
+  theme(legend.text.align = 1,
+        legend.title.align = 0.5)
 
 
 
@@ -67,7 +69,7 @@ Drawing a map: three semi-random landmarks on map, with rivers shown for better 
 
 To get the geocoded data frame function `RCzechia::geocode()` is used.
 
-```{r geocode, echo = T, eval = T, message = F, fig.align="center", dpi = 100, out.width = "100%"}
+```{r geocode, echo = T, eval = T, message = F}
 library(RCzechia)
 library(ggplot2)
 library(sf)
@@ -90,7 +92,8 @@ ggplot() +
   geom_sf(data = POI, color = "red", shape = 20, size = 2) +
   geom_sf(data = rivers, color = "steelblue", alpha = 0.5) +
   geom_sf(data = borders, color = "grey30", fill = NA) +
-  labs(title = "Very Special Places")
+  labs(title = "Very Special Places") +
+  theme_bw()
 
 ```
 
@@ -101,7 +104,7 @@ Calculate distance between two spatial objects; the `sf` package supports (via g
 
 Calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
 
-```{r distance, echo = T, eval = T, message = F, fig.align="center", dpi = 100, out.width = "100%"}
+```{r distance, echo = T, eval = T, message = F}
 library(dplyr)
 library(RCzechia)
 library(sf)
@@ -126,7 +129,7 @@ The *metaphysical* center of the Brno City is [well known](https://en.wikipedia.
 
 The center is calculated using `sf::st_centroid()` and reversely geocoded via `RCzechia::revgeo()`.
 
-```{r brno-center, echo = T, eval = T, message = F, fig.align="center", dpi = 100, out.width = "100%"}
+```{r brno-center, echo = T, eval = T, message = F, fig.width = 6, fig.height = 6}
 library(dplyr)
 library(RCzechia)
 library(ggplot2)
@@ -147,7 +150,8 @@ print(adresa_pupku)
 ggplot() +
   geom_sf(data = pupek_brna, col = "red", shape = 4, size = 2) +
   geom_sf(data = brno, color = "grey30", fill = NA) +
-  labs(title = "Geographical Center of Brno")
+  labs(title = "Geographical Center of Brno") +
+  theme_bw()
 
 
 
@@ -186,7 +190,7 @@ podklad <- RCzechia::obce_polygony() %>% # obce_polygony = municipalities in RCz
   inner_join(src, by = "KOD_OBEC") %>% # linking by key
   filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
 
-pal <- colorNumeric(palette = "YlOrBr",  domain = podklad$hodnota)
+pal <- colorNumeric(palette = "viridis",  domain = podklad$hodnota)
 
 leaflet() %>% 
   addProviderTiles("Stamen.Toner") %>% 
@@ -206,8 +210,9 @@ Creating custom polygons by aggregating administrative units is a common use cas
 
 In this demonstration the Czech LAU1 units are grouped into two categories: those with odd lettered names, and those with even letters. They are then dissolved into two multipolygons.
 
-```{r union,  echo = T, eval = T, message = F, out.width = "100%", fig.asp = 0.7, dpi = 100}
+```{r union,  echo = T, eval = T, message = F}
 library(RCzechia)
+library(ggplot2)
 library(dplyr)
 library(sf)
 
@@ -216,7 +221,15 @@ poly <- RCzechia::okresy("low") %>% # Czech LAU1 regions as sf data frame
   mutate(oddeven = ifelse(nchar(NAZ_LAU1) %% 2 == 1, "odd", "even" )) %>% # odd or even?
   RCzechia::union_sf("oddeven") # ... et facta est lux
 
-plot(poly, key.pos = 1)
+# Structure of the "poly" object:
+head(poly)
+
+ggplot(data = poly, aes(fill = key)) +
+  geom_sf() +
+  scale_fill_viridis_d() +
+  labs(title = "Number of characters in names of Czech districts",
+       fill = "Odd or even?")
+
 ```
 
 ## KFME Grid Cells
@@ -232,7 +245,7 @@ This example covers a frequent use case:
 * plotting the outcome – both as a grid cell and exact location – on a map
 
 
-```{r ctverce, echo = T, eval = T, message = F, warning = F, out.width = "100%",fig.asp = 0.7, dpi = 100}
+```{r ctverce, echo = T, eval = T, message = F, warning = F}
 library(RCzechia)
 library(ggplot2)
 library(dplyr)

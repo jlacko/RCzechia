@@ -1,6 +1,7 @@
 ## version 1.4.3
 
   - dependency on {sf} changed from Imports to Depends (loading RCzechia triggers a call of library(sf))
+  - dependency on {tmap} decommissioned
 
 ## version 1.4.2
 

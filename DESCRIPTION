@@ -26,6 +26,7 @@ Suggests:
   readxl,
   units,
   ggplot2,
+  scales, 
   knitr,
   testthat,
   roxygen2,

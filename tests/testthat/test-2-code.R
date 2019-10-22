@@ -8,7 +8,11 @@ obec_praha <- obce_body() %>% # bod Praha (určitě správně)
 
 wtf <- data.frame(col = c(1, 2, 3)) # data frame se sloupcem col - má se rozbít, proto wtf :)
 
+
+# potlačuji warnings - jsme deprecated...
+suppressWarnings({
 # očekávané chyby - špatné zadání
+
 expect_error(union_sf(wtf, "col")) # čekám chybu - není spatial
 expect_error(union_sf(okresy("low"))) # čekám chybu - chybí key
 expect_error(union_sf(key = "col")) # čekám chybu - chybí .data
@@ -17,6 +21,8 @@ expect_error(union_sf(okresy("low"), "bflm")) # čekám chybu - není sloupec z 
 united_praha <- casti() %>% # Praha vzniklá spojením z městských částí
   union_sf("NAZ_OBEC") %>%
   filter(key == "Praha")
+
+}) # /potlačení warnings
 
 ofiko_praha <- kraje() %>% # Praha jako kraj
   filter(KOD_CZNUTS3 == "CZ010")
@@ -35,6 +41,9 @@ expect_equal(st_crs(casti()), st_crs(united_praha))
 
 # Praha z částí a Praha jako kraj jsou stejně velké, plus mínus jedna miliontina
 expect_equal(st_area(united_praha), st_area(ofiko_praha), tolerance = 1e-6)
+
+# očekávám warning - fce je deprecated
+expect_warning(union_sf(okresy("low"), "KOD_CZNUTS3"))
 
 
 context("geocode")

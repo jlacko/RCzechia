@@ -27,6 +27,8 @@
 
 union_sf <- function(data, key, tolerance = 1, planarCRS = 5514) {
 
+  .Deprecated("dplyr::summarize()")
+
   if (missing(data)) stop("required argument data is missing")
   if (missing(key)) stop("required argument key is missing")
   if (!inherits(data, "sf")) stop("data is not a sf object")

@@ -26,7 +26,7 @@ vyskopis <- function(format = "rayshaded") {
 
   if (!is.element(format, c("actual", "rayshaded"))) {
 
-    stop(paste(resolution, "is not a valid format; recognized values are \"actual\" or \"rayshaded\"."))
+    stop(paste(format, "is not a valid format; recognized values are \"actual\" or \"rayshaded\"."))
 
   } # /if - valid resolution
 

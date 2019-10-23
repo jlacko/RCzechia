@@ -25,6 +25,8 @@ Due to package size constraints both versions are stored externally (and a worki
 }
 \examples{
 
+library(raster)
+
 relief <- vyskopis("rayshaded")
 
 plot(relief, col = gray.colors(16))

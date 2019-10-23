@@ -59,12 +59,12 @@ Key is KOD.
 * **chr_uzemi**: protected natural areas (Chráněná území)
 * **lesy**: woodland areas (more than 30 ha in area)
 * **KFME_grid**: KFME grid cells (faunistické čtverce)
-* **vyskopis**: relief of the Czech republic as a {raster} package object
+* **vyskopis**: terrain of the Czech republic as a {raster} package object
 
 All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).
 
 ### In addition a number of utility functions is provided:  
-* **union_sf**: (deprecated in v1.4.3) dissolves `sf` polygons according to a key value
+* **union_sf**: dissolves `sf` polygons according to a key value
 * **geocode**: interfaces to geocoding API of [ČÚZK](https://cuzk.cz/en).
 * **revgeo**: interfaces to reverse geocoding API of [ČÚZK](https://cuzk.cz/en).
 

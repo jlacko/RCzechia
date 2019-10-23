@@ -5,8 +5,6 @@
   - dependency on {sf} changed from Imports to Depends (loading RCzechia triggers load of sf)  
   
   - dependency on {tmap} decommissioned
-  
-  - union_sf function is deprecated, expected to be retired soon™
 
 ## version 1.4.2
 

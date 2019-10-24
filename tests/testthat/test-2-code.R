@@ -38,9 +38,6 @@ expect_equal(st_crs(casti()), st_crs(united_praha))
 # Praha z částí a Praha jako kraj jsou stejně velké, plus mínus jedna miliontina
 expect_equal(st_area(united_praha), st_area(ofiko_praha), tolerance = 1e-6)
 
-# očekávám warning - fce je deprecated
-expect_warning(union_sf(okresy("low"), "KOD_CZNUTS3"))
-
 
 context("geocode")
 

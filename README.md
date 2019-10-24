@@ -15,6 +15,7 @@ For examples of RCzechia in action please see the package vignette:
 * [Interactive Map](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#interactive-map)
 * [Dissolving sf Polygons](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#dissolving-sf-polygons)
 * [KFME Grid Cells - faunistické čtverce](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#kfme-grid-cells)
+* [Terrain of the Czech Republic](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#terrain-of-the-czech-republic)
 
 
 The shapefiles are based on ArcČR 500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) with some adjustments:  

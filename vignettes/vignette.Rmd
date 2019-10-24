@@ -207,7 +207,11 @@ leaflet() %>%
 
 ## Dissolving `sf` Polygons
 
-Creating custom polygons by aggregating administrative units is a common use case in sales reporting and analysis. Function `RCzechia::union_sf()` makes this task easier by dissolving polygons according to a value of a data column.
+Creating custom polygons by aggregating administrative units is a common use case in sales reporting and analysis.
+
+In many use cases a simple `dplyr::group_by() %>% dplyr::summarize()` call will do. Some shapefiles (unfortunately including the ArcČR®500, on which `{RCzechia}` is based) are not that well behaved, and require repairing of faulty geometry.
+
+Function `RCzechia::union_sf()` makes this task easier by automating some of the more common polygon repair tricks.
 
 In this demonstration the Czech LAU1 units are grouped into two categories: those with odd lettered names, and those with even letters. They are then dissolved into two multipolygons.
 
@@ -282,7 +286,7 @@ ggplot() +
 ```
 
     
-## Relief of the Czech Republic
+## Terrain of the Czech Republic
 
 Understanding the lay of the land is important in many use cases in physical sciences; one of them is interpreting the flow of rivers. 
 

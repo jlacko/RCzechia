@@ -1,6 +1,5 @@
 library(dplyr)
 library(httr)
-library(sf)
 
 context("republika")
 
@@ -281,7 +280,7 @@ context("reliéf")
   expect_equal(vyskopis("actual")@nrows, 3403) # řádky jsou všechny
   expect_equal(vyskopis("rayshaded")@nrows, 3403) # řádky jsou všechny
 
-  # test projekce
+  # test projekce - WGS84 pure & unadultered
   expect_equal(projection(crs(vyskopis())), "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
   expect_equal(projection(crs(vyskopis("actual"))), "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
   expect_equal(projection(crs(vyskopis("rayshaded"))), "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")

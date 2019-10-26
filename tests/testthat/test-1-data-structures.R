@@ -1,6 +1,5 @@
 library(dplyr)
 library(httr)
-library(sf)
 
 context("republika")
 
@@ -259,8 +258,35 @@ context("faunistické čtverce")
   expect_equal(sf::st_intersection(KFME_grid("low"), hrcava)$ctverec, 6479) # bod Hrčava je ve velkém čtverci 6479
   expect_equal(sf::st_intersection(KFME_grid("high"), hrcava)$ctverec, "6479c") # bod Hrčava je v malém čtverci 6479c
 
-  expect_equal(sf::st_intersection(KFME_grid("low"), cernousy)$ctverec, 4956) # bod Černousy je ve velkém čtverci 6479
-  expect_equal(sf::st_intersection(KFME_grid("high"), cernousy)$ctverec, "4956c") # bod Černousy je v malém čtverci 6479c
+  expect_equal(sf::st_intersection(KFME_grid("low"), cernousy)$ctverec, 4956) # bod Černousy je ve velkém čtverci 4956
+  expect_equal(sf::st_intersection(KFME_grid("high"), cernousy)$ctverec, "4956c") # bod Černousy je v malém čtverci 4956c
+
+context("reliéf")
+
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(vyskopis(), "internet") # zpráva o chybějícím internetu
+  Sys.setenv("NETWORK_UP" = TRUE)
+
+  expect_s4_class(vyskopis(), "RasterLayer")
+  expect_s4_class(vyskopis("actual"), "RasterLayer")
+  expect_s4_class(vyskopis("rayshaded"), "RasterLayer")
+
+  # test velikosti
+  expect_equal(vyskopis()@ncols, 5084) # sloupce jsou všechny
+  expect_equal(vyskopis("actual")@ncols, 5084) # sloupce jsou všechny
+  expect_equal(vyskopis("rayshaded")@ncols, 5084) # sloupce jsou všechny
+
+  expect_equal(vyskopis()@nrows, 3403) # řádky jsou všechny
+  expect_equal(vyskopis("actual")@nrows, 3403) # řádky jsou všechny
+  expect_equal(vyskopis("rayshaded")@nrows, 3403) # řádky jsou všechny
+
+  # test projekce - WGS84 pure & unadultered
+  expect_equal(projection(crs(vyskopis())), "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
+  expect_equal(projection(crs(vyskopis("actual"))), "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
+  expect_equal(projection(crs(vyskopis("rayshaded"))), "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
+
+  # očekávaná chyba
+  expect_error(vyskopis("bflm")) # neznámé rozlišení - očekávám actual / rayshaded
 
 context("integrace")
 

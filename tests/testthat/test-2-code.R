@@ -8,7 +8,9 @@ obec_praha <- obce_body() %>% # bod Praha (určitě správně)
 
 wtf <- data.frame(col = c(1, 2, 3)) # data frame se sloupcem col - má se rozbít, proto wtf :)
 
+
 # očekávané chyby - špatné zadání
+
 expect_error(union_sf(wtf, "col")) # čekám chybu - není spatial
 expect_error(union_sf(okresy("low"))) # čekám chybu - chybí key
 expect_error(union_sf(key = "col")) # čekám chybu - chybí .data

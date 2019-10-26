@@ -4,7 +4,7 @@
 #'
 #' The function has data frame as the first argument, so it is pipe friendly. It retains only geometry and key value, dropping all other columns (they are easy to re-attach using tidyverse/dplyr workflow if required).
 #'
-#'During processing the sf data frame is temporarily transformed to planar coordinates and - to avoid artefacts (slivers) at the place of former boundaries - buffered; the default values of \code{planarCRS} and \code{tolerance} should cover most situations in the Czech Republic and near abroad.
+#' During processing the sf data frame is temporarily transformed to planar coordinates and - to avoid artefacts (slivers) at the place of former boundaries - buffered; the default values of \code{planarCRS} and \code{tolerance} should cover most situations in the Czech Republic and near abroad.
 #'
 #' @param data sf data frame to be aggregated
 #' @param key name of column to define the output objects
@@ -26,6 +26,7 @@
 #'}
 
 union_sf <- function(data, key, tolerance = 1, planarCRS = 5514) {
+
 
   if (missing(data)) stop("required argument data is missing")
   if (missing(key)) stop("required argument key is missing")

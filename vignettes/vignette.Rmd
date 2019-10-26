@@ -51,13 +51,14 @@ okresni_data <- RCzechia::okresy("low") %>% # data shapefile
 
 ggplot(data = okresni_data) +
   geom_sf(aes(fill = obyvatel), colour = NA) +
-  geom_sf(data = republika(), color = "grey30", fill = NA) +
+  geom_sf(data = republika(), color = "gray30", fill = NA) +
   scale_fill_viridis_c(trans = "log", labels = scales::comma) +
   labs(title = "Czech population",
-       fill = "pop - log scale") +
+       fill = "population\n(log scale)") +
   theme_bw() +
   theme(legend.text.align = 1,
         legend.title.align = 0.5)
+
 
 
 
@@ -69,7 +70,7 @@ Drawing a map: three semi-random landmarks on map, with rivers shown for better 
 
 To get the geocoded data frame function `RCzechia::geocode()` is used.
 
-```{r geocode, echo = T, eval = T, message = F}
+```{r geocode, echo = T, eval = T, message = F, warning = F,fig.width = 8, fig.height = 5}
 library(RCzechia)
 library(ggplot2)
 library(sf)
@@ -89,7 +90,7 @@ mista <- data.frame(misto =  c("Kramářova vila",
 POI <- RCzechia::geocode(mista$adresa) 
 
 ggplot() +
-  geom_sf(data = POI, color = "red", shape = 20, size = 2) +
+  geom_sf(data = POI, color = "red", shape = 4, size = 2) +
   geom_sf(data = rivers, color = "steelblue", alpha = 0.5) +
   geom_sf(data = borders, color = "grey30", fill = NA) +
   labs(title = "Very Special Places") +
@@ -206,7 +207,11 @@ leaflet() %>%
 
 ## Dissolving `sf` Polygons
 
-Creating custom polygons by aggregating administrative units is a common use case in sales reporting and analysis. Function `RCzechia::union_sf()` makes this task easier by dissolving polygons according to a value of a data column.
+Creating custom polygons by aggregating administrative units is a common use case in sales reporting and analysis.
+
+In many use cases a simple `dplyr::group_by() %>% dplyr::summarize()` call will do. Some shapefiles (unfortunately including the ArcČR®500, on which `{RCzechia}` is based) are not that well behaved, and require repairing of faulty geometry.
+
+Function `RCzechia::union_sf()` makes this task easier by automating some of the more common polygon repair tricks.
 
 In this demonstration the Czech LAU1 units are grouped into two categories: those with odd lettered names, and those with even letters. They are then dissolved into two multipolygons.
 
@@ -228,13 +233,14 @@ ggplot(data = poly, aes(fill = key)) +
   geom_sf() +
   scale_fill_viridis_d() +
   labs(title = "Number of characters in names of Czech districts",
-       fill = "Odd or even?")
+       fill = "Odd or even?") +
+  theme_bw()
 
 ```
 
 ## KFME Grid Cells
 
-The Kartierung der Flora Mitteleuropas (KFME) grid is a commonly used technique in biogeography of the Central Europe. It uses a grid of 10×6 arc-minutes (in Central European lattitudes this translates to near squares), with cells numbered from north to south and west to east.
+The Kartierung der Flora Mitteleuropas (KFME) grid is a commonly used technique in biogeography of the Central Europe. It uses a grid of 10×6 arc-minutes (in Central European latitudes this translates to near squares), with cells numbered from north to south and west to east.
 
 A selection of the grid cells relevant for faunistical mapping of the Czech Republic is available in the RCzechia package.
 
@@ -245,7 +251,7 @@ This example covers a frequent use case:
 * plotting the outcome – both as a grid cell and exact location – on a map
 
 
-```{r ctverce, echo = T, eval = T, message = F, warning = F}
+```{r ctverce, echo = T, eval = T, message = F, warning = F,fig.width = 8, fig.height = 5}
 library(RCzechia)
 library(ggplot2)
 library(dplyr)
@@ -274,6 +280,43 @@ ggplot() +
   geom_sf(data = KFME_grid(), size = .33, # all KFME grid cells, thin
           color = "gray80", fill = NA) + # in gray and without fill
   geom_sf(data = place,  color = "red", pch = 4) +  # X marks the spot!
-  ggtitle(paste("Location", obec, "in grid cell number", ctverec_id))
+  ggtitle(paste("Location", obec, "in grid cell number", ctverec_id)) +
+  theme_bw()
+
+```
+
+    
+## Terrain of the Czech Republic
+
+Understanding the lay of the land is important in many use cases in physical sciences; one of them is interpreting the flow of rivers. 
+
+Visualizing the slope & height of terrain is an important first step in understanding it.
+
+Package RCzechia supports two versions of relief visualization: 
+
+* actual elevation model (meters above sea level)  
+* shaded relief   
+
+This example covers the second option.
+
+```{r relief, echo = T, eval = T, message = F, warning = F,fig.width = 8, fig.height = 5}
+library(RCzechia)
+library(ggplot2)
+library(dplyr)
+library(raster)
+
+# ggplot does not play nice with {raster} package; a data frame is required
+relief <- vyskopis("rayshaded") %>% 
+  as("SpatialPixelsDataFrame") %>% 
+  as_tibble()
+
+ggplot() +
+  geom_raster(data = relief, aes(x = x, y  = y, alpha = -raytraced), # relief
+              fill = "gray30",  show.legend = F) + # no legend is necessary
+  geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
+          color = "steelblue", alpha = .7) +
+  labs(title = "Czech Rivers & Their Basins") +
+  theme_bw() +
+  theme(axis.title = element_blank())
 
 ```

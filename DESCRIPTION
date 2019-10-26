@@ -14,19 +14,20 @@ Encoding: UTF-8
 LazyData: true
 Depends:
   R (>= 3.3.0),
-  sf
+  sf,
+  raster
 Imports:
+  curl,
   httr,
   lwgeom,
-  magrittr,
-  curl,
-  jsonlite
+  jsonlite,
+  magrittr
 Suggests:
   dplyr,
   readxl,
   units,
   ggplot2,
-  scales, 
+  scales,
   knitr,
   testthat,
   roxygen2,

@@ -202,7 +202,7 @@ leaflet() %>%
 
 ```
 <p align="center">
-<img src="http://github.com/jlacko/RCzechia/blob/master/data-raw/interactive-screenshot.png?raw=true"" alt="This is just a screenshot of the visualization, so it's not interactive. You can play with the interactive version by running the code shown.">
+<img src="http://github.com/jlacko/RCzechia/blob/master/data-raw/interactive-screenshot.png?raw=true" alt="This is just a screenshot of the visualization, so it's not interactive. You can play with the interactive version by running the code shown.">
 </p>
 
 ## Dissolving `sf` Polygons

@@ -2,7 +2,7 @@ Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
 Version: 1.4.3
-Date: 2019-XX-XX
+Date: 2019-10-28
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: Administrative regions and other spatial objects of the Czech Republic.
@@ -14,8 +14,7 @@ Encoding: UTF-8
 LazyData: true
 Depends:
   R (>= 3.3.0),
-  sf,
-  raster
+  sf
 Imports:
   curl,
   httr,
@@ -23,6 +22,7 @@ Imports:
   jsonlite,
   magrittr
 Suggests:
+  raster,
   dplyr,
   readxl,
   units,

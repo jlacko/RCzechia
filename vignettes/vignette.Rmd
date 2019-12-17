@@ -140,6 +140,7 @@ brno <- subset(RCzechia::obce_polygony(), NAZ_OBEC == "Brno")
 
 pupek_brna <- brno %>%
   st_transform(5514) %>% # planar CRS (eastings & northings)
+  st_set_agr('constant') %>%  # not strictly necessary, but avoids error message
   sf::st_centroid(brno) # calculate central point of a polygon
 
 # the revgeo() function takes a sf points data frame and returns it back

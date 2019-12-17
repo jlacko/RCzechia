@@ -55,5 +55,4 @@ Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \examples{
 asdf <- geocode("Pod sídlištěm 9, Praha 8") # physical address of ČÚZK
 print(asdf)
-
 }

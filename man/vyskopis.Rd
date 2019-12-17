@@ -30,5 +30,4 @@ library(raster)
 relief <- vyskopis("rayshaded")
 
 plot(relief, col = gray.colors(16))
-
 }

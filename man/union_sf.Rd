@@ -4,7 +4,7 @@
 \alias{union_sf}
 \title{Aggregate Polygons in a \code{sf} Object}
 \usage{
-union_sf(data, key, tolerance = 1, planarCRS = 5514)
+union_sf(data, key, tolerance = 1, planar_CRS = 5514)
 }
 \arguments{
 \item{data}{sf data frame to be aggregated}
@@ -13,7 +13,7 @@ union_sf(data, key, tolerance = 1, planarCRS = 5514)
 
 \item{tolerance}{buffer size for avoiding artefacts (slivers); default is one meter}
 
-\item{planarCRS}{planar CRS for avoiding artefacts (slivers); default is EPSG:5514 = ing. Křovák}
+\item{planar_CRS}{planar CRS for avoiding artefacts (slivers); default is EPSG:5514 = ing. Křovák}
 }
 \description{
 The function aggregates polygons of geometry column of a \code{sf} data frame according to values of a single data column. It has outcome comparable to \code{unionSpatialPolygons} from \code{maptools} package, except that it works on \code{sf} and not \code{sp} objects.
@@ -25,11 +25,12 @@ During processing the sf data frame is temporarily transformed to planar coordin
 }
 \examples{
 \donttest{
+#  library(sf)
 
 NUTS3 <- union_sf(okresy(), "KOD_CZNUTS3")
-  # assembles NUTS3 regions from LAU1 regions of Czech Republic = equivalent to kraje() in geometry
+# assembles NUTS3 regions from LAU1 regions of Czech Republic = equivalent to kraje() in geometry
 
 plot(NUTS3)
-
 }
+
 }

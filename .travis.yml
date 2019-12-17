@@ -1,5 +1,5 @@
 language: r
-dist: bionic
+dist: xenial
 sudo: false
 
 cache:

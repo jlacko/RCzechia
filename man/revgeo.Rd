@@ -34,10 +34,11 @@ library(dplyr)
 library(sf)
 
 brno <- obce_polygony() \%>\% # shapefile of Brno
-   filter(NAZ_OBEC == "Brno")
+  filter(NAZ_OBEC == "Brno") \%>\%
+  st_set_crs(5514) \%>\% # a planar CRS
+  st_set_agr("constant") # to avoid raising a warning
 
 pupek_brna <- st_centroid(brno) # calculate centroid
 
 adresa_pupku <- revgeo(pupek_brna)$revgeocoded # address of the center
-
 }

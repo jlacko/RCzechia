@@ -24,7 +24,6 @@ The function returns a {sf} data frame of grid cells. Depending on the value of 
 library(ggplot2)
 
 ggplot() +
-   geom_sf(data = republika("low")) +
-   geom_sf(data = KFME_grid("low"), fill = NA)
-
+  geom_sf(data = republika("low")) +
+  geom_sf(data = KFME_grid("low"), fill = NA)
 }

@@ -30,5 +30,4 @@ library(sf)
 
 hranice <- kraje()
 plot(hranice, col = "white", max.plot = 1)
-
 }

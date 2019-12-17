@@ -47,32 +47,33 @@
 #' @examples
 #' asdf <- geocode("Pod sídlištěm 9, Praha 8") # physical address of ČÚZK
 #' print(asdf)
-#'
 #' @export
 #' @importFrom magrittr %>%
 #'
 
 
 geocode <- function(address, crs = 4326) {
-
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
   if (missing(address)) stop("required argument address is missing")
 
 
-  result <- data.frame(target = character(),
-                       typ = character(),
-                       address = character(),
-                       x = double(),
-                       y = double()) # initiation; empty...
+  result <- data.frame(
+    target = character(),
+    typ = character(),
+    address = character(),
+    x = double(),
+    y = double()
+  ) # initiation; empty...
 
   for (i in seq_along(address)) {
-
     cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
       utils::URLencode() # get rid of funny Czech characters
 
-    query <- paste0("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find",
-              "?text=", cil, "&outSR=", crs, "&maxLocations50=&f=pjson")
+    query <- paste0(
+      "http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find",
+      "?text=", cil, "&outSR=", crs, "&maxLocations50=&f=pjson"
+    )
 
     resp <- httr::GET(query)
 
@@ -107,13 +108,14 @@ geocode <- function(address, crs = 4326) {
 
       # if yes, rbind the current result to global
       result <- result %>%
-        rbind(data.frame(target = address[i], # string queried
-                         typ = typ["Type"], # type of response, as per https://cuzk.cz/
-                         address = adresa["Match_addr"],   # address matched
-                         x = s3["x"],  # x coordinate
-                         y = s3["y"])) # y coordinate
+        rbind(data.frame(
+          target = address[i], # string queried
+          typ = typ["Type"], # type of response, as per https://cuzk.cz/
+          address = adresa["Match_addr"], # address matched
+          x = s3["x"], # x coordinate
+          y = s3["y"]
+        )) # y coordinate
     } # /if
-
   } # /for
 
   if (nrow(result) > 0) { # was the *global* geocoding successful?

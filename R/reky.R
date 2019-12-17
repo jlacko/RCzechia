@@ -18,7 +18,6 @@
 #' @export
 
 reky <- function() {
-
   result <- downloader("Reky.rds")
   result
 }

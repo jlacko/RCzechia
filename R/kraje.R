@@ -21,25 +21,17 @@
 #'
 #' hranice <- kraje()
 #' plot(hranice, col = "white", max.plot = 1)
-#'
 #' @export
 
 kraje <- function(resolution = "high") {
-
   if (!is.element(resolution, c("high", "low"))) {
-
-      stop(paste(resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
-
-    }
+    stop(paste(resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
+  }
 
   if (resolution == "low") {
-
     return(kraje_low_res)
-
   } else {
-
     result <- downloader("Kraje.rds")
     result
   }
 }
-

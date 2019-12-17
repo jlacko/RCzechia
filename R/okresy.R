@@ -27,23 +27,16 @@
 #'
 #' object.size(okresy("low"))
 #' object.size(okresy("high"))
-#'
 #' @export
 
 okresy <- function(resolution = "high") {
-
   if (!is.element(resolution, c("high", "low"))) {
-
     stop(paste(resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
-
   }
 
   if (resolution == "low") {
-
     return(okresy_low_res)
-
   } else {
-
     result <- downloader("Okresy.rds")
     result
   }

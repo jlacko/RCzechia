@@ -15,25 +15,17 @@
 #'
 #' hranice <- republika()
 #' plot(hranice, col = "white")
-#'
 #' @export
 
 
 republika <- function(resolution = "high") {
-
-
   if (!is.element(resolution, c("high", "low"))) {
-
     stop(paste(resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
-
   }
 
   if (resolution == "low") {
-
     return(republika_low_res)
-
   } else {
-
     result <- downloader("Republika.rds")
     result
   }

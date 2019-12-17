@@ -21,25 +21,17 @@
 #' relief <- vyskopis("rayshaded")
 #'
 #' plot(relief, col = gray.colors(16))
-#'
 #' @export
 
 
 vyskopis <- function(format = "rayshaded") {
-
-
   if (!is.element(format, c("actual", "rayshaded"))) {
-
     stop(paste(format, "is not a valid format; recognized values are \"actual\" or \"rayshaded\"."))
-
   } # /if - valid resolution
 
   if (format == "rayshaded") {
-
     result <- downloader("Vyskopis-stiny.rds")
-
   } else {
-
     result <- downloader("Vyskopis-vyska.rds")
   } # /if - download of result
 

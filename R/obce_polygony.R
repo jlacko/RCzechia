@@ -31,16 +31,12 @@
 #' library(dplyr)
 #'
 #' praha <- obce_polygony() %>%
-#'    filter(NAZ_LAU1 == "Praha")
+#'   filter(NAZ_LAU1 == "Praha")
 #'
 #' plot(praha, max.plot = 1)
-#'
 #' @export
 
 obce_polygony <- function() {
-
   result <- downloader("ObceP.rds")
   result
 }
-
-

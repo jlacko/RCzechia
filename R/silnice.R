@@ -17,7 +17,6 @@
 #' @export
 
 silnice <- function() {
-
   result <- downloader("Silnice.rds")
   result
 }

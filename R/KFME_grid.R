@@ -16,27 +16,18 @@
 #' library(ggplot2)
 #'
 #' ggplot() +
-#'    geom_sf(data = republika("low")) +
-#'    geom_sf(data = KFME_grid("low"), fill = NA)
-#'
+#'   geom_sf(data = republika("low")) +
+#'   geom_sf(data = KFME_grid("low"), fill = NA)
 #' @export
 
 KFME_grid <- function(resolution = "low") {
   if (!is.element(resolution, c("high", "low"))) {
-
     stop(paste(resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
-
   }
 
   if (resolution == "low") {
-
     return(faunisticke_ctverce)
-
   } else {
-
     return(faunisticke_ctverecky)
-
   }
 }
-
-

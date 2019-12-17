@@ -41,8 +41,10 @@ expect_equal(st_area(united_praha), st_area(ofiko_praha), tolerance = 1e-6)
 
 context("geocode")
 
-dos_sochoros <- c("pplk. Sochora 4, Praha", # platná adresa
-                  "pplk. Sochora 4, Čierna pri Čope") # neplatná adresa
+dos_sochoros <- c(
+  "pplk. Sochora 4, Praha", # platná adresa
+  "pplk. Sochora 4, Čierna pri Čope"
+) # neplatná adresa
 
 # očekávané chyby - špatné zadání
 expect_error(geocode()) # čekám chybu - není cíl
@@ -54,7 +56,7 @@ Sys.setenv("NETWORK_UP" = TRUE)
 # vrací se sf objekt
 expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
 
-#správné hlavičky sloupců
+# správné hlavičky sloupců
 expect_equal(geocode(dos_sochoros) %>% colnames(), c("target", "typ", "address", "geometry"))
 
 # CRS má očekávanou hodnotu
@@ -77,9 +79,11 @@ context("revgeo")
 sochor_wgs <- geocode(dos_sochoros[1]) # podle WGS84
 sochor_krovak <- st_transform(sochor_wgs, 5514) # totéž, dle Křováka
 
-amerika <- data.frame(place = c("Statue of Liberty", "Golden Gate Bridge"), # zcela jasně out of scope pro ČÚZK
-                            x = c(-74.044444, -122.478611),
-                            y = c(40.689167, 37.819722)) %>%
+amerika <- data.frame(
+  place = c("Statue of Liberty", "Golden Gate Bridge"), # zcela jasně out of scope pro ČÚZK
+  x = c(-74.044444, -122.478611),
+  y = c(40.689167, 37.819722)
+) %>%
   st_as_sf(coords = c("x", "y")) %>%
   st_set_crs(4326)
 
@@ -108,5 +112,3 @@ expect_equal(revgeo(tres_sochoros)$revgeocoded, rep("Pplk. Sochora 1391/4, Hole�
 
 # platný sf objekt, ale out of scope českého katastru
 expect_equal(revgeo(amerika)$revgeocoded %>% is.na() %>% unique(), T) # vrací se pouze NA ...
-
-

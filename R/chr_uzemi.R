@@ -17,8 +17,7 @@
 #'
 #' @export
 
-chr_uzemi  <- function() {
-
+chr_uzemi <- function() {
   result <- downloader("ChrUzemi.rds")
   result
 }

@@ -18,7 +18,6 @@
 #' @export
 
 zeleznice <- function() {
-
   result <- downloader("Zeleznice.rds")
   result
 }

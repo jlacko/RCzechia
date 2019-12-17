@@ -30,7 +30,6 @@
 #' @export
 
 obce_body <- function() {
-
   result <- downloader("ObceB.rds")
   result
 }

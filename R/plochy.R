@@ -20,7 +20,6 @@
 #' @export
 
 plochy <- function() {
-
   result <- downloader("Plochy.rds")
   result
 }

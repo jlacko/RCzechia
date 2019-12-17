@@ -1,3 +1,10 @@
+## version 1.4.9999
+  
+  - tidyverse style guide applied
+  
+  - examples updated to resolve warnings
+
+
 ## version 1.4.3
 
   - vyskopis() function added to facilitate rasters of Czech relief; dependency on {raster} introduced

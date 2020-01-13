@@ -14,8 +14,7 @@ downloader <- function(file) {
   if (file.exists(local_file)) {
     message("RCzechia: using temporary local dataset.")
   } else {
-    if (httr::http_error(remote_file) | !network) { # network is down = message (not an error anymore)
-
+    if (!curl::has_internet() | httr::http_error(remote_file) | !network) { # network is down, real or fake
       message("No internet connection or data source broken.")
       return(NULL)
     } else { # network is up = proceed to download via curl

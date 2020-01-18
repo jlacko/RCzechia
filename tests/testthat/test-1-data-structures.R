@@ -7,6 +7,10 @@ Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(republika(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
 
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(republika(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
 expect_true(is.data.frame(republika()))
 expect_true(is.data.frame(republika("low")))
 expect_true(is.data.frame(republika("high")))
@@ -35,6 +39,10 @@ Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(kraje(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
 
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(kraje(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
 expect_true(is.data.frame(kraje()))
 expect_true(is.data.frame(kraje("low")))
 expect_true(is.data.frame(kraje("high")))
@@ -62,6 +70,10 @@ Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(okresy(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
 
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(okresy(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
 expect_true(is.data.frame(okresy()))
 expect_true(is.data.frame(okresy("low")))
 expect_true(is.data.frame(okresy("high")))
@@ -87,6 +99,10 @@ Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(orp_polygony(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
 
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(orp_polygony(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
 expect_true(is.data.frame(orp_polygony()))
 
 expect_s3_class(orp_polygony(), "sf")
@@ -100,6 +116,10 @@ context("obce body")
 Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(obce_body(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
+
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(obce_body(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
 
 expect_true(is.data.frame(obce_body()))
 
@@ -115,6 +135,10 @@ Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(obce_polygony(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
 
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(obce_polygony(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
 expect_true(is.data.frame(obce_polygony()))
 
 expect_s3_class(obce_polygony(), "sf")
@@ -128,6 +152,10 @@ context("městské části")
 Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(casti(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
+
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(casti(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
 
 expect_true(is.data.frame(casti()))
 
@@ -143,6 +171,10 @@ Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(plochy(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
 
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(plochy(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
 expect_true(is.data.frame(plochy()))
 
 expect_s3_class(plochy(), "sf")
@@ -156,6 +188,10 @@ context("řeky")
 Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(reky(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
+
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(reky(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
 
 expect_true(is.data.frame(reky()))
 
@@ -171,6 +207,10 @@ Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(silnice(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
 
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(silnice(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
 expect_true(is.data.frame(silnice()))
 
 expect_s3_class(silnice(), "sf")
@@ -184,6 +224,10 @@ context("železnice")
 Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(zeleznice(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
+
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(zeleznice(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
 
 expect_true(is.data.frame(zeleznice()))
 
@@ -199,6 +243,10 @@ Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(chr_uzemi(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
 
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(chr_uzemi(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
 expect_true(is.data.frame(chr_uzemi()))
 
 expect_s3_class(chr_uzemi(), "sf")
@@ -212,6 +260,10 @@ context("lesy")
 Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(lesy(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
+
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(lesy(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
 
 expect_true(is.data.frame(lesy()))
 
@@ -266,6 +318,10 @@ context("reliéf")
 Sys.setenv("NETWORK_UP" = FALSE)
 expect_message(vyskopis(), "internet") # zpráva o chybějícím internetu
 Sys.setenv("NETWORK_UP" = TRUE)
+
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(vyskopis(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
 
 expect_s4_class(vyskopis(), "RasterLayer")
 expect_s4_class(vyskopis("actual"), "RasterLayer")

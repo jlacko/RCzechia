@@ -7,7 +7,7 @@
 #' During processing the sf data frame is temporarily transformed to planar coordinates and - to avoid artefacts (slivers) at the place of former boundaries - buffered; the default values of \code{planarCRS} and \code{tolerance} should cover most situations in the Czech Republic and near abroad.
 #'
 #' @param data sf data frame to be aggregated
-#' @param key name of column to define the output objects
+#' @param key name of a single column to define the output objects
 #' @param tolerance buffer size for avoiding artefacts (slivers); default is one meter
 #' @param planar_CRS planar CRS for avoiding artefacts (slivers); default is EPSG:5514 = ing. Křovák
 #'
@@ -25,10 +25,11 @@
 #' }
 #'
 union_sf <- function(data, key, tolerance = 1, planar_CRS = 5514) {
-  if (missing(data)) stop("required argument data is missing")
-  if (missing(key)) stop("required argument key is missing")
-  if (!inherits(data, "sf")) stop("data is not a sf object")
-  if (!is.element(key, colnames(data))) stop("key is not a recognized column of .data")
+  if (missing(data)) stop("required argument `data` is missing")
+  if (missing(key)) stop("required argument `key` is missing")
+  if (length(key) != 1) stop("a single `key` value is required")
+  if (!inherits(data, "sf")) stop("`data` is not a {sf} object")
+  if (!is.element(key, colnames(data))) stop("`key` is not a recognized column of `data`")
 
   wrk_crs <- sf::st_crs(data) # save the current CRS
   data <- sf::st_transform(data, planar_CRS) # transform to a temporary metric CRS
@@ -45,13 +46,14 @@ union_sf <- function(data, key, tolerance = 1, planar_CRS = 5514) {
       sf::st_union() %>% # unite!
       sf::st_buffer(-tolerance) %>% # remove the magical dust to preserve area
       sf::st_sf() %>% # extract geometry only
-      dplyr::mutate(key = ids[i]) # add key column
+      dplyr::mutate(!!key := ids[i]) # add key column
 
     if (i == 1) { # is this the first row?
       res <- wrk # assing current working data frame as result
     } else {
       res <- rbind(res, wrk) # append current working data frame to the result
     }
+
   }
   sf::st_transform(res, wrk_crs) # return res in original CRS
 }

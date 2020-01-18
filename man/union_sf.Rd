@@ -9,7 +9,7 @@ union_sf(data, key, tolerance = 1, planar_CRS = 5514)
 \arguments{
 \item{data}{sf data frame to be aggregated}
 
-\item{key}{name of column to define the output objects}
+\item{key}{name of a single column to define the output objects}
 
 \item{tolerance}{buffer size for avoiding artefacts (slivers); default is one meter}
 

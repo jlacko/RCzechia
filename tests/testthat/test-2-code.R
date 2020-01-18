@@ -15,6 +15,7 @@ expect_error(union_sf(wtf, "col")) # čekám chybu - není spatial
 expect_error(union_sf(okresy("low"))) # čekám chybu - chybí key
 expect_error(union_sf(key = "col")) # čekám chybu - chybí data
 expect_error(union_sf(okresy("low"), "bflm")) # čekám chybu - není sloupec z data frame
+expect_error(union_sf(okresy("low"), c("KOD_LAU1", "NAZ_LAU1"))) # čekám chybu - klíč má být jeden
 
 united_casti <- casti() %>% # všechny obce vzniklé spojením z městských částí
   union_sf("NAZ_OBEC")
@@ -24,10 +25,13 @@ expect_gt(nrow(united_casti), 1)
 
 # praha z částí
 united_praha <- united_casti %>%
-  filter(key == "Praha")
+  filter(NAZ_OBEC == "Praha")
 
 # praha je jedna
 expect_equal(nrow(united_praha), 1)
+
+# sloupce odpovídají zadání
+expect_equal(colnames(united_praha), c("NAZ_OBEC", "geometry"))
 
 ofiko_praha <- kraje() %>% # Praha jako kraj
   filter(KOD_CZNUTS3 == "CZ010")

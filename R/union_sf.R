@@ -13,6 +13,7 @@
 #'
 #' @export
 #' @importFrom magrittr %>%
+#' @importFrom rlang :=
 #'
 #' @examples
 #' \donttest{

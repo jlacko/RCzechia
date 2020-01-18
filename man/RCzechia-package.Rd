@@ -24,7 +24,7 @@ This means that:
 
 For the most frequently used objects - \strong{republika}, \strong{kraje} and
 \strong{okresy} - a low resolution version is also implemented. The low
-resolution data sets are stored locally (and working intenet connection is
+resolution data sets are stored locally (and working internet connection is
 not necessary to use them).
 
 All objects are implemented as \code{sf} data frames.
@@ -55,7 +55,7 @@ All objects are implemented as \code{sf} data frames.
 
 \itemize{
   \item silnice - roads
-  \item zeleznice - railoads
+  \item zeleznice - railroads
   \item KFME_grid - grid cells (faunistické čtverce) according to Kartierung
   der Flora Mitteleuropas methodology
 }

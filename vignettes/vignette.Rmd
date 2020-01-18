@@ -230,7 +230,7 @@ poly <- RCzechia::okresy("low") %>% # Czech LAU1 regions as sf data frame
 # Structure of the "poly" object:
 head(poly)
 
-ggplot(data = poly, aes(fill = key)) +
+ggplot(data = poly, aes(fill = oddeven)) +
   geom_sf() +
   scale_fill_viridis_d() +
   labs(title = "Number of characters in names of Czech districts",

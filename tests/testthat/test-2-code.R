@@ -13,12 +13,21 @@ wtf <- data.frame(col = c(1, 2, 3)) # data frame se sloupcem col - má se rozbí
 
 expect_error(union_sf(wtf, "col")) # čekám chybu - není spatial
 expect_error(union_sf(okresy("low"))) # čekám chybu - chybí key
-expect_error(union_sf(key = "col")) # čekám chybu - chybí .data
+expect_error(union_sf(key = "col")) # čekám chybu - chybí data
 expect_error(union_sf(okresy("low"), "bflm")) # čekám chybu - není sloupec z data frame
 
-united_praha <- casti() %>% # Praha vzniklá spojením z městských částí
-  union_sf("NAZ_OBEC") %>%
+united_casti <- casti() %>% # všechny obce vzniklé spojením z městských částí
+  union_sf("NAZ_OBEC")
+
+# cyklus se nezastaví na jedničce
+expect_gt(nrow(united_casti), 1)
+
+# praha z částí
+united_praha <- united_casti %>%
   filter(key == "Praha")
+
+# praha je jedna
+expect_equal(nrow(united_praha), 1)
 
 ofiko_praha <- kraje() %>% # Praha jako kraj
   filter(KOD_CZNUTS3 == "CZ010")

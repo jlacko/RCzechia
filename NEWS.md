@@ -3,6 +3,8 @@
   - tidyverse style guide applied
   
   - examples updated to resolve warnings
+  
+  - bug in union_sf() corrected
 
 
 ## version 1.4.3

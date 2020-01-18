@@ -33,12 +33,11 @@ union_sf <- function(data, key, tolerance = 1, planar_CRS = 5514) {
   wrk_crs <- sf::st_crs(data) # save the current CRS
   data <- sf::st_transform(data, planar_CRS) # transform to a temporary metric CRS
 
-  ids <- data[key] %>% # key column values
-    sf::st_set_geometry(NULL) %>% # with geometry removed
-    unique() # unique values only...
+  ids <- dplyr::pull(data, key) %>% # key column values
+    unique() # unique only...
 
   for (i in seq_along(ids)) {
-    vec <- sf::st_set_geometry(data[key], NULL) == ids[i, ] # rows matching current i
+    vec <- sf::st_set_geometry(data[key], NULL) == ids[i] # rows matching current i
 
     wrk <- data[vec, ] %>% # rows matching current i
       lwgeom::st_make_valid() %>% # make valid, just in case...
@@ -46,7 +45,7 @@ union_sf <- function(data, key, tolerance = 1, planar_CRS = 5514) {
       sf::st_union() %>% # unite!
       sf::st_buffer(-tolerance) %>% # remove the magical dust to preserve area
       sf::st_sf() %>% # extract geometry only
-      dplyr::mutate(key = ids[i, ]) # add key column
+      dplyr::mutate(key = ids[i]) # add key column
 
     if (i == 1) { # is this the first row?
       res <- wrk # assing current working data frame as result

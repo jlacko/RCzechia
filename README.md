@@ -37,7 +37,7 @@ The package is on CRAN (as of March 2018) so to get a stable version simply run:
 ```r 
 install.packages("RCzechia")
 ```
-You can also get the latest development version by running `devtools::install_github("jlacko/RCzechia")` and the last version built on [`sp`](https://github.com/edzer/sp) instead of [`sf`](https://github.com/r-spatial/sf) package by running  `devtools::install_github("jlacko/RCzechia", ref = "v0.1.4")`. 
+You can also get the latest development version by running `remotes::install_github("jlacko/RCzechia")` and the last version built on [`sp`](https://github.com/edzer/sp) instead of [`sf`](https://github.com/r-spatial/sf) package by running  `remotes::install_github("jlacko/RCzechia", ref = "v0.1.4")`. 
 
 ### The following spatial objects are included:  
 * **republika**: borders of the Czech Republic

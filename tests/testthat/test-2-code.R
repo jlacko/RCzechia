@@ -87,6 +87,10 @@ expect_lt(nrow(geocode(dos_sochoros)), length(dos_sochoros)) # pokud neexistují
 # nejednoznačná adresa:
 expect_gte(nrow(geocode("pplk. Sochora 4")), 1) # jedna v Praze, jedna v Brandýse: ergo víc jak 1
 
+# v Českých Budějovicích by chtěl žít každý...
+expect_equal(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "X"], 14.4749019) # podle mapy.cz na 5 desetinek
+expect_equal(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "Y"], 48.9727519) # dtto...
+
 context("revgeo")
 
 sochor_wgs <- geocode(dos_sochoros[1]) # podle WGS84

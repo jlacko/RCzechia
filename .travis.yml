@@ -1,6 +1,6 @@
 language: r
+os: linux
 dist: xenial
-sudo: false
 
 cache:
   packages: yes

@@ -68,6 +68,7 @@ geocode <- function(address, crs = 4326) {
 
   for (i in seq_along(address)) {
     cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
+      iconv(to = 'ASCII//TRANSLIT') %>% # ascify Czech text
       utils::URLencode() # get rid of funny Czech characters
 
     query <- paste0(

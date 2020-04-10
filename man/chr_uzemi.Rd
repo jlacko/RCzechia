@@ -3,12 +3,14 @@
 \name{chr_uzemi}
 \alias{chr_uzemi}
 \title{Protected Natural Areas}
-\format{\code{sf} data frame with 36 rows of 2 variables + geometry
+\format{
+\code{sf} data frame with 36 rows of 2 variables + geometry
 
 \describe{
   \item{TYP}{Type of protected area: Národní park, Chráněná krajinná oblast}
   \item{NAZEV}{Name, with Czech accents}
-}}
+}
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

@@ -3,14 +3,16 @@
 \name{geocode}
 \alias{geocode}
 \title{Geocode a Czech Address}
-\format{\code{sf} data frame with 3 variables + geometry
+\format{
+\code{sf} data frame with 3 variables + geometry
 
   \describe{
     \item{target}{the address searched (address input)}
     \item{typ}{type of record matched by API}
     \item{address}{address as recorded by RÚIAN}
     \item{geometry}{hidden column with spatial point data}
-  }}
+  }
+}
 \usage{
 geocode(address, crs = 4326)
 }

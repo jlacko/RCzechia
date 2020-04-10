@@ -3,7 +3,9 @@
 \name{lesy}
 \alias{lesy}
 \title{Woodland Areas}
-\format{\code{sf} data frame with 2.366 rows of geometry variable only}
+\format{
+\code{sf} data frame with 2.366 rows of geometry variable only
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

@@ -3,7 +3,9 @@
 \name{vyskopis}
 \alias{vyskopis}
 \title{Vyskopis}
-\format{\code{raster} package RasterLayer.}
+\format{
+\code{raster} package RasterLayer.
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

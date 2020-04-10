@@ -3,7 +3,8 @@
 \name{okresy}
 \alias{okresy}
 \title{Districts (okresy)}
-\format{\code{sf} data frame with 77 rows of 6 variables + geometry
+\format{
+\code{sf} data frame with 77 rows of 6 variables + geometry
 
 \describe{
   \item{KOD_OKRES}{Code of the district (okres).}
@@ -12,7 +13,8 @@
   \item{KOD_KRAJ}{Code of the region.}
   \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
   \item{NAZ_CZNUTS3}{Name of the region (kraj).}
-}}
+}
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

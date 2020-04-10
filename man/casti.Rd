@@ -3,14 +3,16 @@
 \name{casti}
 \alias{casti}
 \title{City Parts}
-\format{\code{sf} data frame with 142 rows of 4 variables + geometry
+\format{
+\code{sf} data frame with 142 rows of 4 variables + geometry
 
 \describe{
   \item{KOD}{Code of the city part / kod mestske casti}
   \item{NAZEV}{Name of the city part / nazev mestske casti}
   \item{KOD_OBEC}{Code of the city}
   \item{NAZ_OBEC}{Name of the city}
-}}
+}
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

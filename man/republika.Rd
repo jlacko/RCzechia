@@ -3,7 +3,9 @@
 \name{republika}
 \alias{republika}
 \title{Republika}
-\format{\code{sf} data frame with 1 row of 1 variable + geometry:}
+\format{
+\code{sf} data frame with 1 row of 1 variable + geometry:
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

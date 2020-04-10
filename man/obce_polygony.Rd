@@ -3,7 +3,8 @@
 \name{obce_polygony}
 \alias{obce_polygony}
 \title{Municipalities / communes (obce) as polygons}
-\format{\code{sf} data frame with 6.258 rows of 14 variables + geometry
+\format{
+\code{sf} data frame with 6.258 rows of 14 variables + geometry
 
 \describe{
   \item{KOD_OBEC}{Code of the level I commune (obec).}
@@ -20,7 +21,8 @@
   \item{KOD_KRAJ}{Code of the region (kraj).}
   \item{KOD_CZNUTS3}{Code of the NUTS3 unit (kraj)}
   \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
-}}
+}
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

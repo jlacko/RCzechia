@@ -42,7 +42,7 @@ union_sf <- function(data, key, tolerance = 1, planar_CRS = 5514) {
     vec <- sf::st_set_geometry(data[key], NULL) == ids[i] # rows matching current i
 
     wrk <- data[vec, ] %>% # rows matching current i
-      lwgeom::st_make_valid() %>% # make valid, just in case...
+      sf::st_make_valid() %>% # make valid, just in case...
       sf::st_buffer(tolerance) %>% # sparkle some magical dust
       sf::st_union() %>% # unite!
       sf::st_buffer(-tolerance) %>% # remove the magical dust to preserve area

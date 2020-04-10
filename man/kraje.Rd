@@ -3,13 +3,15 @@
 \name{kraje}
 \alias{kraje}
 \title{Regions (kraje) of the Czech Republic}
-\format{\code{sf} data frame with 14 rows of 3 variables + geometry
+\format{
+\code{sf} data frame with 14 rows of 3 variables + geometry
 
 \describe{
   \item{KOD_KRAJ}{Code of the region, primary key. Use this as key to add other data items.}
   \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
   \item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
-}}
+}
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

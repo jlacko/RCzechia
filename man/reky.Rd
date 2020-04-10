@@ -3,14 +3,16 @@
 \name{reky}
 \alias{reky}
 \title{Rivers}
-\format{\code{sf} data frame with 6.198 rows of 4 variables + geometry:
+\format{
+\code{sf} data frame with 6.198 rows of 4 variables + geometry:
 
 \describe{
   \item{TYP}{Type of river: 1 =  natural, 2 = man-made, 3 = fictional}
   \item{NAZEV}{Name, with Czech accents}
   \item{NAZEV_ASCII}{Name, without Czech accents}
   \item{Major}{Boolean indicating one of the major rivers.}
-}}
+}
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

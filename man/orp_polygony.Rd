@@ -3,7 +3,8 @@
 \name{orp_polygony}
 \alias{orp_polygony}
 \title{Obce s rozsirenou pusobnosti}
-\format{\code{sf} data frame with 206 rows of 10 variables + geometry
+\format{
+\code{sf} data frame with 206 rows of 10 variables + geometry
 
 \describe{
   \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}
@@ -17,7 +18,8 @@
   \item{KOD_KRAJ}{Code of the region (kraj).}
   \item{KOD_CZNUTS2}{Code of the NUTS3 unit (kraj)}
   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
-}}
+}
+}
 \source{
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }

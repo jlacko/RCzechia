@@ -9,7 +9,6 @@ r_packages:
   - devtools
   - testthat
   - roxygen2
-  - lwgeom
   - covr
 
 addons:

@@ -85,7 +85,7 @@ expect_equal(geocode(dos_sochoros[2]), NA) # pokud neexistuje žádná adresa, t
 expect_lt(nrow(geocode(dos_sochoros)), length(dos_sochoros)) # pokud neexistují všechny, tak se vrátí míň než hledáno
 
 # nejednoznačná adresa:
-expect_gte(nrow(geocode("pplk. Sochora 4")), 1) # jedna v Praze, jedna v Brandýse: ergo víc jak 1
+expect_gt(nrow(geocode("pplk. Sochora 4")), 1) # jedna v Praze, jedna v Brandýse: ergo víc jak 1
 
 # v Českých Budějovicích by chtěl žít každý...
 expect_equal(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "X"], 14.4749019) # podle mapy.cz na 5 desetinek
@@ -97,12 +97,11 @@ sochor_wgs <- geocode(dos_sochoros[1]) # podle WGS84
 sochor_krovak <- st_transform(sochor_wgs, 5514) # totéž, dle Křováka
 
 amerika <- data.frame(
-  place = c("Statue of Liberty", "Golden Gate Bridge"), # zcela jasně out of scope pro ČÚZK
-  x = c(-74.044444, -122.478611),
-  y = c(40.689167, 37.819722)
-) %>%
-  st_as_sf(coords = c("x", "y")) %>%
-  st_set_crs(4326)
+    place = c("Statue of Liberty", "Golden Gate Bridge"), # zcela jasně out of scope pro ČÚZK
+    x = c(-74.044444, -122.478611),
+    y = c(40.689167, 37.819722)
+  ) %>%
+  st_as_sf(coords = c("x", "y"), crs = 4326)
 
 tres_sochoros <- geocode(rep(dos_sochoros[1], 3)) # tři stejné adresy
 
@@ -128,4 +127,4 @@ expect_equal(revgeo(sochor_krovak)$revgeocoded, "Pplk. Sochora 1391/4, Holešovi
 expect_equal(revgeo(tres_sochoros)$revgeocoded, rep("Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7", 3))
 
 # platný sf objekt, ale out of scope českého katastru
-expect_equal(revgeo(amerika)$revgeocoded %>% is.na() %>% unique(), T) # vrací se pouze NA ...
+expect_equal(revgeo(amerika)$revgeocoded %>% is.na() %>% unique(), TRUE) # vrací se pouze NA ...

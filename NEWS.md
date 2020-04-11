@@ -1,3 +1,7 @@
+## version 1.4.6
+
+  - dependency on lwgeom decomissioned (st_make_valid moved to sf)
+  
 ## version 1.4.5
   
   - tidyverse style guide applied

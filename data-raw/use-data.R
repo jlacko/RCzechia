@@ -7,7 +7,6 @@ library(devtools)
 library(sf)
 library(tidyverse)
 library(RCzechia)
-library(geojsonio)
 
 # read data
 srcOkresy <- st_read("data-raw/okresy.json") %>% # přes topsimplify -P 0.0125
@@ -31,10 +30,10 @@ okresy_low_res <- okresy_low_res %>% # ... in with the new!
 
 for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
   wrkKraj <- okresy_low_res[okresy_low_res$KOD_CZNUTS3 == kod, ] %>%
-    lwgeom::st_make_valid() %>%
-    st_buffer(50) %>% # avoid slivers!
+    st_make_valid() %>%
     st_union() %>%
     st_sf() %>%
+    nngeo::st_remove_holes() %>%
     mutate(
       KOD_KRAJ = unique(okresy_low_res$KOD_KRAJ[okresy_low_res$KOD_CZNUTS3 == kod]),
       KOD_CZNUTS3 = unique(okresy_low_res$KOD_CZNUTS3[okresy_low_res$KOD_CZNUTS3 == kod]),
@@ -54,10 +53,10 @@ for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
 # mungle data - republika
 
 republika_low_res <- okresy_low_res %>% # select the non-central parts
-  lwgeom::st_make_valid() %>%
-  st_buffer(50) %>% # avoid slivers!
+  st_make_valid() %>%
   st_union() %>% # unite to a geometry object
   st_sf() %>% # make the geometry a data frame object
+  nngeo::st_remove_holes() %>%
   mutate(NAZ_STAT = "Česká republika") # return back the data value
 
 # úklid
@@ -67,10 +66,11 @@ republika_low_res <- st_transform(republika_low_res, 4326) # WGS84
 
 
 # faunistické čtverce
-faunisticke_ctverce <- st_make_grid(republika_low_res,
+faunisticke_ctverce <- st_make_grid(
+  st_as_sfc(st_bbox(republika_low_res)), # sf::st_grid no longer covers bounding box!
   cellsize = c(1 / 6, 1 / 10), # velikost čtverce
   offset = c(12, 48.5)
-) %>% # počátek (= vlevo dole :)
+  ) %>% # počátek (= vlevo dole :)
   st_sf() %>%
   mutate(ctverec = c(
     7438:7479,

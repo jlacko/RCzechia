@@ -27,7 +27,7 @@ expect_equal(st_crs(republika("low"))$epsg, 4326)
 expect_equal(st_crs(republika("high"))$epsg, 4326)
 
 # sloupce se nerozbily...
-expect_equal(colnames(republika()), c("NAZ_STAT", "geometry"))
+expect_equal(colnames(republika()), c("NAZ_STAT", "GeneralizovaneHranice"))
 
 expect_error(republika("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
@@ -60,7 +60,7 @@ expect_equal(st_crs(kraje("low"))$epsg, 4326)
 expect_equal(st_crs(kraje("high"))$epsg, 4326)
 
 # sloupce se nerozbily...
-expect_equal(colnames(kraje()), c("KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
+expect_equal(colnames(kraje()), c("KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
 expect_error(kraje("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
@@ -94,7 +94,7 @@ expect_equal(st_crs(okresy("low"))$epsg, 4326)
 expect_equal(st_crs(okresy("high"))$epsg, 4326)
 
 # sloupce se nerozbily...
-expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
+expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
 expect_error(okresy("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
@@ -121,7 +121,7 @@ expect_equal(st_crs(orp_polygony())$epsg, 4326)
 
 # sloupce se nerozbily...
 expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ZKR_ORP", "NAZ_ORP", "KOD_RUIAN", "KOD_OKRES", "KOD_LAU1",
-                                         "NAZ_LAU1", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
+                                         "NAZ_LAU1", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
 
 context("obce body")
@@ -169,7 +169,7 @@ expect_equal(st_crs(obce_polygony())$epsg, 4326)
 # sloupce se nerozbily...
 expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_ZUJ", "NAZ_ZUJ", "KOD_POU", "NAZ_POU",
                                       "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
-                                      "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
+                                      "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
 
 context("městské části")
@@ -191,7 +191,7 @@ expect_equal(nrow(casti()), 142)
 expect_equal(st_crs(casti())$epsg, 4326)
 
 # sloupce se nerozbily...
-expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry"))
+expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "GeneralizovaneHranice"))
 
 
 context("vodní plochy")

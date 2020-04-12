@@ -24,7 +24,7 @@
 #' }
 #'
 #'
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' library(sf)
@@ -37,6 +37,6 @@
 #' @export
 
 obce_polygony <- function() {
-  result <- downloader("ObceP.rds")
+  result <- downloader("ObceP-R.rds")
   result
 }

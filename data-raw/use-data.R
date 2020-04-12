@@ -1,3 +1,7 @@
+# 1. z jsonu vytvoří zjednodušené okresy, kraje a stát
+# 2. z obvodu státu vytvoří čtverce a čtverečky
+# 3. interní data uloží pro budoucí zpracování
+
 library(tidyverse)
 library(devtools)
 library(sf)

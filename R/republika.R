@@ -8,7 +8,7 @@
 #'
 #' @format \code{sf} data frame with 1 row of 1 variable + geometry:
 #'
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' library(sf)
@@ -26,7 +26,7 @@ republika <- function(resolution = "high") {
   if (resolution == "low") {
     return(republika_low_res)
   } else {
-    result <- downloader("Republika.rds")
+    result <- downloader("Republika-R.rds")
     result
   }
 }

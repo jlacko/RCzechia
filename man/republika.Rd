@@ -7,7 +7,7 @@
 \code{sf} data frame with 1 row of 1 variable + geometry:
 }
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+\url{https://vdp.cuzk.cz/}
 }
 \usage{
 republika(resolution = "high")

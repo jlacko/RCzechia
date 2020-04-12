@@ -17,7 +17,7 @@
 #'   \item{NAZ_CZNUTS3}{Name of the region (kraj).}
 #' }
 #'
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' library(sf)
@@ -37,7 +37,7 @@ okresy <- function(resolution = "high") {
   if (resolution == "low") {
     return(okresy_low_res)
   } else {
-    result <- downloader("Okresy.rds")
+    result <- downloader("Okresy-R.rds")
     result
   }
 }

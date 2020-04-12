@@ -94,12 +94,13 @@ expect_equal(st_crs(okresy("low"))$epsg, 4326)
 expect_equal(st_crs(okresy("high"))$epsg, 4326)
 
 # sloupce se nerozbily...
-expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
+expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
+                                   "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
 expect_error(okresy("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
-expect_true(object.size(okresy("low")) < object.size(okresy("high"))) # low res je menší než high res
-
+# low res je menší než high res
+expect_true(object.size(okresy("low")) < object.size(okresy("high")))
 
 context("ORP")
 
@@ -120,8 +121,9 @@ expect_equal(nrow(orp_polygony()), 206)
 expect_equal(st_crs(orp_polygony())$epsg, 4326)
 
 # sloupce se nerozbily...
-expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ZKR_ORP", "NAZ_ORP", "KOD_RUIAN", "KOD_OKRES", "KOD_LAU1",
-                                         "NAZ_LAU1", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
+expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ZKR_ORP", "NAZ_ORP", "KOD_RUIAN",
+                                         "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
+                                         "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
 
 context("obce body")
@@ -145,7 +147,7 @@ expect_equal(st_crs(obce_body())$epsg, 4326)
 # sloupce se nerozbily...
 expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_ZUJ", "NAZ_ZUJ", "KOD_POU", "NAZ_POU",
                                          "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
-                                         "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
+                                         "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "DefinicniBod"))
 
 
 context("obce polygony")
@@ -191,7 +193,7 @@ expect_equal(nrow(casti()), 142)
 expect_equal(st_crs(casti())$epsg, 4326)
 
 # sloupce se nerozbily...
-expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "GeneralizovaneHranice"))
+expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry"))
 
 
 context("vodní plochy")

@@ -14,7 +14,7 @@
 #'   \item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
 #' }
 #'
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' library(sf)
@@ -31,7 +31,7 @@ kraje <- function(resolution = "high") {
   if (resolution == "low") {
     return(kraje_low_res)
   } else {
-    result <- downloader("Kraje.rds")
+    result <- downloader("Kraje-R.rds")
     result
   }
 }

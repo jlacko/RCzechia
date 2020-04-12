@@ -24,7 +24,7 @@
 }
 }
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+\url{https://vdp.cuzk.cz/}
 }
 \usage{
 obce_polygony()

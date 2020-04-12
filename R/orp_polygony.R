@@ -21,12 +21,12 @@
 #' }
 #'
 #'
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source \url{https://vdp.cuzk.cz/}
 #'
 #'
 #' @export
 
 orp_polygony <- function() {
-  result <- downloader("ORP.rds")
+  result <- downloader("ORP-R.rds")
   result
 }

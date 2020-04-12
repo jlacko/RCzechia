@@ -11,6 +11,13 @@ r_packages:
   - roxygen2
   - covr
 
+r_binary_packages:
+  - dplyr
+  - rlang
+  - raster
+  - lwgeom
+  - sf
+
 addons:
   apt:
     packages:

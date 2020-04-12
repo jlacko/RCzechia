@@ -26,8 +26,7 @@
 #'
 #' brno <- obce_polygony() %>% # shapefile of Brno
 #'   filter(NAZ_OBEC == "Brno") %>%
-#'   st_set_crs(5514) %>% # a planar CRS
-#'   st_set_agr("constant") # to avoid raising a warning
+#'   st_transform(5514) %>% # planar CRS (eastings & northings)
 #'
 #' pupek_brna <- st_centroid(brno) # calculate centroid
 #'

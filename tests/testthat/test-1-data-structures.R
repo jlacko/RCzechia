@@ -67,6 +67,15 @@ expect_error(kraje("bflm")) # neznámé rozlišení - očekávám high(default) 
 # low res je menší než high res
 expect_true(object.size(kraje("low")) < object.size(kraje("high")))
 
+# Středočeský kraj má v sobě díru jménem Praha - plocha je plus mínus 5%
+stc_low <- kraje("low") %>%
+  subset(KOD_CZNUTS3 == "CZ020")
+
+stc_high <- kraje("high") %>%
+  subset(KOD_CZNUTS3 == "CZ020")
+
+expect_equal(st_area(stc_low), st_area(stc_high), tolerance = 5/100)
+
 
 context("okresy")
 

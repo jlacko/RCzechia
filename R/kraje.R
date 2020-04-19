@@ -2,7 +2,7 @@
 #'
 #' Function returning data frame of NUTS3 administrative units for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.
 #'
-#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 2.9 MB (so use with caution, and patience).
+#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is <1 MB.
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
@@ -14,7 +14,7 @@
 #'   \item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
 #' }
 #'
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' library(sf)
@@ -31,7 +31,7 @@ kraje <- function(resolution = "high") {
   if (resolution == "low") {
     return(kraje_low_res)
   } else {
-    result <- downloader("Kraje.rds")
+    result <- downloader("Kraje-R.rds")
     result
   }
 }

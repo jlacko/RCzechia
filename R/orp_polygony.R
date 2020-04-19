@@ -2,7 +2,7 @@
 #'
 #' Function returning data frame of municipalities with extended powers (obce s rozšířenou působností) as \code{sf} polygons. It takes no parameters.
 #'
-#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 9 MB (so use with caution, and patience).
+#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 1.2 MB (so use with caution, and patience).
 #'
 #' @format \code{sf} data frame with 206 rows of 10 variables + geometry
 #'
@@ -21,12 +21,12 @@
 #' }
 #'
 #'
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source \url{https://vdp.cuzk.cz/}
 #'
 #'
 #' @export
 
 orp_polygony <- function() {
-  result <- downloader("ORP.rds")
+  result <- downloader("ORP-R.rds")
   result
 }

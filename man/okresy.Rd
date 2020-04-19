@@ -16,7 +16,7 @@
 }
 }
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+\url{https://vdp.cuzk.cz/}
 }
 \usage{
 okresy(resolution = "high")
@@ -28,7 +28,7 @@ okresy(resolution = "high")
 Function returning data frame of LAU1 administrative units for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.
 }
 \details{
-Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 6.1 MB (so use with caution, and patience).
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size of high resolution shapefile is 1 MB (so use with caution, and patience).
 }
 \examples{
 library(sf)

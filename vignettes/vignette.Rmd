@@ -136,7 +136,7 @@ library(RCzechia)
 library(ggplot2)
 library(sf)
 
-brno <- subset(RCzechia::obce_polygony(), NAZ_OBEC == "Brno")
+brno <- subset(RCzechia::okresy(), NAZ_LAU1 == "Brno-město")
 
 pupek_brna <- brno %>%
   st_transform(5514) %>% # planar CRS (eastings & northings)
@@ -151,7 +151,8 @@ print(adresa_pupku)
 
 ggplot() +
   geom_sf(data = pupek_brna, col = "red", shape = 4, size = 2) +
-  geom_sf(data = brno, color = "grey30", fill = NA) +
+  geom_sf(data = reky("Brno"), color = "skyblue3", size = 1.2) +
+    geom_sf(data = brno, color = "grey50", fill = NA, size = 1.25) +
   labs(title = "Geographical Center of Brno") +
   theme_bw()
 

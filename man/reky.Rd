@@ -17,11 +17,20 @@
 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
-reky()
+reky(scope = "global")
 }
 \description{
-Function returning data frame of rivers of the Czech Republic as \code{sf} lines. It takes no parameters.
+Function returning data frame of rivers of the Czech Republic as \code{sf} lines. It takes a single parameter \code{scope} with default "global".
 }
 \details{
+Two special case scopes are defined: Praha (returning the part of Vltava in and around Prague) and Brno (returning Svitava and Svratka near and around Brno).
+
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 1 MB.
+}
+\examples{
+library(sf)
+
+plot(st_geometry(filter(okresy(), NAZ_LAU1 == "Brno-město"))) # Brno city
+plot(reky("Brno"), add = T) # Svitava & Svratka added to Brno my city plot
+
 }

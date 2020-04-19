@@ -33,7 +33,7 @@ obce_polygony()
 Function returning data frame of LAU2 administrative units for the Czech Republic as \code{sf} polygons. It takes no parameters.
 }
 \details{
-Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 36.3 MB (so use with caution, and patience).
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 13.3 MB (so use with caution, and patience).
 }
 \examples{
 library(sf)

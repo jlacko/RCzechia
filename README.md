@@ -18,16 +18,18 @@ For examples of RCzechia in action please see the package vignette:
 * [Terrain of the Czech Republic](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#terrain-of-the-czech-republic)
 
 
-The shapefiles are based on ArcČR 500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) with some adjustments:  
+The administrative area polygons (except for city parts) are based on the [RÚIAN register](https://cs.wikipedia.org/wiki/Registr_%C3%BAzemn%C3%AD_identifikace,_adres_a_nemovitost%C3%AD); the natural objects (and city parts) are based on ArcČR 500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) with some adjustments:  
 
  * the encoding was adjusted to handle Czech accents correctly in R  
  * coordinate reference system was changed from a local CRS ([S-JSTK](https://epsg.io/5513-1623)) to global WGS84 ([EPSG:4326](https://epsg.io/4326))   
- * demographic data were removed, as they get out of date rather fast and are very easy to re-attach using the `sf` and `tidyverse` workflow  
- * the shapefiles were slightly simplified to fit into memory better  
 
-The default resolution is 1 meter; this makes the shapefiles 1) very accurate and 2) rather large. This level of detail is not always necessary, and often not beneficial - a lower resolution shapefile is not only smaller in memory, but also smoother and more aesthetically pleasing. For the most commonly used shapes (*republika*, *kraje* and *okresy*) an optional low resolution version is also included. To access it specify the value of `resolution` parameter as `"low"` (default is `"high"`).
+The shapefiles are by necessity larger than the limits of a CRAN package size allow. The data are therefore stored remotely (on Amazon AWS) and downloaded as required. Working internet connection is therefore required to fully use the package.
 
-Using of the lo-res versions does not require a working internet connection. To use the high resolution (default) shapefile a working intenet connection is necessary, as the data files were too big to meet the CRAN requirements of package size and must be stored externally. Access to the external files is logged, from time to time I check the logs (mainly to understand my bandwidth charges).
+For the most commonly used shapes (*republika*, *kraje* and *okresy*) an optional low resolution version is also included. To access it specify the value of `resolution` parameter as `"low"` (default is `"high"`).
+
+Using of the lo-res versions does not require a working internet connection. 
+
+Access to the external files is logged, from time to time I check the logs (mainly to understand my bandwidth charges).
 
 ### A note to Czech users
 Tohle je "oficiální", a tedy anglické, readme. Českou verzi naleznete na http://www.jla-data.net/cze/package-rczechia/

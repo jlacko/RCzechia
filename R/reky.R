@@ -6,6 +6,8 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 1 MB.
 #'
+#' @param scope Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?
+#'
 #' @format \code{sf} data frame with 6.198 rows of 4 variables + geometry:
 #'
 #' \describe{

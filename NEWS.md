@@ -1,3 +1,7 @@
+## version 1.5.0
+  - administrative units based on RÚIAN generalised boundaries instead of former ARC ČR500; this results in a negligible loss of accuracy, and significant reduction of size (and dowload time)
+  - special cases of rivers object implemented for easier visualization of Prague and Brno maps
+
 ## version 1.4.6
 
   - dependency on lwgeom decomissioned (st_make_valid moved to sf)

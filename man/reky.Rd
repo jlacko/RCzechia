@@ -19,6 +19,9 @@
 \usage{
 reky(scope = "global")
 }
+\arguments{
+\item{scope}{Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?}
+}
 \description{
 Function returning data frame of rivers of the Czech Republic as \code{sf} lines. It takes a single parameter \code{scope} with default "global".
 }

@@ -130,6 +130,8 @@ The *metaphysical* center of the Brno City is [well known](https://en.wikipedia.
 
 The center is calculated using `sf::st_centroid()` and reversely geocoded via `RCzechia::revgeo()`.
 
+Note the use of `reky("Brno")` to provide the parts of Svitava and Svratka relevant to a map of Brno city.
+
 ```{r brno-center, echo = T, eval = T, message = F, fig.width = 6, fig.height = 6}
 library(dplyr)
 library(RCzechia)

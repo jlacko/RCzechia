@@ -33,7 +33,7 @@ Due to package size constraints the data are stored externally (and a working in
 \examples{
 library(sf)
 
-plot(st_geometry(filter(okresy(), NAZ_LAU1 == "Brno-město"))) # Brno city
+plot(st_geometry(subset(okresy(), NAZ_LAU1 == "Brno-město"))) # Brno city
 plot(reky("Brno"), add = T) # Svitava & Svratka added to Brno my city plot
 
 }

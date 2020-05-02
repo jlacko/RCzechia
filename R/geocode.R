@@ -57,6 +57,13 @@ geocode <- function(address, crs = 4326) {
 
   if (missing(address)) stop("required argument address is missing")
 
+  # character encoding is evil!
+  if(.Platform$OS.type == "windows") {
+    address <- iconv(address, from = "CP1250", to = "UTF-8")
+  } else {
+    address <- iconv(address, from = "UTF-8", to = "UTF-8")
+  }
+
 
   result <- data.frame(
     target = character(),

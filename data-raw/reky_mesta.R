@@ -34,8 +34,7 @@ reky_brno <- rbind(svitava_brno, svratka_brno)
 
 ggplot() +
   geom_sf(data = reky_brno, color = "slategray", alpha = 2/3, size = 1.5) +
-  geom_sf(data = st_transform(brno, 4326), fill = NA, color = "gray80", size = 1.4, alpha = 2/3) +
-  theme_void()
+  geom_sf(data = st_transform(brno, 4326), fill = NA, color = "gray80", size = 1.4, alpha = 2/3)
 
 
 praha <- okresy %>%
@@ -54,6 +53,5 @@ reky_praha <- reky %>%
   mutate(NAZEV = "Vltava")
 
 ggplot() +
-  geom_sf(data = vltava_praha, color = "slategray", alpha = 2/3, size = 1.5) +
-  geom_sf(data = st_transform(praha, 4326), fill = NA, color = "gray80", size = 1.4, alpha = 2/3) +
-  theme_void()
+  geom_sf(data = reky_praha, color = "slategray", alpha = 2/3, size = 1.5) +
+  geom_sf(data = st_transform(praha, 4326), fill = NA, color = "gray80", size = 1.4, alpha = 2/3)

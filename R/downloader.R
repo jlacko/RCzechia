@@ -31,6 +31,5 @@ downloader <- function(file) {
    } # /if - local file exists
 
   local_df <- readRDS(local_file)
-  if(inherits(local_df, "sf")) local_df <- sf::st_transform(local_df, 4326) # because PROJ versions...
   local_df
 } # /function

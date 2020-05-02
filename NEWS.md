@@ -1,8 +1,10 @@
 ## version 1.5.0
 
-  - administrative units based on RÚIAN generalised boundaries instead of former ARC ČR500; this results in a negligible loss of accuracy, and significant reduction of size (and dowload time)
+  - [!] administrative areas based on RÚIAN generalised boundaries instead of former ARC ČR500; this results in a negligible loss of accuracy, and a significant reduction of size (and dowload time)
   
   - special cases of rivers object implemented for easier visualization of Prague and Brno maps
+  
+  - unit tests reflect recent changes in PROJ
 
 ## version 1.4.6
 

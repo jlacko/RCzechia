@@ -35,9 +35,10 @@ library(sf)
 
 brno <- obce_polygony() \%>\% # shapefile of Brno
   filter(NAZ_OBEC == "Brno") \%>\%
-  st_transform(5514) \%>\% # planar CRS (eastings & northings)
+  st_transform(5514) # planar CRS (eastings & northings)
 
 pupek_brna <- st_centroid(brno) # calculate centroid
 
 adresa_pupku <- revgeo(pupek_brna)$revgeocoded # address of the center
+
 }

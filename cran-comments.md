@@ -1,8 +1,8 @@
 ## Test environments
-* ubuntu 18.04.3 LTS, R 3.6.3 (2020-02-29) (desktop)
+* ubuntu 18.04.3 LTS, 4.0.0 (2020-04-24) (desktop)
 * ubuntu 16.04.6 LTSS, R 3.6.2 (2017-01-27) (Travis)  
 * Windows R 3.6.3 (2020-02-29) (win_builder)
-* Windows R 4.0.0 alpha (2020-03-26 r78078) (win_builder)
+* Windows R 4.0.0 alpha (2020-03-26 r78078) (win_builder) 
 
 ## R CMD check results
 Status: OK

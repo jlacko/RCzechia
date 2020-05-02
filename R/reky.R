@@ -21,7 +21,7 @@
 #' library(sf)
 #'
 #' plot(st_geometry(subset(okresy(), NAZ_LAU1 == "Brno-město"))) # Brno city
-#' plot(reky("Brno"), add = T) # Svitava & Svratka added to Brno my city plot
+#' plot(reky("Brno"), add = TRUE) # Svitava & Svratka added to Brno my city plot
 #'
 #' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 #'

@@ -45,7 +45,7 @@
 #'
 #'
 #' @examples
-#' asdf <- geocode("Pod sídlištěm 9, Praha 8") # physical address of ČÚZK
+#' asdf <- geocode("Gogolova 212, Praha 1") # Kramářova vila - rezidence premiéra
 #' print(asdf)
 #' @export
 #' @importFrom magrittr %>%
@@ -58,12 +58,13 @@ geocode <- function(address, crs = 4326) {
   if (missing(address)) stop("required argument address is missing")
 
   # character encoding is evil!
-  if(.Platform$OS.type == "windows") {
-    address <- iconv(address, from = "CP1250", to = "UTF-8")
-  } else {
-    address <- iconv(address, from = "UTF-8", to = "UTF-8")
-  }
+   if(length(stringi::stri_enc_detect(address)) > 1) { # was there something, anything, identified?
+     enc <- stringi::stri_enc_detect(address)[[1]]$Encoding[1]
+   } else {
+     enc <- ifelse(.Platform$OS.type == "windows", "windows-1250", "UTF-8") # a reasonable default, considering...
+   }
 
+  loc_address <- iconv(address, from = enc, to = "UTF-8")
 
   result <- data.frame(
     target = character(),
@@ -74,7 +75,7 @@ geocode <- function(address, crs = 4326) {
   ) # initiation; empty...
 
   for (i in seq_along(address)) {
-    cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
+    cil <- gsub(" ", "+", loc_address[i]) %>% # spaces to pluses (for url use)
       utils::URLencode() # get rid of funny Czech characters
 
     query <- paste0(

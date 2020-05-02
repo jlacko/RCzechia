@@ -20,7 +20,8 @@ Imports:
   jsonlite,
   magrittr,
   dplyr,
-  rlang
+  rlang,
+  stringi
 Suggests:
   raster,
   readxl,

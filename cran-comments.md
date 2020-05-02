@@ -12,4 +12,4 @@ There were no NOTES, ERRORs or WARNINGs.
 There are no downstream dependencies.
 
 ## CRAN checks
-There is an error in r-devel-linux-x86_64-debian-clang that I am unable to reproduce; it is most likely related to character encoding issues on server side (the string in question is UTF-8 and works everywhere else).
+There is an error in r-devel-linux-x86_64-debian-clang that I am unable to reproduce; it is most likely related to character encoding issues on server side (I have replaced it with asci compliant text just in case).

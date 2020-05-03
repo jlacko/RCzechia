@@ -28,6 +28,10 @@
 #'    \item{No items were matched at all: the function returns NA.
 #' }}
 #'
+#' Note that character encoding is heavily platform dependent, and you may need to convert to UTF-8,
+#' e.g. by running \code{address <- iconv(address, from = "windows-1250", to = "UTF-8")}
+#' before calling the function.
+#'
 #' Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 #' \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 #'
@@ -57,14 +61,7 @@ geocode <- function(address, crs = 4326) {
 
   if (missing(address)) stop("required argument address is missing")
 
-  # character encoding is evil!
-   if(length(stringi::stri_enc_detect(address)) > 1) { # was there something, anything, identified?
-     enc <- stringi::stri_enc_detect(address)[[1]]$Encoding[1]
-   } else {
-     enc <- ifelse(.Platform$OS.type == "windows", "windows-1250", "UTF-8") # a reasonable default, considering...
-   }
-
-  loc_address <- iconv(address, from = enc, to = "UTF-8")
+  loc_address <-
 
   result <- data.frame(
     target = character(),
@@ -75,7 +72,8 @@ geocode <- function(address, crs = 4326) {
   ) # initiation; empty...
 
   for (i in seq_along(address)) {
-    cil <- gsub(" ", "+", loc_address[i]) %>% # spaces to pluses (for url use)
+    cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
+      iconv(to = "UTF-8") %>%  # encoding is evil!
       utils::URLencode() # get rid of funny Czech characters
 
     query <- paste0(

@@ -61,8 +61,6 @@ geocode <- function(address, crs = 4326) {
 
   if (missing(address)) stop("required argument address is missing")
 
-  loc_address <-
-
   result <- data.frame(
     target = character(),
     typ = character(),
@@ -73,7 +71,6 @@ geocode <- function(address, crs = 4326) {
 
   for (i in seq_along(address)) {
     cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
-      iconv(to = "UTF-8") %>%  # encoding is evil!
       utils::URLencode() # get rid of funny Czech characters
 
     query <- paste0(

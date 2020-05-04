@@ -49,7 +49,7 @@
 #'
 #'
 #' @examples
-#' asdf <- geocode("Gogolova 212, Praha 1") # Kramářova vila - rezidence premiéra
+#' asdf <- geocode("Gogolova 212, Praha 1")
 #' print(asdf)
 #' @export
 #' @importFrom magrittr %>%

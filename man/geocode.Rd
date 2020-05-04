@@ -59,6 +59,6 @@ Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 }
 \examples{
-asdf <- geocode("Gogolova 212, Praha 1") # Kramářova vila - rezidence premiéra
+asdf <- geocode("Gogolova 212, Praha 1")
 print(asdf)
 }

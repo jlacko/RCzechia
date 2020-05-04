@@ -146,7 +146,7 @@ library(ggplot2)
 library(sf)
 
 # polygon of Brno city
-brno <- subset(RCzechia::okresy(), NAZ_LAU1 == "Brno-město")
+brno <- dplyr::filter(RCzechia::okresy(), KOD_LAU1 == "CZ0642")
 
 # calculate centroid
 pupek_brna <- brno %>%

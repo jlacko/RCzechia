@@ -17,8 +17,6 @@ addons:
       - libproj-dev
       - libgdal-dev
       - libgeos-dev
-      - r-cran-ncdf4
-      - r-api-3
       - libv8-3.14-dev
       - libudunits2-dev
       - libprotobuf-dev

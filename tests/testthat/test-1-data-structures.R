@@ -76,6 +76,10 @@ stc_high <- kraje("high") %>%
 
 expect_equal(st_area(stc_low), st_area(stc_high), tolerance = 5/100)
 
+# Jihočeský kraj je jeden polygon
+expect_equal(length(st_geometry(kraje("low"))[[2]]), 1)
+expect_equal(length(st_geometry(kraje("high"))[[2]]), 1)
+expect_equal(length(st_geometry(kraje())[[2]]), 1)
 
 context("okresy")
 

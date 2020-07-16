@@ -1,18 +1,7 @@
-# read data
-srcOkresy <- st_read("data-raw/okresy.json") %>% # přes topsimplify -P 0.0125
-  select(KOD_OKRES)
-
-st_crs(srcOkresy) <- 4326 # používá default = WGS84
-srcOkresy <- st_transform(srcOkresy, 5514) # Křovák kvůli metrům
-
+# interaní místo externího mapshaperu
 okresy_low_res <- okresy() %>% # původní, kvůli diakritice
+  rmapshaper::ms_simplify(keep = 0.03, keep_shapes = TRUE) %>%
   st_transform(5514)
-
-st_geometry(okresy_low_res) <- NULL # Out with the old...
-
-okresy_low_res <- okresy_low_res %>% # ... in with the new!
-  inner_join(srcOkresy, by = "KOD_OKRES") %>%
-  st_sf()
 
 
 # mungle data - kraje

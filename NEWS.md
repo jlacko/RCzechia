@@ -1,3 +1,6 @@
+## version 1.5.1
+  - minor correction of simplified shapefiles (low res objects)
+
 ## version 1.5.0
 
   - [!] administrative areas based on RÚIAN generalised boundaries instead of former ARC ČR500; this results in a negligible loss of accuracy, and a significant reduction of size (and dowload time)

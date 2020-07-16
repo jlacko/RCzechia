@@ -1,8 +1,8 @@
 Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
-Version: 1.5.0
-Date: 2020-05-03
+Version: 1.5.1
+Date: 2020-07-16
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: Administrative regions and other spatial objects of the Czech Republic.
@@ -33,5 +33,5 @@ Suggests:
   devtools,
   rmarkdown,
   lwgeom
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr

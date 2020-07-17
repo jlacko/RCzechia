@@ -1,4 +1,5 @@
 ## version 1.5.1
+
   - minor correction of simplified shapefiles (low res objects)
 
 ## version 1.5.0
@@ -20,7 +21,6 @@
   - examples updated to resolve warnings
   
   - bug in union_sf() corrected
-
 
 ## version 1.4.3
 

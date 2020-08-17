@@ -67,19 +67,19 @@ expect_error(kraje("bflm")) # neznámé rozlišení - očekávám high(default) 
 # low res je menší než high res
 expect_true(object.size(kraje("low")) < object.size(kraje("high")))
 
-# Středočeský kraj má v sobě díru jménem Praha - plocha je plus mínus 5%
+# Středočeský kraj má v sobě díru jménem Praha - plocha je plus mínus 1%
 stc_low <- kraje("low") %>%
   subset(KOD_CZNUTS3 == "CZ020")
 
 stc_high <- kraje("high") %>%
   subset(KOD_CZNUTS3 == "CZ020")
 
-expect_equal(st_area(stc_low), st_area(stc_high), tolerance = 5/100)
+expect_equal(st_area(stc_low), st_area(stc_high), tolerance = 1/100)
 
 # Jihočeský kraj je jeden polygon
-expect_equal(length(st_geometry(kraje("low"))[[2]]), 1)
-expect_equal(length(st_geometry(kraje("high"))[[2]]), 1)
-expect_equal(length(st_geometry(kraje())[[2]]), 1)
+expect_equal(length(st_geometry(kraje("low")[kraje("low")$KOD_CZNUTS3 == "CZ031", ])), 1)
+expect_equal(length(st_geometry(kraje("high")[kraje("low")$KOD_CZNUTS3 == "CZ031", ])), 1)
+expect_equal(length(st_geometry(kraje()[kraje("low")$KOD_CZNUTS3 == "CZ031", ])), 1)
 
 context("okresy")
 
@@ -438,7 +438,14 @@ okres_praha <- okresy("low") %>% # low res "okres" Praha (zjednodušovaný)
 ctverec_praha <- KFME_grid() %>%
   filter(ctverec == 5952) # čtverec "střed Prahy"
 
+low_res_stc <- kraje_low_res %>%
+  filter(KOD_CZNUTS3 == "CZ020")
+
 expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
 expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1) # bod Praha je v okresu Praha
 
-expect_equal(st_contains(okres_praha, ctverec_praha)[[1]], 1) # čtverec Praha je v okresu Praha
+expect_true(st_contains(okres_praha, ctverec_praha, sparse = F)[[1]]) # čtverec Praha je v okresu Praha
+
+expect_false(st_contains(low_res_stc, obec_praha, sparse = F)[[1]]) # bod Praha není ve Středních Čechách (je v Praze)
+
+

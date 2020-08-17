@@ -1,3 +1,9 @@
+## version 1.5.2
+  
+  - bugfix in simplified shapefiles / kraje("low")
+  
+  - unit tests updated
+
 ## version 1.5.1
 
   - minor correction of simplified shapefiles (low res objects)

@@ -1,4 +1,4 @@
-# interaní místo externího mapshaperu
+# interací místo externího mapshaperu
 okresy_low_res <- okresy() %>% # původní, kvůli diakritice
   rmapshaper::ms_simplify(keep = 0.03, keep_shapes = TRUE) %>%
   st_transform(5514)
@@ -17,6 +17,7 @@ for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
       NAZ_CZNUTS3 = unique(okresy_low_res$NAZ_CZNUTS3[okresy_low_res$KOD_CZNUTS3 == kod])
     )
 
+
   if (wrkKraj$KOD_CZNUTS3 == okresy_low_res$KOD_CZNUTS3[1]) {
     kraje_low_res <- wrkKraj
   } else {
@@ -26,6 +27,9 @@ for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
     )
   }
 }
+
+# ze STČ vyříznout Prahu
+kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",] <- st_sym_difference(kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",], st_geometry(kraje_low_res[kraje_low_res$KOD_KRAJ=="3018",]))
 
 # mungle data - republika
 

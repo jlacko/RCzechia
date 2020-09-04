@@ -12,6 +12,7 @@ ruian_data <- "./data-raw/20200831_ST_UKSG.xml"
 
 print(st_layers(ruian_data))
 
+# RUIAN polygony obcí
 obce_poly <- st_read(ruian_data,
                  layer = "Obce",
                  geometry_column = "GeneralizovaneHranice") %>%
@@ -19,6 +20,7 @@ obce_poly <- st_read(ruian_data,
   mutate(KOD_OBEC = as.character(KOD_OBEC)) %>%
   st_transform(4326)
 
+#RUIAN definiční body obcí
 obce_body <- st_read(ruian_data,
                  layer = "Obce",
                  geometry_column = "DefinicniBod") %>%
@@ -26,10 +28,36 @@ obce_body <- st_read(ruian_data,
   mutate(KOD_OBEC = as.character(KOD_OBEC)) %>%
   st_transform(4326)
 
+# CZSO číselník obcí
+cisob <- readr::read_csv2("./data-raw/CIS0043_CS.csv") %>%
+  mutate(TEXT = stringi::stri_conv(TEXT, from = "windows-1250", to = "UTF-8")) %>%
+  select(KOD_OBEC = CHODNOTA, NAZ_OBEC = TEXT)
+
+# CZSO číselník okresů
+cisokre <- readr::read_csv2("./data-raw/CIS0101_CS.csv") %>%
+  mutate(TEXT = stringi::stri_conv(TEXT, from = "windows-1250", to = "UTF-8")) %>%
+  select(KOD_OKRES = CHODNOTA, NAZ_LAU1 = TEXT, KOD_LAU1 = OKRES_LAU)
+
+# CZSo číselník krajů
+ciskraj <- readr::read_csv2("./data-raw/CIS0100_CS.csv") %>%
+  mutate(TEXT = stringi::stri_conv(TEXT, from = "windows-1250", to = "UTF-8")) %>%
+  select(KOD_KRAJ = CHODNOTA, NAZ_CZNUTS3 = TEXT, KOD_CZNUTS3 = CZNUTS)
+
+# vazba obec / okres
+vazob <- readr::read_csv2("./data-raw/VAZ0043_0101_CS.csv") %>%
+  select(KOD_OBEC = CHODNOTA1, KOD_OKRES = CHODNOTA2)
+
+# todo: vazba okres / kraj
+
+# todo: obec vs divné jednotky -  ZUJ, POU, ORP
 
 # uložit obce do tabulky jako základní prostorový kámen
 DBI::dbWriteTable(conn = con, name = "obce_poly", value = obce_poly, overwrite = T)
 DBI::dbWriteTable(conn = con, name = "obce_body", value = obce_body, overwrite = T)
+DBI::dbWriteTable(conn = con, name = "cisob", value = cisob, overwrite = T)
+DBI::dbWriteTable(conn = con, name = "cisokre", value = cisokre, overwrite = T)
+DBI::dbWriteTable(conn = con, name = "ciskraj", value = ciskraj, overwrite = T)
+DBI::dbWriteTable(conn = con, name = "vazob", value = vazob, overwrite = T)
 
 # uklidit po sobě je slušnost
 DBI::dbDisconnect(con)

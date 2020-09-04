@@ -47,9 +47,17 @@ ciskraj <- readr::read_csv2("./data-raw/CIS0100_CS.csv") %>%
 vazob <- readr::read_csv2("./data-raw/VAZ0043_0101_CS.csv") %>%
   select(KOD_OBEC = CHODNOTA1, KOD_OKRES = CHODNOTA2)
 
-# todo: vazba okres / kraj
+#  vazba okres / kraj
+vazokr <- readr::read_csv2("./data-raw/VAZ0100_0101_CS.csv") %>%
+  select(KOD_OKRES = CHODNOTA1, KOD_KRAJ = CHODNOTA2)
 
-# todo: obec vs divné jednotky -  ZUJ, POU, ORP
+# vazba obec / pou obec
+vazpou <- readr::read_csv2("./data-raw/VAZ0043_0061_CS.csv") %>%
+  select(KOD_OBEC = CHODNOTA1, KOD_POU = CHODNOTA2)
+
+# vazba obec / orp opbe
+vazorp <- readr::read_csv2("./data-raw/VAZ0043_0065_CS.csv") %>%
+  select(KOD_OBEC = CHODNOTA1, KOD_ORP = CHODNOTA2)
 
 # uložit obce do tabulky jako základní prostorový kámen
 DBI::dbWriteTable(conn = con, name = "obce_poly", value = obce_poly, overwrite = T)
@@ -58,6 +66,9 @@ DBI::dbWriteTable(conn = con, name = "cisob", value = cisob, overwrite = T)
 DBI::dbWriteTable(conn = con, name = "cisokre", value = cisokre, overwrite = T)
 DBI::dbWriteTable(conn = con, name = "ciskraj", value = ciskraj, overwrite = T)
 DBI::dbWriteTable(conn = con, name = "vazob", value = vazob, overwrite = T)
+DBI::dbWriteTable(conn = con, name = "vazokr", value = vazokr, overwrite = T)
+DBI::dbWriteTable(conn = con, name = "vazpou", value = vazpou, overwrite = T)
+DBI::dbWriteTable(conn = con, name = "vazorp", value = vazorp, overwrite = T)
 
 # uklidit po sobě je slušnost
 DBI::dbDisconnect(con)

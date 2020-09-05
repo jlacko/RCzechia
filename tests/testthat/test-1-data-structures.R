@@ -327,12 +327,12 @@ expect_true(is.data.frame(chr_uzemi()))
 
 expect_s3_class(chr_uzemi(), "sf")
 
-expect_equal(nrow(chr_uzemi()), 36)
+expect_equal(nrow(chr_uzemi()), 2677)
 
 expect_equal(st_crs(chr_uzemi())$input, "EPSG:4326")
 
 # sloupce se nerozbily...
-expect_equal(colnames(chr_uzemi()), c("TYP", "NAZEV", "geometry"))
+expect_equal(colnames(chr_uzemi()), c("TYP", "NAZEV", "PLOCHA", "geometry"))
 
 
 context("lesy")

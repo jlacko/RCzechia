@@ -213,40 +213,6 @@ leaflet() %>%
 <img src="https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/interactive-screenshot.png" alt="This is just a screenshot of the visualization, so it's not interactive. You can play with the interactive version by running the code shown.">
 </p>
 
-## Dissolving `sf` Polygons
-
-Creating custom polygons by aggregating administrative units is a common use case in sales reporting and analysis.
-
-In many use cases a simple `dplyr::group_by() %>% dplyr::summarize()` call will do. Some shapefiles (unfortunately including the ArcČR®500, on which `{RCzechia}` is based) are not that well behaved, and require repairing of faulty geometry.
-
-Function `RCzechia::union_sf()` makes this task easier by automating some of the more common polygon repair tricks.
-
-In this demonstration the Czech LAU1 units are grouped into two categories: those with odd lettered names, and those with even letters. They are then dissolved into two multipolygons.
-
-```{r union,  echo = T, eval = T, message = F}
-library(RCzechia)
-library(ggplot2)
-library(dplyr)
-library(sf)
-
-
-poly <- RCzechia::okresy("low") %>% # Czech LAU1 regions as sf data frame
-  mutate(oddeven = ifelse(nchar(NAZ_LAU1) %% 2 == 1, "odd", "even" )) %>% # odd or even?
-  RCzechia::union_sf("oddeven") # ... et facta est lux
-
-# Structure of the "poly" object:
-head(poly)
-
-# report results
-ggplot(data = poly, aes(fill = oddeven)) +
-  geom_sf() +
-  scale_fill_viridis_d() +
-  labs(title = "Number of characters in names of Czech districts",
-       fill = "Odd or even?") +
-  theme_bw()
-
-```
-
 ## KFME Grid Cells
 
 The Kartierung der Flora Mitteleuropas (KFME) grid is a commonly used technique in biogeography of the Central Europe. It uses a grid of 10×6 arc-minutes (in Central European latitudes this translates to near squares), with cells numbered from north to south and west to east.

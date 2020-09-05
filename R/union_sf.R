@@ -26,6 +26,9 @@
 #' }
 #'
 union_sf <- function(data, key, tolerance = 1, planar_CRS = 5514) {
+
+  .Deprecated(msg = "function union_sf is being moved to package sfhelp; it will be removed in a coming version")
+
   if (missing(data)) stop("required argument `data` is missing")
   if (missing(key)) stop("required argument `key` is missing")
   if (length(key) != 1) stop("a single `key` value is required")

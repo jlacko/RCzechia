@@ -1,3 +1,10 @@
+## version 1.6.0
+
+  - protected areas (Chráněná území) based on AOPK open data instead of former ARC ČR500; the AOPK data are more current
+  
+  - small scale protected areas (maloplošná chráněná území) are included in output of chr_uzemi(); extra dimension to the dataset to diffentiate small and large scale protected areas added. The downloaded file size increased to 7 MB.
+
+
 ## version 1.5.3
   
   - bugfix in simplified shapefiles / kraje("low")

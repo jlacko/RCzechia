@@ -30,5 +30,7 @@ orp_polygony()
 Function returning data frame of municipalities with extended powers (obce s rozšířenou působností) as \code{sf} polygons. It takes no parameters.
 }
 \details{
-Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 1.2 MB (so use with caution, and patience).
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
+
+The data is current to September 2020. Downloaded size is 1.2 MB (so use with caution, and patience).
 }

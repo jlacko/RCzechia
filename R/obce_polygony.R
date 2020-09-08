@@ -2,7 +2,9 @@
 #'
 #' Function returning data frame of LAU2 administrative units for the Czech Republic as \code{sf} polygons. It takes no parameters.
 #'
-#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 13.3 MB (so use with caution, and patience).
+#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
+#'
+#' The data is current to September 2020. Downloaded size is 13.3 MB (so use with caution, and patience).
 #'
 #' @format \code{sf} data frame with 6.258 rows of 14 variables + geometry
 #'

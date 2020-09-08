@@ -4,7 +4,9 @@
 #'
 #' Two special case scopes are defined: Praha (returning the part of Vltava in and around Prague) and Brno (returning Svitava and Svratka near and around Brno).
 #'
-#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 1 MB.
+#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
+#'
+#' The data is current to September 2016. Downloaded size is 1 MB.
 #'
 #' @param scope Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?
 #'

@@ -33,5 +33,7 @@ obce_body()
 Function returning data frame of LAU2 administrative units for the Czech Republic as \code{sf} points. It takes no parameters.
 }
 \details{
-Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 270 KB.
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
+
+The data is current to September 2020. Downloaded size is <1 MB.
 }

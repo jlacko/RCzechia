@@ -35,7 +35,7 @@ cisob <- readr::read_csv2("./data-raw/CIS0043_CS.csv") %>%
 # CZSO číselník okresů - #0101
 cisokre <- readr::read_csv2("./data-raw/CIS0101_CS.csv") %>%
   mutate(TEXT = stringi::stri_conv(TEXT, from = "windows-1250", to = "UTF-8")) %>%
-  select(KOD_OKRES = CHODNOTA, NAZ_LAU2 = TEXT, KOD_LAU2 = OKRES_LAU)
+  select(KOD_OKRES = CHODNOTA, NAZ_LAU1 = TEXT, KOD_LAU1 = OKRES_LAU)
 
 # CZSO číselník krajů - #0100
 ciskraj <- readr::read_csv2("./data-raw/CIS0100_CS.csv") %>%
@@ -52,11 +52,13 @@ vazokr <- readr::read_csv2("./data-raw/VAZ0100_0101_CS.csv") %>%
 
 # vazba obec / pou obec
 vazpou <- readr::read_csv2("./data-raw/VAZ0043_0061_CS.csv") %>%
-  select(KOD_OBEC = CHODNOTA1, KOD_POU = CHODNOTA2)
+  mutate(TEXT2 = stringi::stri_conv(TEXT2, from = "windows-1250", to = "UTF-8")) %>%
+  select(KOD_OBEC = CHODNOTA1, KOD_POU = CHODNOTA2, NAZ_POU = TEXT2)
 
 # vazba obec / orp obec
 vazorp <- readr::read_csv2("./data-raw/VAZ0043_0065_CS.csv") %>%
-  select(KOD_OBEC = CHODNOTA1, KOD_ORP = CHODNOTA2)
+  mutate(TEXT2 = stringi::stri_conv(TEXT2, from = "windows-1250", to = "UTF-8")) %>%
+  select(KOD_OBEC = CHODNOTA1, KOD_ORP = CHODNOTA2, NAZ_ORP = TEXT2)
 
 # pospojování do zdroje všech zdrojů :)
 obce <- cisob %>%
@@ -67,3 +69,4 @@ obce <- cisob %>%
   inner_join(vazokr, by = "KOD_OKRES") %>%
   inner_join(ciskraj, by = "KOD_KRAJ")
 
+setdiff(colnames(asdf), colnames(obce))

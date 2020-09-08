@@ -4,6 +4,8 @@
   
   - small scale protected areas (maloplošná chráněná území) are included in output of chr_uzemi(); extra dimension to the dataset to diffentiate small and large scale protected areas added. The downloaded file size increased to 7 MB.
   
+  - dimension of ZUJ (základní územní jednotka) removed, in line with RÚIAN data as main source of administrative units. RÚIAN does not support this metric.
+  
   - union_sf() function is being deprecated, as it has little connection to the Czech Republic; it is being moved to (so far experimental) package of spatial helper functions
 
 

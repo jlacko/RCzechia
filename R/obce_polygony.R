@@ -11,8 +11,6 @@
 #' \describe{
 #'   \item{KOD_OBEC}{Code of the level I commune (obec).}
 #'   \item{NAZ_OBEC}{Name of the level I commune (obec).}
-#'   \item{KOD_ZUJ}{Code of the basic administrative unit (ICZUJ).}
-#'   \item{NAZ_ZUJ}{Name of the basic administrative unit (ICZUJ).}
 #'   \item{KOD_POU}{Code of the level II commune (obec s poverenym uradem).}
 #'   \item{NAZ_POU}{Name of the level II commune (obec s poverenym uradem)).}
 #'   \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}

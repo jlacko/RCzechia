@@ -158,7 +158,7 @@ expect_equal(nrow(obce_body()), 6258)
 expect_equal(st_crs(obce_body())$input, "EPSG:4326")
 
 # sloupce se nerozbily...
-expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_ZUJ", "NAZ_ZUJ", "KOD_POU", "NAZ_POU",
+expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                          "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
                                          "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "DefinicniBod"))
 
@@ -182,7 +182,7 @@ expect_equal(nrow(obce_polygony()), 6258)
 expect_equal(st_crs(obce_polygony())$input, "EPSG:4326")
 
 # sloupce se nerozbily...
-expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_ZUJ", "NAZ_ZUJ", "KOD_POU", "NAZ_POU",
+expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                       "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
                                       "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 

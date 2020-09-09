@@ -147,7 +147,6 @@ library(sf)
 
 # all districts
 brno <- RCzechia::okresy() %>% 
-  st_set_crs(4326) %>%  # a workaround necessary only for very ancient GDAL (without WKT2)
   dplyr::filter(KOD_LAU1 == "CZ0642")
 
 # calculate centroid

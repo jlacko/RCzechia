@@ -11,6 +11,9 @@ r_packages:
   - roxygen2
   - covr
 
+before_install:
+  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable -y
+
 addons:
   apt:
     packages:

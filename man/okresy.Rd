@@ -30,7 +30,7 @@ Function returning data frame of LAU1 administrative units for the Czech Republi
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to September 2020. Downloaded size of high resolution shapefile is 1 MB.
+The data is current to September 2020. Downloaded size of high resolution shapefile 1 MB.
 }
 \examples{
 library(sf)

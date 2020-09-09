@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to September 2020. Downloaded size of high resolution shapefile is 1 MB.
+#' The data is current to September 2020. Downloaded size of high resolution shapefile 1 MB.
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
@@ -39,7 +39,7 @@ okresy <- function(resolution = "high") {
   if (resolution == "low") {
     return(okresy_low_res)
   } else {
-    result <- downloader("Okresy-R.rds")
+    result <- downloader("Okresy-R-2020-09.rds")
     result
   }
 }

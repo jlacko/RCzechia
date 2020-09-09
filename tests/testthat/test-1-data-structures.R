@@ -129,14 +129,12 @@ expect_true(is.data.frame(orp_polygony()))
 
 expect_s3_class(orp_polygony(), "sf")
 
-expect_equal(nrow(orp_polygony()), 206)
+expect_equal(nrow(orp_polygony()), 206) # 205 "skutečných" ORP + Praha
 
 expect_equal(st_crs(orp_polygony())$input, "EPSG:4326")
 
 # sloupce se nerozbily...
-expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ZKR_ORP", "NAZ_ORP", "KOD_RUIAN",
-                                         "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
-                                         "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
+expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ORP", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
 
 context("obce body")

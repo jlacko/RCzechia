@@ -1,3 +1,7 @@
+# pozor pozor: deprecated! / retained for reference only
+# aktuální data = digest-czso-codetables.R
+
+
 # načte data z ruian, přeloží do rczechia formátu sloupců a uloží do /data-backup
 
 library(dplyr)

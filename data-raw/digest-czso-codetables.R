@@ -87,16 +87,12 @@ setdiff(colnames(RCzechia::obce_polygony()), colnames(obce))
 fin_obce_poly <- obce_poly %>%
   inner_join(obce)
 
-st_crs(fin_obce_poly) <- 4326 # https://github.com/r-spatial/sf/issues/1419
-
 saveRDS(fin_obce_poly, "./data-backup/ObceP-R-2020-09.rds")
 
 
 # body obcí s číselníky
 fin_obce_body <- obce_body %>%
   inner_join(obce)
-
-st_crs(fin_obce_body) <- 4326 # https://github.com/r-spatial/sf/issues/1419
 
 saveRDS(fin_obce_body, "./data-backup/ObceB-R-2020-09.rds")
 
@@ -108,8 +104,6 @@ fin_orp_poly <- fin_obce_poly %>%
   rename(GeneralizovaneHranice = geom) %>%
   rmapshaper::ms_simplify(keep = 1/2, keep_shapes = TRUE)
 
-st_crs(fin_orp_poly) <- 4326 # https://github.com/r-spatial/sf/issues/1419
-
 saveRDS(fin_orp_poly, "./data-backup/ORP-R-2020-09.rds")
 
 # polygony okresů s číselníky
@@ -119,8 +113,6 @@ fin_okresy_poly <- fin_obce_poly %>%
   nngeo::st_remove_holes() %>%
   rename(GeneralizovaneHranice = geom) %>%
   rmapshaper::ms_simplify(keep = 1/2, keep_shapes = TRUE)
-
-st_crs(fin_okresy_poly) <- 4326 # https://github.com/r-spatial/sf/issues/1419
 
 saveRDS(fin_okresy_poly, "./data-backup/Okresy-R-2020-09.rds")
 
@@ -134,8 +126,6 @@ fin_kraje_poly <- fin_obce_poly %>%
 
 # ze STČ vyříznout Prahu
 fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",] <- st_sym_difference(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",], st_geometry(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3018",]))
-
-st_crs(fin_kraje_poly) <- 4326 # https://github.com/r-spatial/sf/issues/1419
 
 saveRDS(fin_kraje_poly, "./data-backup/Kraje-R-2020-09.rds")
 

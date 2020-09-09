@@ -1,6 +1,6 @@
 ## version 1.6.0
 
-  - protected areas (Chráněná území) based on AOPK open data instead of former ARC ČR500; the AOPK data are more current
+  - protected areas (chráněná území) based on AOPK open data instead of former ARC ČR500; the AOPK data are more current
   
   - small scale protected areas (maloplošná chráněná území) are included in output of chr_uzemi(); extra dimension to the dataset to diffentiate small and large scale protected areas added. The downloaded file size increased to 7 MB.
   
@@ -8,7 +8,7 @@
   
   - union_sf() function is deprecated, as it has little connection to the Czech Republic; it is being moved to (so far experimental) package of spatial helper functions
   
-  - dimensionality of ORP (obce s rozšířenou působností) was adjusted - district / okres was removed. This reflects the cardinality of dimensions - ORP do not map to okres 1:n, but m:n (several ORPs are spread over multiple districts, eg. Jihlava, Tanvald or Stod). Kraj was retained, as it maps 1:n (each ORP can be mapped to a single kraj).
+  - dimensionality of ORP (obce s rozšířenou působností) was reduced - district / okres and shortened name were removed. This reflects the cardinality of dimensions - ORP do not map to okres 1:n, but m:n (several ORPs are spread over multiple districts, eg. Jihlava, Tanvald or Stod). Kraj was retained, as it maps 1:n (each ORP can be mapped to a single kraj).
 
 ## version 1.5.3
   

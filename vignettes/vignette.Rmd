@@ -145,8 +145,15 @@ library(RCzechia)
 library(ggplot2)
 library(sf)
 
+# all districts
+okresy <- RCzechia::okresy()
+
+# a workaround necessary in case of truly ancient GDAL
+if(sf_extSoftVersion()["GDAL"] < "3") st_crs(okresy) <- 4326
+
 # polygon of Brno city
-brno <- dplyr::filter(RCzechia::okresy(), KOD_LAU1 == "CZ0642")
+brno <- okresy %>% 
+  dplyr::filter(KOD_LAU1 == "CZ0642")
 
 # calculate centroid
 pupek_brna <- brno %>%

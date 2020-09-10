@@ -2,15 +2,15 @@
 #'
 #' Function returning data frame of LAU2 administrative units for the Czech Republic as \code{sf} points. It takes no parameters.
 #'
-#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 270 KB.
+#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
+#'
+#' The data is current to September 2020. Downloaded size is <1 MB.
 #'
 #' @format \code{sf} data frame with 6.258 rows of 14 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD_OBEC}{Code of the level I commune (obec).}
 #'   \item{NAZ_OBEC}{Name of the level I commune (obec).}
-#'   \item{KOD_ZUJ}{Code of the basic administrative unit (ICZUJ).}
-#'   \item{NAZ_ZUJ}{Name of the basic administrative unit (ICZUJ).}
 #'   \item{KOD_POU}{Code of the level II commune (obec s poverenym uradem).}
 #'   \item{NAZ_POU}{Name of the level II commune (obec s poverenym uradem)).}
 #'   \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}
@@ -30,6 +30,6 @@
 #' @export
 
 obce_body <- function() {
-  result <- downloader("ObceB-R.rds")
+  result <- downloader("ObceB-R-2020-09.rds")
   result
 }

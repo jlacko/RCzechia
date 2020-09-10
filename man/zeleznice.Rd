@@ -23,5 +23,7 @@ zeleznice()
 Function returning data frame of railroads of the Czech Republic as \code{sf} lines. It has no obligatory parameters.
 }
 \details{
-Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 285 KB.
+Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
+
+The data is current to September 2016. Downloaded size is <1 MB.
 }

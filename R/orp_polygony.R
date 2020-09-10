@@ -2,22 +2,18 @@
 #'
 #' Function returning data frame of municipalities with extended powers (obce s rozšířenou působností) as \code{sf} polygons. It takes no parameters.
 #'
-#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package). Downloaded size is 1.2 MB (so use with caution, and patience).
+#' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' @format \code{sf} data frame with 206 rows of 10 variables + geometry
+#' The data is current to September 2020. Downloaded size is 1.5 MB.
+#'
+#' @format \code{sf} data frame with 206 rows of 5 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}
-#'   \item{NAZ_ZKR_ORP}{Short name of the level III commune (obec s rozsirenou pusobnosti).}
 #'   \item{NAZ_ORP}{Full name of the level III commune (obec s rozsirenou pusobnosti).}
-#'   \item{KOD_RUIAN}{RUIAN (Registr uzemni identifikace, adres a nemovitosti) code.}
-#'   \item{KOD_OKRES}{Code of the district (okres).}
-#'   \item{KOD_LAU1}{Code of the LAU1 administrative unit (okres).}
-#'   \item{NAZ_LAU1}{Name of the LAU1 administrative unit (okres).}
 #'   \item{KOD_KRAJ}{Code of the region (kraj).}
-#'   \item{KOD_KRAJ}{Code of the region (kraj).}
-#'   \item{KOD_CZNUTS2}{Code of the NUTS3 unit (kraj)}
-#'   \item{NAZ_CZNUTS2}{Name of the NUTS3 unit (kraj)}
+#'   \item{KOD_CZNUTS3}{Code of the NUTS3 unit (kraj)}
+#'   \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
 #' }
 #'
 #'
@@ -27,6 +23,6 @@
 #' @export
 
 orp_polygony <- function() {
-  result <- downloader("ORP-R.rds")
+  result <- downloader("ORP-R-2020-09.rds")
   result
 }

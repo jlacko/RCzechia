@@ -129,14 +129,12 @@ expect_true(is.data.frame(orp_polygony()))
 
 expect_s3_class(orp_polygony(), "sf")
 
-expect_equal(nrow(orp_polygony()), 206)
+expect_equal(nrow(orp_polygony()), 206) # 205 "skutečných" ORP + Praha
 
 expect_equal(st_crs(orp_polygony())$input, "EPSG:4326")
 
 # sloupce se nerozbily...
-expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ZKR_ORP", "NAZ_ORP", "KOD_RUIAN",
-                                         "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
-                                         "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
+expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ORP", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
 
 context("obce body")
@@ -158,7 +156,7 @@ expect_equal(nrow(obce_body()), 6258)
 expect_equal(st_crs(obce_body())$input, "EPSG:4326")
 
 # sloupce se nerozbily...
-expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_ZUJ", "NAZ_ZUJ", "KOD_POU", "NAZ_POU",
+expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                          "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
                                          "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "DefinicniBod"))
 
@@ -182,7 +180,7 @@ expect_equal(nrow(obce_polygony()), 6258)
 expect_equal(st_crs(obce_polygony())$input, "EPSG:4326")
 
 # sloupce se nerozbily...
-expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_ZUJ", "NAZ_ZUJ", "KOD_POU", "NAZ_POU",
+expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                       "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
                                       "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
@@ -327,12 +325,12 @@ expect_true(is.data.frame(chr_uzemi()))
 
 expect_s3_class(chr_uzemi(), "sf")
 
-expect_equal(nrow(chr_uzemi()), 36)
+expect_equal(nrow(chr_uzemi()), 2677)
 
 expect_equal(st_crs(chr_uzemi())$input, "EPSG:4326")
 
 # sloupce se nerozbily...
-expect_equal(colnames(chr_uzemi()), c("TYP", "NAZEV", "geometry"))
+expect_equal(colnames(chr_uzemi()), c("TYP", "NAZEV", "PLOCHA", "geometry"))
 
 
 context("lesy")
@@ -448,4 +446,21 @@ expect_true(st_contains(okres_praha, ctverec_praha, sparse = F)[[1]]) # čtverec
 
 expect_false(st_contains(low_res_stc, obec_praha, sparse = F)[[1]]) # bod Praha není ve Středních Čechách (je v Praze)
 
+# Kramářova vila je v Praze / obci, orp, okresu i kraji
+
+vila <- geocode("Gogolova 212/1, Praha 1")
+
+expect_equal(st_join(vila, kraje(), left = F)$KOD_CZNUTS3, "CZ010") # Kramářova vila je v kraji Praha
+expect_equal(st_join(vila, okresy(), left = F)$KOD_LAU1, "CZ0100") # Kramářova vila je v okrese Praha
+expect_equal(st_join(vila, orp_polygony(), left = F)$KOD_ORP, "1000") # Kramářova vila je v ORP Praha
+expect_equal(st_join(vila, obce_polygony(), left = F)$KOD_OBEC, "554782") # Kramářova vila je v obci Praha
+
+# Stezka v oblacích je na Dolní Moravě
+
+stezka <- geocode("Velká Morava 46, Dolní Morava")
+
+expect_equal(st_join(stezka, kraje(), left = F)$KOD_CZNUTS3, "CZ053") # Stezka v oblacích je v Pardubickém kraji
+expect_equal(st_join(stezka, okresy(), left = F)$KOD_LAU1, "CZ0534") # Stezka v oblacích je v okrese Ústí nad Orlicí
+expect_equal(st_join(stezka, orp_polygony(), left = F)$KOD_ORP, "5305") # Stezka v oblacích je v ORP Králíky
+expect_equal(st_join(stezka, obce_polygony(), left = F)$KOD_OBEC, "580163") # Stezka v oblacích je v obci Dolní Morava
 

@@ -61,4 +61,5 @@ Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \examples{
 asdf <- geocode("Gogolova 212, Praha 1")
 print(asdf)
+
 }

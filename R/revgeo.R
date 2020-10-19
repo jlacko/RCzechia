@@ -33,8 +33,7 @@
 #' adresa_pupku <- revgeo(pupek_brna)$revgeocoded # address of the center
 #'
 #' @export
-#' @importFrom magrittr %>%
-#'
+
 
 
 revgeo <- function(coords) {

@@ -15,7 +15,7 @@
 }
 }
 \source{
-\url{https://vdp.cuzk.cz/}
+© ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 orp_polygony()

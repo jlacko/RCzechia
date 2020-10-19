@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to September 2016. Downloaded size is 1.5 MB.
+#' The data is current to January 2015. Downloaded size is 1.5 MB.
 #'
 #' @format \code{sf} data frame with 18.979 rows of 4 variables + geometry:
 #'
@@ -14,7 +14,7 @@
 #'   \item{MEZINARODNI_OZNACENI}{International road code}
 #' }
 #'
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 #'
 #' @export
 

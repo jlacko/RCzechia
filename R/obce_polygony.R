@@ -23,8 +23,7 @@
 #'   \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
 #' }
 #'
-#'
-#' @source \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' library(sf)
@@ -34,6 +33,7 @@
 #'   filter(NAZ_LAU1 == "Praha")
 #'
 #' plot(praha, max.plot = 1)
+#'
 #' @export
 
 obce_polygony <- function() {

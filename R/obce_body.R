@@ -23,9 +23,7 @@
 #'   \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
 #'   }
 #'
-#'
-#' @source \url{https://vdp.cuzk.cz/}
-#'
+#' @source © ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
 #'
 #' @export
 

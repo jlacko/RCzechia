@@ -13,7 +13,7 @@
 }
 }
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
 silnice()
@@ -24,5 +24,5 @@ Function returning data frame of roads of the Czech Republic as \code{sf} lines.
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to September 2016. Downloaded size is 1.5 MB.
+The data is current to January 2015. Downloaded size is 1.5 MB.
 }

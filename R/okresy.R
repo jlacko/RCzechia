@@ -19,7 +19,7 @@
 #'   \item{NAZ_CZNUTS3}{Name of the region (kraj).}
 #' }
 #'
-#' @source \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' library(sf)
@@ -29,6 +29,7 @@
 #'
 #' object.size(okresy("low"))
 #' object.size(okresy("high"))
+#'
 #' @export
 
 okresy <- function(resolution = "high") {

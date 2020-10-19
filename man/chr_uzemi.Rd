@@ -13,7 +13,7 @@
 }
 }
 \source{
-(c) AOPK ČR \url{https://data.nature.cz/}
+© AOPK ČR, 2020 \url{https://data.nature.cz/}
 }
 \usage{
 chr_uzemi()

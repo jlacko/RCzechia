@@ -16,7 +16,7 @@
 }
 }
 \source{
-\url{https://vdp.cuzk.cz/}
+© ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 okresy(resolution = "high")
@@ -40,4 +40,5 @@ plot(hranice, col = "white", max.plot = 1)
 
 object.size(okresy("low"))
 object.size(okresy("high"))
+
 }

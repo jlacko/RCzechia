@@ -7,7 +7,7 @@
 \code{sf} data frame with 2.366 rows of geometry variable only
 }
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
 lesy()
@@ -17,5 +17,5 @@ Function returning data frame of woodland areas (lesy) of more than 30 hectares 
 }
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
-The data is current to September 2016. Downloaded size is 2.1 MB.
+The data is current to January 2014. Downloaded size is 2.1 MB.
 }

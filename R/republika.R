@@ -10,13 +10,14 @@
 #'
 #' @format \code{sf} data frame with 1 row of 1 variable + geometry:
 #'
-#' @source \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' library(sf)
 #'
 #' hranice <- republika()
 #' plot(hranice, col = "white")
+#'
 #' @export
 
 

@@ -22,7 +22,7 @@
 }
 }
 \source{
-\url{https://vdp.cuzk.cz/}
+© ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 obce_polygony()
@@ -43,4 +43,5 @@ praha <- obce_polygony() \%>\%
   filter(NAZ_LAU1 == "Praha")
 
 plot(praha, max.plot = 1)
+
 }

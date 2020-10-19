@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to September 2016. Downloaded size is <1 MB.
+#' The data is current to January 2016. Downloaded size is <1 MB.
 #'
 #'
 #' @format \code{sf} data frame with 142 rows of 4 variables + geometry
@@ -16,7 +16,7 @@
 #'   \item{NAZ_OBEC}{Name of the city}
 #' }
 #'
-#' @source \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 #'
 #'
 #' @export

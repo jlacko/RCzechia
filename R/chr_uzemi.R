@@ -15,8 +15,7 @@
 #'   \item{PLOCHA}{type of protected area: large or small}
 #' }
 #'
-#' @source (c) AOPK ČR \url{https://data.nature.cz/}
-#'
+#' @source © AOPK ČR, 2020 \url{https://data.nature.cz/}
 #'
 #' @export
 

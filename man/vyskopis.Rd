@@ -7,7 +7,7 @@
 \code{raster} package RasterLayer.
 }
 \source{
-\url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 }
 \usage{
 vyskopis(format = "rayshaded")
@@ -34,4 +34,5 @@ library(raster)
 relief <- vyskopis("rayshaded")
 
 plot(relief, col = gray.colors(16))
+
 }

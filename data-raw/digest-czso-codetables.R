@@ -6,6 +6,8 @@
 library(sf)
 library(dplyr)
 
+rozhodne_datum <- "2020-10"
+
 # aktuální RUIAN export - gitignorován, páč velký jak cyp...
 ruian_data <- "./data-raw/20200831_ST_UKSG.xml"
 
@@ -28,48 +30,43 @@ obce_body <- st_read(ruian_data,
   st_transform(4326)
 
 # CZSO číselník obcí - #043
-cisob <- readr::read_csv2("./data-raw/CIS0043_CS.csv") %>%
-  mutate(TEXT = stringi::stri_conv(TEXT, from = "windows-1250", to = "UTF-8"),
-         CHODNOTA = as.character(CHODNOTA)) %>%
+cisob <- czso::czso_get_codelist("cis43") %>%
+  mutate(CHODNOTA = as.character(CHODNOTA)) %>%
   select(KOD_OBEC = CHODNOTA, NAZ_OBEC = TEXT)
 
 # CZSO číselník okresů - #0101
-cisokre <- readr::read_csv2("./data-raw/CIS0101_CS.csv") %>%
-  mutate(TEXT = stringi::stri_conv(TEXT, from = "windows-1250", to = "UTF-8"),
-         CHODNOTA = as.character(CHODNOTA)) %>%
+cisokre <- czso::czso_get_codelist("cis101")  %>%
+  mutate(CHODNOTA = as.character(CHODNOTA)) %>%
   select(KOD_OKRES = CHODNOTA, KOD_LAU1 = OKRES_LAU, NAZ_LAU1 = TEXT)
 
 # CZSO číselník krajů - #0100
-ciskraj <- readr::read_csv2("./data-raw/CIS0100_CS.csv") %>%
-  mutate(TEXT = stringi::stri_conv(TEXT, from = "windows-1250", to = "UTF-8"),
-         CHODNOTA = as.character(CHODNOTA)) %>%
+ciskraj <- czso::czso_get_codelist("cis100") %>%
+  mutate(CHODNOTA = as.character(CHODNOTA)) %>%
   select(KOD_KRAJ = CHODNOTA, KOD_CZNUTS3 = CZNUTS, NAZ_CZNUTS3 = TEXT)
 
 # vazba obec / okres
-vazob <- readr::read_csv2("./data-raw/VAZ0043_0101_CS.csv") %>%
+vazob <- czso::czso_get_codelist("cis101vaz43") %>%
   mutate(CHODNOTA1 = as.character(CHODNOTA1),
          CHODNOTA2 = as.character(CHODNOTA2)) %>%
-  select(KOD_OBEC = CHODNOTA1, KOD_OKRES = CHODNOTA2)
+  select(KOD_OBEC = CHODNOTA2, KOD_OKRES = CHODNOTA1)
 
 #  vazba okres / kraj
-vazokr <- readr::read_csv2("./data-raw/VAZ0100_0101_CS.csv") %>%
+vazokr <- czso::czso_get_codelist("cis100vaz101") %>%
   mutate(CHODNOTA1 = as.character(CHODNOTA1),
          CHODNOTA2 = as.character(CHODNOTA2)) %>%
   select(KOD_OKRES = CHODNOTA2, KOD_KRAJ = CHODNOTA1)
 
 # vazba obec / pou obec
-vazpou <- readr::read_csv2("./data-raw/VAZ0043_0061_CS.csv") %>%
-  mutate(TEXT2 = stringi::stri_conv(TEXT2, from = "windows-1250", to = "UTF-8"),
-         CHODNOTA1 = as.character(CHODNOTA1),
+vazpou <- czso::czso_get_codelist("cis61vaz43") %>%
+  mutate(CHODNOTA1 = as.character(CHODNOTA1),
          CHODNOTA2 = as.character(CHODNOTA2)) %>%
-  select(KOD_OBEC = CHODNOTA1, KOD_POU = CHODNOTA2, NAZ_POU = TEXT2)
+  select(KOD_OBEC = CHODNOTA2, KOD_POU = CHODNOTA1, NAZ_POU = TEXT1)
 
 # vazba obec / orp obec
-vazorp <- readr::read_csv2("./data-raw/VAZ0043_0065_CS.csv") %>%
-  mutate(TEXT2 = stringi::stri_conv(TEXT2, from = "windows-1250", to = "UTF-8"),
-         CHODNOTA1 = as.character(CHODNOTA1),
+vazorp <- czso::czso_get_codelist("cis65vaz43") %>%
+  mutate(CHODNOTA1 = as.character(CHODNOTA1),
          CHODNOTA2 = as.character(CHODNOTA2)) %>%
-  select(KOD_OBEC = CHODNOTA1, KOD_ORP = CHODNOTA2, NAZ_ORP = TEXT2)
+  select(KOD_OBEC = CHODNOTA2, KOD_ORP = CHODNOTA1, NAZ_ORP = TEXT1)
 
 # pospojování do zdroje všech zdrojů :)
 obce <- cisob %>%
@@ -87,14 +84,14 @@ setdiff(colnames(RCzechia::obce_polygony()), colnames(obce))
 fin_obce_poly <- obce_poly %>%
   inner_join(obce)
 
-saveRDS(fin_obce_poly, "./data-backup/ObceP-R-2020-09.rds")
+saveRDS(fin_obce_poly, paste0("./data-backup/ObceP-R-", rozhodne_datum, ".rds"))
 
 
 # body obcí s číselníky
 fin_obce_body <- obce_body %>%
   inner_join(obce)
 
-saveRDS(fin_obce_body, "./data-backup/ObceB-R-2020-09.rds")
+saveRDS(fin_obce_body, paste0("./data-backup/ObceB-R-", rozhodne_datum, ".rds"))
 
 # polygony ORP s číselníky
 fin_orp_poly <- fin_obce_poly %>%
@@ -104,7 +101,7 @@ fin_orp_poly <- fin_obce_poly %>%
   rename(GeneralizovaneHranice = geom) %>%
   rmapshaper::ms_simplify(keep = 1/2, keep_shapes = TRUE)
 
-saveRDS(fin_orp_poly, "./data-backup/ORP-R-2020-09.rds")
+saveRDS(fin_orp_poly, paste0("./data-backup/ORP-R-", rozhodne_datum, ".rds"))
 
 # polygony okresů s číselníky
 fin_okresy_poly <- fin_obce_poly %>%
@@ -114,7 +111,7 @@ fin_okresy_poly <- fin_obce_poly %>%
   rename(GeneralizovaneHranice = geom) %>%
   rmapshaper::ms_simplify(keep = 1/2, keep_shapes = TRUE)
 
-saveRDS(fin_okresy_poly, "./data-backup/Okresy-R-2020-09.rds")
+saveRDS(fin_okresy_poly, paste0("./data-backup/Okresy-R-", rozhodne_datum, ".rds"))
 
 # polygony krajů s číselníky
 fin_kraje_poly <- fin_obce_poly %>%
@@ -127,5 +124,5 @@ fin_kraje_poly <- fin_obce_poly %>%
 # ze STČ vyříznout Prahu
 fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",] <- st_sym_difference(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",], st_geometry(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3018",]))
 
-saveRDS(fin_kraje_poly, "./data-backup/Kraje-R-2020-09.rds")
+saveRDS(fin_kraje_poly, paste0("./data-backup/Kraje-R-", rozhodne_datum, ".rds"))
 

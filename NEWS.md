@@ -1,3 +1,8 @@
+## version 1.6.1
+
+  - union_sf removed entirely (after being deprecated in 1.6.1)
+
+
 ## version 1.6.0
 
   - [!] all data objects now explicitly state the month for which the data is current

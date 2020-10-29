@@ -1,57 +1,6 @@
 library(dplyr)
 library(sf)
 
-context("union_sf")
-
-obec_praha <- obce_body() %>% # bod Praha (určitě správně)
-  filter(KOD_LAU1 == "CZ0100")
-
-wtf <- data.frame(col = c(1, 2, 3)) # data frame se sloupcem col - má se rozbít, proto wtf :)
-
-
-# očekávané chyby - špatné zadání
-
-expect_error(union_sf(wtf, "col")) # čekám chybu - není spatial
-expect_error(union_sf(okresy("low"))) # čekám chybu - chybí key
-expect_error(union_sf(key = "col")) # čekám chybu - chybí data
-expect_error(union_sf(okresy("low"), "bflm")) # čekám chybu - není sloupec z data frame
-expect_error(union_sf(okresy("low"), c("KOD_LAU1", "NAZ_LAU1"))) # čekám chybu - klíč má být jeden
-
-united_casti <- casti() %>% # všechny obce vzniklé spojením z městských částí
-  union_sf("NAZ_OBEC")
-
-# cyklus se nezastaví na jedničce
-expect_gt(nrow(united_casti), 1)
-
-# praha z částí
-united_praha <- united_casti %>%
-  filter(NAZ_OBEC == "Praha")
-
-# praha je jedna
-expect_equal(nrow(united_praha), 1)
-
-# sloupce odpovídají zadání
-expect_equal(colnames(united_praha), c("NAZ_OBEC", "geometry"))
-
-ofiko_praha <- kraje() %>% # Praha jako kraj
-  filter(KOD_CZNUTS3 == "CZ010")
-
-# Praha z částí je sf
-expect_s3_class(united_praha, "sf")
-
-# Praha z částí je v republice
-expect_equal(st_contains(republika("high"), united_praha)[[1]], 1)
-
-# bod Praha je v Praze z částí
-expect_equal(st_contains(united_praha, obec_praha)[[1]], 1)
-
-# spojením se nezměnil CRS
-expect_equal(st_crs(casti()), st_crs(united_praha))
-
-# Praha z částí a Praha jako kraj jsou stejně velké, plus mínus jedna miliontina
-expect_equal(st_area(united_praha), st_area(ofiko_praha), tolerance = 2e-3)
-
-
 context("geocode")
 
 dos_sochoros <- c(

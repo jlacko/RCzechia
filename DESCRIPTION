@@ -20,7 +20,7 @@ Imports:
   jsonlite,
   magrittr,
   dplyr,
-  rlang
+  lwgeom
 Suggests:
   raster,
   readxl,

@@ -31,5 +31,5 @@ downloader <- function(file) {
    } # /if - local file exists
 
   local_df <- readRDS(local_file)
-  local_df
+  sf::st_transform(local_df, 4326) # to enforce consistent PROJ behaviour
 } # /function

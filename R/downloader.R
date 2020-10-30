@@ -31,5 +31,15 @@ downloader <- function(file) {
    } # /if - local file exists
 
   local_df <- readRDS(local_file)
-  sf::st_transform(local_df, 4326) # to enforce consistent PROJ behaviour
+
+  if (inherits(local_df, "sf")) {
+    # to enforce consistent crs with PROJ both old & new
+    res <- sf::st_transform(local_df,
+                            crs = "+proj=longlat +datum=WGS84 +no_defs",
+                            quiet = TRUE)
+  } else {
+    res <- local_df
+  } / # /if inherits
+
+  res
 } # /function

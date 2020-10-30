@@ -38,8 +38,11 @@ downloader <- function(file) {
                             crs = "+proj=longlat +datum=WGS84 +no_defs",
                             quiet = TRUE)
   } else {
-    res <- local_df
+
+    return(local_df) # a raster was selected; return it
+
   } / # /if inherits
 
-  res
+  res # return safely reprojected sf object
+
 } # /function

@@ -18,9 +18,7 @@ Imports:
   curl,
   httr,
   jsonlite,
-  magrittr,
-  dplyr,
-  lwgeom
+  magrittr
 Suggests:
   raster,
   readxl,
@@ -31,6 +29,8 @@ Suggests:
   testthat,
   roxygen2,
   devtools,
-  rmarkdown
+  rmarkdown,
+  dplyr,
+  lwgeom
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr

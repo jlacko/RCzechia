@@ -4,7 +4,7 @@
 * Windows Server 2008 R2 SP1, R-release, 32/64 bit (R hub)
 * macOS 10.13.6 High Sierra, R-release, CRAN's setup (R hub)
 * Windows R version 4.0.3 (2020-10-10) (win builder)
-* Windows R Under development (unstable) (2020-10-17 r79346)(win builder) 
+* Windows R Under development (unstable) (2020-10-28 r79382) (win builder) 
 * Windows R version 3.6.3 (2020-02-29) (win builder)
 
 ## R CMD check results
@@ -15,4 +15,6 @@ There were no NOTES, ERRORs or WARNINGs.
 There are no downstream dependencies.
 
 ## CRAN checks
-All checks are OK.
+There is an issue with Solaris build; most likely related to PROJ version.
+
+This release should take care of that; it has been tested with PROJ 4.9.3

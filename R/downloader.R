@@ -34,15 +34,9 @@ downloader <- function(file) {
 
   if (inherits(local_df, "sf")) {
     # to enforce consistent crs with PROJ both old & new
-    res <- sf::st_transform(local_df,
-                            crs = "+proj=longlat +datum=WGS84 +no_defs",
-                            quiet = TRUE)
-  } else {
+    sf::st_crs(local_df) <- 4326
+  }
 
-    return(local_df) # a raster was selected; return it
-
-  } / # /if inherits
-
-  res # return safely reprojected sf object
+  local_df
 
 } # /function

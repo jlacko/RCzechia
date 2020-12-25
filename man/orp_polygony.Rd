@@ -26,5 +26,5 @@ Function returning data frame of municipalities with extended powers (obce s roz
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to September 2020. Downloaded size is 1.5 MB.
+The data is current to January 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is 1.5 MB.
 }

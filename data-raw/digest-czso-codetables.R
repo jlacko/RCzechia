@@ -1,15 +1,15 @@
 # Načte RUIAN soubor + obohatí ho o data z číselníku obcí
-# data z CZSO = http://apl.czso.cz/iSMS/cisdata.jsp?kodcis=43
+# data z CZSO staženy via {czso} package
 # očekávaná struktura = csv s rozlišovašem středník (tj. read_csv2)
 
 
 library(sf)
 library(dplyr)
 
-rozhodne_datum <- "2020-10"
+rozhodne_datum <- "2021-01"
 
 # aktuální RUIAN export - gitignorován, páč velký jak cyp...
-ruian_data <- "./data-raw/20200831_ST_UKSG.xml"
+ruian_data <- "./data-raw/20201130_ST_UKSG.xml"
 
 print(st_layers(ruian_data))
 
@@ -77,7 +77,7 @@ obce <- cisob %>%
   inner_join(vazokr, by = "KOD_OKRES") %>%
   inner_join(ciskraj, by = "KOD_KRAJ")
 
-# očekávané rozdíly = ZUJ + geometry column
+# očekávané rozdíly = geometry column
 setdiff(colnames(RCzechia::obce_polygony()), colnames(obce))
 
 # polygony obcí s číselníky

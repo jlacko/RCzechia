@@ -76,5 +76,5 @@ jobs:
           path: check
 
       - name: Test coverage
-        run: covr::coveralls()
+        run: Rscript -e 'covr::coveralls()'
         shell: Rscript {0}

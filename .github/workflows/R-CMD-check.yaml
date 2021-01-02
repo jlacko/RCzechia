@@ -76,7 +76,5 @@ jobs:
           path: check
 
       - name: Test coverage
-        env:
-          COVERALLS_REPO_TOKEN: rXJ80Hvr0C921CCezrncwLfQfzBr1TzRF
-        run: covr::coveralls()
+        run: covr::coveralls(repo_token = "rXJ80Hvr0C921CCezrncwLfQfzBr1TzRF")
         shell: Rscript {0}

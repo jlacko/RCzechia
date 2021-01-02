@@ -9,7 +9,7 @@ library(dplyr)
 rozhodne_datum <- "2021-01"
 
 # aktuální RUIAN export - gitignorován, páč velký jak cyp...
-ruian_data <- "./data-raw/20201130_ST_UKSG.xml"
+ruian_data <- "./data-raw/20201231_ST_UKSG.xml"
 
 print(st_layers(ruian_data))
 

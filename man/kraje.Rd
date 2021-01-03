@@ -7,7 +7,7 @@
 \code{sf} data frame with 14 rows of 3 variables + geometry
 
 \describe{
-  \item{KOD_KRAJ}{Code of the region, primary key. Use this as key to add other data items.}
+  \item{KOD_KRAJ}{Code of the region.}
   \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
   \item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
 }
@@ -27,7 +27,7 @@ Function returning data frame of NUTS3 administrative units for the Czech Republ
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to September 2020. Downloaded size of high resolution shapefile is <1 MB.
+The data is current to January 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size of high resolution shapefile is <1 MB.
 }
 \examples{
 library(sf)

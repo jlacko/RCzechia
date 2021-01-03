@@ -1,4 +1,4 @@
-# 1. z jsonu vytvoří zjednodušené okresy, kraje a stát
+# 1. z původních jemných vytvoří zjednodušené okresy, kraje a stát
 # 2. z obvodu státu vytvoří čtverce a čtverečky
 # 3. pražská Vltava & řeky města Brna
 # interní data uloží pro budoucí zpracování

@@ -1,7 +1,8 @@
 ^CRAN-RELEASE$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\.travis\.yml$
+^\.github$
+^codecov\.yml$
 ^data-raw$
 ^data-backup$
 cran-comments.md

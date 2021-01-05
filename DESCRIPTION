@@ -11,8 +11,6 @@ BugReports: https://github.com/jlacko/RCzechia/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-SystemRequirements: 
-  PROJ (>= 6.0.0)
 Depends:
   R (>= 3.3.0),
   sf

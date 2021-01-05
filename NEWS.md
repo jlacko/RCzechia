@@ -1,3 +1,7 @@
+## version 1.6.3
+
+  - this version resolves issues with version 1.6.2 on systems with PROJ under 6.0.0
+
 ## version 1.6.2
 
   - [!] structure of administrative regions aligned to status as from January 2021 (Act 51/2020 Sb.)

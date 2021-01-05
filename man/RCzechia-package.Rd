@@ -58,6 +58,7 @@ All objects are implemented as \code{sf} data frames.
   \item zeleznice - railroads
   \item KFME_grid - grid cells (faunistické čtverce) according to Kartierung
   der Flora Mitteleuropas methodology
+  \item chr_uzemi - protected natural areas (chráněná území)
 }
 }
 
@@ -67,7 +68,6 @@ In addition three utility functions are implemented to support spatial
 workflow:
 
 \itemize{
-  \item union_sf - merging polygons based on a key value
   \item geocode - geocoding (from address to coordinates)
   \item revgeo - reverse gecoding (from coordinates to address)
 }

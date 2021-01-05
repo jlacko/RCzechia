@@ -1,6 +1,8 @@
 # Načte RUIAN soubor + obohatí ho o data z číselníku obcí
 # data z CZSO staženy via {czso} package
-# očekávaná struktura = csv s rozlišovašem středník (tj. read_csv2)
+#
+# big fat warning: je zcela nezbytné pouštět na starém PROJ 4.9.3 !!!
+#
 
 
 library(sf)

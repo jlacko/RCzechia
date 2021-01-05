@@ -15,4 +15,9 @@ There were no NOTES, ERRORs or WARNINGs.
 There are no downstream dependencies.
 
 ## CRAN checks
-There are no issues with CRAN checks (as of 2021-01-04 10:47:29 CET)
+This bugfix release is expected to resolve the issue with v1.6.2 on CRAN Solaris
+and oldrel Mac OS builds. These seem to be caused by oldish PROJ version.
+
+It has been tested with PROJ 4.9.3 (the patched-solaris and oldrel-macos
+use PROJ 5.2.0).
+

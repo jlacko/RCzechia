@@ -47,6 +47,7 @@
 #'   \item zeleznice - railroads
 #'   \item KFME_grid - grid cells (faunistické čtverce) according to Kartierung
 #'   der Flora Mitteleuropas methodology
+#'   \item chr_uzemi - protected natural areas (chráněná území)
 #' }
 #'
 #' @section Utility functions:
@@ -54,7 +55,6 @@
 #' workflow:
 #'
 #' \itemize{
-#'   \item union_sf - merging polygons based on a key value
 #'   \item geocode - geocoding (from address to coordinates)
 #'   \item revgeo - reverse gecoding (from coordinates to address)
 #' }

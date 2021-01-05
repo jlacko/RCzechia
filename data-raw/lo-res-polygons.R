@@ -7,7 +7,6 @@ okresy_low_res <- okresy() %>% # původní, kvůli diakritice
 # mungle data - kraje
 for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
   wrkKraj <- okresy_low_res[okresy_low_res$KOD_CZNUTS3 == kod, ] %>%
-    st_make_valid() %>%
     st_union() %>%
     st_sf() %>%
     nngeo::st_remove_holes() %>%
@@ -34,7 +33,6 @@ kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",] <- st_sym_difference(kraje_low_re
 # mungle data - republika
 
 republika_low_res <- okresy_low_res %>% # select the non-central parts
-  st_make_valid() %>%
   st_union() %>% # unite to a geometry object
   st_sf() %>% # make the geometry a data frame object
   nngeo::st_remove_holes() %>%

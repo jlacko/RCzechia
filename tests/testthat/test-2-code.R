@@ -5,15 +5,19 @@ context("geocode")
 
 dos_sochoros <- c(
   "pplk. Sochora 4, Praha", # platná adresa
-  "pplk. Sochora 4, Čierna pri Čope"
-) # neplatná adresa
+  "pplk. Sochora 4, Čierna pri Čope" # neplatná adresa
+)
 
 # očekávané chyby - špatné zadání
 expect_error(geocode()) # čekám chybu - není cíl
 
 Sys.setenv("NETWORK_UP" = FALSE)
-expect_message(geocode(dos_sochoros[1]), "error in connection") # není síť
+expect_message(geocode(dos_sochoros[1]), "No internet connection.") # není síť
 Sys.setenv("NETWORK_UP" = TRUE)
+
+Sys.setenv("CUZK_UP" = FALSE)
+expect_message(geocode(dos_sochoros[1]), "Error in connection.") # API down
+Sys.setenv("CUZK_UP" = TRUE)
 
 # vrací se sf objekt
 expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
@@ -60,9 +64,12 @@ expect_error(revgeo("bflm")) # čekám chybu - zadání není sf
 expect_error(revgeo(kraje())) # čekám chybu - nejsou body ale polygony
 
 Sys.setenv("NETWORK_UP" = FALSE)
-expect_message(revgeo(sochor_wgs), "error in connection") # není síť
+expect_message(revgeo(sochor_wgs), "No internet connection.") # není síť
 Sys.setenv("NETWORK_UP" = TRUE)
 
+Sys.setenv("CUZK_UP" = FALSE)
+expect_message(revgeo(sochor_wgs), "Error in connection.") # API down
+Sys.setenv("CUZK_UP" = TRUE)
 # vrací se sf objekt
 expect_s3_class(revgeo(sochor_wgs), "sf") # vrací se class sf
 

@@ -1,8 +1,11 @@
 ## Test environments
-* Ubuntu 20.04 LTS, R version 4.0.3 (2020-10-10)
+* Ubuntu 20.04 LTS, R version 4.0.3 GEOS 3.8.1, GDAL 3.1.2, PROJ 7.2.0 (desktop)
+* Ubuntu 18.04.4 LTS, R version 3.6.3 GEOS 3.7.1, GDAL 2.2.3, PROJ 4.9.3 (GitHub Actions)
+
 * Ubuntu 20.04.1 LTS, R version 4.0.3 (2020-10-10) (GitHub Actions)
-* Windows Server 2019 10.0.17763, R version 4.0.3 (2020-10-10)(GitHub Actions)
+* Windows Server 2019 10.0.17763, R version 4.0.3 (2020-10-10) (GitHub Actions)
 * Mac OS X 10.15.7, R version 4.0.3 (2020-10-10) (GitHub Actions)
+
 * Windows R version 4.0.3 (2020-10-10) (win builder)
 * Windows R Under development (unstable) (2021-01-02 r79767) (win builder) 
 * Windows R version 3.6.3 (2020-02-29) (win builder)

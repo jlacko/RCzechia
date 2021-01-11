@@ -38,12 +38,18 @@
 
 revgeo <- function(coords) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
+  cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
   if (missing(coords)) stop("required argument coords is missing")
 
   if (!inherits(coords, "sf")) stop("coords is expected in sf format")
 
   if (sf::st_geometry_type(coords)[1] != "POINT") stop("reverse geocoding is limited to sf point objects")
+
+  if (!curl::has_internet() | !network) { # network is down
+    message("No internet connection.")
+    return(NULL)
+  }
 
   coords$revgeocoded <- NULL # initiate result column in coords data frame
 
@@ -66,8 +72,8 @@ revgeo <- function(coords) {
 
     httr::stop_for_status(resp)
 
-    if (resp$status_code != 200 | !network) { # error in connection
-      message("error in connection to CUZK API")
+    if (resp$status_code != 200 | !cuzk) { # error in connection
+      message("Error in connection to CUZK API.")
       return(NULL)
     }
     # reverse geocoding was successful, now digest the json results!

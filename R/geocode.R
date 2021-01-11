@@ -58,8 +58,14 @@
 
 geocode <- function(address, crs = 4326) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
+  cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
   if (missing(address)) stop("required argument address is missing")
+
+  if (!curl::has_internet() | !network) { # network is down
+    message("No internet connection.")
+    return(NULL)
+  }
 
   result <- data.frame(
     target = character(),
@@ -82,8 +88,8 @@ geocode <- function(address, crs = 4326) {
 
     httr::stop_for_status(resp)
 
-    if (resp$status_code != 200 | !network) { # error in connection?
-      message("error in connection to CUZK API")
+    if (resp$status_code != 200 | !cuzk) { # error in connection?
+      message("Error in connection to CUZK API.")
       return(NULL)
     }
 

@@ -8,11 +8,13 @@
 #' output a vector of characters.
 #'
 #' The function returns the same \code{sf} data frame as input, with added field
-#' revgeocoded; it contains the result of operation. If the data frame contained
-#' a column named revgeocoded it gets overwritten.
+#' revgeocoded; it contains the result of operation. Should the data frame contain
+#' a column named revgeocoded it will be overwritten.
 #'
 #' In case of reverse geocoding failures (e.g. coordinates outside of the Czech
 #' Republic and therefore scope of ČÚZK) NA is returned.
+#'
+#' In case of API failures (CUZK down) the function returns NULL.
 #'
 #' Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 #' \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
@@ -68,9 +70,7 @@ revgeo <- function(coords) {
       "?location=", coords_krovak$modified[i], "&f=pjson"
     )
 
-    resp <- httr::HEAD(query)
-
-    if (resp$status_code != 200 | !cuzk) { # error in connection?
+    if (httr::http_error(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
       return(NULL)
     }

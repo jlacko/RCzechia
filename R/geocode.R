@@ -25,8 +25,9 @@
 #'    \item{Some (but not all) items had *no match* in RUIAN data: the returned
 #'    \code{sf} data frame will have fewer rows than the vector sent.
 #'    to be geocoded elements. Some values will be missing from field \emph{target}}.
-#'    \item{No items were matched at all: the function returns NA.
-#' }}
+#'    \item{No items were matched at all: the function returns NA.}
+#'    \item{The CUZK API is down or overloaded: the function returns NULL.}
+#'    }
 #'
 #' Note that character encoding is heavily platform dependent, and you may need to convert to UTF-8,
 #' e.g. by running \code{address <- iconv(address, from = "windows-1250", to = "UTF-8")}
@@ -84,9 +85,7 @@ geocode <- function(address, crs = 4326) {
       "?text=", cil, "&outSR=", crs, "&maxLocations50=&f=pjson"
     )
 
-    resp <- httr::HEAD(query)
-
-    if (resp$status_code != 200 | !cuzk) { # error in connection?
+    if (httr::http_error(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
       return(NULL)
     }

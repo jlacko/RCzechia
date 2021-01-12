@@ -84,9 +84,7 @@ geocode <- function(address, crs = 4326) {
       "?text=", cil, "&outSR=", crs, "&maxLocations50=&f=pjson"
     )
 
-    resp <- httr::HEAD(query)
-
-    if (resp$status_code != 200 | !cuzk) { # error in connection?
+    if (httr::http_error(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
       return(NULL)
     }

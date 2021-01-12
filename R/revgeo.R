@@ -68,9 +68,7 @@ revgeo <- function(coords) {
       "?location=", coords_krovak$modified[i], "&f=pjson"
     )
 
-    resp <- httr::HEAD(query)
-
-    if (resp$status_code != 200 | !cuzk) { # error in connection?
+    if (httr::http_error(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
       return(NULL)
     }

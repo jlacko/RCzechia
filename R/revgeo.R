@@ -68,14 +68,17 @@ revgeo <- function(coords) {
       "?location=", coords_krovak$modified[i], "&f=pjson"
     )
 
+    resp <- httr::HEAD(query)
+
+    if (resp$status_code != 200 | !cuzk) { # error in connection?
+      message("Error in connection to CUZK API.")
+      return(NULL)
+    }
+
     resp <- httr::GET(query)
 
     httr::stop_for_status(resp)
 
-    if (resp$status_code != 200 | !cuzk) { # error in connection
-      message("Error in connection to CUZK API.")
-      return(NULL)
-    }
     # reverse geocoding was successful, now digest the json results!
 
     adresa <- httr::content(resp) %>%

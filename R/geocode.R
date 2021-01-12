@@ -84,14 +84,16 @@ geocode <- function(address, crs = 4326) {
       "?text=", cil, "&outSR=", crs, "&maxLocations50=&f=pjson"
     )
 
-    resp <- httr::GET(query)
-
-    httr::stop_for_status(resp)
+    resp <- httr::HEAD(query)
 
     if (resp$status_code != 200 | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
       return(NULL)
     }
+
+    resp <- httr::GET(query)
+
+    httr::stop_for_status(resp)
 
     # geocoding was successful, now digest the json results!
 

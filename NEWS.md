@@ -1,3 +1,7 @@
+## version 1.6.4
+ 
+  - resolves invalid geometries of okresy, orp_polygony and chr_uzemi 
+
 ## version 1.6.3
 
   - resolves issues with version 1.6.2 on systems with PROJ under 6.0.0

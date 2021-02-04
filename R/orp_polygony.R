@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to January 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is 1.5 MB.
+#' The data is current to February 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is 3.1 MB.
 #'
 #' @format \code{sf} data frame with 206 rows of 5 variables + geometry
 #'
@@ -21,6 +21,6 @@
 #' @export
 
 orp_polygony <- function() {
-  result <- downloader("ORP-R-2021-01.rds")
+  result <- downloader("ORP-R-2021-02.rds")
   result
 }

@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to January 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is 13.3 MB (so use with caution, and patience).
+#' The data is current to February 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is 13.3 MB (so use with caution, and patience).
 #'
 #' @format \code{sf} data frame with 6.258 rows of 14 variables + geometry
 #'
@@ -37,6 +37,6 @@
 #' @export
 
 obce_polygony <- function() {
-  result <- downloader("ObceP-R-2021-01.rds")
+  result <- downloader("ObceP-R-2021-02.rds")
   result
 }

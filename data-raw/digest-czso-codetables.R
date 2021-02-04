@@ -125,3 +125,15 @@ fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",] <- st_sym_difference(fin_kraje_
 
 saveRDS(fin_kraje_poly, paste0("./data-backup/Kraje-R-", rozhodne_datum, ".rds"))
 
+# RUIAN polygony MOMC
+casti_poly <- st_read(ruian_data,
+                     layer = "Momc",
+                     geometry_column = "OriginalniHranice") %>%
+  select(KOD = Kod, NAZEV = Nazev, KOD_OBEC = ObecKod)  %>%
+  mutate(across(where(is.factor), as.character)) %>%
+  mutate(across(where(is.numeric), as.character)) %>%
+  left_join(cisob, by = "KOD_OBEC") %>%
+  st_transform(4326)
+
+saveRDS(casti_poly, paste0("./data-backup/casti-R-", rozhodne_datum, ".rds"))
+

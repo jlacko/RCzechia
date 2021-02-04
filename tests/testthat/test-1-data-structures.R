@@ -26,6 +26,9 @@ expect_equal(nrow(republika("high")), 1)
 expect_equal(st_crs(republika("low"))$input, "EPSG:4326")
 expect_equal(st_crs(republika("high"))$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(republika("high"))))
+expect_true(all(st_is_valid(republika("low"))))
+
 # sloupce se nerozbily...
 expect_equal(colnames(republika()), c("NAZ_STAT", "GeneralizovaneHranice"))
 
@@ -58,6 +61,9 @@ expect_equal(nrow(kraje("high")), 14)
 
 expect_equal(st_crs(kraje("low"))$input, "EPSG:4326")
 expect_equal(st_crs(kraje("high"))$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(kraje("high"))))
+expect_true(all(st_is_valid(kraje("low"))))
 
 # sloupce se nerozbily...
 expect_equal(colnames(kraje()), c("KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
@@ -106,6 +112,9 @@ expect_equal(nrow(okresy("high")), 77)
 expect_equal(st_crs(okresy("low"))$input, "EPSG:4326")
 expect_equal(st_crs(okresy("high"))$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(okresy("high"))))
+expect_true(all(st_is_valid(okresy("low"))))
+
 # sloupce se nerozbily...
 expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
                                    "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
@@ -133,6 +142,8 @@ expect_equal(nrow(orp_polygony()), 206) # 205 "skutečných" ORP + Praha
 
 expect_equal(st_crs(orp_polygony())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(orp_polygony())))
+
 # sloupce se nerozbily...
 expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ORP", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
@@ -154,6 +165,8 @@ expect_s3_class(obce_body(), "sf")
 expect_equal(nrow(obce_body()), 6258)
 
 expect_equal(st_crs(obce_body())$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(obce_body())))
 
 # sloupce se nerozbily...
 expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
@@ -179,6 +192,8 @@ expect_equal(nrow(obce_polygony()), 6258)
 
 expect_equal(st_crs(obce_polygony())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(obce_polygony())))
+
 # sloupce se nerozbily...
 expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                       "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
@@ -203,6 +218,8 @@ expect_equal(nrow(casti()), 142)
 
 expect_equal(st_crs(casti())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(casti())))
+
 # sloupce se nerozbily...
 expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry"))
 
@@ -224,6 +241,8 @@ expect_s3_class(plochy(), "sf")
 expect_equal(nrow(plochy()), 480)
 
 expect_equal(st_crs(plochy())$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(plochy())))
 
 # sloupce se nerozbily...
 expect_equal(colnames(plochy()), c("TYP", "NAZEV", "NAZEV_ASCII", "VYSKA", "geometry", "Major"))
@@ -263,6 +282,10 @@ expect_equal(st_crs(reky("global"))$input, "EPSG:4326")
 expect_equal(st_crs(reky("Praha"))$input, "EPSG:4326")
 expect_equal(st_crs(reky("Brno"))$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(reky())))
+expect_true(all(st_is_valid(reky("Praha"))))
+expect_true(all(st_is_valid(reky("Brno"))))
+
 # sloupce se nerozbily...
 expect_equal(colnames(reky()), c("TYP", "NAZEV", "NAZEV_ASCII", "geometry", "Major"))
 
@@ -284,6 +307,8 @@ expect_s3_class(silnice(), "sf")
 expect_equal(nrow(silnice()), 18979)
 
 expect_equal(st_crs(silnice())$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(silnice())))
 
 # sloupce se nerozbily...
 expect_equal(colnames(silnice()), c("TRIDA", "CISLO_SILNICE", "MEZINARODNI_OZNACENI", "geometry"))
@@ -307,6 +332,8 @@ expect_equal(nrow(zeleznice()), 3525)
 
 expect_equal(st_crs(zeleznice())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(zeleznice())))
+
 # sloupce se nerozbily...
 expect_equal(colnames(zeleznice()), c("ELEKTRIFIKACE","KATEGORIE", "KOLEJNOST", "ROZCHODNOST", "geometry"))
 
@@ -328,6 +355,9 @@ expect_s3_class(chr_uzemi(), "sf")
 expect_equal(nrow(chr_uzemi()), 2677)
 
 expect_equal(st_crs(chr_uzemi())$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(chr_uzemi())))
+
 
 # sloupce se nerozbily...
 expect_equal(colnames(chr_uzemi()), c("TYP", "NAZEV", "PLOCHA", "geometry"))
@@ -351,6 +381,8 @@ expect_equal(nrow(lesy()), 2366)
 
 expect_equal(st_crs(lesy())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(lesy())))
+
 # sloupce se nerozbily...
 expect_equal(colnames(lesy()), c("geometry"))
 
@@ -371,6 +403,10 @@ expect_equal(KFME_grid("high")$ctverec %>% unique() %>% length(), 4 * 26 * 42) #
 expect_equal(st_crs(KFME_grid())$input, "EPSG:4326")
 expect_equal(st_crs(KFME_grid("high"))$input, "EPSG:4326")
 expect_equal(st_crs(KFME_grid("low"))$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(KFME_grid())))
+expect_true(all(st_is_valid(KFME_grid("high"))))
+expect_true(all(st_is_valid(KFME_grid("low"))))
 
 expect_error(KFME_grid("bflm")) # neznámé rozlišení - očekávám high(default) / low
 

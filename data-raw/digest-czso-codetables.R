@@ -8,7 +8,7 @@
 library(sf)
 library(dplyr)
 
-rozhodne_datum <- "2021-01"
+rozhodne_datum <- "2021-02"
 
 # aktuální RUIAN export - gitignorován, páč velký jak cyp...
 ruian_data <- "./data-raw/20201231_ST_UKSG.xml"
@@ -100,8 +100,7 @@ fin_orp_poly <- fin_obce_poly %>%
   group_by(KOD_ORP, NAZ_ORP, KOD_KRAJ, KOD_CZNUTS3, NAZ_CZNUTS3) %>%
   summarise() %>%
   nngeo::st_remove_holes() %>%
-  rename(GeneralizovaneHranice = geom) %>%
-  rmapshaper::ms_simplify(keep = 1/2, keep_shapes = TRUE)
+  rename(GeneralizovaneHranice = geom)
 
 saveRDS(fin_orp_poly, paste0("./data-backup/ORP-R-", rozhodne_datum, ".rds"))
 
@@ -110,8 +109,7 @@ fin_okresy_poly <- fin_obce_poly %>%
   group_by(KOD_OKRES, KOD_LAU1, NAZ_LAU1, KOD_KRAJ, KOD_CZNUTS3, NAZ_CZNUTS3) %>%
   summarise() %>%
   nngeo::st_remove_holes() %>%
-  rename(GeneralizovaneHranice = geom) %>%
-  rmapshaper::ms_simplify(keep = 1/2, keep_shapes = TRUE)
+  rename(GeneralizovaneHranice = geom)
 
 saveRDS(fin_okresy_poly, paste0("./data-backup/Okresy-R-", rozhodne_datum, ".rds"))
 
@@ -120,8 +118,7 @@ fin_kraje_poly <- fin_obce_poly %>%
   group_by(KOD_KRAJ, KOD_CZNUTS3, NAZ_CZNUTS3) %>%
   summarise() %>%
   nngeo::st_remove_holes() %>%
-  rename(GeneralizovaneHranice = geom) %>%
-  rmapshaper::ms_simplify(keep = 1/2, keep_shapes = TRUE)
+  rename(GeneralizovaneHranice = geom)
 
 # ze STČ vyříznout Prahu
 fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",] <- st_sym_difference(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",], st_geometry(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3018",]))

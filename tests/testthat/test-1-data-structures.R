@@ -221,7 +221,7 @@ expect_equal(st_crs(casti())$input, "EPSG:4326")
 expect_true(all(st_is_valid(casti())))
 
 # sloupce se nerozbily...
-expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry"))
+expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "OriginalniHranice"))
 
 
 context("vodní plochy")

@@ -28,7 +28,11 @@ for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
 }
 
 # ze STČ vyříznout Prahu
-kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",] <- st_sym_difference(kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",], st_geometry(kraje_low_res[kraje_low_res$KOD_KRAJ=="3018",]))
+kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",] <- st_difference(kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",], st_geometry(kraje_low_res[kraje_low_res$KOD_KRAJ=="3018",]))
+
+# z Brna venkova vyříznout Brno město
+okresy_low_res[okresy_low_res$KOD_LAU1=="CZ0643",] <- st_difference(okresy_low_res[okresy_low_res$KOD_LAU1=="CZ0643",], st_geometry(okresy_low_res[okresy_low_res$KOD_LAU1=="CZ0642",]))
+
 
 # mungle data - republika
 
@@ -47,3 +51,4 @@ republika_low_res <- st_transform(republika_low_res, 4326) # WGS84
 # ověřit...
 plot(republika_low_res)
 plot(kraje_low_res, max.plot = 1)
+plot(okresy_low_res, max.plot = 1)

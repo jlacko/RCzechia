@@ -111,6 +111,9 @@ fin_okresy_poly <- fin_obce_poly %>%
   nngeo::st_remove_holes() %>%
   rename(GeneralizovaneHranice = geom)
 
+# z Brna venkova vyříznout Brno město
+fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0643",] <- st_difference(fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0643",], st_geometry(fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0642",]))
+
 saveRDS(fin_okresy_poly, paste0("./data-backup/Okresy-R-", rozhodne_datum, ".rds"))
 
 # polygony krajů s číselníky
@@ -122,9 +125,6 @@ fin_kraje_poly <- fin_obce_poly %>%
 
 # ze STČ vyříznout Prahu
 fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",] <- st_difference(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",], st_geometry(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3018",]))
-
-# z Brna venkova vyříznout Brno město
-fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0643",] <- st_difference(fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0643",], st_geometry(fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0642",]))
 
 saveRDS(fin_kraje_poly, paste0("./data-backup/Kraje-R-", rozhodne_datum, ".rds"))
 

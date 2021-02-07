@@ -121,7 +121,10 @@ fin_kraje_poly <- fin_obce_poly %>%
   rename(GeneralizovaneHranice = geom)
 
 # ze STČ vyříznout Prahu
-fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",] <- st_sym_difference(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",], st_geometry(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3018",]))
+fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",] <- st_difference(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",], st_geometry(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3018",]))
+
+# z Brna venkova vyříznout Brno město
+fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0643",] <- st_difference(fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0643",], st_geometry(fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0642",]))
 
 saveRDS(fin_kraje_poly, paste0("./data-backup/Kraje-R-", rozhodne_datum, ".rds"))
 

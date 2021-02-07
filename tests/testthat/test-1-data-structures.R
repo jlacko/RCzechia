@@ -482,6 +482,10 @@ expect_true(st_contains(okres_praha, ctverec_praha, sparse = F)[[1]]) # čtverec
 
 expect_false(st_contains(low_res_stc, obec_praha, sparse = F)[[1]]) # bod Praha není ve Středních Čechách (je v Praze)
 
+expect_false(st_contains(subset(okresy(), KOD_LAU1 == "CZ0642"),
+                         subset(obce_body(), KOD_OBEC == "582786"),
+                         sparse = F)[[1]]) # bod Brno není v Brně-venkově (je v Brně městě)
+
 # Kramářova vila je v Praze / obci, orp, okresu i kraji
 
 vila <- geocode("Gogolova 212/1, Praha 1")

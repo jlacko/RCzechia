@@ -51,4 +51,4 @@ republika_low_res <- st_transform(republika_low_res, 4326) # WGS84
 # ověřit...
 plot(republika_low_res)
 plot(kraje_low_res, max.plot = 1)
-plot(okresy_low_res, max.plot = 1)
+plot(subset(okresy_low_res, KOD_LAU1 == "CZ0643"), max.plot = 1)

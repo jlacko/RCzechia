@@ -1,6 +1,8 @@
 ## version 1.6.4
  
   - resolves invalid geometries of okresy, orp_polygony and chr_uzemi 
+  
+  - resolved inconsistencies in geometries of okresy Brno město & Brno venkov
 
 ## version 1.6.3
 

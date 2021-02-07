@@ -4,9 +4,5 @@
 .Ruserdata
 inst/doc
 /data-raw/*.xml
-/data-raw/*.cpg
-/data-raw/*.dbf
-/data-raw/*.shp
-/data-raw/*.shx
-/data-raw/*.prj
+
 

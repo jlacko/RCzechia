@@ -492,6 +492,15 @@ expect_false(st_contains(subset(okresy("low"), KOD_LAU1 == "CZ0643"),
                          sparse = F)[[1]])
 
 
+# rozdíl ploch = méně, než tisícina republiky
+expect_equal(sum(st_area(kraje())), sum(st_area(republika())), tolerance = 1/1000)
+expect_equal(sum(st_area(okresy())), sum(st_area(republika())), tolerance = 1/1000)
+expect_equal(sum(st_area(kraje("low"))), sum(st_area(republika("low"))), tolerance = 1/1000)
+expect_equal(sum(st_area(okresy("low"))), sum(st_area(republika("low"))), tolerance = 1/1000)
+expect_equal(sum(st_area(orp_polygony())), sum(st_area(republika())), tolerance = 1/1000)
+expect_equal(sum(st_area(obce_polygony())), sum(st_area(republika())), tolerance = 1/1000)
+
+
 # Kramářova vila je v Praze / obci, orp, okresu i kraji
 
 vila <- geocode("Gogolova 212/1, Praha 1")

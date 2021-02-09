@@ -33,6 +33,22 @@ kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",] <- st_difference(kraje_low_res[kr
 # z Brna venkova vyříznout Brno město
 okresy_low_res[okresy_low_res$KOD_LAU1=="CZ0643",] <- st_difference(okresy_low_res[okresy_low_res$KOD_LAU1=="CZ0643",], st_geometry(okresy_low_res[okresy_low_res$KOD_LAU1=="CZ0642",]))
 
+svitavy <- okresy_low_res %>%
+  subset(NAZ_LAU1 == "Svitavy") %>%
+  st_geometry() %>%
+  st_cast("POLYGON")
+
+# větší ze svitavských polygonů
+svitavy <- svitavy[[which.max(st_area(svitavy))]]
+
+# dát geometrii low res okresů stranou
+geometrie <- st_geometry(okresy_low_res)
+
+# geometrii Svitav nahradit větším z obou polygonů
+geometrie[which(okresy_low_res$NAZ_LAU1 == "Svitavy")] <- st_sfc(svitavy, crs = 5514)
+
+# vrátit zpátky
+st_geometry(okresy_low_res) <- geometrie
 
 # mungle data - republika
 

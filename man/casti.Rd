@@ -25,5 +25,5 @@ Function taking no parameters and returning data frame of districts of Prague an
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to January 2016. Downloaded size is <1 MB.
+The data is current to February 2021. Downloaded size is 1.5 MB.
 }

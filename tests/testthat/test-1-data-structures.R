@@ -460,6 +460,41 @@ expect_equal(projection(crs(vyskopis("rayshaded"))), "+proj=longlat +ellps=WGS84
 # očekávaná chyba
 expect_error(vyskopis("bflm")) # neznámé rozlišení - očekávám actual / rayshaded
 
+context("obvody senátu")
+
+Sys.setenv("NETWORK_UP" = FALSE)
+expect_message(senat_obvody(), "internet") # zpráva o chybějícím internetu
+Sys.setenv("NETWORK_UP" = TRUE)
+
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(senat_obvody(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
+expect_true(is.data.frame(senat_obvody()))
+expect_true(is.data.frame(senat_obvody("low")))
+expect_true(is.data.frame(senat_obvody("high")))
+
+expect_s3_class(senat_obvody(), "sf")
+expect_s3_class(senat_obvody("high"), "sf")
+expect_s3_class(senat_obvody("low"), "sf")
+
+expect_equal(nrow(senat_obvody()), 81)
+expect_equal(nrow(senat_obvody("low")), 81)
+expect_equal(nrow(senat_obvody("high")), 81)
+
+expect_equal(st_crs(senat_obvody("low"))$input, "EPSG:4326")
+expect_equal(st_crs(senat_obvody("high"))$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(senat_obvody("high"))))
+expect_true(all(st_is_valid(senat_obvody("low"))))
+
+# sloupce se nerozbily...
+expect_equal(colnames(senat_obvody()), c("OBVOD", "SIDLO", "NAZEV_VO", "geometry"))
+
+expect_error(senat_obvody("bflm")) # neznámé rozlišení - očekávám high(default) / low
+
+# low res je menší než high res
+expect_true(object.size(senat_obvody("low")) < object.size(senat_obvody("high")))
 
 context("dopady 51/2020 Sb.")
 

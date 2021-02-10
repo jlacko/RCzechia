@@ -9,7 +9,10 @@ library(dplyr)
 
 rozhodne_datum <- "2021-02"
 
-senat_high_res <- st_read("./data-raw/senat.gpkg")
+senat_high_res <- st_read("./data-raw/senat.gpkg") %>%
+  st_make_valid() %>%
+  st_cast() %>%
+  select(OBVOD, SIDLO, NAZEV_VO, geometry = geom)
 
 senat_low_res <- senat_high_res %>%
   rmapshaper::ms_simplify(keep = .005,

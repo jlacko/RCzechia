@@ -19,9 +19,10 @@ okrsky_high_res <- st_read("./data-raw/20201003_ST_UVOH.xml", stringsAsFactors =
 
 okrsky_low_res <- okrsky_high_res %>%
   rmapshaper::ms_simplify(keep = 1/20,
-                          keep_shapes = T)
+                          keep_shapes = T) %>%
+  st_buffer(0)
 
-plot(st_geometry(okrsky_low_res))
+
 
 saveRDS(okrsky_high_res, paste0("./data-backup/Okrsky-high-", rozhodne_datum, ".rds"))
 saveRDS(okrsky_low_res, paste0("./data-backup/Okrsky-low-", rozhodne_datum, ".rds"))

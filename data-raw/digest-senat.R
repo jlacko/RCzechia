@@ -11,7 +11,8 @@ rozhodne_datum <- "2021-02"
 
 senat_high_res <- st_read("./data-raw/senat.gpkg", stringsAsFactors = F) %>%
   st_make_valid() %>%
-  st_cast()
+  st_cast() %>%
+  st_transform("EPSG:4326")
 
 colnames(senat_high_res) <- c("OBVOD", "SIDLO", "NAZEV_VO", "geometry")
 st_geometry(senat_high_res) <- "geometry"

@@ -33,15 +33,23 @@ expect_false(st_contains(subset(okresy("low"), KOD_LAU1 == "CZ0643"),
 
 
 # rozdíl ploch = méně, než tisícina republiky
-expect_equal(sum(st_area(kraje())), sum(st_area(republika())), tolerance = 1/1000)
-expect_equal(sum(st_area(okresy())), sum(st_area(republika())), tolerance = 1/1000)
-expect_equal(sum(st_area(kraje("low"))), sum(st_area(republika("low"))), tolerance = 1/1000)
-expect_equal(sum(st_area(okresy("low"))), sum(st_area(republika("low"))), tolerance = 1/1000)
-expect_equal(sum(st_area(orp_polygony())), sum(st_area(republika())), tolerance = 1/1000)
-expect_equal(sum(st_area(obce_polygony())), sum(st_area(republika())), tolerance = 1/1000)
+expect_equal(sum(st_area(kraje("high"))), st_area(republika("high")), tolerance = 1/1000)
+expect_equal(sum(st_area(okresy("high"))), st_area(republika("high")), tolerance = 1/1000)
+expect_equal(sum(st_area(kraje("low"))), st_area(republika("low")), tolerance = 1/1000)
+expect_equal(sum(st_area(okresy("low"))), st_area(republika("low")), tolerance = 1/1000)
+expect_equal(sum(st_area(orp_polygony())), st_area(republika()), tolerance = 1/1000)
+expect_equal(sum(st_area(obce_polygony())), st_area(republika()), tolerance = 1/1000)
+
+# na tohle nejsem pyšný, ale když RUIAN nedá jinak...
+expect_equal(sum(st_area(volebni_okrsky("high"))), st_area(republika()), tolerance = 2/100)
+expect_equal(sum(st_area(senat_obvody("high"))), st_area(republika()), tolerance = 1/1000)
 
 # pražské části odpovídají Praze městu
 expect_equal(sum(st_area(filter(casti(), NAZ_OBEC == "Praha"))),
+             st_area(subset(obce_polygony(), NAZ_OBEC == "Praha")), tolerance = 1/1000)
+
+# pražské volební okrsky odpovídají Praze městu
+expect_equal(sum(st_area(subset(volebni_okrsky("high"), ObecKod == "554782"))),
              st_area(subset(obce_polygony(), NAZ_OBEC == "Praha")), tolerance = 1/1000)
 
 

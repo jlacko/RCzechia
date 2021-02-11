@@ -16,8 +16,7 @@
 #'   \item{NAZ_OBEC}{Name of the city}
 #' }
 #'
-#' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
-#'
+#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}#'
 #'
 #' @export
 

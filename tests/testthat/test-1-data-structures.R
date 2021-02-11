@@ -490,11 +490,51 @@ expect_true(all(st_is_valid(senat_obvody("low"))))
 
 # sloupce se nerozbily...
 expect_equal(colnames(senat_obvody()), c("OBVOD", "SIDLO", "NAZEV_VO", "geometry"))
+expect_equal(colnames(senat_obvody("high")), c("OBVOD", "SIDLO", "NAZEV_VO", "geometry"))
+expect_equal(colnames(senat_obvody("low")), c("OBVOD", "SIDLO", "NAZEV_VO", "geometry"))
 
 expect_error(senat_obvody("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
 # low res je menší než high res
 expect_true(object.size(senat_obvody("low")) < object.size(senat_obvody("high")))
+
+context("volební okrsky")
+
+Sys.setenv("NETWORK_UP" = FALSE)
+expect_message(volebni_okrsky(), "internet") # zpráva o chybějícím internetu
+Sys.setenv("NETWORK_UP" = TRUE)
+
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(volebni_okrsky(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
+
+expect_true(is.data.frame(volebni_okrsky()))
+expect_true(is.data.frame(volebni_okrsky("low")))
+expect_true(is.data.frame(volebni_okrsky("high")))
+
+expect_s3_class(volebni_okrsky(), "sf")
+expect_s3_class(volebni_okrsky("high"), "sf")
+expect_s3_class(volebni_okrsky("low"), "sf")
+
+expect_equal(nrow(volebni_okrsky()), 14761)
+expect_equal(nrow(volebni_okrsky("low")), 14761)
+expect_equal(nrow(volebni_okrsky("high")), 14761)
+
+expect_equal(st_crs(volebni_okrsky("low"))$input, "EPSG:4326")
+expect_equal(st_crs(volebni_okrsky("high"))$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(volebni_okrsky("high"))))
+expect_true(all(st_is_valid(volebni_okrsky("low"))))
+
+# sloupce se nerozbily...
+expect_equal(colnames(volebni_okrsky()), c("Kod", "Cislo", "ObecKod", "MomcKod", "OriginalniHranice"))
+expect_equal(colnames(volebni_okrsky("high")), c("Kod", "Cislo", "ObecKod", "MomcKod", "OriginalniHranice"))
+expect_equal(colnames(volebni_okrsky("low")), c("Kod", "Cislo", "ObecKod", "MomcKod", "OriginalniHranice"))
+
+expect_error(volebni_okrsky("bflm")) # neznámé rozlišení - očekávám high(default) / low
+
+# low res je menší než high res
+expect_true(object.size(volebni_okrsky("low")) < object.size(volebni_okrsky("high")))
 
 context("dopady 51/2020 Sb.")
 

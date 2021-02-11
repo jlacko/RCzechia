@@ -22,7 +22,7 @@
 }
 }
 \source{
-© ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
+© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 obce_polygony()

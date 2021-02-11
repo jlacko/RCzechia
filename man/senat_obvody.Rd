@@ -2,7 +2,7 @@
 % Please edit documentation in R/senat_obvody.R
 \name{senat_obvody}
 \alias{senat_obvody}
-\title{Senate Districts (Volební obvod pro volby do Senátu ) of the Czech Republic}
+\title{Senate Districts (Volební obvod pro volby do Senátu) of the Czech Republic}
 \format{
 \code{sf} data frame with 81 rows of 3 variables + geometry
 
@@ -27,7 +27,7 @@ Function returning data frame of the 81 Senate Districts for the Czech Republic 
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to February 2021. Downloaded size of high resolution shapefile is 10 MB, size of the low res object is negligible (but a working internet is still required, as the object is not interal).
+The data is current to February 2021 (last update was in 2016). Downloaded size of high resolution shapefile is 10 MB, size of the low res object is negligible (but a working internet is still required, as the object is not interal).
 }
 \examples{
 library(sf)

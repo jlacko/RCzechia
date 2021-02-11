@@ -19,7 +19,7 @@
 #'   \item{NAZ_CZNUTS3}{Name of the region (kraj).}
 #' }
 #'
-#' @source © ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' library(sf)

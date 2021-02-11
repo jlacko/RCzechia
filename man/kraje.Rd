@@ -13,7 +13,7 @@
 }
 }
 \source{
-\url{https://vdp.cuzk.cz/}
+© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 kraje(resolution = "high")

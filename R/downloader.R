@@ -32,11 +32,6 @@ downloader <- function(file) {
 
   local_df <- readRDS(local_file)
 
-  if (inherits(local_df, "sf")) {
-    # to enforce consistent crs with PROJ both old & new
-    sf::st_crs(local_df) <- 4326
-  }
-
   local_df
 
 } # /function

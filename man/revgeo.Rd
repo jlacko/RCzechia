@@ -20,11 +20,13 @@ Input of the function is a \code{sf} data frame of spatial points, and
 output a vector of characters.
 
 The function returns the same \code{sf} data frame as input, with added field
-revgeocoded; it contains the result of operation. If the data frame contained
-a column named revgeocoded it gets overwritten.
+revgeocoded; it contains the result of operation. Should the data frame contain
+a column named revgeocoded it will be overwritten.
 
 In case of reverse geocoding failures (e.g. coordinates outside of the Czech
 Republic and therefore scope of ČÚZK) NA is returned.
+
+In case of API failures (CUZK down) the function returns NULL.
 
 Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.

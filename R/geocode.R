@@ -25,8 +25,9 @@
 #'    \item{Some (but not all) items had *no match* in RUIAN data: the returned
 #'    \code{sf} data frame will have fewer rows than the vector sent.
 #'    to be geocoded elements. Some values will be missing from field \emph{target}}.
-#'    \item{No items were matched at all: the function returns NA.
-#' }}
+#'    \item{No items were matched at all: the function returns NA.}
+#'    \item{The CUZK API is down or overloaded: the function returns NULL.}
+#'    }
 #'
 #' Note that character encoding is heavily platform dependent, and you may need to convert to UTF-8,
 #' e.g. by running \code{address <- iconv(address, from = "windows-1250", to = "UTF-8")}
@@ -58,8 +59,14 @@
 
 geocode <- function(address, crs = 4326) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
+  cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
   if (missing(address)) stop("required argument address is missing")
+
+  if (!curl::has_internet() | !network) { # network is down
+    message("No internet connection.")
+    return(NULL)
+  }
 
   result <- data.frame(
     target = character(),
@@ -78,14 +85,14 @@ geocode <- function(address, crs = 4326) {
       "?text=", cil, "&outSR=", crs, "&maxLocations50=&f=pjson"
     )
 
+    if (httr::http_error(query) | !cuzk) { # error in connection?
+      message("Error in connection to CUZK API.")
+      return(NULL)
+    }
+
     resp <- httr::GET(query)
 
     httr::stop_for_status(resp)
-
-    if (resp$status_code != 200 | !network) { # error in connection?
-      message("error in connection to CUZK API")
-      return(NULL)
-    }
 
     # geocoding was successful, now digest the json results!
 

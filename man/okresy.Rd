@@ -16,7 +16,7 @@
 }
 }
 \source{
-© ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
+© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 okresy(resolution = "high")
@@ -30,7 +30,7 @@ Function returning data frame of LAU1 administrative units for the Czech Republi
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to January 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size of high resolution shapefile 1 MB.
+The data is current to February 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size of high resolution shapefile 2.1 MB.
 }
 \examples{
 library(sf)

@@ -26,6 +26,9 @@ expect_equal(nrow(republika("high")), 1)
 expect_equal(st_crs(republika("low"))$input, "EPSG:4326")
 expect_equal(st_crs(republika("high"))$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(republika("high"))))
+expect_true(all(st_is_valid(republika("low"))))
+
 # sloupce se nerozbily...
 expect_equal(colnames(republika()), c("NAZ_STAT", "GeneralizovaneHranice"))
 
@@ -58,6 +61,9 @@ expect_equal(nrow(kraje("high")), 14)
 
 expect_equal(st_crs(kraje("low"))$input, "EPSG:4326")
 expect_equal(st_crs(kraje("high"))$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(kraje("high"))))
+expect_true(all(st_is_valid(kraje("low"))))
 
 # sloupce se nerozbily...
 expect_equal(colnames(kraje()), c("KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
@@ -106,6 +112,9 @@ expect_equal(nrow(okresy("high")), 77)
 expect_equal(st_crs(okresy("low"))$input, "EPSG:4326")
 expect_equal(st_crs(okresy("high"))$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(okresy("high"))))
+expect_true(all(st_is_valid(okresy("low"))))
+
 # sloupce se nerozbily...
 expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
                                    "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
@@ -133,6 +142,8 @@ expect_equal(nrow(orp_polygony()), 206) # 205 "skutečných" ORP + Praha
 
 expect_equal(st_crs(orp_polygony())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(orp_polygony())))
+
 # sloupce se nerozbily...
 expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ORP", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
 
@@ -154,6 +165,8 @@ expect_s3_class(obce_body(), "sf")
 expect_equal(nrow(obce_body()), 6258)
 
 expect_equal(st_crs(obce_body())$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(obce_body())))
 
 # sloupce se nerozbily...
 expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
@@ -179,6 +192,8 @@ expect_equal(nrow(obce_polygony()), 6258)
 
 expect_equal(st_crs(obce_polygony())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(obce_polygony())))
+
 # sloupce se nerozbily...
 expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                       "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
@@ -203,8 +218,10 @@ expect_equal(nrow(casti()), 142)
 
 expect_equal(st_crs(casti())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(casti())))
+
 # sloupce se nerozbily...
-expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry"))
+expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "OriginalniHranice"))
 
 
 context("vodní plochy")
@@ -224,6 +241,8 @@ expect_s3_class(plochy(), "sf")
 expect_equal(nrow(plochy()), 480)
 
 expect_equal(st_crs(plochy())$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(plochy())))
 
 # sloupce se nerozbily...
 expect_equal(colnames(plochy()), c("TYP", "NAZEV", "NAZEV_ASCII", "VYSKA", "geometry", "Major"))
@@ -263,6 +282,10 @@ expect_equal(st_crs(reky("global"))$input, "EPSG:4326")
 expect_equal(st_crs(reky("Praha"))$input, "EPSG:4326")
 expect_equal(st_crs(reky("Brno"))$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(reky())))
+expect_true(all(st_is_valid(reky("Praha"))))
+expect_true(all(st_is_valid(reky("Brno"))))
+
 # sloupce se nerozbily...
 expect_equal(colnames(reky()), c("TYP", "NAZEV", "NAZEV_ASCII", "geometry", "Major"))
 
@@ -284,6 +307,8 @@ expect_s3_class(silnice(), "sf")
 expect_equal(nrow(silnice()), 18979)
 
 expect_equal(st_crs(silnice())$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(silnice())))
 
 # sloupce se nerozbily...
 expect_equal(colnames(silnice()), c("TRIDA", "CISLO_SILNICE", "MEZINARODNI_OZNACENI", "geometry"))
@@ -307,6 +332,8 @@ expect_equal(nrow(zeleznice()), 3525)
 
 expect_equal(st_crs(zeleznice())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(zeleznice())))
+
 # sloupce se nerozbily...
 expect_equal(colnames(zeleznice()), c("ELEKTRIFIKACE","KATEGORIE", "KOLEJNOST", "ROZCHODNOST", "geometry"))
 
@@ -328,6 +355,9 @@ expect_s3_class(chr_uzemi(), "sf")
 expect_equal(nrow(chr_uzemi()), 2677)
 
 expect_equal(st_crs(chr_uzemi())$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(chr_uzemi())))
+
 
 # sloupce se nerozbily...
 expect_equal(colnames(chr_uzemi()), c("TYP", "NAZEV", "PLOCHA", "geometry"))
@@ -351,6 +381,8 @@ expect_equal(nrow(lesy()), 2366)
 
 expect_equal(st_crs(lesy())$input, "EPSG:4326")
 
+expect_true(all(st_is_valid(lesy())))
+
 # sloupce se nerozbily...
 expect_equal(colnames(lesy()), c("geometry"))
 
@@ -371,6 +403,10 @@ expect_equal(KFME_grid("high")$ctverec %>% unique() %>% length(), 4 * 26 * 42) #
 expect_equal(st_crs(KFME_grid())$input, "EPSG:4326")
 expect_equal(st_crs(KFME_grid("high"))$input, "EPSG:4326")
 expect_equal(st_crs(KFME_grid("low"))$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(KFME_grid())))
+expect_true(all(st_is_valid(KFME_grid("high"))))
+expect_true(all(st_is_valid(KFME_grid("low"))))
 
 expect_error(KFME_grid("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
@@ -424,46 +460,81 @@ expect_equal(projection(crs(vyskopis("rayshaded"))), "+proj=longlat +ellps=WGS84
 # očekávaná chyba
 expect_error(vyskopis("bflm")) # neznámé rozlišení - očekávám actual / rayshaded
 
+context("obvody senátu")
 
-context("integrace")
+Sys.setenv("NETWORK_UP" = FALSE)
+expect_message(senat_obvody(), "internet") # zpráva o chybějícím internetu
+Sys.setenv("NETWORK_UP" = TRUE)
 
-obec_praha <- obce_body() %>% # bod Praha (určitě správně)
-  filter(KOD_LAU1 == "CZ0100")
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(senat_obvody(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
 
-okres_praha <- okresy("low") %>% # low res "okres" Praha (zjednodušovaný)
-  filter(KOD_LAU1 == "CZ0100")
+expect_true(is.data.frame(senat_obvody()))
+expect_true(is.data.frame(senat_obvody("low")))
+expect_true(is.data.frame(senat_obvody("high")))
 
-ctverec_praha <- KFME_grid() %>%
-  filter(ctverec == 5952) # čtverec "střed Prahy"
+expect_s3_class(senat_obvody(), "sf")
+expect_s3_class(senat_obvody("high"), "sf")
+expect_s3_class(senat_obvody("low"), "sf")
 
-low_res_stc <- kraje_low_res %>%
-  filter(KOD_CZNUTS3 == "CZ020")
+expect_equal(nrow(senat_obvody()), 81)
+expect_equal(nrow(senat_obvody("low")), 81)
+expect_equal(nrow(senat_obvody("high")), 81)
 
-expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
-expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1) # bod Praha je v okresu Praha
+expect_equal(st_crs(senat_obvody("low"))$input, "EPSG:4326")
+expect_equal(st_crs(senat_obvody("high"))$input, "EPSG:4326")
 
-expect_true(st_contains(okres_praha, ctverec_praha, sparse = F)[[1]]) # čtverec Praha je v okresu Praha
+expect_true(all(st_is_valid(senat_obvody("high"))))
+expect_true(all(st_is_valid(senat_obvody("low"))))
 
-expect_false(st_contains(low_res_stc, obec_praha, sparse = F)[[1]]) # bod Praha není ve Středních Čechách (je v Praze)
+# sloupce se nerozbily...
+expect_equal(colnames(senat_obvody()), c("OBVOD", "SIDLO", "NAZEV_VO", "geometry"))
+expect_equal(colnames(senat_obvody("high")), c("OBVOD", "SIDLO", "NAZEV_VO", "geometry"))
+expect_equal(colnames(senat_obvody("low")), c("OBVOD", "SIDLO", "NAZEV_VO", "geometry"))
 
-# Kramářova vila je v Praze / obci, orp, okresu i kraji
+expect_error(senat_obvody("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
-vila <- geocode("Gogolova 212/1, Praha 1")
+# low res je menší než high res
+expect_true(object.size(senat_obvody("low")) < object.size(senat_obvody("high")))
 
-expect_equal(st_join(vila, kraje(), left = F)$KOD_CZNUTS3, "CZ010") # Kramářova vila je v kraji Praha
-expect_equal(st_join(vila, okresy(), left = F)$KOD_LAU1, "CZ0100") # Kramářova vila je v okrese Praha
-expect_equal(st_join(vila, orp_polygony(), left = F)$KOD_ORP, "1000") # Kramářova vila je v ORP Praha
-expect_equal(st_join(vila, obce_polygony(), left = F)$KOD_OBEC, "554782") # Kramářova vila je v obci Praha
+context("volební okrsky")
 
-# Stezka v oblacích je na Dolní Moravě
+Sys.setenv("NETWORK_UP" = FALSE)
+expect_message(volebni_okrsky(), "internet") # zpráva o chybějícím internetu
+Sys.setenv("NETWORK_UP" = TRUE)
 
-stezka <- geocode("Velká Morava 46, Dolní Morava")
+Sys.setenv("AWS_UP" = FALSE)
+expect_message(volebni_okrsky(), "source") # zpráva o spadlém AWS
+Sys.setenv("AWS_UP" = TRUE)
 
-expect_equal(st_join(stezka, kraje(), left = F)$KOD_CZNUTS3, "CZ053") # Stezka v oblacích je v Pardubickém kraji
-expect_equal(st_join(stezka, okresy(), left = F)$KOD_LAU1, "CZ0534") # Stezka v oblacích je v okrese Ústí nad Orlicí
-expect_equal(st_join(stezka, orp_polygony(), left = F)$KOD_ORP, "5305") # Stezka v oblacích je v ORP Králíky
-expect_equal(st_join(stezka, obce_polygony(), left = F)$KOD_OBEC, "580163") # Stezka v oblacích je v obci Dolní Morava
+expect_true(is.data.frame(volebni_okrsky()))
+expect_true(is.data.frame(volebni_okrsky("low")))
+expect_true(is.data.frame(volebni_okrsky("high")))
 
+expect_s3_class(volebni_okrsky(), "sf")
+expect_s3_class(volebni_okrsky("high"), "sf")
+expect_s3_class(volebni_okrsky("low"), "sf")
+
+expect_equal(nrow(volebni_okrsky()), 14761)
+expect_equal(nrow(volebni_okrsky("low")), 14761)
+expect_equal(nrow(volebni_okrsky("high")), 14761)
+
+expect_equal(st_crs(volebni_okrsky("low"))$input, "EPSG:4326")
+expect_equal(st_crs(volebni_okrsky("high"))$input, "EPSG:4326")
+
+expect_true(all(st_is_valid(volebni_okrsky("high"))))
+expect_true(all(st_is_valid(volebni_okrsky("low"))))
+
+# sloupce se nerozbily...
+expect_equal(colnames(volebni_okrsky()), c("Kod", "Cislo", "ObecKod", "MomcKod", "OriginalniHranice"))
+expect_equal(colnames(volebni_okrsky("high")), c("Kod", "Cislo", "ObecKod", "MomcKod", "OriginalniHranice"))
+expect_equal(colnames(volebni_okrsky("low")), c("Kod", "Cislo", "ObecKod", "MomcKod", "OriginalniHranice"))
+
+expect_error(volebni_okrsky("bflm")) # neznámé rozlišení - očekávám high(default) / low
+
+# low res je menší než high res
+expect_true(object.size(volebni_okrsky("low")) < object.size(volebni_okrsky("high")))
 
 context("dopady 51/2020 Sb.")
 

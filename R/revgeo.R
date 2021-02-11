@@ -8,11 +8,13 @@
 #' output a vector of characters.
 #'
 #' The function returns the same \code{sf} data frame as input, with added field
-#' revgeocoded; it contains the result of operation. If the data frame contained
-#' a column named revgeocoded it gets overwritten.
+#' revgeocoded; it contains the result of operation. Should the data frame contain
+#' a column named revgeocoded it will be overwritten.
 #'
 #' In case of reverse geocoding failures (e.g. coordinates outside of the Czech
 #' Republic and therefore scope of ČÚZK) NA is returned.
+#'
+#' In case of API failures (CUZK down) the function returns NULL.
 #'
 #' Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 #' \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
@@ -38,12 +40,18 @@
 
 revgeo <- function(coords) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
+  cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
   if (missing(coords)) stop("required argument coords is missing")
 
   if (!inherits(coords, "sf")) stop("coords is expected in sf format")
 
   if (sf::st_geometry_type(coords)[1] != "POINT") stop("reverse geocoding is limited to sf point objects")
+
+  if (!curl::has_internet() | !network) { # network is down
+    message("No internet connection.")
+    return(NULL)
+  }
 
   coords$revgeocoded <- NULL # initiate result column in coords data frame
 
@@ -62,14 +70,15 @@ revgeo <- function(coords) {
       "?location=", coords_krovak$modified[i], "&f=pjson"
     )
 
+    if (httr::http_error(query) | !cuzk) { # error in connection?
+      message("Error in connection to CUZK API.")
+      return(NULL)
+    }
+
     resp <- httr::GET(query)
 
     httr::stop_for_status(resp)
 
-    if (resp$status_code != 200 | !network) { # error in connection
-      message("error in connection to CUZK API")
-      return(NULL)
-    }
     # reverse geocoding was successful, now digest the json results!
 
     adresa <- httr::content(resp) %>%

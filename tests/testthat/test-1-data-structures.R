@@ -527,9 +527,9 @@ expect_true(all(st_is_valid(volebni_okrsky("high"))))
 expect_true(all(st_is_valid(volebni_okrsky("low"))))
 
 # sloupce se nerozbily...
-expect_equal(colnames(volebni_okrsky()), c("Kod", "Cislo", "ObecKod", "MomcKod", "OriginalniHranice"))
-expect_equal(colnames(volebni_okrsky("high")), c("Kod", "Cislo", "ObecKod", "MomcKod", "OriginalniHranice"))
-expect_equal(colnames(volebni_okrsky("low")), c("Kod", "Cislo", "ObecKod", "MomcKod", "OriginalniHranice"))
+expect_equal(colnames(volebni_okrsky()), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "OriginalniHranice"))
+expect_equal(colnames(volebni_okrsky("high")), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "OriginalniHranice"))
+expect_equal(colnames(volebni_okrsky("low")), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "OriginalniHranice"))
 
 expect_error(volebni_okrsky("bflm")) # neznámé rozlišení - očekávám high(default) / low
 

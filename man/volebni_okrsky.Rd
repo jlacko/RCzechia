@@ -14,7 +14,6 @@
   \item{KOD_LAU1}{Id of okres - maps to okresy()$KOD_LAU1.}
   \item{KOD_CZNUTS3}{Id of kraj - maps to kraje()$KOD_CZNUTS3.}
 }
-}
 \source{
 © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 }

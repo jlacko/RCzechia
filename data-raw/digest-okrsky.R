@@ -9,7 +9,6 @@ library(dplyr)
 
 rozhodne_datum <- "2021-02"
 
-
 # CZSO číselník obcí - #043
 cisob <- czso::czso_get_codelist("cis43") %>%
   mutate(CHODNOTA = as.character(CHODNOTA)) %>%

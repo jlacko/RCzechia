@@ -64,6 +64,7 @@ okrsky_high_res <- st_read("./data-raw/20201003_ST_UVOH.xml", stringsAsFactors =
   st_cast() %>%
   st_buffer(0) %>%
   st_transform("EPSG:4326") %>%
+  mutate(across(where(is.numeric), as.character)) %>%
   inner_join(obce, by = c("ObecKod" = "KOD_OBEC")) %>%
   select(Kod, Cislo, ObecKod, MomcKod, KOD_LAU1, KOD_CZNUTS3, OriginalniHranice)
 

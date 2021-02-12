@@ -168,18 +168,14 @@ I found the stamen toner basemap a good company for interactive chloropleths - i
 library(dplyr)
 library(RCzechia)
 library(leaflet)
-library(sf)
+library(czso)
 
-src <- read.csv(url("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/unempl.csv"), stringsAsFactors = F) 
-# open data on unemployment from Czech Statistical Office - https://www.czso.cz/csu/czso/otevrena_data
-# lightly edited for size (rows filtered)
-
-
-src <- src %>%
-  mutate(KOD_OBEC = as.character(uzemi_kod))  # keys in RCzechia are of type character
+# metrika pro mapování - uchazeči za říjen
+metrika <- czso::czso_get_table("250169r20") %>% 
+   filter(obdobi == "20201031" & vuk == "NEZ0004")
 
 podklad <- RCzechia::obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
-  inner_join(src, by = "KOD_OBEC") %>% # linking by key
+  inner_join(metrika, by = c("KOD_OBEC" = "uzemi_kod")) %>% # linking by key
   filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
 
 pal <- colorNumeric(palette = "viridis",  domain = podklad$hodnota)

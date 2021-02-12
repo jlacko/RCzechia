@@ -8,7 +8,6 @@ output:
 self_contained: no
 vignette: >
   %\VignetteIndexEntry{Solving real world issues with RCzechia}
-  %\VignetteDepends{readxl}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -20,35 +19,22 @@ library(roxygen2)
 ```
 ### Visualizing Czech Population
 
-Population of the Czech Republic as per the [latest census](https://www.czso.cz/csu/czso/zakladni-vysledky-scitani-lidu-domu-a-bytu-2011-ceska-republika-2011-eihs9d4gp3) in 2011, per district (okres).
+Population of the Czech Republic as per the [latest census](https://www.czso.cz/csu/czso/zakladni-vysledky-scitani-lidu-domu-a-bytu-2011-ceska-republika-2011-eihs9d4gp3) in 2011, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/) by Petr Bouchal.
 
-As the population distributed unevenly a log scale is used.
+As the population distributed highly unevenly a log scale is used.
   
 ```{r census, echo = T, eval = T, message = F}
 library(RCzechia)
 library(ggplot2)
-library(readxl)
 library(dplyr)
-library(httr)
-library(sf)
+library(czso)
 
-tf <- tempfile(fileext = ".xls") # a temporary xls file
+src <- czso::czso_get_table("SLDB-VYBER") %>% 
+   select(uzkod, obyvatel = vse1111) %>% 
+   mutate(obyvatel = as.numeric(obyvatel)) 
 
-GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls", 
-    write_disk(tf))
-
-src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
-
-colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
-
-src <- src %>%
-  mutate(obyvatel = as.double(obyvatel)) %>% 
-    # convert from text to number
-  mutate(NAZ_LAU1 = ifelse(NAZ_LAU1 == "Hlavní město Praha", "Praha", NAZ_LAU1)) 
-    # rename Prague (from The Capital to a regular city)
-  
 okresni_data <- RCzechia::okresy("low") %>% # data shapefile
-  inner_join(src, by = "NAZ_LAU1") 
+  inner_join(src, by = c("KOD_OKRES" = "uzkod")) 
     # key for data connection - note the use of inner (i.e. filtering) join
 
 # report results
@@ -61,10 +47,6 @@ ggplot(data = okresni_data) +
   theme_bw() +
   theme(legend.text.align = 1,
         legend.title.align = 0.5)
-
-
-
-
 ```
 
 ## Geocoding Locations & Drawing them on a Map

@@ -21,7 +21,7 @@ Imports:
   magrittr
 Suggests:
   raster,
-  readxl,
+  czso,
   units,
   ggplot2,
   scales,

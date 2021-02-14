@@ -7,7 +7,7 @@
 \code{sf} data frame with 81 rows of 3 variables + geometry
 
 \describe{
-  \item{OBVOD}{Code of the district.}
+  \item{OBVOD}{Code of the district; left padded with zero in case of districts one to nine.}
   \item{SIDLO}{Seat of the senator.}
   \item{NAZEV_VO}{Formal name of the district.}
 }

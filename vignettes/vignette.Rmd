@@ -238,7 +238,7 @@ ggplot() +
   geom_sf(data = KFME_grid(), size = .33, # all KFME grid cells, thin
           color = "gray80", fill = NA) + # in gray and without fill
   geom_sf(data = place,  color = "red", pch = 4) +  # X marks the spot!
-  ggtitle(paste("Location", obec, "in grid cell number", ctverec_id)) +
+  labs(title = paste("Location", obec, "in grid cell number", ctverec_id)) +
   theme_bw()
 
 ```
@@ -277,5 +277,44 @@ ggplot() +
   labs(title = "Czech Rivers & Their Basins") +
   theme_bw() +
   theme(axis.title = element_blank())
+
+```
+
+
+## Senate Elections of 2020
+
+Visualizing election results is one of typical use cases of RCzechia package.
+
+This example uses `{rvest}` to scrape the official table of results of the 2020 fall Senate elections from the official [volby.cz](https://www.volby.cz/) results, and display a map of the party affilation of the elected senator.
+
+Since not all districts were up for election in this cycle two thirds of the map contain NA's; that is expected behavior.
+
+```{r senat, echo = T, eval = T, message = F, warning = F}
+
+library(RCzechia)
+library(ggplot2)
+library(dplyr)
+library(rvest)
+
+# official result of elections from Czech Statistical Office
+vysledky <- "https://www.volby.cz/pls/senat/se1111?xjazyk=CZ&xdatum=20201002&xv=7&xt=2" %>% 
+  xml2::read_html() %>%  # because rvest::html is deprecated
+  html_nodes(xpath = "//*[@id=\"se1111_t1\"]") %>%  # get the table by its xpath
+  html_table(fill = T) %>% 
+  .[[1]] %>% 
+  dplyr::select(OBVOD = Obvod, strana = `Volebnístrana`) %>% 
+  # pad OBVOD with zero to 2 places to align to RCzechia data format
+  mutate(OBVOD = stringr::str_pad(OBVOD, 2, side = "left", pad = "0"))
+
+podklad <- RCzechia::senat_obvody("low") %>% 
+  # match by key; left to preserve geometry of off cycle districts (NAs)
+  left_join(vysledky, by = "OBVOD") 
+
+ggplot() +
+  geom_sf(data = RCzechia::republika(), size = .85) + # Czech borders
+  geom_sf(data = podklad, aes(fill = strana)) +
+  labs(title = "Senate elections 2020") +
+  theme_bw()
+
 
 ```

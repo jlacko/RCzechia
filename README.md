@@ -40,6 +40,9 @@ install.packages("RCzechia")
 You can also get the latest development version by running `remotes::install_github("jlacko/RCzechia")` and the last version built on [`sp`](https://github.com/edzer/sp) instead of [`sf`](https://github.com/r-spatial/sf) package by running  `remotes::install_github("jlacko/RCzechia", ref = "v0.1.4")`. 
 
 ### The following spatial objects are included:  
+
+administrative:
+
 * **republika**: borders of the Czech Republic
 * **kraje**: 14 regions of the Czech Republic + Prague.  
 Key is KOD_CZNUTS3 (CZ NUTS3 code).
@@ -53,6 +56,11 @@ Key is KOD_OBEC, also contained are KOD_ORP (code of municipality with extended 
 Key is again KOD_OBEC.
 * **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava..).  
 Key is KOD.
+* **senat_obvody**: 81 senate districts (volební obvody senátu)
+* **volebni_okrsky**: 14.761 general election districts (volební okrsky)
+
+natural:
+
 * **reky**: streams and rivers
 * **plochy**: stillwaters (lakes and ponds).
 * **silnice**: roads (highways, speedways etc.)
@@ -61,6 +69,7 @@ Key is KOD.
 * **lesy**: woodland areas (more than 30 ha in area)
 * **KFME_grid**: KFME grid cells (faunistické čtverce)
 * **vyskopis**: terrain of the Czech republic as a {raster} package object
+
 
 All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).
 

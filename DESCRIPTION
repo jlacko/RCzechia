@@ -21,9 +21,12 @@ Imports:
   magrittr
 Suggests:
   raster,
-  readxl,
+  czso,
   units,
   ggplot2,
+  stringr,
+  rvest,
+  xml2,
   scales,
   knitr,
   testthat,

@@ -14,11 +14,14 @@ unzip("./data-raw/psc_010120.zip",
 
 zip_high_res <- st_read("./data-raw/psc_010120/psc_010120.shp", stringsAsFactors = F) %>%
   mutate(NAZ_POSTA = stringi::stri_encode(NAZ_POSTA, from = "windows1250", to = "UTF-8")) %>%
-  st_transform("EPSG:4326") %>%
   st_make_valid() %>%
   st_buffer(0) %>%
-  st_cast() %>%
-  select(PSC, NAZ_POSTA)
+  group_by(PSC, NAZ_POSTA) %>%
+  summarise() %>%
+  ungroup() %>%
+  st_transform("EPSG:4326") %>%
+  st_cast()
+
 
 
 zip_low_res <- zip_high_res %>%

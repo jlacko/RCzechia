@@ -5,6 +5,8 @@
   - resolves invalid geometries of okresy, orp_polygony and chr_uzemi 
   
   - resolved inconsistencies in geometries of okresy Brno město & Brno venkov
+  
+  - updated vignette ({czso} replaces downloaded csv files; viz of Senát added)
 
 ## version 1.6.3
 

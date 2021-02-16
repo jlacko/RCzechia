@@ -1,5 +1,5 @@
 ## Test environments
-* Ubuntu 20.04 LTS, R version 4.0.3 GEOS 3.8.1, GDAL 3.1.2, PROJ 7.2.0 (desktop)
+* Ubuntu 20.04 LTS, R version 4.0.4 GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1 (desktop)
 * Ubuntu 18.04.4 LTS, R version 3.6.3 GEOS 3.7.1, GDAL 2.2.3, PROJ 4.9.3 (GitHub Actions)
 
 * Ubuntu 20.04.1 LTS, R version 4.0.3 (2020-10-10) (GitHub Actions)
@@ -18,9 +18,5 @@ There were no NOTES, ERRORs or WARNINGs.
 There are no downstream dependencies.
 
 ## CRAN checks
-This bugfix release is expected to resolve the issue with v1.6.2 on CRAN Solaris
-and oldrel Mac OS builds. These seem to be caused by oldish PROJ version.
-
-It has been tested with PROJ 4.9.3 (the patched-solaris and oldrel-macos
-use PROJ 5.2.0).
+This release is expected to resolve the two warnings / errors on´ rebuilding vignette output.
 

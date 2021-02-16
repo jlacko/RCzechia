@@ -40,9 +40,13 @@ expect_equal(sum(st_area(okresy("low"))), st_area(republika("low")), tolerance =
 expect_equal(sum(st_area(orp_polygony())), st_area(republika()), tolerance = 1/1000)
 expect_equal(sum(st_area(obce_polygony())), st_area(republika()), tolerance = 1/1000)
 
-# na tohle nejsem pyšný, ale když RUIAN nedá jinak...
-expect_equal(sum(st_area(volebni_okrsky("high"))), st_area(republika()), tolerance = 2/100)
-expect_equal(sum(st_area(senat_obvody("high"))), st_area(republika()), tolerance = 1/1000)
+# v újezdech se nevolí...
+vojaci <- filter(obce_polygony(), stringr::str_starts(NAZ_POU, "Vojenský újezd"))
+expect_equal(sum(st_area(volebni_okrsky("high"))), st_area(republika("high")) - sum(st_area(vojaci)), tolerance = 1/1000)
+
+expect_equal(sum(st_area(senat_obvody("high"))), st_area(republika("high")), tolerance = 1/1000)
+expect_equal(sum(st_area(zip_codes("high"))), st_area(republika("high")), tolerance = 1/1000)
+
 
 # pražské části odpovídají Praze městu
 expect_equal(sum(st_area(filter(casti(), NAZ_OBEC == "Praha"))),

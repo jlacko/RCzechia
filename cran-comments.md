@@ -1,5 +1,5 @@
 ## Test environments
-* Ubuntu 20.04 LTS, R version 4.0.3 GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1 (desktop)
+* Ubuntu 20.04 LTS, R version 4.0.4 GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1 (desktop)
 * Ubuntu 18.04.4 LTS, R version 3.6.3 GEOS 3.7.1, GDAL 2.2.3, PROJ 4.9.3 (GitHub Actions)
 
 * Ubuntu 20.04.1 LTS, R version 4.0.3 (2020-10-10) (GitHub Actions)

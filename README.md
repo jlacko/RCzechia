@@ -37,7 +37,7 @@ The package is on CRAN (as of March 2018) so to get a stable version simply run:
 ```r 
 install.packages("RCzechia")
 ```
-You can also get the latest development version by running `remotes::install_github("jlacko/RCzechia")` and the last version built on [`sp`](https://github.com/edzer/sp) instead of [`sf`](https://github.com/r-spatial/sf) package by running  `remotes::install_github("jlacko/RCzechia", ref = "v0.1.4")`. 
+You can also get the latest development version by running `remotes::install_github("jlacko/RCzechia")`
 
 ### The following spatial objects are included:  
 
@@ -58,6 +58,7 @@ Key is again KOD_OBEC.
 Key is KOD.
 * **senat_obvody**: 81 senate districts (volební obvody senátu)
 * **volebni_okrsky**: 14.761 general election districts (volební okrsky)
+* **zip_codes**: 2.671 ZIP code areas (PSČ)
 
 natural:
 

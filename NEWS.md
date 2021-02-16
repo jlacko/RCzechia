@@ -1,6 +1,6 @@
 ## version 1.6.4
 
-  - volebni_okrsky() and senat_obvody() functions added, based on helpful suggestions from Jakub Komárek
+  - volebni_okrsky(), senat_obvody() and zip_codes() functions added, based on helpful suggestions from Jakub Komárek
  
   - resolves invalid geometries of okresy, orp_polygony and chr_uzemi 
   

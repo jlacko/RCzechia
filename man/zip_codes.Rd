@@ -36,12 +36,11 @@ The data is current to February 2021 (last update was in January 2020). Download
 library(sf)
 library(dplyr)
 
-strakovka <- RCzechia::geocode("Nábřeží Edvarda Beneše 4, Praha 1")
+kramarova_vila <- RCzechia::geocode("Gogolova 212, Praha 1")
 
-strakovka \%>\%
+kramarova_vila \%>\%
    st_join(RCzechia::zip_codes("low"), left = FALSE) \%>\%
    pull(PSC)
 
-# note that the official PSČ of Strakova Akademie is actually different - 118 01
 
 }

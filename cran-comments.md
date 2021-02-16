@@ -18,5 +18,5 @@ There were no NOTES, ERRORs or WARNINGs.
 There are no downstream dependencies.
 
 ## CRAN checks
-All CRAN checks are OK.
+This release is expected to resolve the two warnings / errors on´ rebuilding vignette output.
 

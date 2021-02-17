@@ -7,7 +7,7 @@
 * Mac OS X 10.15.7, R version 4.0.4 (2021-02-15) (GitHub Actions)
 
 * Windows R version 4.0.4 (2021-02-15) (win builder)
-* Windows R Under development (unstable) (2021-02-13 r80000) (win builder) 
+* Windows R Under development (unstable) (2021-02-16 r80015) (win builder) 
 * Windows R version 3.6.3 (2020-02-29) (win builder)
 
 ## R CMD check results

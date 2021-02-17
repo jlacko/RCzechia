@@ -1,4 +1,4 @@
-## version 1.6.4
+## version 1.6.5
 
   - volebni_okrsky(), senat_obvody() and zip_codes() functions added, based on helpful suggestions from Jakub Komárek
  

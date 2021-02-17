@@ -20,3 +20,4 @@ There are no downstream dependencies.
 ## CRAN checks
 This release is expected to resolve the two warnings / errors on´ rebuilding vignette output.
 
+

@@ -1,86 +1,90 @@
 library(dplyr)
 library(sf)
 
-context("geocode")
-
 dos_sochoros <- c(
   "pplk. Sochora 4, Praha", # platná adresa
   "pplk. Sochora 4, Čierna pri Čope" # neplatná adresa
 )
 
-# očekávané chyby - špatné zadání
-expect_error(geocode()) # čekám chybu - není cíl
+test_that("geocode", {
 
-Sys.setenv("NETWORK_UP" = FALSE)
-expect_message(geocode(dos_sochoros[1]), "No internet connection.") # není síť
-Sys.setenv("NETWORK_UP" = TRUE)
 
-Sys.setenv("CUZK_UP" = FALSE)
-expect_message(geocode(dos_sochoros[1]), "Error in connection.") # API down
-Sys.setenv("CUZK_UP" = TRUE)
+  # očekávané chyby - špatné zadání
+  expect_error(geocode()) # čekám chybu - není cíl
 
-# vrací se sf objekt
-expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(geocode(dos_sochoros[1]), "No internet connection.") # není síť
+  Sys.setenv("NETWORK_UP" = TRUE)
 
-# správné hlavičky sloupců
-expect_equal(geocode(dos_sochoros) %>% colnames(), c("target", "typ", "address", "geometry"))
+  Sys.setenv("CUZK_UP" = FALSE)
+  expect_message(geocode(dos_sochoros[1]), "Error in connection.") # API down
+  Sys.setenv("CUZK_UP" = TRUE)
 
-# CRS má očekávanou hodnotu
-expect_equal(st_crs(geocode(dos_sochoros[1]))$epsg, 4326) # defaultní CRS = WGS84
-expect_equal(st_crs(geocode(dos_sochoros[1], 5514))$epsg, 5514) # Křovák = Křovák
+  # vrací se sf objekt
+  expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
 
-# očekávaná hodnota souřadnic známého bodu
-expect_equal(st_coordinates(geocode(dos_sochoros[1]))[, "X"], 14.4365531) # default = vrací WGS84
-expect_equal(st_coordinates(geocode(dos_sochoros[1]))[, "Y"], 50.1000536) # dtto...
+  # správné hlavičky sloupců
+  expect_equal(geocode(dos_sochoros) %>% colnames(), c("target", "typ", "address", "geometry"))
 
-# chybná adresa:
-expect_equal(geocode(dos_sochoros[2]), NA) # pokud neexistuje žádná adresa, tak NA
-expect_lt(nrow(geocode(dos_sochoros)), length(dos_sochoros)) # pokud neexistují všechny, tak se vrátí míň než hledáno
+  # CRS má očekávanou hodnotu
+  expect_equal(st_crs(geocode(dos_sochoros[1]))$epsg, 4326) # defaultní CRS = WGS84
+  expect_equal(st_crs(geocode(dos_sochoros[1], 5514))$epsg, 5514) # Křovák = Křovák
 
-# nejednoznačná adresa:
-expect_gt(nrow(geocode("pplk. Sochora 4")), 1) # jedna v Praze, jedna v Brandýse: ergo víc jak 1
+  # očekávaná hodnota souřadnic známého bodu
+  expect_equal(st_coordinates(geocode(dos_sochoros[1]))[, "X"], 14.4365531) # default = vrací WGS84
+  expect_equal(st_coordinates(geocode(dos_sochoros[1]))[, "Y"], 50.1000536) # dtto...
 
-# v Českých Budějovicích by chtěl žít každý...
-expect_equal(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "X"], 14.4749019) # podle mapy.cz na 5 desetinek
-expect_equal(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "Y"], 48.9727519) # dtto...
+  # chybná adresa:
+  expect_equal(geocode(dos_sochoros[2]), NA) # pokud neexistuje žádná adresa, tak NA
+  expect_lt(nrow(geocode(dos_sochoros)), length(dos_sochoros)) # pokud neexistují všechny, tak se vrátí míň než hledáno
 
-context("revgeo")
+  # nejednoznačná adresa:
+  expect_gt(nrow(geocode("pplk. Sochora 4")), 1) # jedna v Praze, jedna v Brandýse: ergo víc jak 1
 
-sochor_wgs <- geocode(dos_sochoros[1]) # podle WGS84
-sochor_krovak <- st_transform(sochor_wgs, 5514) # totéž, dle Křováka
+  # v Českých Budějovicích by chtěl žít každý...
+  expect_equal(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "X"], 14.4749019) # podle mapy.cz na 5 desetinek
+  expect_equal(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "Y"], 48.9727519) # dtto...
+})
 
-amerika <- data.frame(
-    place = c("Statue of Liberty", "Golden Gate Bridge"), # zcela jasně out of scope pro ČÚZK
-    x = c(-74.044444, -122.478611),
-    y = c(40.689167, 37.819722)
-  ) %>%
-  st_as_sf(coords = c("x", "y"), crs = 4326)
 
-tres_sochoros <- geocode(rep(dos_sochoros[1], 3)) # tři stejné adresy
+test_that("revgeo", {
 
-# očekávané chyby - špatné zadání
-expect_error(revgeo()) # čekám chybu - nejsou koordináty
-expect_error(revgeo("bflm")) # čekám chybu - zadání není sf
-expect_error(revgeo(kraje())) # čekám chybu - nejsou body ale polygony
+  sochor_wgs <- geocode(dos_sochoros[1]) # podle WGS84
+  sochor_krovak <- st_transform(sochor_wgs, 5514) # totéž, dle Křováka
 
-Sys.setenv("NETWORK_UP" = FALSE)
-expect_message(revgeo(sochor_wgs), "No internet connection.") # není síť
-Sys.setenv("NETWORK_UP" = TRUE)
+  amerika <- data.frame(
+      place = c("Statue of Liberty", "Golden Gate Bridge"), # zcela jasně out of scope pro ČÚZK
+      x = c(-74.044444, -122.478611),
+      y = c(40.689167, 37.819722)
+    ) %>%
+    st_as_sf(coords = c("x", "y"), crs = 4326)
 
-Sys.setenv("CUZK_UP" = FALSE)
-expect_message(revgeo(sochor_wgs), "Error in connection.") # API down
-Sys.setenv("CUZK_UP" = TRUE)
-# vrací se sf objekt
-expect_s3_class(revgeo(sochor_wgs), "sf") # vrací se class sf
+  tres_sochoros <- geocode(rep(dos_sochoros[1], 3)) # tři stejné adresy
 
-# koordináty v WGS84
-expect_equal(revgeo(sochor_wgs)$revgeocoded, "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
+  # očekávané chyby - špatné zadání
+  expect_error(revgeo()) # čekám chybu - nejsou koordináty
+  expect_error(revgeo("bflm")) # čekám chybu - zadání není sf
+  expect_error(revgeo(kraje())) # čekám chybu - nejsou body ale polygony
 
-# koordináty ve Křovákovi
-expect_equal(revgeo(sochor_krovak)$revgeocoded, "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
+  Sys.setenv("NETWORK_UP" = FALSE)
+  expect_message(revgeo(sochor_wgs), "No internet connection.") # není síť
+  Sys.setenv("NETWORK_UP" = TRUE)
 
-# třikrát stejné koordináty = funguje vektorizace
-expect_equal(revgeo(tres_sochoros)$revgeocoded, rep("Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7", 3))
+  Sys.setenv("CUZK_UP" = FALSE)
+  expect_message(revgeo(sochor_wgs), "Error in connection.") # API down
+  Sys.setenv("CUZK_UP" = TRUE)
+  # vrací se sf objekt
+  expect_s3_class(revgeo(sochor_wgs), "sf") # vrací se class sf
 
-# platný sf objekt, ale out of scope českého katastru
-expect_equal(revgeo(amerika)$revgeocoded %>% is.na() %>% unique(), TRUE) # vrací se pouze NA ...
+  # koordináty v WGS84
+  expect_equal(revgeo(sochor_wgs)$revgeocoded, "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
+
+  # koordináty ve Křovákovi
+  expect_equal(revgeo(sochor_krovak)$revgeocoded, "Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7")
+
+  # třikrát stejné koordináty = funguje vektorizace
+  expect_equal(revgeo(tres_sochoros)$revgeocoded, rep("Pplk. Sochora 1391/4, Holešovice, 17000 Praha 7", 3))
+
+  # platný sf objekt, ale out of scope českého katastru
+  expect_equal(revgeo(amerika)$revgeocoded %>% is.na() %>% unique(), TRUE) # vrací se pouze NA ...
+})

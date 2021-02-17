@@ -14,7 +14,7 @@ For examples of RCzechia in action please see the package vignette:
 * [Interactive Map](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#interactive-map)
 * [KFME Grid Cells - faunistické čtverce](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#kfme-grid-cells)
 * [Terrain of the Czech Republic](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#terrain-of-the-czech-republic)
-
+* [Senate elections of 2020](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#senate-elections-of-2020)
 
 The administrative area polygons are based on the [RÚIAN register](https://cs.wikipedia.org/wiki/Registr_%C3%BAzemn%C3%AD_identifikace,_adres_a_nemovitost%C3%AD); the natural objects are based on ArcČR 500 (https://www.arcdata.cz/produkty/geograficka-data/arccr-500) with some adjustments:  
 

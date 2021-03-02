@@ -13,11 +13,12 @@
 #' @source © ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
+#' \donttest{
 #' library(sf)
 #'
 #' hranice <- republika()
 #' plot(hranice, col = "white")
-#'
+#' }´
 #' @export
 
 

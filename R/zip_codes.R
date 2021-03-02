@@ -22,6 +22,7 @@
 #' @source ČSÚ \url{https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu}
 #'
 #' @examples
+#' \donttest{
 #' library(sf)
 #' library(dplyr)
 #'
@@ -30,8 +31,7 @@
 #' kramarova_vila %>%
 #'    st_join(RCzechia::zip_codes("low"), left = FALSE) %>%
 #'    pull(PSC)
-#'
-#'
+#' }
 #' @export
 
 zip_codes <- function(resolution = "high") {

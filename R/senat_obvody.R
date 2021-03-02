@@ -19,11 +19,13 @@
 #' @source ČSÚ \url{https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu}
 #'
 #' @examples
+#' \donttest{
 #' library(sf)
 #'
 #' senat <- senat_obvody("low")
 #' plot(st_geometry(senat), col = "white")
 #' nrow(senat) # 81, because the Constitution says so...
+#' }
 #' @export
 
 senat_obvody <- function(resolution = "high") {

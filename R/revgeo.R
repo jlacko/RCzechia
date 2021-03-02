@@ -23,6 +23,7 @@
 #'   frame of spatial points
 #'
 #' @examples
+#' \donttest{
 #' library(dplyr)
 #' library(sf)
 #'
@@ -33,7 +34,7 @@
 #' pupek_brna <- st_centroid(brno) # calculate centroid
 #'
 #' adresa_pupku <- revgeo(pupek_brna)$revgeocoded # address of the center
-#'
+#' }
 #' @export
 
 

@@ -17,13 +17,13 @@
 #' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
 #'
 #' @examples
-#'
+#' \donttest{
 #' library(raster)
 #'
 #' relief <- vyskopis("rayshaded")
 #'
 #' plot(relief, col = gray.colors(16))
-#'
+#' }
 #' @export
 
 

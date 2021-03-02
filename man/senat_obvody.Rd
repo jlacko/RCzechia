@@ -30,9 +30,11 @@ Due to package size constraints the data are stored externally (and a working in
 The data is current to February 2021 (last update was in 2016). Downloaded size of high resolution shapefile is 10 MB, size of the low res object is negligible (but a working internet is still required, as the object is not interal).
 }
 \examples{
+\donttest{
 library(sf)
 
 senat <- senat_obvody("low")
 plot(st_geometry(senat), col = "white")
 nrow(senat) # 81, because the Constitution says so...
+}
 }

@@ -22,6 +22,7 @@
 #' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
+#' \donttest{
 #' library(sf)
 #'
 #' hranice <- okresy()
@@ -29,7 +30,7 @@
 #'
 #' object.size(okresy("low"))
 #' object.size(okresy("high"))
-#'
+#' }
 #' @export
 
 okresy <- function(resolution = "high") {

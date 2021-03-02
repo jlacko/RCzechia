@@ -76,5 +76,26 @@ test_that("integrace", {
   expect_equal(st_join(stezka, okresy(), left = F)$KOD_LAU1, "CZ0534") # Stezka v oblacích je v okrese Ústí nad Orlicí
   expect_equal(st_join(stezka, orp_polygony(), left = F)$KOD_ORP, "5305") # Stezka v oblacích je v ORP Králíky
   expect_equal(st_join(stezka, obce_polygony(), left = F)$KOD_OBEC, "580163") # Stezka v oblacích je v obci Dolní Morava
+
+  telc <- geocode("Telč") %>% # známý bod Telč
+    filter(typ == "Obec")
+
+  hrcava <- geocode("Hrčava") %>% # známý bod Hrčava
+    filter(typ == "Obec")
+
+  cernousy <- geocode("Černousy") %>% # známý bod Černousy
+    filter(typ == "Obec")
+
+  expect_equal(sf::st_intersection(KFME_grid("low"), telc)$ctverec, 6858) # bod Telč je ve velkém čtverci 6858
+  expect_equal(sf::st_intersection(KFME_grid("high"), telc)$ctverec, "6858b") # bod Telč je v malém čtverci 6858b
+
+  expect_equal(sf::st_intersection(KFME_grid("low"), hrcava)$ctverec, 6479) # bod Hrčava je ve velkém čtverci 6479
+  expect_equal(sf::st_intersection(KFME_grid("high"), hrcava)$ctverec, "6479c") # bod Hrčava je v malém čtverci 6479c
+
+  expect_equal(sf::st_intersection(KFME_grid("low"), cernousy)$ctverec, 4956) # bod Černousy je ve velkém čtverci 4956
+  expect_equal(sf::st_intersection(KFME_grid("high"), cernousy)$ctverec, "4956c") # bod Černousy je v malém čtverci 4956c
+
 })
+
+
 

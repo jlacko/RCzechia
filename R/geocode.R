@@ -50,9 +50,10 @@
 #'
 #'
 #' @examples
+#' \donttest{
 #' asdf <- geocode("Gogolova 212, Praha 1")
 #' print(asdf)
-#'
+#' }
 #' @export
 #'
 
@@ -63,10 +64,6 @@ geocode <- function(address, crs = 4326) {
 
   if (missing(address)) stop("required argument address is missing")
 
-  if (!curl::has_internet() | !network) { # network is down
-    message("No internet connection.")
-    return(NULL)
-  }
 
   result <- data.frame(
     target = character(),
@@ -85,7 +82,13 @@ geocode <- function(address, crs = 4326) {
       "?text=", cil, "&outSR=", crs, "&maxLocations50=&f=pjson"
     )
 
-    if (httr::http_error(query) | !cuzk) { # error in connection?
+    if (!ok_to_proceed(query) | !network) { # network is down
+      message("No internet connection.")
+      return(NULL)
+    }
+
+
+    if (!ok_to_proceed(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
       return(NULL)
     }

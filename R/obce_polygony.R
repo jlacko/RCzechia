@@ -26,6 +26,7 @@
 #' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
+#' \donttest{
 #' library(sf)
 #' library(dplyr)
 #'
@@ -33,7 +34,7 @@
 #'   filter(NAZ_LAU1 == "Praha")
 #'
 #' plot(praha, max.plot = 1)
-#'
+#' }
 #' @export
 
 obce_polygony <- function() {

@@ -13,11 +13,13 @@
 #' }
 #'
 #' @examples
+#' \donttest{
 #' library(ggplot2)
 #'
 #' ggplot() +
 #'   geom_sf(data = republika("low")) +
 #'   geom_sf(data = KFME_grid("low"), fill = NA)
+#' }
 #' @export
 
 KFME_grid <- function(resolution = "low") {

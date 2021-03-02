@@ -33,9 +33,10 @@ Due to package size constraints the data are stored externally (and a working in
 The data is current to January 2015. Downloaded size is 1 MB.
 }
 \examples{
+\donttest{
 library(sf)
 
 plot(st_geometry(subset(okresy(), KOD_LAU1 == "CZ0642"))) # Brno city
 plot(reky("Brno"), add = TRUE) # Svitava & Svratka added to Brno my city plot
-
+}
 }

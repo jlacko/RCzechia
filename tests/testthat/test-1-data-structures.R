@@ -419,23 +419,6 @@ test_that("faunistické čtverce", {
 
   expect_error(KFME_grid("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
-  telc <- geocode("Telč") %>% # známý bod Telč
-    filter(typ == "Obec")
-
-  hrcava <- geocode("Hrčava") %>% # známý bod Hrčava
-    filter(typ == "Obec")
-
-  cernousy <- geocode("Černousy") %>% # známý bod Černousy
-    filter(typ == "Obec")
-
-  expect_equal(sf::st_intersection(KFME_grid("low"), telc)$ctverec, 6858) # bod Telč je ve velkém čtverci 6858
-  expect_equal(sf::st_intersection(KFME_grid("high"), telc)$ctverec, "6858b") # bod Telč je v malém čtverci 6858b
-
-  expect_equal(sf::st_intersection(KFME_grid("low"), hrcava)$ctverec, 6479) # bod Hrčava je ve velkém čtverci 6479
-  expect_equal(sf::st_intersection(KFME_grid("high"), hrcava)$ctverec, "6479c") # bod Hrčava je v malém čtverci 6479c
-
-  expect_equal(sf::st_intersection(KFME_grid("low"), cernousy)$ctverec, 4956) # bod Černousy je ve velkém čtverci 4956
-  expect_equal(sf::st_intersection(KFME_grid("high"), cernousy)$ctverec, "4956c") # bod Černousy je v malém čtverci 4956c
 })
 
 test_that("reliéf", {

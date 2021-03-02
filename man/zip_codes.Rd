@@ -33,6 +33,7 @@ Due to package size constraints the data are stored externally (and a working in
 The data is current to February 2021 (last update was in January 2020). Downloaded size of high resolution shapefile is 45 MB, size of the low res object is 2 MB.
 }
 \examples{
+\donttest{
 library(sf)
 library(dplyr)
 
@@ -41,6 +42,5 @@ kramarova_vila <- RCzechia::geocode("Gogolova 212, Praha 1")
 kramarova_vila \%>\%
    st_join(RCzechia::zip_codes("low"), left = FALSE) \%>\%
    pull(PSC)
-
-
+}
 }

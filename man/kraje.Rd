@@ -30,8 +30,10 @@ Due to package size constraints the data are stored externally (and a working in
 The data is current to February 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size of high resolution shapefile is <1 MB.
 }
 \examples{
+\donttest{
 library(sf)
 
-hranice <- kraje()
+hranice <- kraje("low")
 plot(hranice, col = "white", max.plot = 1)
+}
 }

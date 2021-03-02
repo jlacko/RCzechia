@@ -22,10 +22,12 @@
 #' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
-#' library(sf)
+#' \donttest{
+#'  library(sf)
 #'
 #' prazske_okrsky <- subset(volebni_okrsky("low"), ObecKod == "554782")
 #' plot(prazske_okrsky) # the districts of Prague
+#' }
 #' @export
 
 volebni_okrsky <- function(resolution = "high") {

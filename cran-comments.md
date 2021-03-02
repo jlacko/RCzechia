@@ -18,6 +18,6 @@ There were no NOTES, ERRORs or WARNINGs.
 There are no downstream dependencies.
 
 ## CRAN checks
-This release is expected to resolve the two warnings / errors on´ rebuilding vignette output.
+This release implements additional tests of availability of internet resources, avoiding re-ocurrence of the current build failures (which are temporary, but valid).
 
 

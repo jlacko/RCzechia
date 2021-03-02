@@ -32,6 +32,7 @@ Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 }
 \examples{
+\donttest{
 library(dplyr)
 library(sf)
 
@@ -42,5 +43,5 @@ brno <- obce_polygony() \%>\% # shapefile of Brno
 pupek_brna <- st_centroid(brno) # calculate centroid
 
 adresa_pupku <- revgeo(pupek_brna)$revgeocoded # address of the center
-
+}
 }

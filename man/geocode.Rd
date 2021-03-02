@@ -60,7 +60,8 @@ Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 }
 \examples{
+\donttest{
 asdf <- geocode("Gogolova 212, Praha 1")
 print(asdf)
-
+}
 }

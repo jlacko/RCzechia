@@ -15,12 +15,12 @@ downloader <- function(file) {
   if (file.exists(local_file)) {
     message("RCzechia: using temporary local dataset.")
   } else {
-    if (!curl::has_internet() | !network) { # network is down
+    if (!ok_to_proceed(remote_file) | !network) { # network is down
       message("No internet connection.")
       return(NULL)
     }
 
-    if (httr::http_error(remote_file) | !aws) { # AWS bucket down
+    if (!ok_to_proceed(remote_file) | !aws) { # AWS bucket down
       message("Data source broken.")
       return(NULL)
     }

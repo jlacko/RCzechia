@@ -19,10 +19,12 @@
 #' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
+#' \donttest{
 #' library(sf)
 #'
-#' hranice <- kraje()
+#' hranice <- kraje("low")
 #' plot(hranice, col = "white", max.plot = 1)
+#' }
 #' @export
 
 kraje <- function(resolution = "high") {

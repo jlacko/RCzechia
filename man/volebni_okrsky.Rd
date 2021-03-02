@@ -33,8 +33,10 @@ Due to package size constraints the data are stored externally (and a working in
 The data is current to February 2021 (reflecting the freeze between announcing the date of the general elections by the President in December 2020 and certifying the results sometime in October 2021). Downloaded size of high resolution shapefile is 76 MB, size of the low res object is 5 MB (so proceed with caution, and patience).
 }
 \examples{
-library(sf)
+\donttest{
+ library(sf)
 
 prazske_okrsky <- subset(volebni_okrsky("low"), ObecKod == "554782")
 plot(prazske_okrsky) # the districts of Prague
+}
 }

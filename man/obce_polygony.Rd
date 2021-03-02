@@ -36,6 +36,7 @@ Due to package size constraints the data are stored externally (and a working in
 The data is current to February 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is 13.3 MB (so use with caution, and patience).
 }
 \examples{
+\donttest{
 library(sf)
 library(dplyr)
 
@@ -43,5 +44,5 @@ praha <- obce_polygony() \%>\%
   filter(NAZ_LAU1 == "Praha")
 
 plot(praha, max.plot = 1)
-
+}
 }

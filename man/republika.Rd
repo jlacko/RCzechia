@@ -24,9 +24,10 @@ Due to package size constraints the data are stored externally (and a working in
 The data is current to September 2020. Downloaded size of high resolution shapefile is <1 MB.
 }
 \examples{
+\donttest{
 library(sf)
 
 hranice <- republika()
 plot(hranice, col = "white")
-
+}´
 }

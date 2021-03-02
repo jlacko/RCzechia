@@ -28,11 +28,11 @@ Due to package size constraints both versions are stored externally (and a worki
 The data is current to September 2016. Downloaded size of the rayshaded raster is 8.4 MB, actual raster is 31.4 MB.
 }
 \examples{
-
+\donttest{
 library(raster)
 
 relief <- vyskopis("rayshaded")
 
 plot(relief, col = gray.colors(16))
-
+}
 }

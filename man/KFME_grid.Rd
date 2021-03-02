@@ -23,9 +23,11 @@ Function returning grid covering the Czech Republic according to the Kartierung 
 The function returns a {sf} data frame of grid cells. Depending on the value of parameter `resolution` either low resolution (26×42 cells - default) with labels in 4 digit format (e.g. Hrčava = 6479) or high resolution (104×168 cells) with labels in 4 digit + 1 letter format (e.g Hrčava = 6479c).
 }
 \examples{
+\donttest{
 library(ggplot2)
 
 ggplot() +
   geom_sf(data = republika("low")) +
   geom_sf(data = KFME_grid("low"), fill = NA)
+}
 }

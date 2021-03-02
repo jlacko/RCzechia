@@ -68,7 +68,7 @@ geocode <- function(address, crs = 4326) {
     stop("required argument address is missing")
 
   if(any(is.na(address)))
-    stop("NAs in address field are not accepted input.´")
+    stop("NAs in address field are not accepted input.")
 
   if (!curl::has_internet() | !network) { # network is down
     message("No internet connection.")

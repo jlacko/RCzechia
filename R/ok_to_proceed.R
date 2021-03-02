@@ -6,7 +6,7 @@
 ok_to_proceed <- function(remote_file) {
   try_head <- function(x, ...) {
     tryCatch(
-      httr::HEAD(url = x, httr::timeout(2), ...),
+      httr::HEAD(url = x, httr::timeout(5), ...),
       error = function(e) conditionMessage(e),
       warning = function(w) conditionMessage(w)
     )

@@ -9,6 +9,8 @@
 #' EPSG:4326, but in some use cases inž. Křovák = EPSG:5514 may be more
 #' relevant).
 #'
+#' NA's in input are considered an error.
+#'
 #' Output is a \code{sf} data frame of spatial points.
 #'
 #' Depending on the outcome of matching the address to RÚIAN data there is a
@@ -62,7 +64,16 @@ geocode <- function(address, crs = 4326) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
-  if (missing(address)) stop("required argument address is missing")
+  if (missing(address))
+    stop("required argument address is missing")
+
+  if(any(is.na(address)))
+    stop("NAs in address field are not accepted input.´")
+
+  if (!curl::has_internet() | !network) { # network is down
+    message("No internet connection.")
+    return(NULL)
+  }
 
 
   result <- data.frame(
@@ -81,11 +92,6 @@ geocode <- function(address, crs = 4326) {
       "http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find",
       "?text=", cil, "&outSR=", crs, "&maxLocations50=&f=pjson"
     )
-
-    if (!ok_to_proceed(query) | !network) { # network is down
-      message("No internet connection.")
-      return(NULL)
-    }
 
 
     if (!ok_to_proceed(query) | !cuzk) { # error in connection?

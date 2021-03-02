@@ -32,6 +32,8 @@ and expected Coordinate Reference System of output (default is WGS84 =
 EPSG:4326, but in some use cases inž. Křovák = EPSG:5514 may be more
 relevant).
 
+NA's in input are considered an error.
+
 Output is a \code{sf} data frame of spatial points.
 
 Depending on the outcome of matching the address to RÚIAN data there is a

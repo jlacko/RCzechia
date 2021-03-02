@@ -20,6 +20,11 @@ test_that("geocode", {
   expect_message(geocode(dos_sochoros[1]), "API") # API down
   Sys.setenv("CUZK_UP" = TRUE)
 
+  expect_error(geocode(), "missing") # adresa musí byť
+
+  expect_error(geocode(NA), "NAs") # NA není legitimní vstup / konvertoval by se na "NA"
+
+
   # vrací se sf objekt
   expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
 

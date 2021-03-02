@@ -1,6 +1,6 @@
 ## version 1.6.7
 
- - improving alignment with CRAN policy of graceful failure on internet resources temporarily unavailable
+ - internal improvements in handling of (temporarily) unavailable internet resources
 
 ## version 1.6.6
 

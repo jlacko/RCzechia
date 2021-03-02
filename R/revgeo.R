@@ -43,9 +43,11 @@ revgeo <- function(coords) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
-  if (missing(coords)) stop("required argument coords is missing")
+  if (missing(coords))
+    stop("required argument coords is missing")
 
-  if (!inherits(coords, "sf")) stop("coords is expected in sf format")
+  if (!inherits(coords, "sf"))
+    stop("coords is expected in sf format")
 
   if (sf::st_geometry_type(coords)[1] != "POINT") stop("reverse geocoding is limited to sf point objects")
 

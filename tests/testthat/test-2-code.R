@@ -40,7 +40,7 @@ test_that("geocode", {
   expect_equal(st_coordinates(geocode(dos_sochoros[1]))[, "Y"], 50.1000536) # dtto...
 
   # chybná adresa:
-  expect_equal(geocode(dos_sochoros[2]), NA) # pokud neexistuje žádná adresa, tak NA
+  expect_message(geocode(dos_sochoros[2]), "Impossible") # když nejde, tak nejde...
   expect_lt(nrow(geocode(dos_sochoros)), length(dos_sochoros)) # pokud neexistují všechny, tak se vrátí míň než hledáno
 
   # nejednoznačná adresa:

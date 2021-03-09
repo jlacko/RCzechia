@@ -14,7 +14,7 @@
 #' In case of reverse geocoding failures (e.g. coordinates outside of the Czech
 #' Republic and therefore scope of ČÚZK) NA is returned.
 #'
-#' In case of API failures (CUZK down) the function returns NULL.
+#' In case of API failures (CUZK down) the function returns NAs again, with a message.
 #'
 #' Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 #' \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
@@ -43,20 +43,21 @@ revgeo <- function(coords) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
+  coords$revgeocoded <- NA # initiate result column in coords data frame
+
   if (missing(coords))
     stop("required argument coords is missing")
 
   if (!inherits(coords, "sf"))
     stop("coords is expected in sf format")
 
-  if (sf::st_geometry_type(coords)[1] != "POINT") stop("reverse geocoding is limited to sf point objects")
+  if (sf::st_geometry_type(coords)[1] != "POINT")
+    stop("reverse geocoding is limited to sf point objects")
 
   if (!curl::has_internet() | !network) { # network is down
     message("No internet connection.")
-    return(NULL)
+    return(coords)
   }
-
-  coords$revgeocoded <- NULL # initiate result column in coords data frame
 
   coords_krovak <- sf::st_transform(coords, crs = 5514) # a temporary version of coords, in a very specific CRS
 
@@ -75,7 +76,7 @@ revgeo <- function(coords) {
 
     if (httr::http_error(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
-      return(NULL)
+      return(coords)
     }
 
     resp <- httr::GET(query)
@@ -94,6 +95,6 @@ revgeo <- function(coords) {
     coords$revgeocoded[i] <- adresa["Address"]$Address
   } # /for
 
-
   coords # all set :)
+
 } # /function

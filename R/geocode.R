@@ -27,8 +27,8 @@
 #'    \item{Some (but not all) items had *no match* in RUIAN data: the returned
 #'    \code{sf} data frame will have fewer rows than the vector sent.
 #'    to be geocoded elements. Some values will be missing from field \emph{target}}.
-#'    \item{No items were matched at all: the function returns NA.}
-#'    \item{The CUZK API is down or overloaded: the function returns NULL.}
+#'    \item{No items were matched at all: the function returns empty data frame and a message.}
+#'    \item{The CUZK API is down or overloaded: the function returns empty data frame and a message.}
 #'    }
 #'
 #' Note that character encoding is heavily platform dependent, and you may need to convert to UTF-8,
@@ -64,6 +64,15 @@ geocode <- function(address, crs = 4326) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
+  result <- data.frame(
+    target = character(),
+    typ = character(),
+    address = character(),
+    x = double(),
+    y = double()
+  ) # initiation; empty...
+
+
   if (missing(address))
     stop("required argument address is missing")
 
@@ -72,17 +81,9 @@ geocode <- function(address, crs = 4326) {
 
   if (!curl::has_internet() | !network) { # network is down
     message("No internet connection.")
-    return(NULL)
+    return(result)
   }
 
-
-  result <- data.frame(
-    target = character(),
-    typ = character(),
-    address = character(),
-    x = double(),
-    y = double()
-  ) # initiation; empty...
 
   for (i in seq_along(address)) {
     cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
@@ -96,7 +97,7 @@ geocode <- function(address, crs = 4326) {
 
     if (!ok_to_proceed(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
-      return(NULL)
+      return(result)
     }
 
     resp <- httr::GET(query)
@@ -137,19 +138,16 @@ geocode <- function(address, crs = 4326) {
     } # /if
   } # /for
 
-  if (nrow(result) > 0) { # was the *global* geocoding successful?
-
-    # if yes thenconvert to a sf object
-
-    colnames(result) <- c("target", "typ", "address", "x", "y") # get the names right
-
-    result <- sf::st_as_sf(result, coords = c("x", "y")) %>%
-      sf::st_set_agr("constant") %>% # to avoid those pesky warnings
-      sf::st_set_crs(crs) # set CRS as required
-  } else {
+  if (nrow(result) <= 0) { # was the *global* geocoding successful?
     # if no, then report a failure
-    result <- NA
+    message("Impossible to geocode any of the addresses provided.")
   } # /if
+
+  colnames(result) <- c("target", "typ", "address", "x", "y") # get the names right
+
+  result <- sf::st_as_sf(result, coords = c("x", "y")) %>%
+    sf::st_set_agr("constant") %>% # to avoid those pesky warnings
+    sf::st_set_crs(crs) # set CRS as required
 
   result # all set :)
 } # /function

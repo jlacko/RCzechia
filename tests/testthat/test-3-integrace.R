@@ -61,6 +61,9 @@ test_that("integrace", {
 
   # Kramářova vila je v Praze / obci, orp, okresu i kraji
 
+  skip_if_not(ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
+              message = "skipping tests - CUZK API seems down")
+
   vila <- geocode("Gogolova 212/1, Praha 1")
 
   expect_equal(st_join(vila, kraje(), left = F)$KOD_CZNUTS3, "CZ010") # Kramářova vila je v kraji Praha

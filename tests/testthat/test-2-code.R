@@ -8,6 +8,8 @@ dos_sochoros <- c(
 
 test_that("geocode", {
 
+  skip_if_not(ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
+              message = "skipping tests - CUZK API seems down")
 
   # očekávané chyby - špatné zadání
   expect_error(geocode()) # čekám chybu - není cíl
@@ -53,6 +55,9 @@ test_that("geocode", {
 
 
 test_that("revgeo", {
+
+  skip_if_not(ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
+              message = "skipping tests - CUZK API seems down")
 
   sochor_wgs <- geocode(dos_sochoros[1]) # podle WGS84
   sochor_krovak <- st_transform(sochor_wgs, 5514) # totéž, dle Křováka

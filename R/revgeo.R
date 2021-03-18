@@ -43,16 +43,24 @@ revgeo <- function(coords) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
+
+  if (missing(coords)) {
+    warning("required argument coords is missing")
+    return(NULL)  # nothing better to return, since nothing was provided...
+  }
+
+  if (!inherits(coords, "sf")) {
+    warning("coords is expected in sf format")
+    return(coords)
+  }
+
   coords$revgeocoded <- NA # initiate result column in coords data frame
 
-  if (missing(coords))
-    stop("required argument coords is missing")
+  if (sf::st_geometry_type(coords)[1] != "POINT") {
+    warning("reverse geocoding is limited to sf point objects")
+    return(coords)
+  }
 
-  if (!inherits(coords, "sf"))
-    stop("coords is expected in sf format")
-
-  if (sf::st_geometry_type(coords)[1] != "POINT")
-    stop("reverse geocoding is limited to sf point objects")
 
   if (!curl::has_internet() | !network) { # network is down
     message("No internet connection.")

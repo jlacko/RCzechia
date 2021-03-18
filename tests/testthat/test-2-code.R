@@ -11,21 +11,23 @@ test_that("geocode", {
   skip_if_not(ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
               message = "skipping tests - CUZK API seems down")
 
-  # očekávané chyby - špatné zadání
-  expect_error(geocode()) # čekám chybu - není cíl
 
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(geocode(dos_sochoros[1]), "internet") # není síť
+  expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
   Sys.setenv("NETWORK_UP" = TRUE)
 
   Sys.setenv("CUZK_UP" = FALSE)
   expect_message(geocode(dos_sochoros[1]), "API") # API down
+  expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
   Sys.setenv("CUZK_UP" = TRUE)
 
-  expect_error(geocode(), "missing") # adresa musí byť
+  # špatné zadání...
+  expect_warning(geocode(), "missing") # adresa musí byť
+  expect_warning(geocode(NA), "NAs") # NA není legitimní vstup / konvertoval by se na "NA"
 
-  expect_error(geocode(NA), "NAs") # NA není legitimní vstup / konvertoval by se na "NA"
-
+  expect_s3_class(geocode(), "sf") # nekorektní zadání není omluva struktury
+  expect_s3_class(geocode(NA), "sf") #  dtto - sf musí byť
 
   # vrací se sf objekt
   expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
@@ -43,6 +45,7 @@ test_that("geocode", {
 
   # chybná adresa:
   expect_message(geocode(dos_sochoros[2]), "Impossible") # když nejde, tak nejde...
+  expect_s3_class(geocode(dos_sochoros[2]), "sf") # ... ale pořád sf!
   expect_lt(nrow(geocode(dos_sochoros)), length(dos_sochoros)) # pokud neexistují všechny, tak se vrátí míň než hledáno
 
   # nejednoznačná adresa:
@@ -72,9 +75,9 @@ test_that("revgeo", {
   tres_sochoros <- geocode(rep(dos_sochoros[1], 3)) # tři stejné adresy
 
   # očekávané chyby - špatné zadání
-  expect_error(revgeo()) # čekám chybu - nejsou koordináty
-  expect_error(revgeo("bflm")) # čekám chybu - zadání není sf
-  expect_error(revgeo(kraje())) # čekám chybu - nejsou body ale polygony
+  expect_warning(revgeo()) # čekám chybu - nejsou koordináty
+  expect_warning(revgeo("bflm")) # čekám chybu - zadání není sf
+  expect_warning(revgeo(kraje())) # čekám chybu - nejsou body ale polygony
 
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(revgeo(sochor_wgs), "internet") # není síť

@@ -44,9 +44,9 @@
 #' @format \code{sf} data frame with 3 variables + geometry
 #'
 #'   \describe{
-#'     \item{target}{the address searched (address input)}
+#'     \item{address}{the address searched (address input)}
 #'     \item{typ}{type of record matched by API}
-#'     \item{address}{address as recorded by RÚIAN}
+#'     \item{result}{address as returned by API / recorded in RÚIAN}
 #'     \item{geometry}{hidden column with spatial point data}
 #'   }
 #'
@@ -64,29 +64,39 @@ geocode <- function(address, crs = 4326) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
+  # initiation - empty (so far)
   result <- data.frame(
-    target = character(),
-    typ = character(),
     address = character(),
+    typ = character(),
+    result = character(),
     x = double(),
     y = double()
-  ) # initiation; empty...
+  )
+
+  # fall back object - empty, but in formally "correct" structure
+  fallback <- data.frame(
+    address = c(NA_character_),
+    typ = c(NA_character_),
+    result = c(NA_character_)
+    ) %>%
+    sf::st_sf(geometry = sf::st_sfc(NULL,
+                                    crs = 4326))
 
 
   if (missing(address)) {
     warning("required argument address is missing")
-    return(result)
+    return(fallback)
 
   }
 
   if(any(is.na(address))) {
-    warning("NAs in address field are not accepted input.")
-    return(result)
+    warning("NAs in address field are not an accepted form of input.")
+    return(fallback)
   }
 
   if (!curl::has_internet() | !network) { # network is down
     message("No internet connection.")
-    return(result)
+    return(fallback)
   }
 
 
@@ -102,7 +112,7 @@ geocode <- function(address, crs = 4326) {
 
     if (!ok_to_proceed(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
-      return(result)
+      return(fallback)
     }
 
     resp <- httr::GET(query)
@@ -145,14 +155,17 @@ geocode <- function(address, crs = 4326) {
 
   if (nrow(result) <= 0) { # was the *global* geocoding successful?
     # if no, then report a failure
-    message("Impossible to geocode any of the addresses provided.")
+    message("CUZK API returned no match for any of the adresses provided.")
+    return(fallback)
   } # /if
 
-  colnames(result) <- c("target", "typ", "address", "x", "y") # get the names right
+  colnames(result) <- c("address", "typ", "result", "x", "y") # get the names right
 
-  result <- sf::st_as_sf(result, coords = c("x", "y")) %>%
-    sf::st_set_agr("constant") %>% # to avoid those pesky warnings
-    sf::st_set_crs(crs) # set CRS as required
+  # add the special {sf} sauce to a regular data frame...
+  result <- sf::st_as_sf(result,
+                         coords = c("x", "y"),
+                         crs = crs,
+                         agr = "constant")
 
   result # all set :)
 } # /function

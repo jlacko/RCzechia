@@ -26,14 +26,14 @@ test_that("geocode", {
   expect_warning(geocode(), "missing") # adresa musí byť
   expect_warning(geocode(NA), "NAs") # NA není legitimní vstup / konvertoval by se na "NA"
 
-  expect_s3_class(geocode(), "sf") # nekorektní zadání není omluva struktury
-  expect_s3_class(geocode(NA), "sf") #  dtto - sf musí byť
+  expect_warning(expect_s3_class(geocode(), "sf")) # nekorektní zadání není omluva struktury
+  expect_warning(expect_s3_class(geocode(NA), "sf")) #  dtto - sf musí byť
 
   # vrací se sf objekt
   expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
 
   # správné hlavičky sloupců
-  expect_equal(geocode(dos_sochoros) %>% colnames(), c("target", "typ", "address", "geometry"))
+  expect_equal(geocode(dos_sochoros) %>% colnames(), c("address", "typ", "result", "geometry"))
 
   # CRS má očekávanou hodnotu
   expect_equal(st_crs(geocode(dos_sochoros[1]))$epsg, 4326) # defaultní CRS = WGS84
@@ -44,7 +44,7 @@ test_that("geocode", {
   expect_equal(st_coordinates(geocode(dos_sochoros[1]))[, "Y"], 50.1000536) # dtto...
 
   # chybná adresa:
-  expect_message(geocode(dos_sochoros[2]), "Impossible") # když nejde, tak nejde...
+  expect_message(geocode(dos_sochoros[2]), "no match") # když nejde, tak nejde...
   expect_s3_class(geocode(dos_sochoros[2]), "sf") # ... ale pořád sf!
   expect_lt(nrow(geocode(dos_sochoros)), length(dos_sochoros)) # pokud neexistují všechny, tak se vrátí míň než hledáno
 

@@ -8,7 +8,7 @@
 
   \describe{
     \item{address}{the address searched (address input)}
-    \item{typ}{type of record matched by API}
+    \item{type}{type of record matched by API}
     \item{result}{address as returned by API / recorded in RÚIAN}
     \item{geometry}{hidden column with spatial point data}
   }

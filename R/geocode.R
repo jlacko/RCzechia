@@ -45,7 +45,7 @@
 #'
 #'   \describe{
 #'     \item{address}{the address searched (address input)}
-#'     \item{typ}{type of record matched by API}
+#'     \item{type}{type of record matched by API}
 #'     \item{result}{address as returned by API / recorded in RÚIAN}
 #'     \item{geometry}{hidden column with spatial point data}
 #'   }
@@ -76,7 +76,7 @@ geocode <- function(address, crs = 4326) {
   # fall back object - empty, but in formally "correct" structure
   fallback <- data.frame(
     address = c(NA_character_),
-    typ = c(NA_character_),
+    type = c(NA_character_),
     result = c(NA_character_)
     ) %>%
     sf::st_sf(geometry = sf::st_sfc(NULL,
@@ -159,7 +159,7 @@ geocode <- function(address, crs = 4326) {
     return(fallback)
   } # /if
 
-  colnames(result) <- c("address", "typ", "result", "x", "y") # get the names right
+  colnames(result) <- c("address", "type", "result", "x", "y") # get the names right
 
   # add the special {sf} sauce to a regular data frame...
   result <- sf::st_as_sf(result,

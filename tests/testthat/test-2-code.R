@@ -33,7 +33,7 @@ test_that("geocode", {
   expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
 
   # správné hlavičky sloupců
-  expect_equal(geocode(dos_sochoros) %>% colnames(), c("address", "typ", "result", "geometry"))
+  expect_equal(geocode(dos_sochoros) %>% colnames(), c("address", "type", "result", "geometry"))
 
   # CRS má očekávanou hodnotu
   expect_equal(st_crs(geocode(dos_sochoros[1]))$epsg, 4326) # defaultní CRS = WGS84

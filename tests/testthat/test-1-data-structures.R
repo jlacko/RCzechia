@@ -30,7 +30,7 @@ test_that("republika", {
   expect_true(all(st_is_valid(republika("low"))))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(republika()), c("NAZ_STAT", "GeneralizovaneHranice"))
+  expect_equal(colnames(republika()), c("NAZ_STAT", "geometry"))
 
   expect_error(republika("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
@@ -67,7 +67,7 @@ test_that("kraje", {
   expect_true(all(st_is_valid(kraje("low"))))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(kraje()), c("KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
+  expect_equal(colnames(kraje()), c("KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
 
   expect_error(kraje("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
@@ -119,7 +119,7 @@ test_that("okresy", {
 
   # sloupce se nerozbily...
   expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
-                                     "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
+                                     "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
 
   expect_error(okresy("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
@@ -148,7 +148,8 @@ test_that("ORP", {
   expect_true(all(st_is_valid(orp_polygony())))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ORP", "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
+  expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ORP", "KOD_KRAJ",
+                                           "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
 })
 
 test_that("obce body", {
@@ -174,7 +175,7 @@ test_that("obce body", {
   # sloupce se nerozbily...
   expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                            "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
-                                           "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "DefinicniBod"))
+                                           "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
 })
 
 
@@ -203,7 +204,7 @@ test_that("obce polygony", {
   # sloupce se nerozbily...
   expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                         "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
-                                        "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "GeneralizovaneHranice"))
+                                        "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
 
 })
 
@@ -228,7 +229,7 @@ test_that("městské části", {
   expect_true(all(st_is_valid(casti())))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "OriginalniHranice"))
+  expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry"))
 })
 
 test_that("vodní plochy", {
@@ -342,7 +343,8 @@ test_that("železnice", {
   expect_true(all(st_is_valid(zeleznice())))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(zeleznice()), c("ELEKTRIFIKACE","KATEGORIE", "KOLEJNOST", "ROZCHODNOST", "geometry"))
+  expect_equal(colnames(zeleznice()), c("ELEKTRIFIKACE","KATEGORIE", "KOLEJNOST",
+                                        "ROZCHODNOST", "geometry"))
 })
 
 test_that("chráněná území", {
@@ -527,9 +529,9 @@ test_that("volební okrsky", {
   expect_true(all(st_is_valid(volebni_okrsky("low"))))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(volebni_okrsky()), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "OriginalniHranice"))
-  expect_equal(colnames(volebni_okrsky("high")), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "OriginalniHranice"))
-  expect_equal(colnames(volebni_okrsky("low")), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "OriginalniHranice"))
+  expect_equal(colnames(volebni_okrsky()), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "geometry"))
+  expect_equal(colnames(volebni_okrsky("high")), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "geometry"))
+  expect_equal(colnames(volebni_okrsky("low")), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "geometry"))
 
   expect_error(volebni_okrsky("bflm")) # neznámé rozlišení - očekávám high(default) / low
 

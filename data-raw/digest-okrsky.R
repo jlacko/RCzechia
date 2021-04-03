@@ -65,7 +65,7 @@ okrsky_high_res <- st_read("./data-raw/20201003_ST_UVOH.xml", stringsAsFactors =
   st_transform("EPSG:4326") %>%
   mutate(across(where(is.numeric), as.character)) %>%
   inner_join(obce, by = c("ObecKod" = "KOD_OBEC")) %>%
-  select(Kod, Cislo, ObecKod, MomcKod, KOD_LAU1, KOD_CZNUTS3, OriginalniHranice)
+  select(Kod, Cislo, ObecKod, MomcKod, KOD_LAU1, KOD_CZNUTS3, geometry = OriginalniHranice)
 
 okrsky_low_res <- okrsky_high_res %>%
   rmapshaper::ms_simplify(keep = 1/20,

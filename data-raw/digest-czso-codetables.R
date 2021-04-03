@@ -19,7 +19,7 @@ print(st_layers(ruian_data))
 obce_poly <- st_read(ruian_data,
                  layer = "Obce",
                  geometry_column = "GeneralizovaneHranice") %>%
-  select(KOD_OBEC = Kod)  %>% # , ruian_naz = Nazev) %>%
+  select(KOD_OBEC = Kod, geometry = GeneralizovaneHranice)  %>% # , ruian_naz = Nazev) %>%
   mutate(KOD_OBEC = as.character(KOD_OBEC)) %>%
   st_transform(4326)
 
@@ -27,7 +27,7 @@ obce_poly <- st_read(ruian_data,
 obce_body <- st_read(ruian_data,
                  layer = "Obce",
                  geometry_column = "DefinicniBod") %>%
-  select(KOD_OBEC = Kod)  %>% # , ruian_naz = Nazev) %>%
+  select(KOD_OBEC = Kod, geometry = DefinicniBod)  %>% # , ruian_naz = Nazev) %>%
   mutate(KOD_OBEC = as.character(KOD_OBEC)) %>%
   st_transform(4326)
 
@@ -132,7 +132,7 @@ saveRDS(fin_kraje_poly, paste0("./data-backup/Kraje-R-", rozhodne_datum, ".rds")
 casti_poly <- st_read(ruian_data,
                      layer = "Momc",
                      geometry_column = "OriginalniHranice") %>%
-  select(KOD = Kod, NAZEV = Nazev, KOD_OBEC = ObecKod)  %>%
+  select(KOD = Kod, NAZEV = Nazev, KOD_OBEC = ObecKod, geometry = OriginalniHranice)  %>%
   mutate(across(where(is.factor), as.character)) %>%
   mutate(across(where(is.numeric), as.character)) %>%
   left_join(cisob, by = "KOD_OBEC") %>%

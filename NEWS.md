@@ -1,3 +1,9 @@
+## version 1.7.0
+
+ - [!] result of geocode() is now standardized; the function is now guaranteed to return a sf data frame
+ 
+ - [!] naming of the special sf geometry column is standardized to `geometry` in all cases.
+
 ## version 1.6.7
 
  - internal improvements in handling of (temporarily) unavailable internet resources

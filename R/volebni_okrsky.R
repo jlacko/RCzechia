@@ -36,9 +36,9 @@ volebni_okrsky <- function(resolution = "high") {
   }
 
   if (resolution == "low") {
-    result <- downloader("Okrsky-low-2021-02.rds")
+    result <- downloader("Okrsky-low-2021-03.rds")
   } else {
-    result <- downloader("Okrsky-high-2021-02.rds")
+    result <- downloader("Okrsky-high-2021-03.rds")
   }
   result
 }

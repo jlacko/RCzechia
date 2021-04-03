@@ -30,7 +30,7 @@ republika <- function(resolution = "high") {
   if (resolution == "low") {
     return(republika_low_res)
   } else {
-    result <- downloader("Republika-R.rds")
+    result <- downloader("Republika-R-2021-03.rds")
     result
   }
 }

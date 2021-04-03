@@ -9,6 +9,7 @@ library(dplyr)
 
 rozhodne_datum <- "2021-02"
 
+
 # CZSO číselník obcí - #043
 cisob <- czso::czso_get_codelist("cis43") %>%
   mutate(CHODNOTA = as.character(CHODNOTA)) %>%
@@ -57,7 +58,7 @@ obce <- cisob %>%
   inner_join(vazokr, by = "KOD_OKRES") %>%
   inner_join(ciskraj, by = "KOD_KRAJ")
 
-okrsky_high_res <- st_read("./data-raw/20201003_ST_UVOH.xml", stringsAsFactors = F) %>%
+okrsky_high_res <- st_read("./data-raw/20210203_ST_UVOH.xml", stringsAsFactors = F) %>%
   st_make_valid() %>%
   st_set_geometry("OriginalniHranice") %>%
   st_cast() %>%
@@ -65,7 +66,11 @@ okrsky_high_res <- st_read("./data-raw/20201003_ST_UVOH.xml", stringsAsFactors =
   st_transform("EPSG:4326") %>%
   mutate(across(where(is.numeric), as.character)) %>%
   inner_join(obce, by = c("ObecKod" = "KOD_OBEC")) %>%
-  select(Kod, Cislo, ObecKod, MomcKod, KOD_LAU1, KOD_CZNUTS3, geometry = OriginalniHranice)
+  select(Kod, Cislo, ObecKod, MomcKod, KOD_LAU1, KOD_CZNUTS3, OriginalniHranice)
+
+colnames(okrsky_high_res) <- c("Kod", "Cislo", "ObecKod", "MomcKod",
+                         "KOD_LAU1", "KOD_CZNUTS3", "geometry")
+st_geometry(okrsky_high_res) <- "geometry"
 
 okrsky_low_res <- okrsky_high_res %>%
   rmapshaper::ms_simplify(keep = 1/20,

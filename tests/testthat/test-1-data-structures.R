@@ -32,6 +32,9 @@ test_that("republika", {
   # sloupce se nerozbily...
   expect_equal(colnames(republika()), c("NAZ_STAT", "geometry"))
 
+  expect_equal(colnames(republika("low")),
+               colnames(republika("high")))
+
   expect_error(republika("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
   # low res je menší než high res
@@ -68,6 +71,9 @@ test_that("kraje", {
 
   # sloupce se nerozbily...
   expect_equal(colnames(kraje()), c("KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
+
+  expect_equal(colnames(kraje("low")),
+               colnames(kraje("high")))
 
   expect_error(kraje("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
@@ -120,6 +126,9 @@ test_that("okresy", {
   # sloupce se nerozbily...
   expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
                                      "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
+
+  expect_equal(colnames(okresy("low")),
+               colnames(okresy("high")))
 
   expect_error(okresy("bflm")) # neznámé rozlišení - očekávám high(default) / low
 

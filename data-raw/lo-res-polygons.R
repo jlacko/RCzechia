@@ -28,6 +28,8 @@ for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
   }
 }
 
+st_geometry(kraje_low_res) <- "geometry"
+
 # ze STČ vyříznout Prahu
 kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",] <- st_difference(kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",], st_geometry(kraje_low_res[kraje_low_res$KOD_KRAJ=="3018",]))
 
@@ -58,6 +60,7 @@ republika_low_res <- okresy_low_res %>% # select the non-central parts
   nngeo::st_remove_holes() %>%
   rename(geometry = geom)
 
+st_geometry(republika_low_res) <- "geometry"
 
 # úklid
 okresy_low_res <- st_transform(okresy_low_res, 4326) # WGS84

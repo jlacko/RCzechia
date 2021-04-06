@@ -7,9 +7,9 @@
 \code{sf} data frame with 3 variables + geometry
 
   \describe{
-    \item{target}{the address searched (address input)}
-    \item{typ}{type of record matched by API}
-    \item{address}{address as recorded by RÚIAN}
+    \item{address}{the address searched (address input)}
+    \item{type}{type of record matched by API}
+    \item{result}{address as returned by API / recorded in RÚIAN}
     \item{geometry}{hidden column with spatial point data}
   }
 }
@@ -50,8 +50,8 @@ number of possible outcomes:
    \item{Some (but not all) items had *no match* in RUIAN data: the returned
    \code{sf} data frame will have fewer rows than the vector sent.
    to be geocoded elements. Some values will be missing from field \emph{target}}.
-   \item{No items were matched at all: the function returns NA.}
-   \item{The CUZK API is down or overloaded: the function returns NULL.}
+   \item{No items were matched at all: the function returns empty data frame and a message.}
+   \item{The CUZK API is down or overloaded: the function returns empty data frame and a message.}
    }
 
 Note that character encoding is heavily platform dependent, and you may need to convert to UTF-8,

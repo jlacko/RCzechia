@@ -27,8 +27,8 @@
 #'    \item{Some (but not all) items had *no match* in RUIAN data: the returned
 #'    \code{sf} data frame will have fewer rows than the vector sent.
 #'    to be geocoded elements. Some values will be missing from field \emph{target}}.
-#'    \item{No items were matched at all: the function returns NA.}
-#'    \item{The CUZK API is down or overloaded: the function returns NULL.}
+#'    \item{No items were matched at all: the function returns empty data frame and a message.}
+#'    \item{The CUZK API is down or overloaded: the function returns empty data frame and a message.}
 #'    }
 #'
 #' Note that character encoding is heavily platform dependent, and you may need to convert to UTF-8,
@@ -44,9 +44,9 @@
 #' @format \code{sf} data frame with 3 variables + geometry
 #'
 #'   \describe{
-#'     \item{target}{the address searched (address input)}
-#'     \item{typ}{type of record matched by API}
-#'     \item{address}{address as recorded by RÚIAN}
+#'     \item{address}{the address searched (address input)}
+#'     \item{type}{type of record matched by API}
+#'     \item{result}{address as returned by API / recorded in RÚIAN}
 #'     \item{geometry}{hidden column with spatial point data}
 #'   }
 #'
@@ -64,25 +64,41 @@ geocode <- function(address, crs = 4326) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   cuzk <- as.logical(Sys.getenv("CUZK_UP", unset = TRUE)) # dummy variable to allow testing of network
 
-  if (missing(address))
-    stop("required argument address is missing")
+  # initiation - empty (so far)
+  result <- data.frame(
+    address = character(),
+    typ = character(),
+    result = character(),
+    x = double(),
+    y = double()
+  )
 
-  if(any(is.na(address)))
-    stop("NAs in address field are not accepted input.")
+  # fall back object - empty, but in formally "correct" structure
+  fallback <- data.frame(
+    address = c(NA_character_),
+    type = c(NA_character_),
+    result = c(NA_character_)
+    ) %>%
+    sf::st_sf(geometry = sf::st_sfc(NULL,
+                                    crs = 4326))
+
+
+  if (missing(address)) {
+    warning("required argument address is missing")
+    return(fallback)
+
+  }
+
+  if(any(is.na(address))) {
+    warning("NAs in address field are not an accepted form of input.")
+    return(fallback)
+  }
 
   if (!curl::has_internet() | !network) { # network is down
     message("No internet connection.")
-    return(NULL)
+    return(fallback)
   }
 
-
-  result <- data.frame(
-    target = character(),
-    typ = character(),
-    address = character(),
-    x = double(),
-    y = double()
-  ) # initiation; empty...
 
   for (i in seq_along(address)) {
     cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
@@ -96,7 +112,7 @@ geocode <- function(address, crs = 4326) {
 
     if (!ok_to_proceed(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
-      return(NULL)
+      return(fallback)
     }
 
     resp <- httr::GET(query)
@@ -137,19 +153,19 @@ geocode <- function(address, crs = 4326) {
     } # /if
   } # /for
 
-  if (nrow(result) > 0) { # was the *global* geocoding successful?
-
-    # if yes thenconvert to a sf object
-
-    colnames(result) <- c("target", "typ", "address", "x", "y") # get the names right
-
-    result <- sf::st_as_sf(result, coords = c("x", "y")) %>%
-      sf::st_set_agr("constant") %>% # to avoid those pesky warnings
-      sf::st_set_crs(crs) # set CRS as required
-  } else {
+  if (nrow(result) <= 0) { # was the *global* geocoding successful?
     # if no, then report a failure
-    result <- NA
+    message("CUZK API returned no match for any of the adresses provided.")
+    return(fallback)
   } # /if
+
+  colnames(result) <- c("address", "type", "result", "x", "y") # get the names right
+
+  # add the special {sf} sauce to a regular data frame...
+  result <- sf::st_as_sf(result,
+                         coords = c("x", "y"),
+                         crs = crs,
+                         agr = "constant")
 
   result # all set :)
 } # /function

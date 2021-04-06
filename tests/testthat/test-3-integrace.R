@@ -61,6 +61,9 @@ test_that("integrace", {
 
   # Kramářova vila je v Praze / obci, orp, okresu i kraji
 
+  skip_if_not(ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
+              message = "skipping tests - CUZK API seems down")
+
   vila <- geocode("Gogolova 212/1, Praha 1")
 
   expect_equal(st_join(vila, kraje(), left = F)$KOD_CZNUTS3, "CZ010") # Kramářova vila je v kraji Praha
@@ -78,13 +81,13 @@ test_that("integrace", {
   expect_equal(st_join(stezka, obce_polygony(), left = F)$KOD_OBEC, "580163") # Stezka v oblacích je v obci Dolní Morava
 
   telc <- geocode("Telč") %>% # známý bod Telč
-    filter(typ == "Obec")
+    filter(type == "Obec")
 
   hrcava <- geocode("Hrčava") %>% # známý bod Hrčava
-    filter(typ == "Obec")
+    filter(type == "Obec")
 
   cernousy <- geocode("Černousy") %>% # známý bod Černousy
-    filter(typ == "Obec")
+    filter(type == "Obec")
 
   expect_equal(sf::st_intersection(KFME_grid("low"), telc)$ctverec, 6858) # bod Telč je ve velkém čtverci 6858
   expect_equal(sf::st_intersection(KFME_grid("high"), telc)$ctverec, "6858b") # bod Telč je v malém čtverci 6858b

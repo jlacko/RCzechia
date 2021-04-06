@@ -137,7 +137,7 @@ pupek_brna <- brno %>%
   sf::st_centroid(brno) # calculate central point of a polygon
 
 # the revgeo() function takes a sf points data frame and returns it back
-# with address data in "revgeocoded"" column
+# with address data in "revgeocoded" column
 adresa_pupku <- RCzechia::revgeo(pupek_brna) %>% 
   pull(revgeocoded)
 
@@ -215,7 +215,7 @@ obec <- "Humpolec" # a Czech location, as a string
 
 # geolocate the place
 place <- RCzechia::geocode(obec) %>% 
-  filter(typ == "Obec") 
+  filter(type == "Obec") 
 
 class(place) # a spatial data frame
 

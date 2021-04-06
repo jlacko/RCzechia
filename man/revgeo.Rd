@@ -26,7 +26,7 @@ a column named revgeocoded it will be overwritten.
 In case of reverse geocoding failures (e.g. coordinates outside of the Czech
 Republic and therefore scope of ČÚZK) NA is returned.
 
-In case of API failures (CUZK down) the function returns NULL.
+In case of API failures (CUZK down) the function returns NAs again, with a message.
 
 Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.

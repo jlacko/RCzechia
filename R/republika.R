@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to September 2020. Downloaded size of high resolution shapefile is <1 MB.
+#' The data is current to April 2021. Downloaded size of high resolution shapefile is <1 MB.
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
@@ -30,7 +30,7 @@ republika <- function(resolution = "high") {
   if (resolution == "low") {
     return(republika_low_res)
   } else {
-    result <- downloader("Republika-R.rds")
+    result <- downloader("Republika-R-2021-03.rds")
     result
   }
 }

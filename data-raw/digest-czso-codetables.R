@@ -8,7 +8,7 @@
 library(sf)
 library(dplyr)
 
-rozhodne_datum <- "2021-02"
+rozhodne_datum <- "2021-03"
 
 # aktuální RUIAN export - gitignorován, páč velký jak cyp...
 ruian_data <- "./data-raw/20210131_ST_UKSG.xml"
@@ -23,6 +23,9 @@ obce_poly <- st_read(ruian_data,
   mutate(KOD_OBEC = as.character(KOD_OBEC)) %>%
   st_transform(4326)
 
+colnames(obce_poly) <- c("KOD_OBEC", "geometry")
+st_geometry(obce_poly) <- "geometry"
+
 #RUIAN definiční body obcí
 obce_body <- st_read(ruian_data,
                  layer = "Obce",
@@ -30,6 +33,9 @@ obce_body <- st_read(ruian_data,
   select(KOD_OBEC = Kod)  %>% # , ruian_naz = Nazev) %>%
   mutate(KOD_OBEC = as.character(KOD_OBEC)) %>%
   st_transform(4326)
+
+colnames(obce_body) <- c("KOD_OBEC", "geometry")
+st_geometry(obce_body) <- "geometry"
 
 # CZSO číselník obcí - #043
 cisob <- czso::czso_get_codelist("cis43") %>%
@@ -100,7 +106,7 @@ fin_orp_poly <- fin_obce_poly %>%
   group_by(KOD_ORP, NAZ_ORP, KOD_KRAJ, KOD_CZNUTS3, NAZ_CZNUTS3) %>%
   summarise() %>%
   nngeo::st_remove_holes() %>%
-  rename(GeneralizovaneHranice = geom)
+  rename(geometry = geom)
 
 saveRDS(fin_orp_poly, paste0("./data-backup/ORP-R-", rozhodne_datum, ".rds"))
 
@@ -109,7 +115,7 @@ fin_okresy_poly <- fin_obce_poly %>%
   group_by(KOD_OKRES, KOD_LAU1, NAZ_LAU1, KOD_KRAJ, KOD_CZNUTS3, NAZ_CZNUTS3) %>%
   summarise() %>%
   nngeo::st_remove_holes() %>%
-  rename(GeneralizovaneHranice = geom)
+  rename(geometry = geom)
 
 # z Brna venkova vyříznout Brno město
 fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0643",] <- st_difference(fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0643",], st_geometry(fin_okresy_poly[fin_okresy_poly$KOD_LAU1=="CZ0642",]))
@@ -121,12 +127,22 @@ fin_kraje_poly <- fin_obce_poly %>%
   group_by(KOD_KRAJ, KOD_CZNUTS3, NAZ_CZNUTS3) %>%
   summarise() %>%
   nngeo::st_remove_holes() %>%
-  rename(GeneralizovaneHranice = geom)
+  rename(geometry = geom)
 
 # ze STČ vyříznout Prahu
 fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",] <- st_difference(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3026",], st_geometry(fin_kraje_poly[fin_kraje_poly$KOD_KRAJ=="3018",]))
 
 saveRDS(fin_kraje_poly, paste0("./data-backup/Kraje-R-", rozhodne_datum, ".rds"))
+
+# republika na brutku všechno
+fin_republika_poly <- fin_obce_poly %>%
+  mutate(NAZ_STAT = "Česká republika") %>%
+  group_by(NAZ_STAT) %>%
+  summarise()
+
+
+saveRDS(fin_republika_poly, paste0("./data-backup/Republika-R-", rozhodne_datum, ".rds"))
+
 
 # RUIAN polygony MOMC
 casti_poly <- st_read(ruian_data,
@@ -137,6 +153,9 @@ casti_poly <- st_read(ruian_data,
   mutate(across(where(is.numeric), as.character)) %>%
   left_join(cisob, by = "KOD_OBEC") %>%
   st_transform(4326)
+
+colnames(casti_poly) <- c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry")
+st_geometry(casti_poly) <- "geometry"
 
 saveRDS(casti_poly, paste0("./data-backup/casti-R-", rozhodne_datum, ".rds"))
 

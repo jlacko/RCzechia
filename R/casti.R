@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to February 2021. Downloaded size is 1.5 MB.
+#' The data is current to April 2021. Downloaded size is 1.5 MB.
 #'
 #'
 #' @format \code{sf} data frame with 142 rows of 4 variables + geometry
@@ -16,7 +16,7 @@
 #'   \item{NAZ_OBEC}{Name of the city}
 #' }
 #'
-#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}#'
+#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 #'
 #' @export
 

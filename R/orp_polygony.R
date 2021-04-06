@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to February 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is 3.1 MB.
+#' The data is current to April 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is 3.1 MB.
 #'
 #' @format \code{sf} data frame with 206 rows of 5 variables + geometry
 #'
@@ -16,7 +16,7 @@
 #'   \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
 #' }
 #'
-#' @source © ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 #'
 #' @export
 

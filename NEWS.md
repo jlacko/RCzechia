@@ -2,7 +2,7 @@
 
  - [!] result of geocode() is now standardized; the function is now guaranteed to return a sf data frame
  
- - [!] naming of the special sf geometry column is standardized to `geometry` in all cases.
+ - [!] naming of the special sf geometry column is standardized to `geometry` in all cases; this reverses changes introduced in v1.5.0 with move to RÚIAN data source
 
 ## version 1.6.7
 

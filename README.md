@@ -37,12 +37,6 @@ install.packages("RCzechia")
 ```
 You can also get the latest development version by running `remotes::install_github("jlacko/RCzechia")`. The main branch should be always reasonably stable, but I do not suggest cloning of development branches unless you know what you are doing - these are where the action is happening, raw in tooth and claw.
 
-### Community call for action
-
-The project is actively maintained, and ideas & suggestions to improve the package are greatly welcome. Should you feel more at ease with old fashioned email than the GitHub ticketing system - do drop me a line.
-
-But raising an issue is preferrable, as I am human and I forget; GitHub does not suffer from such a failing, and will keep on reminding me till the sun and moon are darkened, and the stars no longer shine.
-
 ### The following spatial objects are included:  
 
 administrative:
@@ -76,3 +70,8 @@ All objects are implemented as functions returning data frames, so must be follo
 * **geocode**: interfaces to geocoding API of [ČÚZK](https://cuzk.cz/en).
 * **revgeo**: interfaces to reverse geocoding API of [ČÚZK](https://cuzk.cz/en).
 
+### Community call for action
+
+The project is actively maintained, and ideas & suggestions to improve the package are greatly welcome. Should you feel more at ease with old fashioned email than the GitHub ticketing system - do drop me a line.
+
+But raising an issue is preferrable, as I am human and I forget; GitHub does not suffer from such a failing, and will keep on reminding me till the sun and moon are darkened, and the stars no longer shine.

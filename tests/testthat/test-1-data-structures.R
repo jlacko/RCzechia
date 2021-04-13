@@ -23,6 +23,11 @@ test_that("republika", {
   expect_equal(nrow(republika("low")), 1)
   expect_equal(nrow(republika("high")), 1)
 
+  # republika je bez děr
+  expect_equal(lengths(sf::st_geometry(republika())), 1)
+  expect_equal(lengths(sf::st_geometry(republika("low"))), 1)
+  expect_equal(lengths(sf::st_geometry(republika("high"))), 1)
+
   expect_equal(st_crs(republika("low"))$input, "EPSG:4326")
   expect_equal(st_crs(republika("high"))$input, "EPSG:4326")
 

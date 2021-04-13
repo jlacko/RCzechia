@@ -138,7 +138,9 @@ saveRDS(fin_kraje_poly, paste0("./data-backup/Kraje-R-", rozhodne_datum, ".rds")
 fin_republika_poly <- fin_obce_poly %>%
   mutate(NAZ_STAT = "Česká republika") %>%
   group_by(NAZ_STAT) %>%
-  summarise()
+  summarise() %>%
+  nngeo::st_remove_holes() %>%
+  rename(geometry = geom)
 
 
 saveRDS(fin_republika_poly, paste0("./data-backup/Republika-R-", rozhodne_datum, ".rds"))

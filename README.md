@@ -21,11 +21,9 @@ The administrative area polygons are based on the [RÚIAN register](https://cs.w
  * the encoding was adjusted to handle Czech accents correctly in R  
  * coordinate reference system was changed from a local CRS ([S-JSTK](https://epsg.io/5513-1623)) to global WGS84 ([EPSG:4326](https://epsg.io/4326))   
 
-The shapefiles are by necessity larger than the limits of a CRAN package size allow. The data are therefore stored remotely (on Amazon AWS) and downloaded as required. As consequence a working internet connection is required to fully use the package.
+The shapefiles are by necessity larger than the limits of a CRAN package size allow. The data are therefore stored remotely (on Amazon Cloud / AWS S3) and downloaded as required. As consequence a working internet connection is required to fully use the package.
 
 For the most commonly used shapes (*republika*, *kraje* and *okresy*) an optional low resolution version is also included. To access it specify the value of `resolution` parameter as `"low"` (default is `"high"`).
-
-Using of the lo-res versions does not require a working internet connection. 
 
 Access to the external files is logged, from time to time I check the logs (mainly to understand my bandwidth charges).
 
@@ -37,28 +35,28 @@ The package is on CRAN (as of March 2018) so to get a stable version simply run:
 ```r 
 install.packages("RCzechia")
 ```
-You can also get the latest development version by running `remotes::install_github("jlacko/RCzechia")`
+You can also get the latest development version by running `remotes::install_github("jlacko/RCzechia")`. The main branch should be always reasonably stable, but I do not suggest cloning of development branches unless you know what you are doing - these are where the action is happening, raw in tooth and claw.
+
+### Community call for action
+
+The project is actively maintained, and ideas & suggestions to improve the package are greatly welcome. Should you feel more at ease with old fashioned email than the GitHub ticketing system - do drop me a line.
+
+But raising an issue is preferrable, as I am human and I forget; GitHub does not suffer from such a failing, and will keep on reminding me till the sun and moon are darkened, and the stars no longer shine.
 
 ### The following spatial objects are included:  
 
 administrative:
 
-* **republika**: borders of the Czech Republic
-* **kraje**: 14 regions of the Czech Republic + Prague.  
-Key is KOD_CZNUTS3 (CZ NUTS3 code).
+* **republika**: borders of the Czech Republic as a polygon
+* **kraje**: 14 regions of the Czech Republic & Prague.  
 * **okresy**: 76 districts (LAU1 areas) of the Czech Republic + Prague (legally not *a district* but *the capital*).  
-Key is KOD_LAU1 (CZ LAU1 code).
 * **orp_polygony** 205 municipalities with extended powers (in Czech: obce s rozšířenou působností) + Prague (legally not *a city* but *the capital*).  
-Key is KOD_ORP.
 * **obce_polygony**: 6.258 municipalities of the Czech Republic.  
-Key is KOD_OBEC, also contained are KOD_ORP (code of municipality with extended powers; see above) and KOD_POV (kód pověřené obce)
 * **obce_body** the same as obce_polygony, but centroids instead of polygons.  
-Key is again KOD_OBEC.
-* **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava..).  
-Key is KOD.
+* **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava and other).  
 * **senat_obvody**: 81 senate districts (volební obvody senátu)
 * **volebni_okrsky**: 14.761 general election districts (volební okrsky)
-* **zip_codes**: 2.671 ZIP code areas (PSČ)
+* **zip_codes**: 2.671 ZIP code areas (poštovní směrovací čísla / PSČ)
 
 natural:
 

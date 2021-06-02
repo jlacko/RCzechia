@@ -8,10 +8,10 @@
 library(sf)
 library(dplyr)
 
-rozhodne_datum <- "2021-03"
+rozhodne_datum <- "2021-06"
 
 # aktuální RUIAN export - gitignorován, páč velký jak cyp...
-ruian_data <- "./data-raw/20210131_ST_UKSG.xml"
+ruian_data <- "./data-raw/20210601_ST_UKSG.xml"
 
 print(st_layers(ruian_data))
 

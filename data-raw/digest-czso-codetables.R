@@ -155,7 +155,7 @@ casti_poly <- st_read(ruian_data,
   mutate(across(where(is.numeric), as.character)) %>%
   left_join(cisob, by = "KOD_OBEC") %>%
   st_transform(4326) %>%
-  st_make_valid()
+  st_buffer(0)
 
 colnames(casti_poly) <- c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry")
 st_geometry(casti_poly) <- "geometry"

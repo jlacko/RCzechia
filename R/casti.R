@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to April 2021. Downloaded size is 1.5 MB.
+#' The data is current to June 2021. Downloaded size is 1.5 MB.
 #'
 #'
 #' @format \code{sf} data frame with 142 rows of 4 variables + geometry
@@ -21,6 +21,6 @@
 #' @export
 
 casti <- function() {
-  result <- downloader("casti-R-2021-03.rds")
+  result <- downloader("casti-R-2021-06.rds")
   result
 }

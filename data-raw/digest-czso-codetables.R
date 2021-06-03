@@ -8,10 +8,10 @@
 library(sf)
 library(dplyr)
 
-rozhodne_datum <- "2021-03"
+rozhodne_datum <- "2021-06"
 
 # aktuální RUIAN export - gitignorován, páč velký jak cyp...
-ruian_data <- "./data-raw/20210131_ST_UKSG.xml"
+ruian_data <- "./data-raw/20210601_ST_UKSG.xml"
 
 print(st_layers(ruian_data))
 
@@ -154,7 +154,8 @@ casti_poly <- st_read(ruian_data,
   mutate(across(where(is.factor), as.character)) %>%
   mutate(across(where(is.numeric), as.character)) %>%
   left_join(cisob, by = "KOD_OBEC") %>%
-  st_transform(4326)
+  st_transform(4326) %>%
+  st_buffer(0)
 
 colnames(casti_poly) <- c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry")
 st_geometry(casti_poly) <- "geometry"

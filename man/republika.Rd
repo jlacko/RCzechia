@@ -21,7 +21,7 @@ Boundaries of the Czech Republic as \code{sf} polygon.
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to April 2021. Downloaded size of high resolution shapefile is <1 MB.
+The data is current to June 2021. Downloaded size of high resolution shapefile is <1 MB.
 }
 \examples{
 \donttest{

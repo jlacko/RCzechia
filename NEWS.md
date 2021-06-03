@@ -1,3 +1,9 @@
+## version 1.7.1
+
+ - structures aligned with upcoming sf / s2 release
+
+ - internal bump to latest valid RÚIAN data (June 2021)
+
 ## version 1.7.0
 
  - [!] result of geocode() is now standardized; the function is now guaranteed to return a sf data frame

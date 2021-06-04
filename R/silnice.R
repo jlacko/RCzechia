@@ -14,7 +14,7 @@
 #'   \item{MEZINARODNI_OZNACENI}{International road code}
 #' }
 #'
-#' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+#' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
 #'
 #' @export
 

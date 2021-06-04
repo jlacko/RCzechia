@@ -14,7 +14,7 @@
 }
 }
 \source{
-© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-500}
+© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
 }
 \usage{
 reky(scope = "global")
@@ -39,4 +39,5 @@ library(sf)
 plot(st_geometry(subset(okresy(), KOD_LAU1 == "CZ0642"))) # Brno city
 plot(reky("Brno"), add = TRUE) # Svitava & Svratka added to Brno my city plot
 }
+
 }

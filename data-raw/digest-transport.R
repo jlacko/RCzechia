@@ -30,9 +30,11 @@ ciselnik_silnice <- data.frame(DATA50_K = c('2400000',
 clean_silnice <- raw_silnice %>%
   st_transform(4326) %>%
   inner_join(ciselnik_silnice, by = "DATA50_K") %>%
-  st_make_valid() %>%
   select(TRIDA = popis, CISLO_SILNICE = NAZEV)
 
+clean_silnice$geometry <- clean_silnice$geometry %>%
+  s2::s2_rebuild() %>%
+  sf::st_as_sfc()
 
 raw_zeleznice <- st_read("./data-raw/komunikace/ZeleznicniTrat.shp")
 
@@ -58,9 +60,7 @@ ciselnik_zeleznice <- data.frame(DATA50_K = c('2010000',
 clean_zeleznice <- raw_zeleznice %>%
   st_transform(4326) %>%
   inner_join(ciselnik_zeleznice, by = "DATA50_K") %>%
-  st_make_valid() %>%
   select(ELEKTRIFIKACE, KOLEJNOST, ROZCHODNOST)
-
 
 saveRDS(clean_silnice, "./data-backup/Silnice-D50-2021-07.rds")
 saveRDS(clean_zeleznice, "./data-backup/Zeleznice-D50-2021-07.rds")

@@ -62,5 +62,9 @@ clean_zeleznice <- raw_zeleznice %>%
   inner_join(ciselnik_zeleznice, by = "DATA50_K") %>%
   select(ELEKTRIFIKACE, KOLEJNOST, ROZCHODNOST)
 
+clean_zeleznice$geometry <- clean_zeleznice$geometry %>%
+  s2::s2_rebuild() %>%
+  sf::st_as_sfc()
+
 saveRDS(clean_silnice, "./data-backup/Silnice-D50-2021-07.rds")
 saveRDS(clean_zeleznice, "./data-backup/Zeleznice-D50-2021-07.rds")

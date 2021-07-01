@@ -4,7 +4,7 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to January 2015. Downloaded size is 1.5 MB.
+#' The data is current to December 2020. Downloaded size is 1.5 MB.
 #'
 #' @format \code{sf} data frame with 18.979 rows of 4 variables + geometry:
 #'
@@ -14,11 +14,11 @@
 #'   \item{MEZINARODNI_OZNACENI}{International road code}
 #' }
 #'
-#' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
+#' @source Mapový podklad – Data50, 2021 © Český úřad zeměměřický a katastrální \url{https://www.cuzk.cz}
 #'
 #' @export
 
 silnice <- function() {
-  result <- downloader("Silnice.rds")
+  result <- downloader("Silnice-D50-2021-07.rds")
   result
 }

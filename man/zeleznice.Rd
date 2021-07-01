@@ -14,7 +14,7 @@
 }
 }
 \source{
-© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
+Mapový podklad – Data50, 2021 © Český úřad zeměměřický a katastrální \url{https://www.cuzk.cz}
 }
 \usage{
 zeleznice()
@@ -25,5 +25,5 @@ Function returning data frame of railroads of the Czech Republic as \code{sf} li
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to January 2015. Downloaded size is <1 MB.
+The data is current to December 2020. Downloaded size is <1 MB.
 }

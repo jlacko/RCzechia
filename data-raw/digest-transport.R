@@ -31,7 +31,7 @@ clean_silnice <- raw_silnice %>%
   st_transform(4326) %>%
   inner_join(ciselnik_silnice, by = "DATA50_K") %>%
   st_make_valid() %>%
-  select(CISLO_SILNICE = NAZEV, TRIDA = popis)
+  select(TRIDA = popis, CISLO_SILNICE = NAZEV)
 
 
 raw_zeleznice <- st_read("./data-raw/komunikace/ZeleznicniTrat.shp")

@@ -4,11 +4,10 @@
 \alias{zeleznice}
 \title{Railroad Network}
 \format{
-\code{sf} data frame with 3.525 rows of 4 variables + geometry:
+\code{sf} data frame with 3.525 rows of 3 variables + geometry:
 
 \describe{
-  \item{ELEKTRIFIKACE}{is the railroad electrified?: yes = ano, no = ne}
-  \item{KATEGORIE}{category: international = mezinárodní, local = vnitrostátní}
+  \item{ELEKTRIFIKACE}{is the railroad electrified?}
   \item{KOLEJNOST}{track: single = jednokolejní, double = dvojkolejní, more = tří a vícekolejní}
   \item{ROZCHODNOST}{gauge: standard = normální, narrow = úzkokolejka}
 }
@@ -25,5 +24,5 @@ Function returning data frame of railroads of the Czech Republic as \code{sf} li
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to December 2020. Downloaded size is <1 MB.
+The data is current to December 2020. Downloaded size is 1.5 MB.
 }

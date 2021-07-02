@@ -17,12 +17,12 @@ test_that("integrace", {
   low_res_stc <- kraje_low_res %>%
     filter(KOD_CZNUTS3 == "CZ020")
 
-  expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
-  expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1) # bod Praha je v okresu Praha
+  expect_true(all(st_contains(republika("high"), okres_praha, sparse = F))) # okres Praha je v republice
+  expect_true(all(st_contains(okres_praha, obec_praha, sparse = F))) # bod Praha je v okresu Praha
 
-  expect_true(st_contains(okres_praha, ctverec_praha, sparse = F)[[1]]) # čtverec Praha je v okresu Praha
+  expect_true(all(st_contains(okres_praha, ctverec_praha, sparse = F))) # čtverec Praha je v okresu Praha
 
-  expect_false(st_contains(low_res_stc, obec_praha, sparse = F)[[1]]) # bod Praha není ve Středních Čechách (je v Praze)
+  expect_false(all(st_contains(low_res_stc, obec_praha, sparse = F))) # bod Praha není ve Středních Čechách (je v Praze)
 
   # bod Brno není v Brně-venkově (je v Brně městě) - ani low, ani high res
   expect_false(st_contains(subset(okresy("high"), KOD_LAU1 == "CZ0643"),

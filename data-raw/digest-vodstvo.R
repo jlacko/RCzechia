@@ -20,7 +20,10 @@ clean_reky <- raw_reky %>%
                               "Mže",
                               "Berounka",
                               "Ohře")) %>%
-  select(TYP = DATA50_P, NAZEV = JMENO, Major)
+  select(TYP = DATA50_P, NAZEV = JMENO, Major) %>%
+  group_by(TYP, NAZEV, Major) %>%
+  summarise() %>%
+  ungroup()
 
 raw_plochy <- st_read("./data-raw/vodstvo/VodniPlocha.shp")
 

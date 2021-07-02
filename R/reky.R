@@ -6,16 +6,15 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to January 2015. Downloaded size is 1 MB.
+#' The data is current to December 2020. Downloaded size is 33 MB.
 #'
 #' @param scope Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?
 #'
-#' @format \code{sf} data frame with 6.198 rows of 4 variables + geometry:
+#' @format \code{sf} data frame with 156.657 rows of 3 variables + geometry:
 #'
 #' \describe{
-#'   \item{TYP}{Type of river: 1 =  natural, 2 = man-made, 3 = fictional}
+#'   \item{TYP}{Type of river}
 #'   \item{NAZEV}{Name, with Czech accents}
-#'   \item{NAZEV_ASCII}{Name, without Czech accents}
 #'   \item{Major}{Boolean indicating one of the major rivers.}
 #' }
 #'
@@ -27,7 +26,7 @@
 #' plot(reky("Brno"), add = TRUE) # Svitava & Svratka added to Brno my city plot
 #' }
 #'
-#' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
+#' @source Mapový podklad – Data50, 2021 © Český úřad zeměměřický a katastrální \url{https://www.cuzk.cz}
 #'
 #' @export
 
@@ -51,6 +50,6 @@ reky <- function(scope = "global") {
   } # /if
 
   # return default
-  result <- downloader("Reky.rds")
+  result <- downloader("Reky-D50-2021-07.rds")
   result
 }

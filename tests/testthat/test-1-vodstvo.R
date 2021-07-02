@@ -15,14 +15,14 @@ test_that("vodní plochy", {
 
   expect_s3_class(plochy(), "sf")
 
-  expect_equal(nrow(plochy()), 480)
+  expect_equal(nrow(plochy()), 28011)
 
   expect_equal(st_crs(plochy())$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(plochy())))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(plochy()), c("TYP", "NAZEV", "NAZEV_ASCII", "VYSKA", "geometry", "Major"))
+  expect_equal(colnames(plochy()), c("TYP", "NAZEV", "geometry"))
 })
 
 test_that("řeky", {
@@ -49,8 +49,8 @@ test_that("řeky", {
   expect_s3_class(reky("Praha"), "sf")
   expect_s3_class(reky("Brno"), "sf")
 
-  expect_equal(nrow(reky()), 6198)
-  expect_equal(nrow(reky("global")), 6198)
+  expect_equal(nrow(reky()), 156657)
+  expect_equal(nrow(reky("global")), 156657)
   expect_equal(nrow(reky("Praha")), 1)
   expect_equal(nrow(reky("Brno")), 2)
 
@@ -64,5 +64,5 @@ test_that("řeky", {
   expect_true(all(st_is_valid(reky("Brno"))))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(reky()), c("TYP", "NAZEV", "NAZEV_ASCII", "geometry", "Major"))
+  expect_equal(colnames(reky()), c("TYP", "NAZEV", "Major" , "geometry"))
 })

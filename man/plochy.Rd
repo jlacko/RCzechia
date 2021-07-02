@@ -4,18 +4,15 @@
 \alias{plochy}
 \title{Water Bodies}
 \format{
-\code{sf} data frame with 480 rows of 5 variables + geometry
+\code{sf} data frame with 28.011 rows of 2 variables + geometry
 
 \describe{
-  \item{TYP}{Type of water body: 1 = dam, 2 = pond, 3 = lake}
+  \item{TYP}{Type of water body}
   \item{NAZEV}{Name, with Czech accents}
-  \item{NAZEV_ASCII}{Name, without Czech accents}
-  \item{VYSKA}{water level, meters above sea level}
-  \item{Major}{Boolean indicating major water bodies}
 }
 }
 \source{
-© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
+Mapový podklad – Data50, 2021 © Český úřad zeměměřický a katastrální \url{https://www.cuzk.cz}
 }
 \usage{
 plochy()
@@ -26,5 +23,5 @@ Function returning data frame of water bodies of the Czech Republic as \code{sf}
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to January 2015. Downloaded size is <1 MB.
+The data is current to December 2020. Downloaded size is 15.5 MB.
 }

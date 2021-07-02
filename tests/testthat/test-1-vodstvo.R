@@ -23,6 +23,9 @@ test_that("vodní plochy", {
 
   # sloupce se nerozbily...
   expect_equal(colnames(plochy()), c("TYP", "NAZEV", "geometry"))
+
+  # plocha sedí
+  expect_lte(abs(sum(st_area(plochy())) - units::set_units(995238883, "m^2")), units::set_units(200, "m^2"))
 })
 
 test_that("řeky", {
@@ -49,8 +52,8 @@ test_that("řeky", {
   expect_s3_class(reky("Praha"), "sf")
   expect_s3_class(reky("Brno"), "sf")
 
-  expect_equal(nrow(reky()), 156657)
-  expect_equal(nrow(reky("global")), 156657)
+  expect_equal(nrow(reky()), 7654)
+  expect_equal(nrow(reky("global")), 7654)
   expect_equal(nrow(reky("Praha")), 1)
   expect_equal(nrow(reky("Brno")), 2)
 
@@ -65,4 +68,7 @@ test_that("řeky", {
 
   # sloupce se nerozbily...
   expect_equal(colnames(reky()), c("TYP", "NAZEV", "Major" , "geometry"))
+
+  # délka sedí
+  expect_lte(abs(sum(st_length(reky())) - units::set_units(102912714, "m")), units::set_units(1, "m"))
 })

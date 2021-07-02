@@ -101,4 +101,37 @@ test_that("integrace", {
 })
 
 
+test_that("dopady 51/2020 Sb.", {
+
+  skip_on_cran()
+
+  # očekáváné změny okresů
+  bukovec <- subset(obce_body(), KOD_OBEC == "553506") %>%
+    dplyr::select(NAZ_OBEC)
+  cerniky <- subset(obce_body(), KOD_OBEC == "599301") %>%
+    dplyr::select(NAZ_OBEC)
+  harrachov <- subset(obce_body(), KOD_OBEC == "577081") %>%
+    dplyr::select(NAZ_OBEC)
+  studlov <- subset(obce_body(), KOD_OBEC == "544931") %>%
+    dplyr::select(NAZ_OBEC)
+
+  expect_equal(st_join(bukovec, okresy(), left = F)$KOD_LAU1, "CZ0324") # Plzeň jih
+  expect_equal(st_join(cerniky, okresy(), left = F)$KOD_LAU1, "CZ0204") # Kolín
+  expect_equal(st_join(harrachov, okresy(), left = F)$KOD_LAU1, "CZ0512") # Jablonec nad Nisou
+  expect_equal(st_join(studlov, okresy(), left = F)$KOD_LAU1, "CZ0724") # Zlín
+
+  # očekávané změny ORP
+  bristvi <- subset(obce_body(), KOD_OBEC == "537047") %>%
+    dplyr::select(NAZ_OBEC)
+  frydstejn <- subset(obce_body(), KOD_OBEC == "563579") %>%
+    dplyr::select(NAZ_OBEC)
+  veznice <- subset(obce_body(), KOD_OBEC == "569704") %>%
+    dplyr::select(NAZ_OBEC)
+
+  expect_equal(st_join(bristvi, orp_polygony(), left = F)$KOD_ORP, "2113") # Lysá nad Labem
+  expect_equal(st_join(frydstejn, orp_polygony(), left = F)$KOD_ORP, "5103") # Jablonec nad Nisou
+  expect_equal(st_join(veznice, orp_polygony(), left = F)$KOD_ORP, "6102") # Havlíčkův Brod
+})
+
+
 

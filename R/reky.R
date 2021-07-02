@@ -10,7 +10,7 @@
 #'
 #' @param scope Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?
 #'
-#' @format \code{sf} data frame with 156.657 rows of 3 variables + geometry:
+#' @format \code{sf} data frame with 7.654 rows of 3 variables + geometry:
 #'
 #' \describe{
 #'   \item{TYP}{Type of river}
@@ -33,7 +33,7 @@
 reky <- function(scope = "global") {
 
     if (!length(scope) == 1) {
-    stop("A single ")
+    stop("A single scope is required.")
   } # /if
 
   if (!is.element(scope, c("global", "Praha", "Brno"))) {

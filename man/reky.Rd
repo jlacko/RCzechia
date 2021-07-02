@@ -4,7 +4,7 @@
 \alias{reky}
 \title{Rivers}
 \format{
-\code{sf} data frame with 156.657 rows of 3 variables + geometry:
+\code{sf} data frame with 7.654 rows of 3 variables + geometry:
 
 \describe{
   \item{TYP}{Type of river}

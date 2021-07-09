@@ -1,4 +1,3 @@
-docker build -t ozymandias .
 docker run \
  -e  USER=jindra -e PASSWORD=Montana \
  -v /home/jindra/Documents/RCzechia/data-raw:/home/jindra/data-raw \

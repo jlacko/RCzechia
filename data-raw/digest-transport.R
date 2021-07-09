@@ -1,70 +1,58 @@
 # digest silnice & železnice
+# naprosto, ale naprosto klíčové pouštět v dockeru ozymandias
 
 library(sf)
 library(dplyr)
 
-raw_silnice <- st_read("./data-raw/komunikace/SilniceDalnice.shp")
+raw_silnice <- st_read("~/data-raw/TRANS/RoadL.shp")
 
-ciselnik_silnice <- data.frame(DATA50_K = c('2400000',
-                                            '2410000',
-                                            '2420000',
-                                            '2430000',
-                                            '2440000',
-                                            '2540100',
-                                            '2540200',
-                                            '2540300',
-                                            '2540400',
-                                            '2540500',
-                                            '2450000'),
-                               popis = c('dálnice',
-                                         'silnice pro motorová vozidla',
-                                         'silnice I. třídy',
-                                         'silnice II. třídy',
-                                         'silnice III. třídy',
-                                         'nájezd, větev křižovatky na dálnici',
-                                         'nájezd, větev křižovatky na silnici pro motorová vozidla',
-                                         'nájezd, větev křižovatky na silnici I. třídy',
-                                         'nájezd, větev křižovatky na silnici II. třídy',
-                                         'nájezd, větev křižovatky na silnici III. třídy',
-                                         'silnice neevidovaná'))
 clean_silnice <- raw_silnice %>%
   st_transform(4326) %>%
-  inner_join(ciselnik_silnice, by = "DATA50_K") %>%
-  select(TRIDA = popis, CISLO_SILNICE = NAZEV)
+  # lokální kategorie
+  mutate(Name = case_when(NAMN1 %in% c("UNK", "N_A") ~ NA_character_,
+                          T ~ NAMN1),
+         TRIDA = case_when(NA3 == 16 ~ "Dálnice I. tř.",
+                           NA3 == 18 ~ "Dálnice II. tř.",
+                           NA3 == 14 ~ "Silnice I. tř.",
+                           NA3 == 15 ~ "Silnice II. tř.",
+                           NA3 == 20 ~ "Silnice III. tř.",
+                           T ~ "neevidovaná silnice"),
+         # lokální název
+         CISLO_SILNICE = case_when(RTN %in% c("UNK", "N_A") ~ NA_character_,
+                                   T ~ RTN),
+         # mezinárodní název
+         MEZINARODNI_OZNACENI = case_when(RTE %in% c("UNK", "N_A") ~ NA_character_,
+                                   T ~ RTE)) %>%
+  select(Name, TRIDA, CISLO_SILNICE, MEZINARODNI_OZNACENI)
 
 clean_silnice$geometry <- clean_silnice$geometry %>%
   s2::s2_rebuild() %>%
   sf::st_as_sfc()
 
-raw_zeleznice <- st_read("./data-raw/komunikace/ZeleznicniTrat.shp")
-
-
-ciselnik_zeleznice <- data.frame(DATA50_K = c('2010000',
-                                              '2020000',
-                                              '2030000',
-                                              '2040000',
-                                              '2050000'),
-                                 popis = c('železnice normálně rozchodná neelektrizovaná jednokolejná',
-                                           'železnice normálně rozchodná neelektrizovaná dvou a vícekolejná',
-                                           'železnice normálně rozchodná elektrizovaná jednokolejná',
-                                           'železnice normálně rozchodná elektrizovaná dvou a vícekolejná',
-                                           'železnice úzkorozchodná'),
-                                 ELEKTRIFIKACE = c(F, F, T, T, NA),
-                                 KOLEJNOST = c('jednokolejní', 'dvou a více kolejní',
-                                               'jednokolejní', 'dvou a více kolejní',
-                                               NA),
-                                 ROZCHODNOST = c('normální', 'normální',
-                                                 'normální', 'normální',
-                                                 'úzkokolejka'))
+raw_zeleznice <- st_read("~/data-raw/TRANS/RailrdL.shp")
 
 clean_zeleznice <- raw_zeleznice %>%
   st_transform(4326) %>%
-  inner_join(ciselnik_zeleznice, by = "DATA50_K") %>%
-  select(ELEKTRIFIKACE, KOLEJNOST, ROZCHODNOST)
+  # lokální kategorie
+  mutate(Name = case_when(NAMN1 %in% c("UNK", "N_A") ~ NA_character_,
+                                   T ~ NAMN1),
+         ELEKTRIFIKACE = case_when(RRA %in% c(1, 3) ~ T,
+                                   RRA == 4 ~ F,
+                                   T ~ NA),
+         # lokální název
+         KOLEJNOST = case_when(FCO == 2 ~ "3 and more",
+                               FCO == 3 ~ "single",
+                               FCO == 11 ~ "double",
+                               T ~ NA_character_),
+         # mezinárodní název
+         ROZCHODNOST = case_when(GAW == 144 ~ "standard",
+                                 GAW == 76 ~ "narrow",
+                                 T ~ NA_character_)) %>%
+  select(Name, ELEKTRIFIKACE, KOLEJNOST, ROZCHODNOST)
 
 clean_zeleznice$geometry <- clean_zeleznice$geometry %>%
   s2::s2_rebuild() %>%
   sf::st_as_sfc()
 
-saveRDS(clean_silnice, "./data-backup/Silnice-D50-2021-07.rds")
-saveRDS(clean_zeleznice, "./data-backup/Zeleznice-D50-2021-07.rds")
+saveRDS(clean_silnice, "~/data-backup/Silnice-D200-2021-07.rds")
+saveRDS(clean_zeleznice, "~/data-backup/Zeleznice-D200-2021-07.rds")

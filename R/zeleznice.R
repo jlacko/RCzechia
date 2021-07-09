@@ -19,6 +19,6 @@
 #' @export
 
 zeleznice <- function() {
-  result <- downloader("Zeleznice-D50-2021-07.rds")
+  result <- downloader("Zeleznice-D200-2021-07.rds")
   result
 }

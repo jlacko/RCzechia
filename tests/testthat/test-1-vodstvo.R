@@ -15,17 +15,17 @@ test_that("vodní plochy", {
 
   expect_s3_class(plochy(), "sf")
 
-  expect_equal(nrow(plochy()), 28011)
+  expect_equal(nrow(plochy()), 1769)
 
   expect_equal(st_crs(plochy())$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(plochy())))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(plochy()), c("TYP", "NAZEV", "geometry"))
+  expect_equal(colnames(plochy()), c("NAZEV", "VYSKA", "geometry"))
 
   # plocha sedí
-  expect_lte(abs(sum(st_area(plochy())) - units::set_units(995238883, "m^2")), units::set_units(200, "m^2"))
+  expect_lte(abs(sum(st_area(plochy())) - units::set_units(582905148, "m^2")), units::set_units(100, "m^2"))
 })
 
 test_that("řeky", {
@@ -52,8 +52,8 @@ test_that("řeky", {
   expect_s3_class(reky("Praha"), "sf")
   expect_s3_class(reky("Brno"), "sf")
 
-  expect_equal(nrow(reky()), 7654)
-  expect_equal(nrow(reky("global")), 7654)
+  expect_equal(nrow(reky()), 3616)
+  expect_equal(nrow(reky("global")), 3616)
   expect_equal(nrow(reky("Praha")), 1)
   expect_equal(nrow(reky("Brno")), 2)
 
@@ -67,8 +67,8 @@ test_that("řeky", {
   expect_true(all(st_is_valid(reky("Brno"))))
 
   # sloupce se nerozbily...
-  expect_equal(colnames(reky()), c("TYP", "NAZEV", "Major" , "geometry"))
+  expect_equal(colnames(reky()), c("TYP", "NAZEV", "Navigable", "Major" , "geometry"))
 
   # délka sedí
-  expect_lte(abs(sum(st_length(reky())) - units::set_units(102912714, "m")), units::set_units(1, "m"))
+  expect_lte(abs(sum(st_length(reky())) - units::set_units(42703820, "m")), units::set_units(1, "m"))
 })

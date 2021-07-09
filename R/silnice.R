@@ -18,6 +18,6 @@
 #' @export
 
 silnice <- function() {
-  result <- downloader("Silnice-D50-2021-07.rds")
+  result <- downloader("Silnice-D200-2021-07.rds")
   result
 }

@@ -6,5 +6,5 @@ inst/doc
 /data-raw/*.xml
 /data-raw/komunikace/*
 /data-raw/vodstvo/*
-
-
+/data-raw/TRANS/*
+/data-raw/HYDRO/*

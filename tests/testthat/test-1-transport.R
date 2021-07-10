@@ -22,8 +22,12 @@ test_that("silnice", {
 
   expect_true(all(st_is_valid(silnice())))
 
+  # dálnic je méně jak silnic
+  expect_gt(sum(st_length(subset(silnice(), stringr::str_starts(silnice()$TRIDA, "Silnice")))),
+            sum(st_length(subset(silnice(), stringr::str_starts(silnice()$TRIDA, "Dálnice")))))
+
   # sloupce se nerozbily...
-  expect_equal(colnames(silnice()), c("Name", "TRIDA", "CISLO_SILNICE", "MEZINARODNI_OZNACENI", "geometry"))
+  expect_equal(colnames(silnice()), c("TRIDA", "CISLO_SILNICE", "MEZINARODNI_OZNACENI", "geometry"))
 })
 
 test_that("železnice", {
@@ -46,7 +50,12 @@ test_that("železnice", {
 
   expect_true(all(st_is_valid(zeleznice())))
 
+  # normálních železnic je víc jak úzkokolejek
+  expect_gt(sum(st_length(subset(zeleznice(), ROZCHODNOST == "standard"))),
+            sum(st_length(subset(zeleznice(), ROZCHODNOST == "narrow"))))
+
+
   # sloupce se nerozbily...
-  expect_equal(colnames(zeleznice()), c("Name", "ELEKTRIFIKACE", "KOLEJNOST",
+  expect_equal(colnames(zeleznice()), c("ELEKTRIFIKACE", "KOLEJNOST",
                                         "ROZCHODNOST", "geometry"))
 })

@@ -23,7 +23,7 @@ clean_silnice <- raw_silnice %>%
          # mezinárodní název
          MEZINARODNI_OZNACENI = case_when(RTE %in% c("UNK", "N_A") ~ NA_character_,
                                    T ~ RTE)) %>%
-  select(Name, TRIDA, CISLO_SILNICE, MEZINARODNI_OZNACENI)
+  select(TRIDA, CISLO_SILNICE, MEZINARODNI_OZNACENI)
 
 clean_silnice$geometry <- clean_silnice$geometry %>%
   s2::s2_rebuild() %>%
@@ -48,7 +48,7 @@ clean_zeleznice <- raw_zeleznice %>%
          ROZCHODNOST = case_when(GAW == 144 ~ "standard",
                                  GAW == 76 ~ "narrow",
                                  T ~ NA_character_)) %>%
-  select(Name, ELEKTRIFIKACE, KOLEJNOST, ROZCHODNOST)
+  select(ELEKTRIFIKACE, KOLEJNOST, ROZCHODNOST)
 
 clean_zeleznice$geometry <- clean_zeleznice$geometry %>%
   s2::s2_rebuild() %>%

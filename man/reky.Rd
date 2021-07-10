@@ -4,16 +4,17 @@
 \alias{reky}
 \title{Rivers}
 \format{
-\code{sf} data frame with 7.654 rows of 3 variables + geometry:
+\code{sf} data frame with 3.616 rows of 4 variables + geometry:
 
 \describe{
   \item{TYP}{Type of river}
   \item{NAZEV}{Name, with Czech accents}
+  \item{Navigable}{Boolean indicating navigability of river.}
   \item{Major}{Boolean indicating one of the major rivers.}
 }
 }
 \source{
-Mapový podklad – Data50, 2021 © Český úřad zeměměřický a katastrální \url{https://www.cuzk.cz}
+Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
 }
 \usage{
 reky(scope = "global")
@@ -29,7 +30,7 @@ Two special case scopes are defined: Praha (returning the part of Vltava in and 
 
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to December 2020. Downloaded size is 33 MB.
+The data is current to December 2020. Downloaded size is 4.4 MB.
 }
 \examples{
 \donttest{

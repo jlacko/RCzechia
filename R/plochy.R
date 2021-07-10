@@ -4,16 +4,16 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to December 2020. Downloaded size is 15.5 MB.
+#' The data is current to December 2020. Downloaded size is 1.5 MB.
 #'
-#' @format \code{sf} data frame with 28.011 rows of 2 variables + geometry
+#' @format \code{sf} data frame with 1.769 rows of 2 variables + geometry
 #'
 #' \describe{
-#'   \item{TYP}{Type of water body}
 #'   \item{NAZEV}{Name, with Czech accents}
+#'   \item{VYSKA}{water level, meters above sea level}
 #' }
 #'
-#' @source Mapový podklad – Data50, 2021 © Český úřad zeměměřický a katastrální \url{https://www.cuzk.cz}
+#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
 #'
 #' @export
 

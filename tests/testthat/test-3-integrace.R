@@ -17,12 +17,12 @@ test_that("integrace", {
   low_res_stc <- kraje_low_res %>%
     filter(KOD_CZNUTS3 == "CZ020")
 
-  expect_equal(st_contains(republika("high"), okres_praha)[[1]], 1) # okres Praha je v republice
-  expect_equal(st_contains(okres_praha, obec_praha)[[1]], 1) # bod Praha je v okresu Praha
+  expect_true(all(st_contains(republika("high"), okres_praha, sparse = F))) # okres Praha je v republice
+  expect_true(all(st_contains(okres_praha, obec_praha, sparse = F))) # bod Praha je v okresu Praha
 
-  expect_true(st_contains(okres_praha, ctverec_praha, sparse = F)[[1]]) # čtverec Praha je v okresu Praha
+  expect_true(all(st_contains(okres_praha, ctverec_praha, sparse = F))) # čtverec Praha je v okresu Praha
 
-  expect_false(st_contains(low_res_stc, obec_praha, sparse = F)[[1]]) # bod Praha není ve Středních Čechách (je v Praze)
+  expect_false(all(st_contains(low_res_stc, obec_praha, sparse = F))) # bod Praha není ve Středních Čechách (je v Praze)
 
   # bod Brno není v Brně-venkově (je v Brně městě) - ani low, ani high res
   expect_false(st_contains(subset(okresy("high"), KOD_LAU1 == "CZ0643"),
@@ -98,6 +98,39 @@ test_that("integrace", {
   expect_equal(sf::st_intersection(KFME_grid("low"), cernousy)$ctverec, 4956) # bod Černousy je ve velkém čtverci 4956
   expect_equal(sf::st_intersection(KFME_grid("high"), cernousy)$ctverec, "4956c") # bod Černousy je v malém čtverci 4956c
 
+})
+
+
+test_that("dopady 51/2020 Sb.", {
+
+  skip_on_cran()
+
+  # očekáváné změny okresů
+  bukovec <- subset(obce_body(), KOD_OBEC == "553506") %>%
+    dplyr::select(NAZ_OBEC)
+  cerniky <- subset(obce_body(), KOD_OBEC == "599301") %>%
+    dplyr::select(NAZ_OBEC)
+  harrachov <- subset(obce_body(), KOD_OBEC == "577081") %>%
+    dplyr::select(NAZ_OBEC)
+  studlov <- subset(obce_body(), KOD_OBEC == "544931") %>%
+    dplyr::select(NAZ_OBEC)
+
+  expect_equal(st_join(bukovec, okresy(), left = F)$KOD_LAU1, "CZ0324") # Plzeň jih
+  expect_equal(st_join(cerniky, okresy(), left = F)$KOD_LAU1, "CZ0204") # Kolín
+  expect_equal(st_join(harrachov, okresy(), left = F)$KOD_LAU1, "CZ0512") # Jablonec nad Nisou
+  expect_equal(st_join(studlov, okresy(), left = F)$KOD_LAU1, "CZ0724") # Zlín
+
+  # očekávané změny ORP
+  bristvi <- subset(obce_body(), KOD_OBEC == "537047") %>%
+    dplyr::select(NAZ_OBEC)
+  frydstejn <- subset(obce_body(), KOD_OBEC == "563579") %>%
+    dplyr::select(NAZ_OBEC)
+  veznice <- subset(obce_body(), KOD_OBEC == "569704") %>%
+    dplyr::select(NAZ_OBEC)
+
+  expect_equal(st_join(bristvi, orp_polygony(), left = F)$KOD_ORP, "2113") # Lysá nad Labem
+  expect_equal(st_join(frydstejn, orp_polygony(), left = F)$KOD_ORP, "5103") # Jablonec nad Nisou
+  expect_equal(st_join(veznice, orp_polygony(), left = F)$KOD_ORP, "6102") # Havlíčkův Brod
 })
 
 

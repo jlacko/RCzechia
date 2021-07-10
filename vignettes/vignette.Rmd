@@ -65,7 +65,7 @@ borders <- RCzechia::republika("low")
 rivers <- subset(RCzechia::reky(), Major == T)
 
 mista <- data.frame(misto =  c("Kramářova vila", 
-                               "Arcibiskupské zahrady v Kromeříži", 
+                               "Arcibiskupské zahrady v Kroměříži", 
                                "Hrad Bečov nad Teplou"),
                     adresa = c("Gogolova 212, Praha 1",
                                "Sněmovní náměstí 1, Kroměříž",

@@ -4,22 +4,21 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to January 2015. Downloaded size is <1 MB.
+#' The data is current to December 2020. Downloaded size is <1 MB.
 #'
-#' @format \code{sf} data frame with 3.525 rows of 4 variables + geometry:
+#' @format \code{sf} data frame with 9.957 rows of 3 variables + geometry:
 #'
 #' \describe{
-#'   \item{ELEKTRIFIKACE}{is the railroad electrified?: yes = ano, no = ne}
-#'   \item{KATEGORIE}{category: international = mezinárodní, local = vnitrostátní}
+#'   \item{ELEKTRIFIKACE}{is the railroad electrified?}
 #'   \item{KOLEJNOST}{track: single = jednokolejní, double = dvojkolejní, more = tří a vícekolejní}
 #'   \item{ROZCHODNOST}{gauge: standard = normální, narrow = úzkokolejka}
 #' }
 #'
-#' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
+#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
 #'
 #' @export
 
 zeleznice <- function() {
-  result <- downloader("Zeleznice.rds")
+  result <- downloader("Zeleznice-D200-2021-07.rds")
   result
 }

@@ -33,9 +33,9 @@ vyskopis <- function(format = "rayshaded") {
   } # /if - valid resolution
 
   if (format == "rayshaded") {
-    result <- downloader("Vyskopis-stiny.rds")
+    result <- .downloader("Vyskopis-stiny.rds")
   } else {
-    result <- downloader("Vyskopis-vyska.rds")
+    result <- .downloader("Vyskopis-vyska.rds")
   } # /if - download of result
 
   result

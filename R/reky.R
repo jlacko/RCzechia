@@ -51,6 +51,6 @@ reky <- function(scope = "global") {
   } # /if
 
   # return default
-  result <- downloader("Reky-D200-2021-07.rds")
+  result <- .downloader("Reky-D200-2021-07.rds")
   result
 }

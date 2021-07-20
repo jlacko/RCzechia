@@ -1,6 +1,6 @@
-## version 1.8.1
+## version 1.8.2
 
- [!] natural objects (rivers and water bodies) and transport networks (roads and  railoads) are based on Data200 from ČÚZK instead of earlier (and by now somewhat dated) ArcČR 500 v3.3 from ARCDATA.
+ [!] natural objects (rivers and water bodies) and transport networks (roads and  railroads) are based on Data200 from ČÚZK instead of earlier (and by now somewhat dated) ArcČR 500 v3.3 from ARCDATA.
  
  - vignette updated to use static election result (via the Wayback Machine) instead of raw volby.cz 
  
@@ -55,7 +55,7 @@
 
   - protected areas (chráněná území) based on AOPK open data instead of former ARC ČR500; the AOPK data are more current
   
-  - small scale protected areas (maloplošná chráněná území) are included in output of chr_uzemi(); extra dimension to the dataset to diffentiate small and large scale protected areas added. The downloaded file size increased to 7 MB.
+  - small scale protected areas (maloplošná chráněná území) are included in output of chr_uzemi(); extra dimension to the dataset to differentiate small and large scale protected areas added. The downloaded file size increased to 7 MB.
   
   - dimension of ZUJ (základní územní jednotka) removed from obce datasets, in line with move to RÚIAN as main source of administrative units. RÚIAN does not support this metric, and it does not map easily to obce (a ZUJ is sometimes an obec, and sometimes a část).
   
@@ -77,7 +77,7 @@
 
 ## version 1.5.0
 
-  - [!] administrative areas based on RÚIAN generalised boundaries instead of former ARC ČR500; this results in a negligible loss of accuracy, and a significant reduction of size (and download time)
+  - [!] administrative areas based on RÚIAN generalized boundaries instead of former ARC ČR500; this results in a negligible loss of accuracy, and a significant reduction of size (and download time)
   
   - special cases of rivers object implemented for easier visualization of Prague and Brno maps
   

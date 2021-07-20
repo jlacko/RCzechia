@@ -10,7 +10,7 @@
 #'
 #' @format \code{sf} data frame with 1 row of 1 variable + geometry:
 #'
-#' @source © ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' \donttest{
@@ -30,7 +30,7 @@ republika <- function(resolution = "high") {
   if (resolution == "low") {
     return(republika_low_res)
   } else {
-    result <- downloader("Republika-R-2021-06.rds")
+    result <- .downloader("Republika-R-2021-06.rds")
     result
   }
 }

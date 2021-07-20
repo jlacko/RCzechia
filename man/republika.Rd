@@ -7,7 +7,7 @@
 \code{sf} data frame with 1 row of 1 variable + geometry:
 }
 \source{
-© ČÚZK, 2020 \url{https://vdp.cuzk.cz/}
+© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 republika(resolution = "high")

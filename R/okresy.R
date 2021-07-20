@@ -41,7 +41,7 @@ okresy <- function(resolution = "high") {
   if (resolution == "low") {
     return(okresy_low_res)
   } else {
-    result <- downloader("Okresy-R-2021-06.rds")
+    result <- .downloader("Okresy-R-2021-06.rds")
     result
   }
 }

@@ -11,6 +11,6 @@
 #'
 #' @export
 lesy <- function() {
-  result <- downloader("Lesy.rds")
+  result <- .downloader("Lesy.rds")
   result
 }

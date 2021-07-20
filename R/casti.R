@@ -21,6 +21,6 @@
 #' @export
 
 casti <- function() {
-  result <- downloader("casti-R-2021-06.rds")
+  result <- .downloader("casti-R-2021-06.rds")
   result
 }

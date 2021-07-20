@@ -38,6 +38,6 @@
 #' @export
 
 obce_polygony <- function() {
-  result <- downloader("ObceP-R-2021-06.rds")
+  result <- .downloader("ObceP-R-2021-06.rds")
   result
 }

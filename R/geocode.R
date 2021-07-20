@@ -110,7 +110,7 @@ geocode <- function(address, crs = 4326) {
     )
 
 
-    if (!ok_to_proceed(query) | !cuzk) { # error in connection?
+    if (!.ok_to_proceed(query) | !cuzk) { # error in connection?
       message("Error in connection to CUZK API.")
       return(fallback)
     }

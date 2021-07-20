@@ -40,9 +40,9 @@ zip_codes <- function(resolution = "high") {
   }
 
   if (resolution == "low") {
-    result <- downloader("zip-low-2021-02.rds")
+    result <- .downloader("zip-low-2021-02.rds")
   } else {
-    result <- downloader("zip-high-2021-02.rds")
+    result <- .downloader("zip-high-2021-02.rds")
   }
   result
 }

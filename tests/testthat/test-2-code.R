@@ -8,7 +8,7 @@ dos_sochoros <- c(
 
 test_that("geocode", {
 
-  skip_if_not(ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
+  skip_if_not(.ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
               message = "skipping tests - CUZK API seems down")
 
 
@@ -59,7 +59,7 @@ test_that("geocode", {
 
 test_that("revgeo", {
 
-  skip_if_not(ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
+  skip_if_not(.ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
               message = "skipping tests - CUZK API seems down")
 
   sochor_wgs <- geocode(dos_sochoros[1]) # podle WGS84
@@ -105,10 +105,10 @@ test_that("revgeo", {
 
 test_that("očekávané chyby", {
 
-  expect_false(ok_to_proceed("http://httpbin.org/status/404")) # rozbitý zcela
-  expect_false(ok_to_proceed("http://httpbin.org/status/503")) # server down
+  expect_false(.ok_to_proceed("http://httpbin.org/status/404")) # rozbitý zcela
+  expect_false(.ok_to_proceed("http://httpbin.org/status/503")) # server down
 
-  expect_message(ok_to_proceed("http://httpbin.org/status/404"), "broken") # rozbitý zcela
-  expect_message(ok_to_proceed("http://httpbin.org/status/503"), "broken") # server down
+  expect_message(.ok_to_proceed("http://httpbin.org/status/404"), "broken") # rozbitý zcela
+  expect_message(.ok_to_proceed("http://httpbin.org/status/503"), "broken") # server down
 
 })

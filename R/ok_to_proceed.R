@@ -1,9 +1,9 @@
-#' Internal function - tests availabilty of interet resources
+#' Internal function - tests availability of internet resources
 #'
 #' @param remote_file resource to be tested
 #' @keywords internal
 
-ok_to_proceed <- function(remote_file) {
+.ok_to_proceed <- function(remote_file) {
   try_head <- function(x, ...) {
     tryCatch(
       httr::HEAD(url = x, httr::timeout(10), ...),

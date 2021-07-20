@@ -3,7 +3,7 @@
 #' @param file file to be downloaded (or not...) from S3
 #' @keywords internal
 
-downloader <- function(file) {
+.downloader <- function(file) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   aws <- as.logical(Sys.getenv("AWS_UP", unset = TRUE)) # dummy variable to allow testing of network
 
@@ -15,12 +15,12 @@ downloader <- function(file) {
   if (file.exists(local_file)) {
     message("RCzechia: using temporary local dataset.")
   } else {
-    if (!ok_to_proceed(remote_file) | !network) { # network is down
+    if (!.ok_to_proceed(remote_file) | !network) { # network is down
       message("No internet connection.")
       return(NULL)
     }
 
-    if (!ok_to_proceed(remote_file) | !aws) { # AWS bucket down
+    if (!.ok_to_proceed(remote_file) | !aws) { # AWS bucket down
       message("Data source broken.")
       return(NULL)
     }

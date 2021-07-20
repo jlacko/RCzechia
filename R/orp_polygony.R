@@ -21,6 +21,6 @@
 #' @export
 
 orp_polygony <- function() {
-  result <- downloader("ORP-R-2021-06.rds")
+  result <- .downloader("ORP-R-2021-06.rds")
   result
 }

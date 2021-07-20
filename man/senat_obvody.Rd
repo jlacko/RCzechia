@@ -27,7 +27,7 @@ Function returning data frame of the 81 Senate Districts for the Czech Republic 
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to February 2021 (last update was in 2016). Downloaded size of high resolution shapefile is 10 MB, size of the low res object is negligible (but a working internet is still required, as the object is not interal).
+The data is current to February 2021 (last update was in 2016). Downloaded size of high resolution shapefile is 10 MB, size of the low res object is negligible (but a working internet is still required, as the object is not internal).
 }
 \examples{
 \donttest{

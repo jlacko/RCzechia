@@ -35,7 +35,7 @@ kraje <- function(resolution = "high") {
   if (resolution == "low") {
     return(kraje_low_res)
   } else {
-    result <- downloader("Kraje-R-2021-06.rds")
+    result <- .downloader("Kraje-R-2021-06.rds")
     result
   }
 }

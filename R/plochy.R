@@ -18,6 +18,6 @@
 #' @export
 
 plochy <- function() {
-  result <- downloader("Plochy-D200-2021-07.rds")
+  result <- .downloader("Plochy-D200-2021-07.rds")
   result
 }

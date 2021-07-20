@@ -1,3 +1,11 @@
+## version 1.8.1
+
+ [!] natural objects (rivers and water bodies) and transport networks (roads and  railoads) are based on Data200 from ČÚZK instead of earlier (and by now somewhat dated) ArcČR 500 v3.3 from ARCDATA.
+ 
+ - vignette updated to use static election result (via the Wayback Machine) instead of raw volby.cz 
+ 
+ - minimal supported versions of GDAL, GEOS and PROJ explicitly specified (PROJ being the most relevant)
+
 ## version 1.7.2
 
  - structures aligned with upcoming sf / s2 release

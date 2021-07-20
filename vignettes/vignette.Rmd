@@ -285,7 +285,9 @@ ggplot() +
 
 Visualizing election results is one of typical use cases of the RCzechia package.
 
-This example uses [`{rvest}`](https://rvest.tidyverse.org/) to scrape the official table of results of the 2020 fall Senate elections from the official [volby.cz](https://www.volby.cz/) results, and display a map of the party affilation of the elected senator. Note that in order to improve resiliency (a key CRAN requirement) the [Wayback Machine](https://archive.org/web/) snapshot is used instead of the actual page.
+This example uses [`{rvest}`](https://rvest.tidyverse.org/) to scrape the official table of results of the 2020 fall Senate elections from the official [volby.cz](https://www.volby.cz/) results, and display a map of the party affilation of the elected senator. 
+
+Note that in order to improve resiliency (a key CRAN requirement) the [Wayback Machine](https://archive.org/web/) snapshot is used instead of the actual page.
 
 Since not all districts were up for election in this cycle two thirds of the map contain NA's; that is expected behavior.
 

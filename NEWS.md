@@ -1,6 +1,6 @@
 ## version 1.8.2
 
- [!] natural objects (rivers and water bodies) and transport networks (roads and  railroads) are based on Data200 from ČÚZK instead of earlier (and by now somewhat dated) ArcČR 500 v3.3 from ARCDATA.
+ - [!] waterways (rivers and water bodies) and transport networks (roads and  railroads) are based on Data200 from ČÚZK instead of earlier (and by now somewhat dated) ArcČR 500 v3.3 from ARCDATA.
  
  - vignette updated to use static election result (via the Wayback Machine) instead of raw volby.cz 
  

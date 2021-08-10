@@ -17,10 +17,12 @@
 Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
 }
 \usage{
-reky(scope = "global")
+reky(scope = "global", resolution = "high")
 }
 \arguments{
 \item{scope}{Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?}
+
+\item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
 }
 \description{
 Function returning data frame of rivers of the Czech Republic as \code{sf} lines. It takes a single parameter \code{scope} with default "global".

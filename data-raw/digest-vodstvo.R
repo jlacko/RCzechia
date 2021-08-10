@@ -37,6 +37,10 @@ clean_reky <- raw_reky %>%
   summarise() %>%
   ungroup()
 
+small_reky <- clean_reky %>%
+  rmapshaper::ms_simplify(keep = 1/200,
+                          keep_shapes = T)
+
 raw_plochy <- st_read("~/data-raw/HYDRO/LakeresA.shp")
 
 clean_plochy <- raw_plochy %>%
@@ -44,5 +48,6 @@ clean_plochy <- raw_plochy %>%
   st_transform(4326) %>%
   select(NAZEV = NAMN1, VYSKA = ZV2)
 
-saveRDS(clean_reky, "~/data-backup/Reky-D200-2021-07.rds")
+saveRDS(clean_reky, "~/data-backup/Reky-D200-high-2021-07.rds")
+saveRDS(small_reky, "~/data-backup/Reky-D200-low-2021-07.rds")
 saveRDS(clean_plochy, "~/data-backup/Plochy-D200-2021-07.rds")

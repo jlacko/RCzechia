@@ -9,6 +9,7 @@
 #' The data is current to December 2020. Downloaded size is 4.4 MB.
 #'
 #' @param scope Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?
+#' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
 #' @format \code{sf} data frame with 3.616 rows of 4 variables + geometry:
 #'
@@ -31,15 +32,19 @@
 #'
 #' @export
 
-reky <- function(scope = "global") {
+reky <- function(scope = "global", resolution = "high") {
 
-    if (!length(scope) == 1) {
+  if (!length(scope) == 1) {
     stop("A single scope is required.")
-  } # /if
+  } # /if scope
 
   if (!is.element(scope, c("global", "Praha", "Brno"))) {
     stop(paste(scope, "is not a valid scope; recognized values are \"global\", \"Brno\" or \"Praha\"."))
-  }
+  } # /if element
+
+  if (!is.element(resolution, c("high", "low"))) {
+    stop(paste(resolution, "is not a valid resoulution; recognized values are \"high\" or \"low\"."))
+  } #/if resolution
 
 
   if (scope == "Brno") {
@@ -50,7 +55,13 @@ reky <- function(scope = "global") {
     return(reky_praha)
   } # /if
 
+
   # return default
-  result <- .downloader("Reky-D200-2021-07.rds")
+  result <- if(resolution == "high") {
+    .downloader("Reky-D200-high-2021-07.rds")
+  } else {
+    .downloader("Reky-D200-low-2021-07.rds")
+  } # /if downloader
+
   result
 }

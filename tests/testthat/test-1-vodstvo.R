@@ -39,20 +39,31 @@ test_that("řeky", {
   Sys.setenv("AWS_UP" = TRUE)
 
   expect_error(reky(NA)) # parametr je povinný
+  expect_error(reky(resolution = "bflm")) # nezámé rozlišení
+  expect_error(reky(resolution = 42)) # nezámé rozlišení
+  expect_error(reky(resolution = NA)) # nezámé rozlišení
   expect_error(reky("bflm")) # neznámý scope
   expect_error(reky(c("Praha", "Brno"))) # moc řek...
 
+
+
   expect_true(is.data.frame(reky()))
+  expect_true(is.data.frame(reky(resolution = "high")))
+  expect_true(is.data.frame(reky(resolution = "low")))
   expect_true(is.data.frame(reky("global")))
   expect_true(is.data.frame(reky("Praha")))
   expect_true(is.data.frame(reky("Brno")))
 
   expect_s3_class(reky(), "sf")
+  expect_s3_class(reky(resolution = "high"), "sf")
+  expect_s3_class(reky(resolution = "low"), "sf")
   expect_s3_class(reky("global"), "sf")
   expect_s3_class(reky("Praha"), "sf")
   expect_s3_class(reky("Brno"), "sf")
 
   expect_equal(nrow(reky()), 3616)
+  expect_equal(nrow(reky(resolution = "high")), 3616)
+  expect_equal(nrow(reky(resolution = "low")), 3616)
   expect_equal(nrow(reky("global")), 3616)
   expect_equal(nrow(reky("Praha")), 1)
   expect_equal(nrow(reky("Brno")), 2)
@@ -68,6 +79,11 @@ test_that("řeky", {
 
   # sloupce se nerozbily...
   expect_equal(colnames(reky()), c("TYP", "NAZEV", "Navigable", "Major" , "geometry"))
+  expect_equal(colnames(reky(resolution = "high")), c("TYP", "NAZEV", "Navigable", "Major" , "geometry"))
+  expect_equal(colnames(reky(resolution = "low")), c("TYP", "NAZEV", "Navigable", "Major" , "geometry"))
+
+  # low res je menší než high res
+  expect_true(object.size(reky(resolution = "low")) < object.size(reky(resolution = "high")))
 
   # délka sedí
   expect_lte(abs(sum(st_length(reky())) - units::set_units(42703820, "m")), units::set_units(1, "m"))

@@ -1,3 +1,7 @@
+## version 1.8.3
+
+ - the reky (rivers) function gained optional parameter resolution, allowing usage of smoother low res object
+
 ## version 1.8.2
 
  - [!] waterways (rivers and water bodies) and transport networks (roads and  railroads) are based on Data200 from ČÚZK instead of earlier (and by now somewhat dated) ArcČR 500 v3.3 from ARCDATA.

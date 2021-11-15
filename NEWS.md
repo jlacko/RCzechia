@@ -1,3 +1,7 @@
+## version 1.8.4
+
+ - vignette moved from dynamic to pre-computed one. This eliminates risk of CRAN check failures on network related issues, without changing actual content.
+
 ## version 1.8.3
 
  - the reky (rivers) function gained optional parameter resolution, allowing usage of smoother low res object

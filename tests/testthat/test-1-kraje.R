@@ -3,6 +3,8 @@ library(httr)
 
 test_that("kraje", {
 
+  skip_on_cran()
+
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(kraje(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)

@@ -3,6 +3,8 @@ library(httr)
 
 test_that("faunistické čtverce", {
 
+  skip_on_cran()
+
   expect_true(is.data.frame(KFME_grid()))
 
   expect_s3_class(KFME_grid(), "sf")

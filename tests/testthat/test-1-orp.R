@@ -4,6 +4,8 @@ library(httr)
 
 test_that("ORP", {
 
+  skip_on_cran()
+
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(orp_polygony(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)

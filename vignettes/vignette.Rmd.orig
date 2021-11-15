@@ -1,7 +1,7 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2021-11-15"
+date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -12,15 +12,18 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = T, fig.align="center", dpi = 150, out.width = "100%", fig.width = 8, fig.height = 4)
+library(httr)
+library(roxygen2)
+```
 ### Visualizing Czech Population
 
 Population of the Czech Republic as per the [latest census](https://www.czso.cz/csu/czso/zakladni-vysledky-scitani-lidu-domu-a-bytu-2011-ceska-republika-2011-eihs9d4gp3) in 2011, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/) by Petr Bouchal.
 
 As the population distributed highly unevenly a log scale is used.
 
-
-```r
+```{r census, echo = T, eval = T, message = F}
 library(RCzechia)
 library(ggplot2)
 library(dplyr)
@@ -46,16 +49,13 @@ ggplot(data = okresni_data) +
         legend.title.align = 0.5)
 ```
 
-<img src="figure/census-1.png" title="plot of chunk census" alt="plot of chunk census" width="100%" style="display: block; margin: auto;" />
-
 ## Geocoding Locations & Drawing them on a Map
 
 Drawing a map: three semi-random landmarks on map, with rivers shown for better orientation.
 
 To get the geocoded data frame function `RCzechia::geocode()` is used.
 
-
-```r
+```{r geocode, echo = T, eval = T, message = F, warning = F,fig.width = 8, fig.height = 5}
 library(RCzechia)
 library(ggplot2)
 library(sf)
@@ -75,7 +75,6 @@ mista <- data.frame(misto =  c("Kramářova vila",
 POI <- RCzechia::geocode(mista$adresa)
 
 class(POI) # in {sf} package format = spatial and data frame
-## [1] "sf"         "data.frame"
 
 # report results
 ggplot() +
@@ -84,9 +83,8 @@ ggplot() +
   geom_sf(data = borders, color = "grey30", fill = NA) +
   labs(title = "Very Special Places") +
   theme_bw()
-```
 
-<img src="figure/geocode-1.png" title="plot of chunk geocode" alt="plot of chunk geocode" width="100%" style="display: block; margin: auto;" />
+```
 
 
 ## Distance Between Prague and Brno
@@ -95,8 +93,7 @@ Calculate distance between two spatial objects; the `sf` package supports (via g
 
 Calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
 
-
-```r
+```{r distance, echo = T, eval = T, message = F}
 library(dplyr)
 library(RCzechia)
 library(sf)
@@ -113,7 +110,7 @@ vzdalenost <- sf::st_distance(praha, brno) %>%
 
 # report results
 print(vzdalenost[1])
-## 152.4636 [kilometers]
+
 ```
 
 ## Geographical Center of the City of Brno
@@ -124,8 +121,7 @@ The center is calculated using `sf::st_centroid()` and reversely geocoded via `R
 
 Note the use of `reky("Brno")` to provide the parts of Svitava and Svratka relevant to a map of Brno city.
 
-
-```r
+```{r brno-center, echo = T, eval = T, message = F, warning = F, fig.width = 6, fig.height = 6}
 library(dplyr)
 library(RCzechia)
 library(ggplot2)
@@ -147,7 +143,6 @@ adresa_pupku <- RCzechia::revgeo(pupek_brna) %>%
 
 # report results
 print(adresa_pupku)
-## [1] "Žižkova 513/22, Veveří, 61600 Brno"
 
 ggplot() +
   geom_sf(data = pupek_brna, col = "red", shape = 4) +
@@ -155,9 +150,10 @@ ggplot() +
   geom_sf(data = brno, color = "grey50", fill = NA) +
   labs(title = "Geographical Center of Brno") +
   theme_bw()
-```
 
-<img src="figure/brno-center-1.png" title="plot of chunk brno-center" alt="plot of chunk brno-center" width="100%" style="display: block; margin: auto;" />
+
+
+```
 
 
 ## Interactive Map
@@ -168,8 +164,7 @@ I found the stamen toner basemap a good company for interactive chloropleths - i
 
 *Note*: it is technically impossible to make html in vignette interactive. As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
 
-
-```r
+```{r interactive, eval = F}
 library(dplyr)
 library(RCzechia)
 library(leaflet)
@@ -210,8 +205,7 @@ This example covers a frequent use case:
 * plotting the outcome – both as a grid cell and exact location – on a map
 
 
-
-```r
+```{r ctverce, echo = T, eval = T, message = F, warning = F,fig.width = 8, fig.height = 5}
 library(RCzechia)
 library(ggplot2)
 library(dplyr)
@@ -224,7 +218,6 @@ place <- RCzechia::geocode(obec) %>%
   filter(type == "Obec")
 
 class(place) # a spatial data frame
-## [1] "sf"         "data.frame"
 
 # ID of the KFME square containg place geocoded (via spatial join)
 ctverec_id <- sf::st_join(RCzechia::KFME_grid(),
@@ -232,7 +225,6 @@ ctverec_id <- sf::st_join(RCzechia::KFME_grid(),
   pull(ctverec)
 
 print(paste0("Location found in grid cell number ", ctverec_id, "."))
-## [1] "Location found in grid cell number 6458."
 
 # a single KFME square to be highlighted as a polygon
 highlighted_cell <- KFME_grid() %>%
@@ -248,9 +240,8 @@ ggplot() +
   geom_sf(data = place,  color = "red", pch = 4) +  # X marks the spot!
   labs(title = paste("Location", obec, "in grid cell number", ctverec_id)) +
   theme_bw()
-```
 
-<img src="figure/ctverce-1.png" title="plot of chunk ctverce" alt="plot of chunk ctverce" width="100%" style="display: block; margin: auto;" />
+```
 
 
 ## Terrain of the Czech Republic
@@ -266,8 +257,7 @@ Package RCzechia supports two versions of relief visualization:
 
 This example covers the second option.
 
-
-```r
+```{r relief, echo = T, eval = T, message = F, warning = F,fig.width = 8, fig.height = 5}
 library(RCzechia)
 library(ggplot2)
 library(dplyr)
@@ -287,9 +277,8 @@ ggplot() +
   labs(title = "Czech Rivers & Their Basins") +
   theme_bw() +
   theme(axis.title = element_blank())
-```
 
-<img src="figure/relief-1.png" title="plot of chunk relief" alt="plot of chunk relief" width="100%" style="display: block; margin: auto;" />
+```
 
 
 ## Senate Elections of 2020
@@ -300,8 +289,7 @@ This example uses [`{rvest}`](https://rvest.tidyverse.org/) to scrape the offici
 
 Since not all districts were up for election in this cycle two thirds of the map contain NA's; that is expected behavior.
 
-
-```r
+```{r senat, echo = T, eval = T, message = F, warning = F}
 
 library(RCzechia)
 library(ggplot2)
@@ -327,6 +315,5 @@ ggplot() +
   geom_sf(data = podklad, aes(fill = strana)) +
   labs(title = "Senate elections 2020") +
   theme_bw()
-```
 
-<img src="figure/senat-1.png" title="plot of chunk senat" alt="plot of chunk senat" width="100%" style="display: block; margin: auto;" />
+```

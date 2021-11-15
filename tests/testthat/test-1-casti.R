@@ -3,6 +3,8 @@ library(httr)
 
 test_that("městské části", {
 
+  skip_on_cran()
+
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(casti(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)

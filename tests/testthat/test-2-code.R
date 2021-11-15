@@ -8,6 +8,8 @@ dos_sochoros <- c(
 
 test_that("geocode", {
 
+  skip_on_cran()
+
   skip_if_not(.ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
               message = "skipping tests - CUZK API seems down")
 
@@ -59,6 +61,8 @@ test_that("geocode", {
 
 test_that("revgeo", {
 
+  skip_on_cran()
+
   skip_if_not(.ok_to_proceed("http://ags.cuzk.cz/arcgis/rest/services/RUIAN/Vyhledavaci_sluzba_nad_daty_RUIAN/MapServer/exts/GeocodeSOE/find"),
               message = "skipping tests - CUZK API seems down")
 
@@ -104,6 +108,8 @@ test_that("revgeo", {
 
 
 test_that("očekávané chyby", {
+
+  skip_on_cran()
 
   expect_false(.ok_to_proceed("http://httpbin.org/status/404")) # rozbitý zcela
   expect_false(.ok_to_proceed("http://httpbin.org/status/503")) # server down

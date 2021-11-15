@@ -4,6 +4,8 @@ library(httr)
 
 test_that("silnice", {
 
+  skip_on_cran()
+
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(silnice(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
@@ -31,6 +33,8 @@ test_that("silnice", {
 })
 
 test_that("železnice", {
+
+  skip_on_cran()
 
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(zeleznice(), "internet") # zpráva o chybějícím internetu

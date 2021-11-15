@@ -13,7 +13,13 @@ vignette: >
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(collapse = T, fig.align="center", dpi = 150, out.width = "100%", fig.width = 8, fig.height = 4)
+knitr::opts_chunk$set(collapse = T,
+                      fig.align="center",
+                      dpi = 150,
+                      out.width = "100%",
+                      fig.width = 8,
+                      fig.height = 4,
+                      fig.path = "./")
 library(httr)
 library(roxygen2)
 ```

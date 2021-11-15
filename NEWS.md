@@ -1,4 +1,4 @@
-## version 1.8.4
+## version 1.8.5
 
  - vignette moved from dynamic to pre-computed one. This eliminates risk of CRAN check failures on network related issues, without changing actual content.
 

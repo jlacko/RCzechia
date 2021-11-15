@@ -46,7 +46,7 @@ ggplot(data = okresni_data) +
         legend.title.align = 0.5)
 ```
 
-<img src="figure/census-1.png" title="plot of chunk census" alt="plot of chunk census" width="100%" style="display: block; margin: auto;" />
+<img src="./census-1.png" title="plot of chunk census" alt="plot of chunk census" width="100%" style="display: block; margin: auto;" />
 
 ## Geocoding Locations & Drawing them on a Map
 
@@ -86,7 +86,7 @@ ggplot() +
   theme_bw()
 ```
 
-<img src="figure/geocode-1.png" title="plot of chunk geocode" alt="plot of chunk geocode" width="100%" style="display: block; margin: auto;" />
+<img src="./geocode-1.png" title="plot of chunk geocode" alt="plot of chunk geocode" width="100%" style="display: block; margin: auto;" />
 
 
 ## Distance Between Prague and Brno
@@ -157,7 +157,7 @@ ggplot() +
   theme_bw()
 ```
 
-<img src="figure/brno-center-1.png" title="plot of chunk brno-center" alt="plot of chunk brno-center" width="100%" style="display: block; margin: auto;" />
+<img src="./brno-center-1.png" title="plot of chunk brno-center" alt="plot of chunk brno-center" width="100%" style="display: block; margin: auto;" />
 
 
 ## Interactive Map
@@ -250,7 +250,7 @@ ggplot() +
   theme_bw()
 ```
 
-<img src="figure/ctverce-1.png" title="plot of chunk ctverce" alt="plot of chunk ctverce" width="100%" style="display: block; margin: auto;" />
+<img src="./ctverce-1.png" title="plot of chunk ctverce" alt="plot of chunk ctverce" width="100%" style="display: block; margin: auto;" />
 
 
 ## Terrain of the Czech Republic
@@ -289,7 +289,7 @@ ggplot() +
   theme(axis.title = element_blank())
 ```
 
-<img src="figure/relief-1.png" title="plot of chunk relief" alt="plot of chunk relief" width="100%" style="display: block; margin: auto;" />
+<img src="./relief-1.png" title="plot of chunk relief" alt="plot of chunk relief" width="100%" style="display: block; margin: auto;" />
 
 
 ## Senate Elections of 2020
@@ -329,4 +329,4 @@ ggplot() +
   theme_bw()
 ```
 
-<img src="figure/senat-1.png" title="plot of chunk senat" alt="plot of chunk senat" width="100%" style="display: block; margin: auto;" />
+<img src="./senat-1.png" title="plot of chunk senat" alt="plot of chunk senat" width="100%" style="display: block; margin: auto;" />

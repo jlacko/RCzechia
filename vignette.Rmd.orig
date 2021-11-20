@@ -207,7 +207,7 @@ A selection of the grid cells relevant for faunistical mapping of the Czech Repu
 This example covers a frequent use case:
 
 * geocoding a location (via `RCzechia::geocode()`)
-* assigning it to a KFME grid cell (via `sf::st_intersection`)
+* assigning it to a KFME grid cell (spatial join via `sf::st_join`)
 * plotting the outcome – both as a grid cell and exact location – on a map
 
 

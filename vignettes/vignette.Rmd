@@ -1,7 +1,7 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2021-11-15"
+date: "2021-11-20"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -206,7 +206,7 @@ A selection of the grid cells relevant for faunistical mapping of the Czech Repu
 This example covers a frequent use case:
 
 * geocoding a location (via `RCzechia::geocode()`)
-* assigning it to a KFME grid cell (via `sf::st_intersection`)
+* assigning it to a KFME grid cell (spatial join via `sf::st_join`)
 * plotting the outcome – both as a grid cell and exact location – on a map
 
 

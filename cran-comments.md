@@ -20,8 +20,12 @@ There were no NOTES, ERRORs or WARNINGs.  ´
 There are no downstream dependencies.
 
 ## CRAN checks
+The source code had been amended, to use more conservative utils::download.file instad of curl::curl_download.
+
 As requested in comments to v1.8.6 submission the vignette (formerly static) has been replaced by a dynamic one, again tested on mac builder https://mac.r-project.org/macbuilder/results/1637871311-0df675c79c52f327/
 
-Note that the vignette uses internet resources, 24/7 availability of which can not be 100% guaranteed by the package maintainer. Compliance at all times with the CRAN policy (graceful fail on internet resources not available) has been requested by prof. Brian D. Ripley, using very specific wording. A static vignette seems the only reliable way to achieve this / as having try & catch blocks *in vignette code* is not a practical way to introduce the package functionality to its target user base of entry level R spatial users. This is something else than having try & catch in actual package code, where it will not confuse users just starting out on the learning curve.
+Note that the vignette uses internet resources, 24/7 availability of which can not be 100% guaranteed by the package maintainer. Compliance at all times with the CRAN policy (graceful fail on internet resources not available) has been requested by prof. Brian D. Ripley, in a very specific wording. 
+
+A static vignette seems the only reliable way to achieve this / as having try & catch blocks *in vignette code* is not a feasible way to introduce the package functionality to its target user base of entry level R spatial users. This is something else than having try & catch in actual package code, where it will not confuse users just starting out on the learning curve.
 
 It is therefore expected that a static vignette will be introduced in a future version, once the reliability of the code used is re-established.

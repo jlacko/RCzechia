@@ -62,10 +62,10 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
-      - name: Install dependencies
+      - name: Install dependencies / source no longer having priority
         run: |
           options(install.packages.check.source = "no")
-          remotes::install_deps(dependencies = TRUE, mode = 'source')
+          remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 

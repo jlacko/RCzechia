@@ -1,7 +1,7 @@
 Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
-Version: 1.8.8
+Version: 1.9.0
 Date: 2021-12-01
 Author: Jindra Lacko
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
@@ -20,7 +20,7 @@ Imports:
   magrittr
 Suggests:
   raster,
-  czso,
+  readxl,
   units,
   ggplot2,
   stringr,

@@ -8,6 +8,7 @@ output:
 self_contained: no
 vignette: >
   %\VignetteIndexEntry{Solving real world issues with RCzechia}
+  %\VignetteDepends{readxl}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -32,15 +33,24 @@ As the population distributed highly unevenly a log scale is used.
 ```{r census, echo = T, eval = T, message = F}
 library(RCzechia)
 library(ggplot2)
+library(readxl)
 library(dplyr)
-library(czso)
+library(httr)
 
-src <- czso::czso_get_table("SLDB-VYBER") %>%
-   select(uzkod, obyvatel = vse1111) %>%
-   mutate(obyvatel = as.numeric(obyvatel))
+tf <- tempfile(fileext = ".xls") # a temporary xls file
+GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
+    write_disk(tf))
+src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
+
+colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
+src <- src %>%
+  mutate(obyvatel = as.double(obyvatel)) %>%
+    # convert from text to number
+  mutate(NAZ_LAU1 = ifelse(NAZ_LAU1 == "Hlavní město Praha", "Praha", NAZ_LAU1))
+    # rename Prague (from The Capital to a regular city)
 
 okresni_data <- RCzechia::okresy("low") %>% # data shapefile
-  inner_join(src, by = c("KOD_OKRES" = "uzkod"))
+  inner_join(src, by = "NAZ_LAU1")
     # key for data connection - note the use of inner (i.e. filtering) join
 
 # report results

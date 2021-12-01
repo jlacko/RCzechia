@@ -1,6 +1,6 @@
-## version 1.8.7
+## version 1.9.0
 
- - fixed issues encountered on Apple Silicon.
+ - resubmission after archival due to issues with macOS 12 (Monterey)
 
 ## version 1.8.3
 

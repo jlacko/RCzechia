@@ -27,7 +27,7 @@
 
     # proceed to download via curl
     message("RCzechia: downloading remote dataset.")
-    utils::download.file(url = remote_file, destfile = local_file, quiet = T, mode = "wb")
+    curl::curl_download(url = remote_file, destfile = local_file, quiet = T)
    } # /if - local file exists
 
   local_df <- readRDS(local_file)

@@ -3,7 +3,13 @@
 \name{casti}
 \alias{casti}
 \title{City Parts}
-\format{
+\source{
+© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+}
+\usage{
+casti()
+}
+\value{
 \code{sf} data frame with 142 rows of 4 variables + geometry
 
 \describe{
@@ -12,12 +18,6 @@
   \item{KOD_OBEC}{Code of the city}
   \item{NAZ_OBEC}{Name of the city}
 }
-}
-\source{
-© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
-}
-\usage{
-casti()
 }
 \description{
 Function taking no parameters and returning data frame of districts of Prague and other major cities as \code{sf} polygons.

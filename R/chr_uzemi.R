@@ -7,7 +7,7 @@
 #' The data is current to September 2020. Downloaded size is 7 MB  (so use with caution, and patience).
 #'
 #'
-#' @format \code{sf} data frame with 2677 rows of 3 variables + geometry
+#' @return \code{sf} data frame with 2677 rows of 3 variables + geometry
 #'
 #' \describe{
 #'   \item{TYP}{Type of protected area}

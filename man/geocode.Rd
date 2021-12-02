@@ -3,7 +3,15 @@
 \name{geocode}
 \alias{geocode}
 \title{Geocode a Czech Address}
-\format{
+\usage{
+geocode(address, crs = 4326)
+}
+\arguments{
+\item{address}{point to be geocoded, as character (vector)}
+
+\item{crs}{coordinate reference system of output; default = WGS84}
+}
+\value{
 \code{sf} data frame with 3 variables + geometry
 
   \describe{
@@ -12,14 +20,6 @@
     \item{result}{address as returned by API / recorded in RÚIAN}
     \item{geometry}{hidden column with spatial point data}
   }
-}
-\usage{
-geocode(address, crs = 4326)
-}
-\arguments{
-\item{address}{point to be geocoded, as character (vector)}
-
-\item{crs}{coordinate reference system of output; default = WGS84}
 }
 \description{
 This function connects to Czech State Administration of Land Surveying and

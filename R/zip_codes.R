@@ -12,7 +12,7 @@
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
-#' @format \code{sf} data frame with 2 671 rows of 2 variables + geometry
+#' @return \code{sf} data frame with 2 671 rows of 2 variables + geometry
 #'
 #' \describe{
 #'   \item{PSC}{ZIP Code as string in format NNNNN.}
@@ -26,8 +26,10 @@
 #' library(sf)
 #' library(dplyr)
 #'
+#' # residence of the Czech Prime Minister
 #' kramarova_vila <- RCzechia::geocode("Gogolova 212, Praha 1")
 #'
+#' # ZIP code of the PM residence
 #' kramarova_vila %>%
 #'    st_join(RCzechia::zip_codes("low"), left = FALSE) %>%
 #'    pull(PSC)

@@ -7,7 +7,7 @@
 #' The data is current to June 2021. Downloaded size is 1.5 MB.
 #'
 #'
-#' @format \code{sf} data frame with 142 rows of 4 variables + geometry
+#' @return \code{sf} data frame with 142 rows of 4 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD}{Code of the city part / kod mestske casti}

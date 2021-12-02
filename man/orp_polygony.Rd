@@ -3,7 +3,13 @@
 \name{orp_polygony}
 \alias{orp_polygony}
 \title{Obce s rozsirenou pusobnosti}
-\format{
+\source{
+© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+}
+\usage{
+orp_polygony()
+}
+\value{
 \code{sf} data frame with 206 rows of 5 variables + geometry
 
 \describe{
@@ -13,12 +19,6 @@
   \item{KOD_CZNUTS3}{Code of the NUTS3 unit (kraj)}
   \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
 }
-}
-\source{
-© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
-}
-\usage{
-orp_polygony()
 }
 \description{
 Function returning data frame of municipalities with extended powers (obce s rozšířenou působností) as \code{sf} polygons. It takes no parameters.

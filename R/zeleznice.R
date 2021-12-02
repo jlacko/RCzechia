@@ -6,7 +6,7 @@
 #'
 #' The data is current to December 2020. Downloaded size is <1 MB.
 #'
-#' @format \code{sf} data frame with 9.957 rows of 3 variables + geometry:
+#' @return \code{sf} data frame with 9.957 rows of 3 variables + geometry:
 #'
 #' \describe{
 #'   \item{ELEKTRIFIKACE}{is the railroad electrified?}

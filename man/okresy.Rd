@@ -3,7 +3,16 @@
 \name{okresy}
 \alias{okresy}
 \title{Districts (okresy)}
-\format{
+\source{
+© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+}
+\usage{
+okresy(resolution = "high")
+}
+\arguments{
+\item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
+}
+\value{
 \code{sf} data frame with 77 rows of 6 variables + geometry
 
 \describe{
@@ -15,15 +24,6 @@
   \item{NAZ_CZNUTS3}{Name of the region (kraj).}
 }
 }
-\source{
-© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
-}
-\usage{
-okresy(resolution = "high")
-}
-\arguments{
-\item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
-}
 \description{
 Function returning data frame of LAU1 administrative units for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.
 }
@@ -33,13 +33,12 @@ Due to package size constraints the data are stored externally (and a working in
 The data is current to June 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size of high resolution shapefile 2.1 MB.
 }
 \examples{
-\donttest{
 library(sf)
 
 hranice <- okresy()
-plot(hranice, col = "white", max.plot = 1)
+plot(st_geometry(hranice), col = "white")
 
 object.size(okresy("low"))
 object.size(okresy("high"))
-}
+
 }

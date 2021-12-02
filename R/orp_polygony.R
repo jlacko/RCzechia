@@ -6,7 +6,7 @@
 #'
 #' The data is current to June 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is 3.1 MB.
 #'
-#' @format \code{sf} data frame with 206 rows of 5 variables + geometry
+#' @return \code{sf} data frame with 206 rows of 5 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}

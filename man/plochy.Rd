@@ -3,19 +3,19 @@
 \name{plochy}
 \alias{plochy}
 \title{Water Bodies}
-\format{
+\source{
+Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
+}
+\usage{
+plochy()
+}
+\value{
 \code{sf} data frame with 1.769 rows of 2 variables + geometry
 
 \describe{
   \item{NAZEV}{Name, with Czech accents}
   \item{VYSKA}{water level, meters above sea level}
 }
-}
-\source{
-Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
-}
-\usage{
-plochy()
 }
 \description{
 Function returning data frame of water bodies of the Czech Republic as \code{sf} polygons. It takes no parameters.

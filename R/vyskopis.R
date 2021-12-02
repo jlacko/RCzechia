@@ -12,7 +12,7 @@
 #'
 #' @param format Should the function return actual relief (meters above sea level) or shaded relief (rayshaded). Allowed values are "actual" and "rayshaded".
 #'
-#' @format \code{raster} package RasterLayer.
+#' @return \code{raster} package RasterLayer.
 #'
 #' @source © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
 #'

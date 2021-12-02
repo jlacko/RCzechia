@@ -3,14 +3,14 @@
 \name{lesy}
 \alias{lesy}
 \title{Woodland Areas}
-\format{
-\code{sf} data frame with 2.366 rows of geometry variable only
-}
 \source{
 © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
 }
 \usage{
 lesy()
+}
+\value{
+\code{sf} data frame with 2.366 rows of geometry variable only
 }
 \description{
 Function returning data frame of woodland areas (lesy) of more than 30 hectares in are of the Czech Republic as \code{sf} polygons. It has no obligatory parameters.

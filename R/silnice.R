@@ -6,7 +6,7 @@
 #'
 #' The data is current to December 2020. Downloaded size is 6 MB.
 #'
-#' @format \code{sf} data frame with 59.594 rows of 3 variables + geometry:
+#' @return \code{sf} data frame with 59.594 rows of 3 variables + geometry:
 #'
 #' \describe{
 #'   \item{TRIDA}{Class of the road: highway = dálnice, speedway = rychlostní silnice, 1st class road = silnice I. třídy, 2nd class road = silnice II. třídy, 3rd class road = silnice III. třídy, other road = neevidovaná silnice}

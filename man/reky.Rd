@@ -3,16 +3,6 @@
 \name{reky}
 \alias{reky}
 \title{Rivers}
-\format{
-\code{sf} data frame with 3.616 rows of 4 variables + geometry:
-
-\describe{
-  \item{TYP}{Type of river}
-  \item{NAZEV}{Name, with Czech accents}
-  \item{Navigable}{Boolean indicating navigability of river.}
-  \item{Major}{Boolean indicating one of the major rivers.}
-}
-}
 \source{
 Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
 }
@@ -23,6 +13,16 @@ reky(scope = "global", resolution = "high")
 \item{scope}{Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?}
 
 \item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
+}
+\value{
+\code{sf} data frame with 3.616 rows of 4 variables + geometry:
+
+\describe{
+  \item{TYP}{Type of river}
+  \item{NAZEV}{Name, with Czech accents}
+  \item{Navigable}{Boolean indicating navigability of river.}
+  \item{Major}{Boolean indicating one of the major rivers.}
+}
 }
 \description{
 Function returning data frame of rivers of the Czech Republic as \code{sf} lines. It takes a single parameter \code{scope} with default "global".
@@ -35,11 +35,9 @@ Due to package size constraints the data are stored externally (and a working in
 The data is current to December 2020. Downloaded size is 4.4 MB.
 }
 \examples{
-\donttest{
 library(sf)
 
 plot(st_geometry(subset(okresy(), KOD_LAU1 == "CZ0642"))) # Brno city
 plot(reky("Brno"), add = TRUE) # Svitava & Svratka added to Brno my city plot
-}
 
 }

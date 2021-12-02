@@ -11,7 +11,7 @@
 #' @param scope Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
-#' @format \code{sf} data frame with 3.616 rows of 4 variables + geometry:
+#' @return \code{sf} data frame with 3.616 rows of 4 variables + geometry:
 #'
 #' \describe{
 #'   \item{TYP}{Type of river}
@@ -21,12 +21,10 @@
 #' }
 #'
 #' @examples
-#' \donttest{
 #' library(sf)
 #'
 #' plot(st_geometry(subset(okresy(), KOD_LAU1 == "CZ0642"))) # Brno city
 #' plot(reky("Brno"), add = TRUE) # Svitava & Svratka added to Brno my city plot
-#' }
 #'
 #' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
 #'

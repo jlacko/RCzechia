@@ -3,9 +3,6 @@
 \name{vyskopis}
 \alias{vyskopis}
 \title{Vyskopis}
-\format{
-\code{raster} package RasterLayer.
-}
 \source{
 © ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
 }
@@ -14,6 +11,9 @@ vyskopis(format = "rayshaded")
 }
 \arguments{
 \item{format}{Should the function return actual relief (meters above sea level) or shaded relief (rayshaded). Allowed values are "actual" and "rayshaded".}
+}
+\value{
+\code{raster} package RasterLayer.
 }
 \description{
 Terrain of the Czech Republic as a {raster} package object.

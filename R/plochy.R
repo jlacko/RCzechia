@@ -6,7 +6,7 @@
 #'
 #' The data is current to December 2020. Downloaded size is 1.5 MB.
 #'
-#' @format \code{sf} data frame with 1.769 rows of 2 variables + geometry
+#' @return \code{sf} data frame with 1.769 rows of 2 variables + geometry
 #'
 #' \describe{
 #'   \item{NAZEV}{Name, with Czech accents}

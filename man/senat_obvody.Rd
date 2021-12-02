@@ -3,15 +3,6 @@
 \name{senat_obvody}
 \alias{senat_obvody}
 \title{Senate Districts (Volební obvod pro volby do Senátu) of the Czech Republic}
-\format{
-\code{sf} data frame with 81 rows of 3 variables + geometry
-
-\describe{
-  \item{OBVOD}{Code of the district; left padded with zero in case of districts one to nine.}
-  \item{SIDLO}{Seat of the senator.}
-  \item{NAZEV_VO}{Formal name of the district.}
-}
-}
 \source{
 ČSÚ \url{https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu}
 }
@@ -20,6 +11,15 @@ senat_obvody(resolution = "high")
 }
 \arguments{
 \item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
+}
+\value{
+\code{sf} data frame with 81 rows of 3 variables + geometry
+
+\describe{
+  \item{OBVOD}{Code of the district; left padded with zero in case of districts one to nine.}
+  \item{SIDLO}{Seat of the senator.}
+  \item{NAZEV_VO}{Formal name of the district.}
+}
 }
 \description{
 Function returning data frame of the 81 Senate Districts for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.

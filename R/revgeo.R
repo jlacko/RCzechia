@@ -22,6 +22,8 @@
 #' @param coords coordinates to be reverse geocoded; expected as \code{sf} data
 #'   frame of spatial points
 #'
+#' @return \code{sf} data frame as input, with column revgeocoded added (or overwritten)
+#'
 #' @examples
 #' \donttest{
 #' library(dplyr)

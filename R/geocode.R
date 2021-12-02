@@ -41,7 +41,7 @@
 #' @param address point to be geocoded, as character (vector)
 #' @param crs coordinate reference system of output; default = WGS84
 #'
-#' @format \code{sf} data frame with 3 variables + geometry
+#' @return \code{sf} data frame with 3 variables + geometry
 #'
 #'   \describe{
 #'     \item{address}{the address searched (address input)}

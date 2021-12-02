@@ -3,7 +3,13 @@
 \name{chr_uzemi}
 \alias{chr_uzemi}
 \title{Protected Natural Areas}
-\format{
+\source{
+© AOPK ČR, 2020 \url{https://data.nature.cz/}
+}
+\usage{
+chr_uzemi()
+}
+\value{
 \code{sf} data frame with 2677 rows of 3 variables + geometry
 
 \describe{
@@ -11,12 +17,6 @@
   \item{NAZEV}{Name, with Czech accents}
   \item{PLOCHA}{type of protected area: large or small}
 }
-}
-\source{
-© AOPK ČR, 2020 \url{https://data.nature.cz/}
-}
-\usage{
-chr_uzemi()
 }
 \description{
 Function returning data frame of protected natural areas (Chráněná území) of the Czech Republic as \code{sf} polygons. It has no obligatory parameters.

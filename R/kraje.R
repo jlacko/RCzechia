@@ -8,7 +8,7 @@
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
-#' @format \code{sf} data frame with 14 rows of 3 variables + geometry
+#' @return \code{sf} data frame with 14 rows of 3 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD_KRAJ}{Code of the region.}
@@ -19,12 +19,11 @@
 #' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
-#' \donttest{
 #' library(sf)
 #'
 #' hranice <- kraje("low")
 #' plot(hranice, col = "white", max.plot = 1)
-#' }
+#'
 #' @export
 
 kraje <- function(resolution = "high") {

@@ -3,14 +3,6 @@
 \name{zip_codes}
 \alias{zip_codes}
 \title{ZIP Codes of the Czech Republic}
-\format{
-\code{sf} data frame with 2 671 rows of 2 variables + geometry
-
-\describe{
-  \item{PSC}{ZIP Code as string in format NNNNN.}
-  \item{NAZ_POSTA}{Responsible Post Office}
-}
-}
 \source{
 ČSÚ \url{https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu}
 }
@@ -19,6 +11,14 @@ zip_codes(resolution = "high")
 }
 \arguments{
 \item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
+}
+\value{
+\code{sf} data frame with 2 671 rows of 2 variables + geometry
+
+\describe{
+  \item{PSC}{ZIP Code as string in format NNNNN.}
+  \item{NAZ_POSTA}{Responsible Post Office}
+}
 }
 \description{
 Function returning data frame of the 2 671 ZIP Code Areas for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.
@@ -37,8 +37,10 @@ The data is current to February 2021 (last update was in January 2020). Download
 library(sf)
 library(dplyr)
 
+# residence of the Czech Prime Minister
 kramarova_vila <- RCzechia::geocode("Gogolova 212, Praha 1")
 
+# ZIP code of the PM residence
 kramarova_vila \%>\%
    st_join(RCzechia::zip_codes("low"), left = FALSE) \%>\%
    pull(PSC)

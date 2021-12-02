@@ -3,7 +3,16 @@
 \name{volebni_okrsky}
 \alias{volebni_okrsky}
 \title{Election Districts (Volební okrsky) of the Czech Republic}
-\format{
+\source{
+© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+}
+\usage{
+volebni_okrsky(resolution = "high")
+}
+\arguments{
+\item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
+}
+\value{
 \code{sf} data frame with 14 761 rows of 6 variables + geometry
 
 \describe{
@@ -14,15 +23,6 @@
   \item{KOD_LAU1}{Id of okres - maps to okresy()$KOD_LAU1.}
   \item{KOD_CZNUTS3}{Id of kraj - maps to kraje()$KOD_CZNUTS3.}
 }
-}
-\source{
-© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
-}
-\usage{
-volebni_okrsky(resolution = "high")
-}
-\arguments{
-\item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
 }
 \description{
 Function returning data frame of the local election districts for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.

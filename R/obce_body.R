@@ -6,7 +6,7 @@
 #'
 #' The data is current to June 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size is <1 MB.
 #'
-#' @format \code{sf} data frame with 6.258 rows of 14 variables + geometry
+#' @return \code{sf} data frame with 6.258 rows of 14 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD_OBEC}{Code of the level I commune (obec).}

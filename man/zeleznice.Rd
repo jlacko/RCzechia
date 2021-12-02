@@ -3,7 +3,13 @@
 \name{zeleznice}
 \alias{zeleznice}
 \title{Railroad Network}
-\format{
+\source{
+Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
+}
+\usage{
+zeleznice()
+}
+\value{
 \code{sf} data frame with 9.957 rows of 3 variables + geometry:
 
 \describe{
@@ -11,12 +17,6 @@
   \item{KOLEJNOST}{track: single = jednokolejní, double = dvojkolejní, more = tří a vícekolejní}
   \item{ROZCHODNOST}{gauge: standard = normální, narrow = úzkokolejka}
 }
-}
-\source{
-Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
-}
-\usage{
-zeleznice()
 }
 \description{
 Function returning data frame of railroads of the Czech Republic as \code{sf} lines. It has no obligatory parameters.

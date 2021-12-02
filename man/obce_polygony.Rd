@@ -3,7 +3,13 @@
 \name{obce_polygony}
 \alias{obce_polygony}
 \title{Municipalities / communes (obce) as polygons}
-\format{
+\source{
+© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+}
+\usage{
+obce_polygony()
+}
+\value{
 \code{sf} data frame with 6.258 rows of 14 variables + geometry
 
 \describe{
@@ -20,12 +26,6 @@
   \item{KOD_CZNUTS3}{Code of the NUTS3 unit (kraj)}
   \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
 }
-}
-\source{
-© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
-}
-\usage{
-obce_polygony()
 }
 \description{
 Function returning data frame of LAU2 administrative units for the Czech Republic as \code{sf} polygons. It takes no parameters.

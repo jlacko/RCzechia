@@ -3,7 +3,13 @@
 \name{silnice}
 \alias{silnice}
 \title{Road Network}
-\format{
+\source{
+Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
+}
+\usage{
+silnice()
+}
+\value{
 \code{sf} data frame with 59.594 rows of 3 variables + geometry:
 
 \describe{
@@ -11,12 +17,6 @@
   \item{CISLO_SILNICE}{Local road code}
   \item{MEZINARODNI_OZNACENI}{International road code}
 }
-}
-\source{
-Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
-}
-\usage{
-silnice()
 }
 \description{
 Function returning data frame of roads of the Czech Republic as \code{sf} lines. It has no obligatory parameters.

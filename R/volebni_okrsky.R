@@ -8,7 +8,7 @@
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
-#' @format \code{sf} data frame with 14 761 rows of 6 variables + geometry
+#' @return \code{sf} data frame with 14 761 rows of 6 variables + geometry
 #'
 #' \describe{
 #'   \item{Kod}{Unique id of the district.}

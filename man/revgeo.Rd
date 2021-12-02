@@ -10,6 +10,9 @@ revgeo(coords)
 \item{coords}{coordinates to be reverse geocoded; expected as \code{sf} data
 frame of spatial points}
 }
+\value{
+\code{sf} data frame as input, with column revgeocoded added (or overwritten)
+}
 \description{
 This function connects to Czech State Administration of Land Surveying and
 Cadastre (\url{https://www.cuzk.cz/en}) API to reversely geocode an address.
@@ -32,6 +35,7 @@ Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
 \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 }
 \examples{
+\donttest{
 library(dplyr)
 library(sf)
 
@@ -42,7 +46,5 @@ brno <- obce_polygony() \%>\% # shapefile of Brno
 pupek_brna <- st_centroid(brno) # calculate centroid
 
 adresa_pupku <- revgeo(pupek_brna)$revgeocoded # address of the center
-
-print(adresa_pupku)
-
+}
 }

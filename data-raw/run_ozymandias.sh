@@ -1,7 +1,7 @@
 docker run \
- -e  USER=jindra -e PASSWORD=Montana \
- -v /home/jindra/Documents/RCzechia/data-raw:/home/jindra/data-raw \
- -v /home/jindra/Documents/RCzechia/data-backup:/home/jindra/data-backup \
+ -e DISABLE_AUTH=true \
+ -v $(pwd)/../data-backup:/home/rstudio/data-backup \
+ -v $(pwd)/../data-raw:/home/rstudio/data-raw \
  --rm \
  -p 8787:8787 \
  ozymandias

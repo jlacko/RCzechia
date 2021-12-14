@@ -39,8 +39,5 @@ RUN ldconfig
 # and finally! set up R packages / frozen in time to keep consistent
 RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-06-30')); install.packages(c('devtools', 'dplyr', 'sp', 'lwgeom'))"
 RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-06-30')); install.packages(c('sf', 'czso', 'nngeo', 'rmapshaper'))"
-
-# this home serves no useful purpose...
-RUN rm -rf /home/rstudio
-  
+ 
  

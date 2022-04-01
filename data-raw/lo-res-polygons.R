@@ -72,6 +72,8 @@ colnames(okresy_low_res) <- colnames(okresy())
 colnames(kraje_low_res) <- colnames(kraje())
 colnames(republika_low_res) <- colnames(republika())
 
+republika_low_res$NAZ_STAT <- iconv(republika("high")$NAZ_STAT, to = "UTF-8")
+
 # ověřit...
 plot(republika_low_res)
 plot(kraje_low_res, max.plot = 1)

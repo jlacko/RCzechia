@@ -3,10 +3,12 @@
 # 3. pražská Vltava & řeky města Brna
 # interní data uloží pro budoucí zpracování
 
-library(tidyverse)
+
 library(devtools)
 library(sf)
-library(tidyverse)
+library(dplyr)
+library(usethis)
+library(ggplot2)
 library(RCzechia)
 
 

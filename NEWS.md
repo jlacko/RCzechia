@@ -1,3 +1,7 @@
+## version 1.9.2
+ 
+ - internal optimalization, minor bugfixes
+
 ## version 1.9.1
 
  - resubmission after archival due to issues with macOS 12 (Monterey)

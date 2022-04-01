@@ -9,18 +9,18 @@ RUN cd \
 	&& tar zxvf proj-4.9.3.tar.gz  \
 	&& cd proj-4.9.3/ \
 	&& ./configure \
-	&& make \
+	&& make -j $(nproc) \
 	&& make install
 
-# GDAL	
+# GDAL
 RUN	cd \
 	&& wget http://download.osgeo.org/gdal/2.2.3/gdal-2.2.3.tar.gz \
 	&& tar zxvf gdal-2.2.3.tar.gz  \
 	&& cd gdal-2.2.3 \
 	&& ./configure \
-	&& make \
+	&& make -j $(nproc) \
 	&& make install
-	
+
 # GEOS
 RUN	cd \
 	&& wget http://download.osgeo.org/geos/geos-3.6.2.tar.bz2 \
@@ -28,16 +28,37 @@ RUN	cd \
 	&& tar xvf geos-3.6.2.tar  \
 	&& cd geos-3.6.2 \
 	&& ./configure \
-	&& make \
+	&& make -j $(nproc)\
 	&& make install
 
 # other required packages; standard versions suffice...
-RUN apt-get update
-RUN apt-get -y install libudunits2-dev libxml2-dev libv8-dev libjq-dev libprotobuf-dev protobuf-compiler
+# absolutely positively required on a single line (bo update a instal must be in the same keš)
+RUN apt-get update && apt-get -y install libudunits2-dev
+RUN apt-get update && apt-get -y install libxml2-dev
+RUN apt-get update && apt-get -y install libv8-dev
+RUN apt-get update && apt-get -y install libjq-dev
+RUN apt-get update && apt-get -y install libprotobuf-dev
+RUN apt-get update && apt-get -y install protobuf-compiler
+RUN apt-get update && apt-get -y install libxtst6
 RUN ldconfig
 
 # and finally! set up R packages / frozen in time to keep consistent
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-06-30')); install.packages(c('devtools', 'dplyr', 'sp', 'lwgeom'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-06-30')); install.packages(c('sf', 'czso', 'nngeo', 'rmapshaper'))"
- 
- 
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('devtools')) install.packages(c('devtools'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('dplyr')) install.packages(c('dplyr'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('sp')) install.packages(c('sp'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('lwgeom')) install.packages(c('lwgeom'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('sf')) install.packages(c('sf'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('czso')) install.packages(c('czso'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('BH')) install.packages(c('BH'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('data.table')) install.packages(c('data.table'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('nngeo')) install.packages(c('nngeo'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('rmapshaper')) install.packages(c('rmapshaper'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('ggplot2')) install.packages(c('ggplot2'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('usethis')) install.packages(c('usethis'))"
+RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2021-12-31')); if(!require('rlang')) install.packages(c('rlang'))"
+
+# bleeding edge RCzechia, current CRAN (not really frozen in time, but under control)
+RUN R -e "install.packages('RCzechia')"
+
+
+

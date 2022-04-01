@@ -42,6 +42,10 @@ test_that("republika", {
   expect_equal(colnames(republika("low")),
                colnames(republika("high")))
 
+  # názvy se nerozbily...
+  expect_equal(republika("low")$NAZ_STAT,
+               republika("high")$NAZ_STAT)
+
   expect_error(republika("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
   # low res je menší než high res

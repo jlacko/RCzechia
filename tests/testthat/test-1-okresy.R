@@ -35,6 +35,13 @@ test_that("okresy", {
   expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
                                      "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
 
+  # názvy se nerozbily...
+  expect_equal(okresy("low")$NAZ_CZNUTS3,
+               okresy("high")$NAZ_CZNUTS3)
+
+  expect_equal(okresy("low")$NAZ_LAU1,
+               okresy("high")$NAZ_LAU1)
+
   expect_equal(colnames(okresy("low")),
                colnames(okresy("high")))
 

@@ -1,7 +1,11 @@
 
+# because S2 is not quite up to the task...
+s2_state <- sf_use_s2()
+sf_use_s2(F)
+
 # faunistické čtverce
 faunisticke_ctverce <- st_make_grid(
-  st_as_sfc(st_bbox(republika_low_res)), # sf::st_grid no longer covers bounding box!
+  st_as_sfc(st_bbox(republika("low"))), # sf::st_grid no longer covers bounding box!
   cellsize = c(1 / 6, 1 / 10), # velikost čtverce
   offset = c(12, 48.5)
 ) %>% # počátek (= vlevo dole :)
@@ -39,15 +43,14 @@ faunisticke_ctverce <- st_make_grid(
 # faunistické čtverečky = podčtverce
 faunisticke_ctverecky <- st_make_grid(st_union(faunisticke_ctverce),
                                       cellsize = c(1 / 12, 1 / 20), # velikost čtverce
-                                      offset = c(12, 48.5)
-) %>% # počátek (= vlevo dole :)
+                                      offset = c(12, 48.5)) %>% # počátek (= vlevo dole :)
   st_sf() %>%
   mutate(id = row_number())
 
 asdf <- faunisticke_ctverce %>%
-  st_contains(faunisticke_ctverecky) %>%
+  st_contains(faunisticke_ctverecky, model = "open") %>%
   as.data.frame() %>%
-  set_names(c("idx_ctverec", "idx_ctverecek"))
+  rlang::set_names(c("idx_ctverec", "idx_ctverecek"))
 
 asdf$ctverec <- faunisticke_ctverce$ctverec[asdf$idx_ctverec]
 
@@ -57,3 +60,6 @@ faunisticke_ctverecky <- faunisticke_ctverecky %>%
   inner_join(asdf, by = c("id" = "idx_ctverecek")) %>%
   select(ctverec = ctverecek) %>%
   st_set_agr("constant")
+
+# s2 rollback
+sf_use_s2(s2_state)

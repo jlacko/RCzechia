@@ -64,7 +64,8 @@ st_geometry(republika_low_res) <- "geometry"
 
 # úklid
 okresy_low_res <- st_transform(okresy_low_res, 4326) # WGS84
-kraje_low_res <- st_transform(kraje_low_res, 4326) # WGS84
+kraje_low_res <- st_transform(kraje_low_res, 4326) %>%  # WGS84
+  arrange(KOD_CZNUTS3)
 republika_low_res <- st_transform(republika_low_res, 4326) # WGS84
 
 colnames(okresy_low_res) <- colnames(okresy())

@@ -5,7 +5,7 @@ reky <- readRDS("./data-backup/Reky-D200-2021-07.rds") %>%
   select(NAZEV)
 
 brno <- okresy %>%
-  filter(NAZ_LAU1 == "Brno-město") %>%
+  filter(KOD_OKRES == "40711") %>%
   st_transform(5514)
 
 svitava_brno <- reky %>%

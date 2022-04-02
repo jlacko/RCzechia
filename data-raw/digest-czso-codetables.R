@@ -8,10 +8,10 @@
 library(sf)
 library(dplyr)
 
-rozhodne_datum <- "2021-06"
+rozhodne_datum <- "2022-04"
 
 # aktuální RUIAN export - gitignorován, páč velký jak cyp...
-ruian_data <- "./data-raw/20210601_ST_UKSG.xml"
+ruian_data <- "./data-raw/20220331_ST_UKSG.xml"
 
 print(st_layers(ruian_data))
 
@@ -136,7 +136,7 @@ saveRDS(fin_kraje_poly, paste0("./data-backup/Kraje-R-", rozhodne_datum, ".rds")
 
 # republika na brutku všechno
 fin_republika_poly <- fin_obce_poly %>%
-  mutate(NAZ_STAT = "Česká republika") %>%
+  mutate(NAZ_STAT = iconv("Česká republika", "UTF-8")) %>%
   group_by(NAZ_STAT) %>%
   summarise() %>%
   nngeo::st_remove_holes() %>%

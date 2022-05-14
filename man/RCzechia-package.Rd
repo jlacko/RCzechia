@@ -69,7 +69,7 @@ workflow:
 
 \itemize{
   \item geocode - geocoding (from address to coordinates)
-  \item revgeo - reverse gecoding (from coordinates to address)
+  \item revgeo - reverse geocoding (from coordinates to address)
 }
 }
 

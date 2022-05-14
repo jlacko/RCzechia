@@ -180,7 +180,7 @@ ggplot() +
 
 Interactive maps are powerful tools for data visualization. They are easy to produce with the `leaflet` package.
 
-I found the stamen toner basemap a good company for interactive chloropleths - it gives enough context without distracting from the story of your data.
+I found the stamen toner basemap a good company for interactive choropleths - it gives enough context without distracting from the story of your data.
 
 *Note*: it is technically impossible to make html in vignette interactive. As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
 

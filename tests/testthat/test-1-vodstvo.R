@@ -3,6 +3,8 @@ library(httr)
 
 test_that("vodní plochy", {
 
+  skip_on_cran()
+
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(plochy(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
@@ -29,6 +31,8 @@ test_that("vodní plochy", {
 })
 
 test_that("řeky", {
+
+  skip_on_cran()
 
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(reky(), "internet") # zpráva o chybějícím internetu

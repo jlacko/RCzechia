@@ -1,6 +1,6 @@
-## version 1.9.2
+## version 1.9.2 (2022-05-14)
  
- - internal optimalization, minor bugfixes
+ - internal optimization, minor bugfixes
 
 ## version 1.9.1
 

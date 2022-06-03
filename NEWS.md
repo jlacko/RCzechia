@@ -1,3 +1,7 @@
+## version 1.9.3 (2022-06-03)
+ 
+ - fixes naming conflict between Lužnice proper (a major river) and Lužnice - tributary of Mastník (a tiny brook by Sedlčany).
+
 ## version 1.9.2 (2022-05-14)
  
  - internal optimization, minor bugfixes

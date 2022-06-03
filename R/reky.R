@@ -6,12 +6,12 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to December 2020. Downloaded size is 4.4 MB.
+#' The data is current to January 2021. Downloaded size is 4.4 MB.
 #'
 #' @param scope Should the function return all rivers, or just Vltava in Prague / Svitava & Svratka in Brno?
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
-#' @return \code{sf} data frame with 3.616 rows of 4 variables + geometry:
+#' @return \code{sf} data frame with 3.617 rows of 4 variables + geometry:
 #'
 #' \describe{
 #'   \item{TYP}{Type of river}
@@ -56,9 +56,9 @@ reky <- function(scope = "global", resolution = "high") {
 
   # return default
   result <- if(resolution == "high") {
-    .downloader("Reky-D200-high-2021-07.rds")
+    .downloader("Reky-D200-high-2022-06.rds")
   } else {
-    .downloader("Reky-D200-low-2021-07.rds")
+    .downloader("Reky-D200-low-2022-06.rds")
   } # /if downloader
 
   result

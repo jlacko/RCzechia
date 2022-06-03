@@ -65,10 +65,10 @@ test_that("řeky", {
   expect_s3_class(reky("Praha"), "sf")
   expect_s3_class(reky("Brno"), "sf")
 
-  expect_equal(nrow(reky()), 3616)
-  expect_equal(nrow(reky(resolution = "high")), 3616)
-  expect_equal(nrow(reky(resolution = "low")), 3616)
-  expect_equal(nrow(reky("global")), 3616)
+  expect_equal(nrow(reky()), 3617)
+  expect_equal(nrow(reky(resolution = "high")), 3617)
+  expect_equal(nrow(reky(resolution = "low")), 3617)
+  expect_equal(nrow(reky("global")), 3617)
   expect_equal(nrow(reky("Praha")), 1)
   expect_equal(nrow(reky("Brno")), 2)
 

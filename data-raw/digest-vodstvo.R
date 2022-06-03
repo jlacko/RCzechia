@@ -8,6 +8,8 @@ library(dplyr)
 raw_reky <- st_read("~/data-raw/HYDRO/WatrcrsL.shp")
 
 clean_reky <- raw_reky %>%
+  mutate(NAMN1 = case_when(HYDROID == "N.CZ.WATRCRS.124270000100" ~ "Lužnice - přítok Mastníku",
+                           T ~ NAMN1)) %>%
   st_transform(4326) %>%
   # výčet major řek
   mutate(Major = NAMN1 %in% c("Vltava",
@@ -48,6 +50,6 @@ clean_plochy <- raw_plochy %>%
   st_transform(4326) %>%
   select(NAZEV = NAMN1, VYSKA = ZV2)
 
-saveRDS(clean_reky, "~/data-backup/Reky-D200-high-2021-07.rds")
-saveRDS(small_reky, "~/data-backup/Reky-D200-low-2021-07.rds")
+saveRDS(clean_reky, "~/data-backup/Reky-D200-high-2022-06.rds")
+saveRDS(small_reky, "~/data-backup/Reky-D200-low-2022-06.rds")
 saveRDS(clean_plochy, "~/data-backup/Plochy-D200-2021-07.rds")

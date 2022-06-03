@@ -15,7 +15,7 @@ reky(scope = "global", resolution = "high")
 \item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
 }
 \value{
-\code{sf} data frame with 3.616 rows of 4 variables + geometry:
+\code{sf} data frame with 3.617 rows of 4 variables + geometry:
 
 \describe{
   \item{TYP}{Type of river}
@@ -32,7 +32,7 @@ Two special case scopes are defined: Praha (returning the part of Vltava in and 
 
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to December 2020. Downloaded size is 4.4 MB.
+The data is current to January 2021. Downloaded size is 4.4 MB.
 }
 \examples{
 library(sf)

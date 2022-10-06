@@ -1,3 +1,9 @@
+## version 1.9.4
+
+ - fixes incorrect behavior of Vltava in Prague
+ 
+ - internal optimization in line with updated dependencies
+
 ## version 1.9.3 (2022-06-03)
  
  - fixes naming conflict between Lužnice proper (a major river) and Lužnice - tributary of Mastník (a tiny brook by Sedlčany).

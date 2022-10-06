@@ -133,5 +133,25 @@ test_that("dopady 51/2020 Sb.", {
   expect_equal(st_join(veznice, orp_polygony(), left = F)$KOD_ORP, "6102") # Havlíčkův Brod
 })
 
+test_that("Vltava dělí Prahu na dvě půlky", {
+
+  skip_on_cran()
+
+  # polygon Praha
+  praha <- kraje() %>%
+    filter(KOD_CZNUTS3 == "CZ010")
+
+  # řeka Vltava
+  reka <- reky("Praha")
+
+  # Praha říznutá na půlky
+  pulky <- praha %>%
+    st_geometry() %>%
+    lwgeom::st_split(reka) %>% # polygon říznutý čárou
+    st_cast()
+
+  expect_equal(length(pulky), 2) # dvě půlky z jednoho celku
+
+})
 
 

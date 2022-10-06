@@ -10,7 +10,6 @@ for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
     st_union() %>%
     st_sf() %>%
     nngeo::st_remove_holes() %>%
-    rename(geometry = geom) %>%
     mutate(
       KOD_KRAJ = unique(okresy_low_res$KOD_KRAJ[okresy_low_res$KOD_CZNUTS3 == kod]),
       KOD_CZNUTS3 = unique(okresy_low_res$KOD_CZNUTS3[okresy_low_res$KOD_CZNUTS3 == kod]),
@@ -27,8 +26,6 @@ for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
     )
   }
 }
-
-st_geometry(kraje_low_res) <- "geometry"
 
 # ze STČ vyříznout Prahu
 kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",] <- st_difference(kraje_low_res[kraje_low_res$KOD_KRAJ=="3026",], st_geometry(kraje_low_res[kraje_low_res$KOD_KRAJ=="3018",]))
@@ -57,10 +54,8 @@ st_geometry(okresy_low_res) <- geometrie
 
 republika_low_res <- okresy_low_res %>% # select the non-central parts
   summarize(NAZ_STAT = republika()$NAZ_STAT) %>% # return back the data value
-  nngeo::st_remove_holes() %>%
-  rename(geometry = geom)
+  nngeo::st_remove_holes()
 
-st_geometry(republika_low_res) <- "geometry"
 
 # úklid
 okresy_low_res <- st_transform(okresy_low_res, 4326) # WGS84

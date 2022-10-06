@@ -1,7 +1,7 @@
 
 okresy <- readRDS("./data-backup/Okresy-R-2021-01.rds")
 
-reky <- readRDS("./data-backup/Reky-D200-2021-07.rds") %>%
+reky <- readRDS("./data-backup/Reky.rds") %>%
   select(NAZEV)
 
 brno <- okresy %>%
@@ -14,6 +14,7 @@ svitava_brno <- reky %>%
   st_intersection(st_buffer(brno, 1200)) %>%
   st_transform(4326) %>%
   st_geometry() %>%
+  st_union() %>%
   st_as_sf() %>%
   mutate(NAZEV = "Svitava")
 
@@ -23,6 +24,7 @@ svratka_brno <- reky %>%
   st_intersection(st_buffer(brno, 1200)) %>%
   st_transform(4326) %>%
   st_geometry() %>%
+  st_union() %>%
   st_as_sf() %>%
   mutate(NAZEV = "Svratka")
 
@@ -44,7 +46,7 @@ reky_praha <- reky %>%
   st_transform(4326) %>%
   st_geometry() %>%
   st_union() %>%
-  st_line_merge() %>%
+#  st_line_merge() %>%
   st_as_sf() %>%
   mutate(NAZEV = "Vltava")
 

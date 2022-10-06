@@ -1,8 +1,10 @@
-## version 1.9.4
+## version 1.9.4 (2022-10-06)
 
  - fixes incorrect behavior of Vltava in Prague
  
  - internal optimization in line with updated dependencies
+
+ - updated stale links in documentation
 
 ## version 1.9.3 (2022-06-03)
  

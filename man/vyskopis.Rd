@@ -4,7 +4,7 @@
 \alias{vyskopis}
 \title{Vyskopis}
 \source{
-© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0}
+© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4}
 }
 \usage{
 vyskopis(format = "rayshaded")

@@ -25,7 +25,7 @@ For examples of RCzechia in action please see the package vignette:
 * [Terrain of the Czech Republic](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#terrain-of-the-czech-republic)
 * [Senate elections of 2020](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#senate-elections-of-2020)
 
-The administrative area polygons are based on the [RÚIAN register](https://cs.wikipedia.org/wiki/Registr_%C3%BAzemn%C3%AD_identifikace,_adres_a_nemovitost%C3%AD); the natural objects were based originally on [ArcČR 500](https://www.arcdata.cz/produkty/geograficka-data/arccr-4-0) by ARCDATA and later moved to [Data200](https://geoportal.cuzk.cz/Default.aspx?mode=TextMeta&side=mapy_data200&text=dSady_mapyData200) by ČÚZK.
+The administrative area polygons are based on the [RÚIAN register](https://cs.wikipedia.org/wiki/Registr_%C3%BAzemn%C3%AD_identifikace,_adres_a_nemovitost%C3%AD); the natural objects were based originally on [ArcČR 500](https://www.arcdata.cz/produkty/geograficka-data/arccr-4) by ARCDATA and later moved to [Data200](https://geoportal.cuzk.cz/Default.aspx?mode=TextMeta&side=mapy_data200&text=dSady_mapyData200) by ČÚZK.
 
 The shapefiles are by necessity larger than the limits of a CRAN package size allow. The data are therefore stored remotely (on Amazon Cloud / AWS S3) and downloaded as required. As consequence a working internet connection is required to fully use the package.
 

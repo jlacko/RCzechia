@@ -34,11 +34,11 @@ A curated set of most relevant spatial objects has been collected, cleaned and a
 
 As the total volume of data is by necessity larger than the limits of CRAN package size allow the datasets are stored externally (using Amazon AWS) and downloaded as required. A working internet connection is therefore required to use the package.
 
-# Package content
+# Summary
 
 The package provides two distinct sets of spatial objects: administrative areas, and natural objects:
 
-Administrative:
+## Administrative area polygons:
 
 * **republika**: borders of the Czech Republic as a polygon
 * **kraje**: 14 regions of the Czech Republic & Prague
@@ -51,7 +51,7 @@ Administrative:
 * **volebni_okrsky**: 14.761 general election districts (volební okrsky)
 * **zip_codes**: 2.671 ZIP code areas (poštovní směrovací čísla / PSČ)
 
-Natural objects:
+## Natural objects:
 
 * **reky**: streams and rivers
 * **plochy**: stillwaters (lakes and ponds).
@@ -64,10 +64,21 @@ Natural objects:
 
 All objects are implemented as functions returning `sf` class data frames, so must be followed by brackets (i.e. `hranice <- republika()`).
 
+<center>
+
+![14 Regions of the Czech Republic](kraje.png)
+
+</center>
 
 <center>
 
-![Kraje a jak na ně...](figure.png)
+![Displaying the KFME grid](ctverce.png)
+
+</center>
+
+<center>
+
+![Relief of the Czech Republic, with major rivers](relief.png)
 
 </center>
 

@@ -28,7 +28,7 @@ Svět potřebuje více vektorových dat!
 
 <center>
 
-![Fig1: Kraje a jak na ně...](figure.png)
+![Kraje a jak na ně...](figure.png)
 
 </center>
 

@@ -37,7 +37,7 @@ While there there are open data resources available for researchers, mostly in t
 # Features
 The package provides two distinct sets of spatial objects: administrative areas, and natural objects:
 
-## Administrative area polygons:
+### Administrative area polygons:
 
 * **republika**: borders of the Czech Republic as a polygon
 * **kraje**: 14 regions of the Czech Republic & Prague
@@ -50,7 +50,7 @@ The package provides two distinct sets of spatial objects: administrative areas,
 * **volebni_okrsky**: 14.761 general election districts (volební okrsky)
 * **zip_codes**: 2.671 ZIP code areas (poštovní směrovací čísla / PSČ)
 
-## Natural objects:
+### Natural objects:
 
 * **reky**: streams and rivers
 * **plochy**: stillwaters (lakes and ponds).
@@ -74,9 +74,9 @@ The utility functions interface API of the Czech State Administration of Land Su
 
 The package code is thoroughly tested, with 98% test coverage. In addition the package implements unit tests on the data provided, such as topological validity and internal consistency between administrative units.
 
-# Example usage
-
-Population as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped at district (LAU1) level using `ggplot2` and `RCzechia::okresy()` call. Note the use of low resolution object to achieve a more stylized look.
+\newpage  
+# Usage examples
+Population as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped at district (LAU1) level using `ggplot2` @wickham16 and `RCzechia::okresy()` call. Note the use of a low resolution object to achieve a more stylized look.
 
 ``` r
 src <- czso::czso_get_table("SLDB-VYBER") %>% 
@@ -88,7 +88,7 @@ okresni_data <- RCzechia::okresy("low") %>%
 
 ggplot(data = okresni_data) +
   geom_sf(aes(fill = obyvatel), colour = NA) +
-  geom_sf(data = republika(), color = "grey30", fill = NA) +
+  geom_sf(data = RCzechia::republika("low"), color = "gray30", fill = NA) +
   scale_fill_viridis_c(trans = "log", labels = scales::comma) +
   labs(title = "Czech population",
        fill = "population\n(log scale)") +
@@ -103,7 +103,8 @@ ggplot(data = okresni_data) +
 
 </center>
 
-Relief of the Czech Republic, accessed via `RCzechia::vyskopis()` call and displayed using `ggplot2` @wickham16 together with major rivers `RCzechia::reky()` for context.
+\newpage  
+Relief of the Czech Republic, accessed via `RCzechia::vyskopis()` call and displayed using `ggplot2` together with major rivers `RCzechia::reky()` for context.
 
 ``` r
 relief <- RCzechia::vyskopis("rayshaded") %>%

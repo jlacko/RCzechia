@@ -56,7 +56,7 @@ okresni_data <- RCzechia::okresy("low") %>% # data shapefile
 # report results
 ggplot(data = okresni_data) +
   geom_sf(aes(fill = obyvatel), colour = NA) +
-  geom_sf(data = republika("low"), color = "gray30", fill = NA) +
+  geom_sf(data = RCzechia::republika("low"), color = "gray30", fill = NA) +
   scale_fill_viridis_c(trans = "log", labels = scales::comma) +
   labs(title = "Czech population",
        fill = "population\n(log scale)") +

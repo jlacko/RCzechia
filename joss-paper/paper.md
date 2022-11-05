@@ -6,7 +6,7 @@ tags:
   - vector data
   - country specific Czechia
 authors:
-  - name: Jindra Lacko^[Corresponding author] 
+  - name: Jindra Lacko 
     orcid: 0000-0002-0375-5156
     affiliation: 1
 affiliations:

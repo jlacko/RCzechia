@@ -25,9 +25,9 @@ As the underlying data is by necessity larger than CRAN package size limits allo
 # State of the field
 The history of spatial data analysis in `R` is long and respectable @bivand21. The first packages focusing specifically on providing spatial data originate from the `S` days, with `maps` @deckmyn22 being one of the oldest packages in continuous use on CRAN (since 2003). The early packages used pattern of storing spatial data internally, which created a hard limit on volume and level of detail stored. 
 
-With the advent of `sp` @pebesma_bivand05 and later `sf` @pebesma18 platforms for handling spatial data the universe of packages focused on providing spatial data blossomed. There are packages with global focus, such as `rnaturalearth` @south17 and regional focus like `giscoR` @hernangomezdiego22 oriented at the EU. Number of packages are country specific, such as `tigris` @walker_rudis22 for the US, or `rgugik` @dyba_nowosad21 for Poland. With current near universal and reliable internet access a new pattern has emerged, with spatial data packages accessing cloud stored spatial data files as required, and distributing only lightweight code.
+With the advent of `sp` @pebesma_bivand05 and later `sf` @pebesma18 platforms for handling spatial data the universe of packages focused on providing spatial data blossomed. There are packages with global focus, such as `rnaturalearth` @south17 and regional focus like `giscoR` @hernangomezdiego22 oriented at the EU. Number of packages are country specific, such as `tigris` @walker_rudis22 for the US, or `rgugik` @dyba_nowosad21 for Poland. With current near universal and reliable internet access a new pattern has emerged, with spatial data packages accessing cloud stored data files as required (caching them within the limits set by the [CRAN repository policy](https://cran.r-project.org/web/packages/policies.html)), and distributing only lightweight code.
 
-In the context of Czech Republic and statistical programming language R there exists `CzechData` package @caha22, with somewhat overlapping functionality but available only on GitHub. The CRAN package `czso` @bouchal22 interfaces API of the Czech Statistical Office [ČSÚ](https://www.czso.cz/csu/czso/home), providing access to statistical data about Czech administrative areas (without the spatial information itself). Package `pragr` @bouchal20, available on GitHub, provides geodata about the city of Prague.
+In the context of Czech Republic and statistical programming language R there exists `CzechData` package @caha21, with somewhat overlapping functionality but available only on GitHub. The CRAN package `czso` @bouchal22 interfaces API of the Czech Statistical Office [ČSÚ](https://www.czso.cz/csu/czso/home), providing access to statistical data about Czech administrative areas (without the spatial information itself). Package `pragr` @bouchal20, available on GitHub, provides geodata about the city of Prague.
 
 # Statement of need
 No country specific spatial data package has been published on CRAN for the Czech Republic to date, creating a need that could be filled using global or regional packages only to a limited extent.
@@ -63,9 +63,9 @@ The package provides two distinct sets of spatial objects: administrative areas,
 
 All objects are implemented as functions returning `sf` class data frames, so must be followed by brackets (i.e. `RCzechia::republika()`).
 
-For the most commonly used objects (*republika*, *kraje*, *okresy*, *reky* and *volebni_okrsky*) an optional low resolution version is also included. To access it specify the value of `resolution` parameter as `"low"` (default is `"high"`). The low resolution objects are small enough to fit CRAN package size limits, and using them does not require active internet connection.
+For some of the most commonly used objects (*republika*, *kraje*, *okresy*, *reky* and *volebni_okrsky*) an optional low resolution version is also included. To access it specify the value of `resolution` parameter as `"low"` (default is `"high"`). 
 
-## Utility functions:
+### Utility functions:
 
 * **geocode**: geocodes an address to coordinates
 * **revgeo**: reverse geocodes coordinates to an address
@@ -75,8 +75,9 @@ The utility functions interface API of the Czech State Administration of Land Su
 The package code is thoroughly tested, with 98% test coverage. In addition the package implements unit tests on the data provided, such as topological validity and internal consistency between administrative units.
 
 \newpage  
-# Usage examples
-Population as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped at district (LAU1) level using `ggplot2` @wickham16 and `RCzechia::okresy()` call. Note the use of a low resolution object to achieve a more stylized look.
+# Example usage
+Population as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped at district (LAU1) level using `ggplot2` @wickham16 and `RCzechia::okresy()` call. 
+Note the use of low resolution objects to achieve a more stylized look.
 
 ``` r
 src <- czso::czso_get_table("SLDB-VYBER") %>% 

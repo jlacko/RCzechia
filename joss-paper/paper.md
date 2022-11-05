@@ -23,11 +23,11 @@ bibliography: paper.bib
 As the underlying data is by necessity larger than CRAN package size limits allow the data is stored externally and a working internet connection is required to use the package.
 
 # State of the field
-The history of spatial data analysis in `R` is long and respectable @bivand21. The first packages focusing specifically on providing spatial data originate from the `S` days, with `maps` @deckmyn22 being one of the oldest packages in continuous use on CRAN (the oldest archive version dates from October 2003). The early packages used pattern of storing spatial data internally, which due to CRAN limits of package size placed a hard limit on volume and level of detail stored. 
+The history of spatial data analysis in `R` is long and respectable @bivand21. The first packages focusing specifically on providing spatial data originate from the `S` days, with `maps` @deckmyn22 being one of the oldest packages in continuous use on CRAN (since 2003). The early packages used pattern of storing spatial data internally, which created a hard limit on volume and level of detail stored. 
 
-With the advent of `sp` @pebesma_bivand05 and later `sf` @pebesma18 platforms for handling spatial information the universe of data packages focused on providing spatial data blossomed. There are packages with global focus, such as `rnaturalearth` @south17 and regional focus like `giscoR` @hernangomezdiego22 oriented at the EU. Number of packages are country specific, such as `tigirs` @walker_rudis22 for the US, or `rgugik` @dyba_nowosad21 for Poland. With current near universal and reliable internet access a new pattern has emerged, with spatial data packages accessing cloud stored spatial data files as required, and distributing only lightweight code.
+With the advent of `sp` @pebesma_bivand05 and later `sf` @pebesma18 platforms for handling spatial data the universe of packages focused on providing spatial data blossomed. There are packages with global focus, such as `rnaturalearth` @south17 and regional focus like `giscoR` @hernangomezdiego22 oriented at the EU. Number of packages are country specific, such as `tigris` @walker_rudis22 for the US, or `rgugik` @dyba_nowosad21 for Poland. With current near universal and reliable internet access a new pattern has emerged, with spatial data packages accessing cloud stored spatial data files as required, and distributing only lightweight code.
 
-In the context of statistical programming language R there exists `CzechData` package @caha22, with somewhat overlapping functionality but available only on GitHub. The CRAN package `czso` @bouchal22a interfaces API of the Czech Statistical Office [ČSÚ](https://www.czso.cz/csu/czso/home), providing access to statistical data about Czech administrative areas (without the spatial information itself). Package `pragr` @bouchal22b provides raster geodata about the city of Prague.
+In the context of Czech Republic and statistical programming language R there exists `CzechData` package @caha22, with somewhat overlapping functionality but available only on GitHub. The CRAN package `czso` @bouchal22 interfaces API of the Czech Statistical Office [ČSÚ](https://www.czso.cz/csu/czso/home), providing access to statistical data about Czech administrative areas (without the spatial information itself). Package `pragr` @bouchal20, available on GitHub, provides geodata about the city of Prague.
 
 # Statement of need
 No country specific spatial data package has been published on CRAN for the Czech Republic to date, creating a need that could be filled using global or regional packages only to a limited extent.
@@ -59,9 +59,11 @@ The package provides two distinct sets of spatial objects: administrative areas,
 * **chr_uzemi**: protected natural areas 
 * **lesy**: woodland areas (more than 30 ha in area)
 * **KFME_grid**: KFME grid cells according to @niklfeld71
-* **vyskopis**: terrain of the Czech republic as a `raster` package object
+* **vyskopis**: terrain of the Czech republic as a `raster` @hijmans22 package object
 
 All objects are implemented as functions returning `sf` class data frames, so must be followed by brackets (i.e. `RCzechia::republika()`).
+
+For the most commonly used objects (*republika*, *kraje*, *okresy*, *reky* and *volebni_okrsky*) an optional low resolution version is also included. To access it specify the value of `resolution` parameter as `"low"` (default is `"high"`). The low resolution objects are small enough to fit CRAN package size limits, and using them does not require active internet connection.
 
 ## Utility functions:
 
@@ -74,33 +76,19 @@ The package code is thoroughly tested, with 98% test coverage. In addition the p
 
 # Example usage
 
+Population as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped at district (LAU1) level using `ggplot2` and `RCzechia::okresy()` call. Note the use of low resolution object to achieve a more stylized look.
+
 ``` r
-library(RCzechia)
-library(ggplot2)
-library(readxl)
-library(dplyr)
-library(httr)
+src <- czso::czso_get_table("SLDB-VYBER") %>% 
+   select(uzkod, obyvatel = vse1111) %>% 
+   mutate(obyvatel = as.numeric(obyvatel)) 
+  
+okresni_data <- RCzechia::okresy("low") %>% 
+  inner_join(src, by = c("KOD_OKRES" = "uzkod")) 
 
-tf <- tempfile(fileext = ".xls") # a temporary xls file
-GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
-    write_disk(tf))
-src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
-
-colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
-src <- src %>%
-  mutate(obyvatel = as.double(obyvatel)) %>%
-    # convert from text to number
-  mutate(NAZ_LAU1 = ifelse(NAZ_LAU1 == "Hlavní město Praha", "Praha", NAZ_LAU1))
-    # rename Prague (from The Capital to a regular city)
-
-okresni_data <- RCzechia::okresy("low") %>% # data shapefile
-  inner_join(src, by = "NAZ_LAU1")
-    # key for data connection - note the use of inner (i.e. filtering) join
-
-# report results
 ggplot(data = okresni_data) +
   geom_sf(aes(fill = obyvatel), colour = NA) +
-  geom_sf(data = republika("low"), color = "gray30", fill = NA) +
+  geom_sf(data = republika(), color = "grey30", fill = NA) +
   scale_fill_viridis_c(trans = "log", labels = scales::comma) +
   labs(title = "Czech population",
        fill = "population\n(log scale)") +
@@ -115,22 +103,18 @@ ggplot(data = okresni_data) +
 
 </center>
 
-``` r
-library(RCzechia)
-library(ggplot2)
-library(dplyr)
-library(raster, exclude = "select") # beware of colision with dplyr::select!!
+Relief of the Czech Republic, accessed via `RCzechia::vyskopis()` call and displayed using `ggplot2` @wickham16 together with major rivers `RCzechia::reky()` for context.
 
-# ggplot does not play nice with {raster} package; a data frame is required
-relief <- vyskopis("rayshaded") %>%
-  as("SpatialPixelsDataFrame") %>% # old style format - {sp}
+``` r
+relief <- RCzechia::vyskopis("rayshaded") %>%
+  as("SpatialPixelsDataFrame") %>%
   as_tibble()
 
 # report results
 ggplot() +
-  geom_raster(data = relief, aes(x = x, y  = y, alpha = -raytraced), # relief
-              fill = "gray30",  show.legend = F) + # no legend is necessary
-  geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
+  geom_raster(data = relief, aes(x = x, y  = y, alpha = -raytraced),
+              fill = "gray30",  show.legend = F) +
+  geom_sf(data = subset(RCzechia::reky(), Major == T),
           color = "steelblue", alpha = .7) +
   labs(title = "Czech Rivers & Their Basins") +
   theme_bw() +
@@ -144,9 +128,5 @@ ggplot() +
 </center>
 
 Examples of `RCzechia` use in current research practice include @korecky_etal21 and @brejcha_etal21.
-
-# Acknowledgements
-
-Pár teplých slov k doc. ing. TF PhD.
 
 # References

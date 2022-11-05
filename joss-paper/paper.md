@@ -18,10 +18,12 @@ bibliography: paper.bib
 ---
 
 # Summary
-`RCzechia` is a R package providing spatial objects relevant in the context of the Czech Republic for spatial data analysis and visualization purposes. The package uses `sf` @pebesma18 data format to serve the most commonly used administrative areas and natural objects. As the underlying data is by necessity larger than CRAN package size limits allow the data is stored externally and a working internet connection is required to use the package.
+`RCzechia` is a R package providing spatial objects relevant in the context of the Czech Republic for spatial data analysis and visualization purposes. The package uses `sf` data format to serve the most commonly used administrative areas and natural objects. 
+
+As the underlying data is by necessity larger than CRAN package size limits allow the data is stored externally and a working internet connection is required to use the package.
 
 # State of the field
-The history of spatial data analysis in `R` is long and respectable @bivand_gebhardt00. The first packages focusing specifically on providing spatial data date from the `S` days, with `maps` @deckmyn22 being one of the oldest packages in continuous use on CRAN (the oldest archive version dates from October 2003). The early packages used pattern of storing spatial data internally, which due to CRAN limits of package size placed a hard limit on volume and level of detail of data stored. 
+The history of spatial data analysis in `R` is long and respectable @bivand21. The first packages focusing specifically on providing spatial data originate from the `S` days, with `maps` @deckmyn22 being one of the oldest packages in continuous use on CRAN (the oldest archive version dates from October 2003). The early packages used pattern of storing spatial data internally, which due to CRAN limits of package size placed a hard limit on volume and level of detail stored. 
 
 With the advent of `sp` @pebesma_bivand05 and later `sf` @pebesma18 platforms for handling spatial information the universe of data packages focused on providing spatial data blossomed. There are packages with global focus, such as `rnaturalearth` @south17 and regional focus like `giscoR` @hernangomezdiego22 oriented at the EU. Number of packages are country specific, such as `tigirs` @walker_rudis22 for the US, or `rgugik` @dyba_nowosad21 for Poland. With current near universal and reliable internet access a new pattern has emerged, with spatial data packages accessing cloud stored spatial data files as required, and distributing only lightweight code.
 
@@ -68,13 +70,72 @@ All objects are implemented as functions returning `sf` class data frames, so mu
 
 The utility functions interface API of the Czech State Administration of Land Surveying and Cadastre [ČÚZK](https://cuzk.cz/en) and are therefore limited in scope to the area of the Czech Republic.
 
+The package code is thoroughly tested, with 98% test coverage. In addition the package implements unit tests on the data provided, such as topological validity and internal consistency between administrative units.
+
+# Example usage
+
+``` r
+library(RCzechia)
+library(ggplot2)
+library(readxl)
+library(dplyr)
+library(httr)
+
+tf <- tempfile(fileext = ".xls") # a temporary xls file
+GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
+    write_disk(tf))
+src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
+
+colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
+src <- src %>%
+  mutate(obyvatel = as.double(obyvatel)) %>%
+    # convert from text to number
+  mutate(NAZ_LAU1 = ifelse(NAZ_LAU1 == "Hlavní město Praha", "Praha", NAZ_LAU1))
+    # rename Prague (from The Capital to a regular city)
+
+okresni_data <- RCzechia::okresy("low") %>% # data shapefile
+  inner_join(src, by = "NAZ_LAU1")
+    # key for data connection - note the use of inner (i.e. filtering) join
+
+# report results
+ggplot(data = okresni_data) +
+  geom_sf(aes(fill = obyvatel), colour = NA) +
+  geom_sf(data = republika("low"), color = "gray30", fill = NA) +
+  scale_fill_viridis_c(trans = "log", labels = scales::comma) +
+  labs(title = "Czech population",
+       fill = "population\n(log scale)") +
+  theme_bw() +
+  theme(legend.text.align = 1,
+        legend.title.align = 0.5)
+```
 
 <center>
 
-![14 Regions of the Czech Republic](kraje.png)
+![77 districts of the Czech Republic, with population](census.png)
 
 </center>
 
+``` r
+library(RCzechia)
+library(ggplot2)
+library(dplyr)
+library(raster, exclude = "select") # beware of colision with dplyr::select!!
+
+# ggplot does not play nice with {raster} package; a data frame is required
+relief <- vyskopis("rayshaded") %>%
+  as("SpatialPixelsDataFrame") %>% # old style format - {sp}
+  as_tibble()
+
+# report results
+ggplot() +
+  geom_raster(data = relief, aes(x = x, y  = y, alpha = -raytraced), # relief
+              fill = "gray30",  show.legend = F) + # no legend is necessary
+  geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
+          color = "steelblue", alpha = .7) +
+  labs(title = "Czech Rivers & Their Basins") +
+  theme_bw() +
+  theme(axis.title = element_blank())
+```
 
 <center>
 

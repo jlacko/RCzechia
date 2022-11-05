@@ -4,8 +4,9 @@ tags:
   - R
   - spatial
   - vector data
+  - country specific Czechia
 authors:
-  - name: Jindra Lacko
+  - name: Jindra Lacko^[Corresponding author] 
     orcid: 0000-0002-0375-5156
     affiliation: 1
 affiliations:
@@ -18,21 +19,17 @@ bibliography: paper.bib
 
 # Summary
 
-Optimizmus je opium lidstva. Zdravý duch páchne blbostí. Ať žije Trockij!
+`RCzechia` is a R package providing spatial objects relevant in the context of the Czech Republic for spatial data analysis and visualization purposes. The package uses `sf` @pebesma18 data format to serve the most commonly used adminstrative areas and natural objects. In addition it constains utility funcitons for geocoding and reverse geocoding. As the underlying data is by necessity larger than CRAN package size limts allow the data is stored externally (on AWS) and a working internet connection is required to use the package.
 
 # Statement of need
 
-The history of spatial data analysis in `R` is long and respectable @bivand_gebhardt00. The first packages focusing specifically on providing spatial data date from the `S` days, with `maps` @deckmyn22 being one of the oldest packages in continuous use on CRAN (the oldest archive version dates from October 2003).
+The history of spatial data analysis in `R` is long and respectable @bivand_gebhardt00. The first packages focusing specifically on providing spatial data date from the `S` days, with `maps` @deckmyn22 being one of the oldest packages in continuous use on CRAN (the oldest archive version dates from October 2003). The early packages used pattern of storing spatial data internally, which due to CRAN limits of package size placed a hard limit on volume and level of detail of data stored. 
 
-With the advent of `sp` @pebesma_bivand05 and later `sf` @pebesma18 platforms for handling spatial information the universe of data packages focused on providing spatial data blossomed. There are packages with global focus, such as `rnaturalearth` @south17 and regional focus like `giscoR` @hernangomezdiego22 oriented at the EU. Number of packages are country specific, such as `tigirs` @walker_rudis22 for the US, or `rgugik` @dyba_nowosad21 for Poland.
+With the advent of `sp` @pebesma_bivand05 and later `sf` @pebesma18 platforms for handling spatial information the universe of data packages focused on providing spatial data blossomed. There are packages with global focus, such as `rnaturalearth` @south17 and regional focus like `giscoR` @hernangomezdiego22 oriented at the EU. Number of packages are country specific, such as `tigirs` @walker_rudis22 for the US, or `rgugik` @dyba_nowosad21 for Poland. With current near universal and reliable internet access a new pattern has emerged, with spatial data packages accessing cloud stored spatial data files as required, and distributing only lightweight code.
 
 No country specific data package has been produced for the Czech Republic to date, creating a need that could be filled using global or regional packages only to a limited extent.
 
-While there there are open data resources available for researchers, mostly in the format of ESRI Shapefiles, there are a number of practical disadvantages. They have to be located and downloaded individually, and their users face a number of additional hurdles, such as conflicting Coordinate Reference Systems and character encodings. In addition the datasets are not guaranteed to be topologically valid and are too detailed for many use cases.
-
-A curated set of most relevant spatial objects has been collected, cleaned and annotated. For the most commonly used objects a simplified version has been prepared, which is both conveniently smaller from technical perspective and more aesthetically pleasing.
-
-As the total volume of data is by necessity larger than the limits of CRAN package size allow the datasets are stored externally (using Amazon AWS) and downloaded as required. A working internet connection is therefore required to use the package.
+While there there are open data resources available for researchers, mostly in the format of ESRI Shapefiles, these have a number of practical disadvantages. They have to be located and downloaded individually, and their users in R context face additional hurdles, such as conflicting Coordinate Reference Systems and character encodings. In addition the datasets are not guaranteed to be topologically valid and are too detailed for many use cases.
 
 # Summary
 
@@ -62,7 +59,15 @@ The package provides two distinct sets of spatial objects: administrative areas,
 * **KFME_grid**: KFME grid cells according to @niklfeld71
 * **vyskopis**: terrain of the Czech republic as a `raster` package object
 
-All objects are implemented as functions returning `sf` class data frames, so must be followed by brackets (i.e. `hranice <- republika()`).
+All objects are implemented as functions returning `sf` class data frames, so must be followed by brackets (i.e. `RCzechia::republika()`).
+
+## Utility functions:
+
+* **geocode**: geocodes an address to coordinates
+* **revgeo**: reverse geocodes coordinates to an address
+
+The utility functions interface API of the Czech State Administration of Land Surveying and Cadastre [ČÚZK](https://cuzk.cz/en) and are therefore limited in scope to the area of the Czech Republic.
+
 
 <center>
 
@@ -70,11 +75,6 @@ All objects are implemented as functions returning `sf` class data frames, so mu
 
 </center>
 
-<center>
-
-![Displaying the KFME grid](ctverce.png)
-
-</center>
 
 <center>
 
@@ -82,10 +82,10 @@ All objects are implemented as functions returning `sf` class data frames, so mu
 
 </center>
 
-Examples of `RCzechia` in research practice include @korecky_etal21 and @brejcha_etal21.
+Examples of `RCzechia` use in current research practice include @korecky_etal21 and @brejcha_etal21.
 
 # Acknowledgements
 
-Pár teplých slov k doc. ing. TF
+Pár teplých slov k doc. ing. TF PhD.
 
 # References

@@ -25,7 +25,7 @@ jobs:
           - {os: ubuntu-20.04, r: 'release'}
           - {os: ubuntu-20.04, r: 'devel'}
 
-   env:
+    env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
 
@@ -48,3 +48,6 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
+
+
+

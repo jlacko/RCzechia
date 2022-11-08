@@ -9,10 +9,6 @@ test_that("kraje", {
   expect_message(kraje(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(kraje(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(kraje()))
   expect_true(is.data.frame(kraje("low")))
   expect_true(is.data.frame(kraje("high")))

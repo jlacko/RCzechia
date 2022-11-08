@@ -15,7 +15,7 @@ test_that("očekávané chyby", {
   expect_message(.downloader("asdf_wtf")) # objekt neexistuje - message
   expect_warning(.downloader("asdf_wtf"), regexp = NA) # CRAN policy - graceful fail na neexistujícím objektu
 
-  expect_message(.ok_to_proceed("https://rczechia.jla-data.net/asdf_wtf.rds")) # objekt neexistuje - message
-  expect_warning(.ok_to_proceed("https://rczechia.jla-data.net/asdf_wtf.rds"), regexp = NA) # CRAN policy - graceful fail na neexistujícím objektu
+  expect_message(.ok_to_proceed("http://10.255.255.1")) # non-routable IP address - should timeout
+  expect_warning(.ok_to_proceed("http://10.255.255.1"), regexp = NA) # non-routable IP address - should timeout
 
 })

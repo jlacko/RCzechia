@@ -5,7 +5,6 @@
 
 .downloader <- function(file) {
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
-  aws <- as.logical(Sys.getenv("AWS_UP", unset = TRUE)) # dummy variable to allow testing of network
 
   remote_path <- "https://rczechia.jla-data.net/" # remote archive
 
@@ -17,11 +16,6 @@
   } else {
     if (!.ok_to_proceed(remote_file) | !network) { # network is down
       message("No internet connection.")
-      return(NULL)
-    }
-
-    if (!.ok_to_proceed(remote_file) | !aws) { # AWS bucket down
-      message("Data source broken.")
       return(NULL)
     }
 

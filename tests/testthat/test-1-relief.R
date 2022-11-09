@@ -9,10 +9,6 @@ test_that("reliéf", {
   expect_message(vyskopis(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(vyskopis(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_s4_class(vyskopis(), "RasterLayer")
   expect_s4_class(vyskopis("actual"), "RasterLayer")
   expect_s4_class(vyskopis("rayshaded"), "RasterLayer")

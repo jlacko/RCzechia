@@ -9,10 +9,6 @@ test_that("lesy", {
   expect_message(lesy(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(lesy(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(lesy()))
 
   expect_s3_class(lesy(), "sf")

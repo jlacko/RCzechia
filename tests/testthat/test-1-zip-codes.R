@@ -9,10 +9,6 @@ test_that("PSČ", {
   expect_message(zip_codes(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(zip_codes(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(zip_codes()))
   expect_true(is.data.frame(zip_codes("low")))
   expect_true(is.data.frame(zip_codes("high")))

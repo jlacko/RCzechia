@@ -9,10 +9,6 @@ test_that("okresy", {
   expect_message(okresy(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(okresy(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(okresy()))
   expect_true(is.data.frame(okresy("low")))
   expect_true(is.data.frame(okresy("high")))

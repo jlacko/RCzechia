@@ -9,10 +9,6 @@ test_that("republika", {
   expect_message(republika(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(republika(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(republika()))
   expect_true(is.data.frame(republika("low")))
   expect_true(is.data.frame(republika("high")))

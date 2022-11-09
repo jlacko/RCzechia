@@ -9,10 +9,6 @@ test_that("obce body", {
   expect_message(obce_body(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(obce_body(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(obce_body()))
 
   expect_s3_class(obce_body(), "sf")
@@ -37,10 +33,6 @@ test_that("obce polygony", {
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(obce_polygony(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
-
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(obce_polygony(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
 
   expect_true(is.data.frame(obce_polygony()))
 

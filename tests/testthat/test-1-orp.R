@@ -10,10 +10,6 @@ test_that("ORP", {
   expect_message(orp_polygony(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(orp_polygony(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(orp_polygony()))
 
   expect_s3_class(orp_polygony(), "sf")

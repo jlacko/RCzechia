@@ -9,10 +9,6 @@ test_that("městské části", {
   expect_message(casti(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(casti(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(casti()))
 
   expect_s3_class(casti(), "sf")

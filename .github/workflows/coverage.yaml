@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - 47-update-actions-to-current-nodejs
 
 name: test-coverage
 

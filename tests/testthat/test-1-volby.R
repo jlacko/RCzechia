@@ -9,10 +9,6 @@ test_that("obvody senátu", {
   expect_message(senat_obvody(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(senat_obvody(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(senat_obvody()))
   expect_true(is.data.frame(senat_obvody("low")))
   expect_true(is.data.frame(senat_obvody("high")))
@@ -49,10 +45,6 @@ test_that("volební okrsky", {
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(volebni_okrsky(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
-
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(volebni_okrsky(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
 
   expect_true(is.data.frame(volebni_okrsky()))
   expect_true(is.data.frame(volebni_okrsky("low")))

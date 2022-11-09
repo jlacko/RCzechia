@@ -9,10 +9,6 @@ test_that("vodní plochy", {
   expect_message(plochy(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(plochy(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(plochy()))
 
   expect_s3_class(plochy(), "sf")
@@ -38,18 +34,12 @@ test_that("řeky", {
   expect_message(reky(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(reky(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_error(reky(NA)) # parametr je povinný
   expect_error(reky(resolution = "bflm")) # nezámé rozlišení
   expect_error(reky(resolution = 42)) # nezámé rozlišení
   expect_error(reky(resolution = NA)) # nezámé rozlišení
   expect_error(reky("bflm")) # neznámý scope
   expect_error(reky(c("Praha", "Brno"))) # moc řek...
-
-
 
   expect_true(is.data.frame(reky()))
   expect_true(is.data.frame(reky(resolution = "high")))

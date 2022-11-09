@@ -11,12 +11,15 @@
       warning = function(w) conditionMessage(w)
     )
   }
+
   is_response <- function(x) {
     class(x) == "response"
   }
 
+  network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
+
   # First check internet connection
-  if (!curl::has_internet()) {
+  if (!curl::has_internet() | !network) {
     message("No internet connection.")
     return(FALSE)
   }

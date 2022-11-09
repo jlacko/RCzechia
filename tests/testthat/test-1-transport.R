@@ -10,10 +10,6 @@ test_that("silnice", {
   expect_message(silnice(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
 
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(silnice(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
-
   expect_true(is.data.frame(silnice()))
 
   expect_s3_class(silnice(), "sf")
@@ -39,10 +35,6 @@ test_that("železnice", {
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(zeleznice(), "internet") # zpráva o chybějícím internetu
   Sys.setenv("NETWORK_UP" = TRUE)
-
-  Sys.setenv("AWS_UP" = FALSE)
-  expect_message(zeleznice(), "source") # zpráva o spadlém AWS
-  Sys.setenv("AWS_UP" = TRUE)
 
   expect_true(is.data.frame(zeleznice()))
 

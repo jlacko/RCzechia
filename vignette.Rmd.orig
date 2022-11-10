@@ -285,9 +285,10 @@ ggplot() +
   geom_spatraster(data = terra::rast(RCzechia::vyskopis("actual"))) +
   geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
           color = "steelblue", alpha = .5) +
-  scale_fill_terrain_c(direction = -1,
+  scale_fill_gradientn(colors = hypso.colors2(10),
                        labels = scales::label_number(suffix = " m"),
-                       limits = c(0, 1650)) +
+                       limits = c(0, 1550),
+                       na.value = NA) +
   labs(title = "Czech Rivers & Their Basins",
        fill = "Altitude") +
   theme_bw() +

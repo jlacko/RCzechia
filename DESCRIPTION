@@ -25,6 +25,7 @@ Suggests:
   readxl,
   units,
   ggplot2,
+  tidyterra,
   stringr,
   rvest,
   xml2,

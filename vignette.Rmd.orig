@@ -271,28 +271,29 @@ Package RCzechia supports two versions of relief visualization:
 * actual elevation model (meters above sea level)
 * shaded relief
 
-This example covers the second option.
+This example covers the first option.
 
 ```{r relief, echo = T, eval = T, message = F, warning = F,fig.width = 8, fig.height = 5}
 library(RCzechia)
 library(ggplot2)
+library(terra)
+library(tidyterra) # ggplot2 d
 library(dplyr)
-library(raster, exclude = "select") # beware of colision with dplyr::select!!
-
-# ggplot does not play nice with {raster} package; a data frame is required
-relief <- vyskopis("rayshaded") %>%
-  as("SpatialPixelsDataFrame") %>% # old style format - {sp}
-  as_tibble()
 
 # report results
 ggplot() +
-  geom_raster(data = relief, aes(x = x, y  = y, alpha = -raytraced), # relief
-              fill = "gray30",  show.legend = F) + # no legend is necessary
+  geom_spatraster(data = terra::rast(RCzechia::vyskopis("actual"))) +
   geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
-          color = "steelblue", alpha = .7) +
-  labs(title = "Czech Rivers & Their Basins") +
+          color = "steelblue", alpha = .5) +
+  scale_fill_terrain_c(direction = -1,
+                       labels = scales::label_number(suffix = " m"),
+                       limits = c(0, 1650)) +
+  labs(title = "Czech Rivers & Their Basins",
+       fill = "Altitude") +
   theme_bw() +
-  theme(axis.title = element_blank())
+  theme(axis.title = element_blank(),
+        legend.text.align = 1,
+        legend.title.align = 0.5)
 
 ```
 
@@ -318,7 +319,7 @@ vysledky <- "https://www.volby.cz/pls/senat/se1111?xjazyk=CZ&xdatum=20201002&xv=
   html_nodes(xpath = "//*[@id=\"se1111_t1\"]") %>%  # get the table by its xpath
   html_table(fill = T) %>%
   .[[1]] %>%
-  select(OBVOD = Obvod, strana = `Volebnístrana`) %>%
+  dplyr::select(OBVOD = Obvod, strana = `Volebnístrana`) %>%
   # pad OBVOD with zero to 2 places to align to RCzechia data format
   mutate(OBVOD = stringr::str_pad(OBVOD, 2, side = "left", pad = "0"))
 

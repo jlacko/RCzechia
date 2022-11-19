@@ -4,35 +4,45 @@
 \alias{vyskopis}
 \title{Vyskopis}
 \source{
-© ArcČR, ARCDATA PRAHA, ZÚ, ČSÚ, 2016 \url{https://www.arcdata.cz/produkty/geograficka-data/arccr-4}
+Copernicus Land Monitoring service, with funding by the European Union. \url{https://land.copernicus.eu/imagery-in-situ/eu-dem}
 }
 \usage{
 vyskopis(format = "rayshaded")
 }
 \arguments{
-\item{format}{Should the function return actual relief (meters above sea level) or shaded relief (rayshaded). Allowed values are "actual" and "rayshaded".}
+\item{format}{Should the function return actual terrain (meters above sea level) or shaded relief (rayshaded). Allowed values are "actual" and "rayshaded".}
 }
 \value{
-\code{raster} package RasterLayer.
+\code{terra} package SpatRaster
 }
 \description{
-Terrain of the Czech Republic as a {raster} package object.
+Terrain of the Czech Republic as a {terra} package object.
 }
 \details{
-The function returns a raster file of either actual relief (values are meters above sea level) or rayshaded relief (created via highly recommended {rayshader} package).
+The function returns a raster file of either actual terrain (values are meters above sea level) or rayshaded relief..
 
-The raster is 5084 by 3403 cells, meaning each pixel is about 90 × 90 meters. It works the best at level of country or regions, at the level of a city or lower it may be somewhat grainy.
+The raster is created from EU DEM 1.1 file by Copernicus Land Monitoring service. The original file has pixel resolution 25×25 meters, which is too detailed for purposes of the package and was downsampled by factor of 4.
+
+The extent of the raster file is bouding box of the Czech Republic; this is a change to prior versions in order to better facilitate use of the raster in natural sciences context. To clip the raster to size consider applying `terra::crop()` as shown in the examples section.
 
 Due to package size constraints both versions are stored externally (and a working internet connection is required to use the package).
 
-The data is current to September 2016. Downloaded size of the rayshaded raster is 8.4 MB, actual raster is 31.4 MB.
+The data is current to year 2011 (but it is not expected to materially change over time). Downloaded size of the rasters is 45 MB.
 }
 \examples{
 \donttest{
-library(raster)
+library(terra)
 
-relief <- vyskopis("rayshaded")
+# original extent - bounding box over Czech Republic
+original_extent <- vyskopis("rayshaded")
 
-plot(relief, col = gray.colors(16))
+plot(original_extent, col = gray.colors(16))
+plot(RCzechia::republika(), col = "red", add = T)
+
+# cropped to size
+cropped_extent <- crop(original_extent, vect(RCzechia::republika()), mask = T)
+
+plot(original_extent, col = gray.colors(16))
+
 }
 }

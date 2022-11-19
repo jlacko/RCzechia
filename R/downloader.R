@@ -24,8 +24,13 @@
     curl::curl_download(url = remote_file, destfile = local_file, quiet = T)
    } # /if - local file exists
 
-  local_df <- readRDS(local_file)
+  # everything except rasters
+  if(tools::file_ext(local_file) == "rds") local_df <- readRDS(local_file)
 
+  # rasters, and rasters only
+  if(tools::file_ext(local_file) == "tif") local_df <- terra::rast(local_file)
+
+  # serve the result back
   local_df
 
 } # /function

@@ -28,8 +28,11 @@ hill <- shade(slope, aspect, 30, 270)
 # normalize names
 names(hill) <- "shades"
 
-cast <- terra::project(cast, "EPSG:4326")
-hill <- terra::project(hill, "EPSG:4326")
+cast <- terra::project(cast, "EPSG:4326") %>%
+  crop(RCzechia::republika(), mask = T)
+
+hill <- terra::project(hill, "EPSG:4326")%>%
+  crop(RCzechia::republika(), mask = T)
 
 writeRaster(cast, "./data-backup/vyskopis-dem.tif", overwrite = T)
 writeRaster(hill, "./data-backup/vyskopis-shaded-dem.tif", overwrite = T)

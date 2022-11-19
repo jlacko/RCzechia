@@ -8,4 +8,5 @@ inst/doc
 /data-raw/vodstvo/*
 /data-raw/TRANS/*
 /data-raw/HYDRO/*
+/data-raw/eu_dem*
 *.log

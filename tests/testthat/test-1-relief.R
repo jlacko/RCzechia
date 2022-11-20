@@ -17,9 +17,14 @@ test_that("reliéf", {
   expect_s4_class(vyskopis("rayshaded", FALSE), "SpatRaster")
 
   # test rozsahu
-  expect_equal(vyskopis(cropped = FALSE)@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5)
-  expect_equal(vyskopis("actual", FALSE)@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5)
-  expect_equal(vyskopis("rayshaded", FALSE)@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5)
+  expect_equal(terra::expanse(vyskopis()), units::drop_units(st_area(republika("low"))), tolerance = 1/100)
+  expect_equal(terra::expanse(vyskopis("actual")), units::drop_units(st_area(republika("low"))), tolerance = 1/100)
+  expect_equal(terra::expanse(vyskopis("rayshaded")), units::drop_units(st_area(republika("low"))), tolerance = 1/100)
+
+  # oříznutý raster je menší než surový
+  expect_gt(terra::expanse(vyskopis(cropped = F)), terra::expanse(vyskopis(cropped = T)))
+  expect_gt(terra::expanse(vyskopis("rayshaded", cropped = F)), terra::expanse(vyskopis("rayshaded", cropped = T)))
+  expect_gt(terra::expanse(vyskopis("actual", cropped = F)), terra::expanse(vyskopis("actual", cropped = T)))
 
   # test projekce - WGS84 pure & unadultered
   expect_equal(st_crs(vyskopis())$input, "WGS 84")

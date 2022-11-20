@@ -13,6 +13,8 @@ test_that("reliéf", {
   expect_s4_class(vyskopis(), "SpatRaster")
   expect_s4_class(vyskopis("actual"), "SpatRaster")
   expect_s4_class(vyskopis("rayshaded"), "SpatRaster")
+  expect_s4_class(vyskopis("actual", FALSE), "SpatRaster")
+  expect_s4_class(vyskopis("rayshaded", FALSE), "SpatRaster")
 
   # test rozsahu
   expect_equal(vyskopis()@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5) # sloupce jsou všechny
@@ -23,8 +25,13 @@ test_that("reliéf", {
   expect_equal(st_crs(vyskopis())$input, "WGS 84")
   expect_equal(st_crs(vyskopis("actual"))$input, "WGS 84")
   expect_equal(st_crs(vyskopis("rayshaded"))$input, "WGS 84")
+  expect_equal(st_crs(vyskopis("actual", FALSE))$input, "WGS 84")
+  expect_equal(st_crs(vyskopis("rayshaded", FALSE))$input, "WGS 84")
 
   # očekávaná chyba
   expect_error(vyskopis("bflm")) # neznámé rozlišení - očekávám actual / rayshaded
+  expect_error(vyskopis("actual", cropped = "bflm")) # cropped usí být boolean
+  expect_error(vyskopis("actual", cropped = NA))
+
 })
 

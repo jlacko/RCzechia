@@ -7,10 +7,12 @@
 Copernicus Land Monitoring service, with funding by the European Union. \url{https://land.copernicus.eu/imagery-in-situ/eu-dem}
 }
 \usage{
-vyskopis(format = "rayshaded")
+vyskopis(format = "rayshaded", cropped = TRUE)
 }
 \arguments{
 \item{format}{Should the function return actual terrain (meters above sea level) or shaded relief (rayshaded). Allowed values are "actual" and "rayshaded".}
+
+\item{cropped}{Should the raster provide data over Czech Republic's bounding box (cropped = FALSE) or just actual borders (cropped = TRUE). Defaults to TRUE to preserve compatiblity with earlier versions.}
 }
 \value{
 \code{terra} package SpatRaster
@@ -23,26 +25,26 @@ The function returns a raster file of either actual terrain (values are meters a
 
 The raster is created from EU DEM 1.1 file by Copernicus Land Monitoring service. The original file has pixel resolution 25×25 meters, which is too detailed for purposes of the package and was downsampled by factor of 4.
 
-The extent of the raster file is bouding box of the Czech Republic; this is a change to prior versions in order to better facilitate use of the raster in natural sciences context. To clip the raster to size consider applying `terra::crop()` as shown in the examples section.
+The extent of the raster file is bouding box of the Czech Republic; this is a change to prior versions in order to better facilitate use of the raster in natural sciences context. To preserve compatibility optional argument `cropped` has been created, defaulting to `TRUE` (i.e. behaviour before v1.10.0).
 
 Due to package size constraints both versions are stored externally (and a working internet connection is required to use the package).
 
-The data is current to year 2011 (but it is not expected to materially change over time). Downloaded size of the rasters is 45 MB.
+The data is current to year 2011 (but it is not expected to materially change over time). Downloaded size of the rasters is 52 MB.
 }
 \examples{
 \donttest{
 library(terra)
 
 # original extent - bounding box over Czech Republic
-original_extent <- vyskopis("rayshaded")
+original_extent <- vyskopis("rayshaded", cropped = FALSE)
 
 plot(original_extent, col = gray.colors(16))
-plot(RCzechia::republika(), col = "red", add = T)
+plot(RCzechia::republika(), col = "red", add = TRUE)
 
-# cropped to size
-cropped_extent <- crop(original_extent, vect(RCzechia::republika()), mask = T)
+# cropped to size - default behaviour
+cropped_extent <- vyskopis("rayshaded")
 
-plot(original_extent, col = gray.colors(16))
+plot(cropped_extent, col = gray.colors(16))
 
 }
 }

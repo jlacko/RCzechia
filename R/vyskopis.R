@@ -53,7 +53,8 @@ vyskopis <- function(format = "rayshaded", cropped = TRUE) {
     result <- .downloader("vyskopis-dem.tif")
   } # /if - download of result
 
-  if(!cropped) result <- terra::crop(result, terra::vect(RCzechia::republika("low")))
+  # need to handle CRAN policy
+  if(cropped & !is.null(result)) result <- terra::crop(result, terra::vect(RCzechia::republika("low")), mask = TRUE)
 
   result
 } # /function

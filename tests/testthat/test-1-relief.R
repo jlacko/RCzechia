@@ -17,9 +17,9 @@ test_that("reliéf", {
   expect_s4_class(vyskopis("rayshaded", FALSE), "SpatRaster")
 
   # test rozsahu
-  expect_equal(vyskopis()@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5) # sloupce jsou všechny
-  expect_equal(vyskopis("actual")@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5) # sloupce jsou všechny
-  expect_equal(vyskopis("rayshaded")@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5) # sloupce jsou všechny
+  expect_equal(vyskopis(cropped = FALSE)@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5)
+  expect_equal(vyskopis("actual", FALSE)@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5)
+  expect_equal(vyskopis("rayshaded", FALSE)@ptr$extent$vector, c(11.98464, 19.32897, 48.22101, 51.37479), tolerance = 1e-5)
 
   # test projekce - WGS84 pure & unadultered
   expect_equal(st_crs(vyskopis())$input, "WGS 84")

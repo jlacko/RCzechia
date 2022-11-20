@@ -1,7 +1,7 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2022-11-19"
+date: "2022-11-20"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -32,11 +32,11 @@ tf <- tempfile(fileext = ".xls") # a temporary xls file
 GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
     write_disk(tf))
 ## Response [https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls]
-##   Date: 2022-11-19 21:53
+##   Date: 2022-11-20 09:39
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 44.5 kB
-## <ON DISK>  /tmp/RtmpKJhlnW/file30ae2211ba51.xls
+## <ON DISK>  /tmp/RtmpIAWASH/file77e13e5f561.xls
 src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
 
 colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
@@ -290,13 +290,12 @@ library(dplyr)
 library(terra)
 
 # terrain cropped to "Czechia proper"
-relief <- vyskopis("rayshaded") %>%
-  crop(vect(RCzechia::republika()), mask = T)
+relief <- vyskopis("rayshaded", cropped = TRUE)
 
 # report results
 ggplot() +
   tidyterra::geom_spatraster(data = relief) +
-  scale_fill_gradientn(colors = hcl.colors(1000, "Grays"),
+  scale_fill_gradientn(colors = hcl.colors(50, "Grays"), # 50 shades of Gray...
                        na.value = NA,
                        guide = "none") +
   geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers

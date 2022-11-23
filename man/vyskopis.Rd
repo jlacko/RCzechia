@@ -39,7 +39,12 @@ library(terra)
 original_extent <- vyskopis("rayshaded", cropped = FALSE)
 
 plot(original_extent, col = gray.colors(16))
-plot(RCzechia::republika(), col = "red", add = TRUE)
+
+# add plot of country borders, for context
+plot(RCzechia::republika(),
+     border = "red",
+     col = NA,
+     add = TRUE)
 
 # cropped to size - default behaviour
 cropped_extent <- vyskopis("rayshaded")

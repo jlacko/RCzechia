@@ -48,12 +48,12 @@ You can also get the latest development version by running `remotes::install_git
 administrative:
 
 * **republika**: borders of the Czech Republic as a polygon
-* **kraje**: 14 regions of the Czech Republic & Prague.  
-* **okresy**: 76 districts (LAU1 areas) of the Czech Republic + Prague (legally not *a district* but *the capital*).  
-* **orp_polygony** 205 municipalities with extended powers (in Czech: obce s rozšířenou působností) + Prague (legally not *a city* but *the capital*).  
-* **obce_polygony**: 6.258 municipalities of the Czech Republic.  
-* **obce_body** the same as obce_polygony, but centroids instead of polygons.  
-* **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava and other).  
+* **kraje**: 14 regions of the Czech Republic & Prague  
+* **okresy**: 76 districts (LAU1 areas) of the Czech Republic + Prague (legally not *a district* but *the capital*)  
+* **orp_polygony** 205 municipalities with extended powers (in Czech: obce s rozšířenou působností) + Prague (legally not *a city* but *the capital*)  
+* **obce_polygony**: 6.258 municipalities of the Czech Republic  
+* **obce_body** the same as obce_polygony, but centroids instead of polygons  
+* **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava and other)  
 * **senat_obvody**: 81 senate districts (volební obvody senátu)
 * **volebni_okrsky**: 14.761 general election districts (volební okrsky)
 * **zip_codes**: 2.671 ZIP code areas (poštovní směrovací čísla / PSČ)
@@ -67,7 +67,7 @@ natural:
 * **chr_uzemi**: protected natural areas (chráněná území)
 * **lesy**: woodland areas (more than 30 ha in area)
 * **KFME_grid**: KFME grid cells (faunistické čtverce)
-* **vyskopis**: terrain of the Czech republic as a {raster} package object
+* **vyskopis**: terrain of the Czech republic as a {terra} package raster object
 
 
 All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).

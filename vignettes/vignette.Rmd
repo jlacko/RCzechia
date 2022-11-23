@@ -1,7 +1,7 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2022-11-10"
+date: "2022-11-24"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -32,11 +32,11 @@ tf <- tempfile(fileext = ".xls") # a temporary xls file
 GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
     write_disk(tf))
 ## Response [https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls]
-##   Date: 2022-11-10 10:17
+##   Date: 2022-11-24 08:08
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 44.5 kB
-## <ON DISK>  /tmp/Rtmp1BmuNr/filed0884387db64.xls
+## <ON DISK>  /tmp/RtmpkAbN5Z/file2018a1fed61ca.xls
 src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
 
 colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
@@ -287,12 +287,17 @@ This example covers the first option.
 library(RCzechia)
 library(ggplot2)
 library(terra)
-library(tidyterra) # ggplot2 d
+library(tidyterra)
 library(dplyr)
+
+
+
+# terrain cropped to "Czechia proper"
+relief <- vyskopis("actual", cropped = TRUE)
 
 # report results
 ggplot() +
-  geom_spatraster(data = terra::rast(RCzechia::vyskopis("actual"))) +
+  tidyterra::geom_spatraster(data = relief) +
   geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
           color = "steelblue", alpha = .5) +
   scale_fill_gradientn(colors = hypso.colors2(10),

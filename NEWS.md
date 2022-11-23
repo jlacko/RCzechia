@@ -1,3 +1,9 @@
+## version 1.10.0 (2022-11-25)
+
+ - rasters - vyskopis("actual") and vyskopis("rayshaded") - are based on EU-DEM data, instead of the former ARC ČR 500
+ 
+ - dependency on {raster} replaced by newer {terra} package
+
 ## version 1.9.4 (2022-10-06)
 
  - fixes incorrect behavior of Vltava in Prague

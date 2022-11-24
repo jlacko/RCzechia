@@ -40,15 +40,17 @@ The package provides two distinct sets of spatial objects: administrative areas,
 ### Administrative area polygons:
 
 * **republika**: borders of the Czech Republic as a polygon
-* **kraje**: 14 regions (NUTS3 areas) of the Czech Republic & Prague 
-* **okresy**: 76 districts (LAU1 areas) of the Czech Republic + Prague (legally not *a district* but *the capital*)
-* **orp_polygony** 205 municipalities with extended powers (obce s rozšířenou působností) + Prague (legally not *a commune* but *the capital*)
+* **kraje**: 14 regions (NUTS3 areas) of the Czech Republic + Prague as a special case
+* **okresy**: 76 districts (LAU1 areas) of the Czech Republic + Prague as a special case
+* **orp_polygony** 205 municipalities with extended powers + Prague as a special case
 * **obce_polygony**: 6.258 municipalities of the Czech Republic
 * **obce_body** the same as obce_polygony, but centroids instead of polygons
-* **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava and other)
-* **senat_obvody**: 81 senate districts (volební obvody senátu)
-* **volebni_okrsky**: 14.761 general election districts (volební okrsky)
-* **zip_codes**: 2.671 ZIP code areas (poštovní směrovací čísla / PSČ)
+* **casti**: primarily 57 city parts of Prague, but also of other cities for which individual borroughs are defined
+* **senat_obvody**: 81 Senate districts (upper chamber of Czech Parliament)
+* **volebni_okrsky**: 14.761 general election districts
+* **zip_codes**: 2.671 ZIP code areas 
+
+The country (NUTS1), regions (NUTS3) and districts (LAU1) administrative level objects from RCzechia are functionally equivalent to those provided by `giscoR` package @hernangomezdiego22 for the Czech Republic. This is expected, as GISCO objects are standardized at the EU level, and the Czech Republic is a EU member state.
 
 ### Natural objects:
 
@@ -75,8 +77,8 @@ The utility functions interface API of the Czech State Administration of Land Su
 The package code is thoroughly tested, with 100% test coverage. In addition the package implements unit tests on the data provided, such as topological validity and internal consistency between administrative units.
 
 \newpage  
-# Example of use
-Czech population at the LAU1 level as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped using `ggplot2` @wickham16 and `RCzechia::okresy()` call. Note the use of low resolution objects to achieve a more stylized look.
+# Examples of use
+Czech population at the LAU1 level as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped using `RCzechia::okresy()` and a `ggplot2` @wickham16 call. Note the use of low resolution objects to achieve a more stylized look.
 
 ``` r
 src <- czso::czso_get_table("SLDB-VYBER") %>% 
@@ -104,7 +106,7 @@ ggplot(data = okresni_data) +
 </center>
 
 \newpage  
-Relief of the Czech Republic, accessed via `RCzechia::vyskopis()` call and displayed using `ggplot2` together with major rivers `RCzechia::reky()` for context.
+Terrain of the Czech Republic, accessed via `RCzechia::vyskopis()` call and displayed using `ggplot2` together with major rivers `RCzechia::reky()` for context.
 
 ``` r
 relief <- vyskopis("actual", cropped = TRUE)
@@ -127,10 +129,10 @@ ggplot() +
 
 <center>
 
-![Relief of the Czech Republic, with major rivers](relief.png)
+![Terrain of the Czech Republic, with major rivers](relief.png)
 
 </center>
 
-Examples of `RCzechia` use in current research practice include @korecky_etal21 and @brejcha_etal21.
+Examples of `RCzechia` use in current research applications include @korecky_etal21 and @brejcha_etal21.
 
 # References

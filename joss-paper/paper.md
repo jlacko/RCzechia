@@ -45,12 +45,12 @@ The package provides two distinct sets of spatial objects: administrative areas,
 * **orp_polygony** 205 municipalities with extended powers + Prague as a special case
 * **obce_polygony**: 6.258 municipalities of the Czech Republic
 * **obce_body** the same as obce_polygony, but centroids instead of polygons
-* **casti**: primarily 57 city parts of Prague, but also of other cities for which individual borroughs are defined
+* **casti**: primarily 57 city parts of Prague, but also of other cities for which individual boroughs are defined
 * **senat_obvody**: 81 Senate districts (upper chamber of Czech Parliament)
 * **volebni_okrsky**: 14.761 general election districts
 * **zip_codes**: 2.671 ZIP code areas 
 
-The country (NUTS1), regions (NUTS3) and districts (LAU1) administrative level objects from RCzechia are functionally equivalent to those provided by `giscoR` package @hernangomezdiego22 for the Czech Republic. This is expected, as GISCO objects are standardized at the EU level, and the Czech Republic is a EU member state.
+The country (NUTS1), regions (NUTS3) and districts (LAU1) administrative level objects from `RCzechia` are functionally equivalent to those provided by `giscoR` package @hernangomezdiego22 for the Czech Republic. This is expected, as GISCO objects are standardized at the EU level, and the Czech Republic is a EU member state.
 
 ### Natural objects:
 
@@ -74,7 +74,7 @@ For some of the most commonly used objects (*republika*, *kraje*, *okresy*, *rek
 
 The utility functions interface API of the Czech State Administration of Land Surveying and Cadastre ([ČÚZK](https://cuzk.cz/en)) and are therefore limited in scope to the area of the Czech Republic.
 
-The package code is thoroughly tested, with 100% test coverage. In addition the package implements unit tests on the data provided, such as topological validity and internal consistency between administrative units.
+The package code is thoroughly tested, with 100% test coverage. In addition to testing code the package implements unit tests on integrity of the datasets provided, such as topological validity and internal consistency between different levels of administrative units.
 
 \newpage  
 # Examples of use

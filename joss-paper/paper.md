@@ -108,19 +108,23 @@ ggplot(data = okresni_data) +
 Relief of the Czech Republic, accessed via `RCzechia::vyskopis()` call and displayed using `ggplot2` together with major rivers `RCzechia::reky()` for context.
 
 ``` r
-relief <- RCzechia::vyskopis("rayshaded") %>%
-  as("SpatialPixelsDataFrame") %>%
-  as_tibble()
+# terrain cropped to "Czechia proper"
+relief <- vyskopis("actual", cropped = TRUE)
 
-# report results
 ggplot() +
-  geom_raster(data = relief, aes(x = x, y  = y, alpha = -raytraced),
-              fill = "gray30",  show.legend = F) +
-  geom_sf(data = subset(RCzechia::reky(), Major == T),
-          color = "steelblue", alpha = .7) +
-  labs(title = "Czech Rivers & Their Basins") +
+  tidyterra::geom_spatraster(data = relief) +
+  geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
+          color = "steelblue", alpha = .5) +
+  scale_fill_gradientn(colors = hypso.colors2(10),
+                       labels = scales::label_number(suffix = " m"),
+                       limits = c(0, 1550),
+                       na.value = NA) +
+  labs(title = "Czech Rivers & Their Basins",
+       fill = "Altitude") +
   theme_bw() +
-  theme(axis.title = element_blank())
+  theme(axis.title = element_blank(),
+        legend.text.align = 1,
+        legend.title.align = 0.5)
 ```
 
 <center>

@@ -32,17 +32,17 @@ In the context of Czech Republic there exists `CzechData` package @caha21, with 
 # Statement of need
 No country specific spatial data package has been published on CRAN for the Czech Republic to date, creating a need that could be filled using global or regional packages only to a limited extent.
 
-While there there are open data resources available for researchers, mostly in the format of ESRI Shapefiles, these have a number of practical disadvantages. They have to be located and downloaded individually, and their users in R context face additional hurdles, such as conflicting Coordinate Reference Systems and character encodings. In addition some datasets are topologically invalid and many are too detailed for use by non GIS specialized audience.
+While there there are open data resources available for researchers, mostly in the format of ESRI Shapefiles, these have a number of practical disadvantages. They have to be located and downloaded individually, and their users in R context face additional hurdles, such as conflicting Coordinate Reference Systems and character encodings. In addition some publicly available datasets are topologically invalid and many are too detailed for use by non GIS specialized audience.
 
 # Features
-The package provides two distinct sets of spatial objects: administrative areas, and natural objects. In addition API interface wrappingg functionality is provided for geocoding and reverse geocoding functions.
+The package provides two distinct sets of spatial objects: administrative areas, and natural objects. In addition API interface wrapping is provided for geocoding and reverse geocoding functions.
 
 ### Administrative area polygons:
 
 * **republika**: borders of the Czech Republic as a polygon
 * **kraje**: 14 regions (NUTS3 areas) of the Czech Republic & Prague 
 * **okresy**: 76 districts (LAU1 areas) of the Czech Republic + Prague (legally not *a district* but *the capital*)
-* **orp_polygony** 205 municipalities with extended powers (obce s rozšířenou působností) + Prague (legally not *a city* but *the capital*)
+* **orp_polygony** 205 municipalities with extended powers (obce s rozšířenou působností) + Prague (legally not *a commune* but *the capital*)
 * **obce_polygony**: 6.258 municipalities of the Czech Republic
 * **obce_body** the same as obce_polygony, but centroids instead of polygons
 * **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava and other)
@@ -79,12 +79,10 @@ The package code is thoroughly tested, with 100% test coverage. In addition the 
 Czech population at the LAU1 level as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped using `ggplot2` @wickham16 and `RCzechia::okresy()` call. Note the use of low resolution objects to achieve a more stylized look.
 
 ``` r
-# Czech population via CZSO API
 src <- czso::czso_get_table("SLDB-VYBER") %>% 
    select(uzkod, obyvatel = vse1111) %>% 
    mutate(obyvatel = as.numeric(obyvatel)) 
 
-# join spatial & "data" datasets
 okresni_data <- RCzechia::okresy("low") %>% 
   inner_join(src, by = c("KOD_OKRES" = "uzkod")) 
 
@@ -109,7 +107,6 @@ ggplot(data = okresni_data) +
 Relief of the Czech Republic, accessed via `RCzechia::vyskopis()` call and displayed using `ggplot2` together with major rivers `RCzechia::reky()` for context.
 
 ``` r
-# terrain cropped to "Czechia proper"
 relief <- vyskopis("actual", cropped = TRUE)
 
 ggplot() +

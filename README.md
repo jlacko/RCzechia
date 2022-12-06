@@ -3,7 +3,7 @@
 [![CRAN](http://www.r-pkg.org/badges/version/RCzechia)](https://cran.r-project.org/package=RCzechia)
 [![Codecov test coverage](https://codecov.io/gh/jlacko/RCzechia/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jlacko/RCzechia?branch=master)
 [![Downloads-weekly](http://cranlogs.r-pkg.org/badges/last-week/RCzechia?color=brightgreen)](https://cran.r-project.org/package=RCzechia)
-[![Downloads-total](http://cranlogs.r-pkg.org/badges/grand-total/RCzechia?color=brightgreen)](https://cran.r-project.org/package=RCzechia)  
+[![Downloads-total](http://cranlogs.r-pkg.org/badges/grand-total/RCzechia?color=brightgreen)](https://cran.r-project.org/package=RCzechia)
 [![DOI](https://zenodo.org/badge/97862932.svg)](https://zenodo.org/badge/latestdoi/97862932)
 <!-- badges: end -->
 

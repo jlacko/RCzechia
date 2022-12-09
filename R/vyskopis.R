@@ -10,7 +10,7 @@
 #'
 #' Due to package size constraints both versions are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to year 2011 (but it is not expected to materially change over time). Downloaded size of the rasters is 52 MB.
+#' The data is current to year 2011 (but it is not expected to materially change over time). Downloaded size of the rasters is 70 MB, so proceed with caution.
 #'
 #' @param format Should the function return actual terrain (meters above sea level) or shaded relief (rayshaded). Allowed values are "actual" and "rayshaded".
 #'

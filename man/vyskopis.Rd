@@ -29,7 +29,7 @@ The extent of the raster file is bouding box of the Czech Republic; this is a ch
 
 Due to package size constraints both versions are stored externally (and a working internet connection is required to use the package).
 
-The data is current to year 2011 (but it is not expected to materially change over time). Downloaded size of the rasters is 52 MB.
+The data is current to year 2011 (but it is not expected to materially change over time). Downloaded size of the rasters is 70 MB, so proceed with caution.
 }
 \examples{
 \donttest{

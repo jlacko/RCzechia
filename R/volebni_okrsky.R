@@ -19,7 +19,7 @@
 #'   \item{KOD_CZNUTS3}{Id of kraj - maps to kraje()$KOD_CZNUTS3.}
 #' }
 #'
-#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2023 \url{https://vdp.cuzk.cz/}
 #'
 #' @examples
 #' \donttest{

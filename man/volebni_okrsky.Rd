@@ -4,7 +4,7 @@
 \alias{volebni_okrsky}
 \title{Election Districts (Volební okrsky) of the Czech Republic}
 \source{
-© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+© ČÚZK, 2023 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 volebni_okrsky(resolution = "high")

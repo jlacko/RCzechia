@@ -1,3 +1,7 @@
+## version 1.10.1 (2023-01-17)
+
+ - the election districts - volebni_okrsky() - are updated to version as of January 2023 presidential elections
+
 ## version 1.10.0 (2022-11-25)
 
  - rasters - vyskopis("actual") and vyskopis("rayshaded") - are based on EU-DEM data, instead of the former ARC ČR 500

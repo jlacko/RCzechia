@@ -14,7 +14,8 @@ celek <- terra::merge(horni, dolni)
 maska <- RCzechia::republika() %>%
   st_bbox() %>%
   st_as_sfc() %>%
-  st_transform(st_crs(celek))
+  st_transform(st_crs(celek)) %>%
+  st_buffer(units::as_units(25, "km"))
 
 cast <- crop(celek, maska, mask = T)
 

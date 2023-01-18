@@ -1,7 +1,7 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2022-11-20"
+date: "2023-01-18"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -32,11 +32,11 @@ tf <- tempfile(fileext = ".xls") # a temporary xls file
 GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
     write_disk(tf))
 ## Response [https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls]
-##   Date: 2022-11-20 09:39
+##   Date: 2023-01-18 13:07
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 44.5 kB
-## <ON DISK>  /tmp/RtmpIAWASH/file77e13e5f561.xls
+## <ON DISK>  /tmp/RtmpUo9iGZ/file31c5e366e967.xls
 src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
 
 colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
@@ -53,7 +53,7 @@ okresni_data <- RCzechia::okresy("low") %>% # data shapefile
 # report results
 ggplot(data = okresni_data) +
   geom_sf(aes(fill = obyvatel), colour = NA) +
-  geom_sf(data = republika("low"), color = "gray30", fill = NA) +
+  geom_sf(data = RCzechia::republika("low"), color = "gray30", fill = NA) +
   scale_fill_viridis_c(trans = "log", labels = scales::comma) +
   labs(title = "Czech population",
        fill = "population\n(log scale)") +
@@ -280,14 +280,15 @@ Package RCzechia supports two versions of relief visualization:
 * actual elevation model (meters above sea level)
 * shaded relief
 
-This example covers the second option.
+This example covers the first option.
 
 
 ```r
 library(RCzechia)
 library(ggplot2)
-library(dplyr)
 library(terra)
+library(tidyterra)
+library(dplyr)
 
 # terrain cropped to "Czechia proper"
 relief <- vyskopis("rayshaded", cropped = TRUE)
@@ -295,14 +296,18 @@ relief <- vyskopis("rayshaded", cropped = TRUE)
 # report results
 ggplot() +
   tidyterra::geom_spatraster(data = relief) +
+
   scale_fill_gradientn(colors = hcl.colors(50, "Grays"), # 50 shades of Gray...
                        na.value = NA,
                        guide = "none") +
   geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
-          color = "steelblue", alpha = .7) +
-  labs(title = "Czech Rivers & Their Basins") +
+          color = "steelblue", alpha = .5) +
+  labs(title = "Czech Rivers & Their Basins",
+       fill = "Altitude") +
   theme_bw() +
-  theme(axis.title = element_blank())
+  theme(axis.title = element_blank(),
+        legend.text.align = 1,
+        legend.title.align = 0.5)
 ```
 
 <img src="./relief-1.png" alt="plot of chunk relief" width="100%" style="display: block; margin: auto;" />
@@ -330,9 +335,10 @@ vysledky <- "https://www.volby.cz/pls/senat/se1111?xjazyk=CZ&xdatum=20201002&xv=
   html_nodes(xpath = "//*[@id=\"se1111_t1\"]") %>%  # get the table by its xpath
   html_table(fill = T) %>%
   .[[1]] %>%
-  select(OBVOD = Obvod, strana = `Volebnístrana`) %>%
+  dplyr::select(OBVOD = Obvod, strana = `Volebnístrana`) %>%
   # pad OBVOD with zero to 2 places to align to RCzechia data format
   mutate(OBVOD = stringr::str_pad(OBVOD, 2, side = "left", pad = "0"))
+## Error in open.connection(x, "rb"): OpenSSL SSL_connect: Connection reset by peer in connection to www.volby.cz:443
 
 podklad <- RCzechia::senat_obvody("low") %>%
   # match by key; left to preserve geometry of off cycle districts (NAs)

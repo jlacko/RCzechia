@@ -5,6 +5,7 @@
 ^codecov\.yml$
 ^data-raw$
 ^data-backup$
+^joss-paper$
 cran-comments.md
 pre-submission.R
 generate-vignette.R

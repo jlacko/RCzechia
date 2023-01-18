@@ -56,7 +56,7 @@ okresni_data <- RCzechia::okresy("low") %>% # data shapefile
 # report results
 ggplot(data = okresni_data) +
   geom_sf(aes(fill = obyvatel), colour = NA) +
-  geom_sf(data = republika("low"), color = "gray30", fill = NA) +
+  geom_sf(data = RCzechia::republika("low"), color = "gray30", fill = NA) +
   scale_fill_viridis_c(trans = "log", labels = scales::comma) +
   labs(title = "Czech population",
        fill = "population\n(log scale)") +
@@ -271,13 +271,14 @@ Package RCzechia supports two versions of relief visualization:
 * actual elevation model (meters above sea level)
 * shaded relief
 
-This example covers the second option.
+This example covers the first option.
 
 ```{r relief, echo = T, eval = T, message = F, warning = F,fig.width = 8, fig.height = 5}
 library(RCzechia)
 library(ggplot2)
-library(dplyr)
 library(terra)
+library(tidyterra)
+library(dplyr)
 
 # terrain cropped to "Czechia proper"
 relief <- vyskopis("rayshaded", cropped = TRUE)
@@ -285,15 +286,18 @@ relief <- vyskopis("rayshaded", cropped = TRUE)
 # report results
 ggplot() +
   tidyterra::geom_spatraster(data = relief) +
+
   scale_fill_gradientn(colors = hcl.colors(50, "Grays"), # 50 shades of Gray...
                        na.value = NA,
                        guide = "none") +
   geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
-          color = "steelblue", alpha = .7) +
-  labs(title = "Czech Rivers & Their Basins") +
+          color = "steelblue", alpha = .5) +
+  labs(title = "Czech Rivers & Their Basins",
+       fill = "Altitude") +
   theme_bw() +
-  theme(axis.title = element_blank())
-
+  theme(axis.title = element_blank(),
+        legend.text.align = 1,
+        legend.title.align = 0.5)
 ```
 
 
@@ -318,7 +322,7 @@ vysledky <- "https://www.volby.cz/pls/senat/se1111?xjazyk=CZ&xdatum=20201002&xv=
   html_nodes(xpath = "//*[@id=\"se1111_t1\"]") %>%  # get the table by its xpath
   html_table(fill = T) %>%
   .[[1]] %>%
-  select(OBVOD = Obvod, strana = `Volebnístrana`) %>%
+  dplyr::select(OBVOD = Obvod, strana = `Volebnístrana`) %>%
   # pad OBVOD with zero to 2 places to align to RCzechia data format
   mutate(OBVOD = stringr::str_pad(OBVOD, 2, side = "left", pad = "0"))
 

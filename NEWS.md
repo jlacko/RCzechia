@@ -1,4 +1,4 @@
-## version 1.10.1 (2023-01-17)
+## version 1.10.1 (2023-01-20)
 
  - the election districts - volebni_okrsky() - are updated to version as of January 2023 presidential elections
 

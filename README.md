@@ -2,7 +2,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/jlacko/RCzechia/workflows/R-CMD-check/badge.svg)](https://github.com/jlacko/RCzechia/actions/workflows/R-CMD-check.yaml)
 [![CRAN](http://www.r-pkg.org/badges/version/RCzechia)](https://cran.r-project.org/package=RCzechia)
-[![CRAN-checks]((https://badges.cranchecks.info/worst/RCzechia.svg))](https://cran.r-project.org/web/checks/check_results_RCzechia.html)
+[![CRAN-checks](https://badges.cranchecks.info/worst/RCzechia.svg)](https://cran.r-project.org/web/checks/check_results_RCzechia.html)
 [![Codecov test coverage](https://codecov.io/gh/jlacko/RCzechia/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jlacko/RCzechia?branch=master)
 [![Downloads-weekly](http://cranlogs.r-pkg.org/badges/last-week/RCzechia?color=brightgreen)](https://cran.r-project.org/package=RCzechia)
 [![Downloads-total](http://cranlogs.r-pkg.org/badges/grand-total/RCzechia?color=brightgreen)](https://cran.r-project.org/package=RCzechia)
@@ -56,7 +56,7 @@ administrative:
 * **obce_body** the same as obce_polygony, but centroids instead of polygons  
 * **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava and other)  
 * **senat_obvody**: 81 senate districts (volební obvody senátu)
-* **volebni_okrsky**: 14.761 general election districts (volební okrsky)
+* **volebni_okrsky**: 14.733 general election districts (volební okrsky)
 * **zip_codes**: 2.671 ZIP code areas (poštovní směrovací čísla / PSČ)
 
 natural:

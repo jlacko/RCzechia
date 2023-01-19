@@ -10,4 +10,5 @@ cran-comments.md
 pre-submission.R
 generate-vignette.R
 vignette.Rmd.orig
+*.log
 ^CRAN-SUBMISSION$

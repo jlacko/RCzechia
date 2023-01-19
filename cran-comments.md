@@ -18,10 +18,3 @@ There were no NOTES, ERRORs or WARNINGs.
 ## Downstream dependencies
 There are no downstream dependencies.
 
-## Comments
-There was a note on Win Builder machine about SSL error on www.volby.cz, which is referenced in the package vignette - this I believe to be technical in nature, as the site 1) is up & running and 2) supports SSL (and the link is https).
-
-There may be more than usual traffic on the site (there is an election going on) but the site itself is legit.
-
-Also there has been no change in the vignette since last version (this release is a minor one) and the package is passing all the CRAN checks with OK status.
-

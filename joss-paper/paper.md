@@ -81,6 +81,9 @@ The package code is thoroughly tested, with 100% test coverage. In addition to t
 Czech population at the LAU1 level as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped using `RCzechia::okresy()` and a `ggplot2` @wickham16 call. Note the use of low resolution objects to achieve a more stylized look.
 
 ``` r
+
+library(czso)
+
 src <- czso::czso_get_table("SLDB-VYBER") %>% 
    select(uzkod, obyvatel = vse1111) %>% 
    mutate(obyvatel = as.numeric(obyvatel)) 

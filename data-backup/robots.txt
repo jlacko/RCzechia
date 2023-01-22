@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /*.rds$
-Disallow: /*.gpkg$
-

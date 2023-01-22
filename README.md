@@ -77,8 +77,14 @@ All objects are implemented as functions returning data frames, so must be follo
 * **geocode**: interfaces to geocoding API of [ČÚZK](https://cuzk.cz/en).
 * **revgeo**: interfaces to reverse geocoding API of [ČÚZK](https://cuzk.cz/en).
 
-### A call for action
+## Call for Action
 
 The project is actively maintained, and ideas & suggestions to improve the package are greatly welcome. Should you feel more at ease with old fashioned email than the GitHub ticketing system - do drop me a line.
 
 But raising an issue is preferable, as I am human and I forget; GitHub does not suffer from such a failing, and will keep on reminding me till the sun and moon are darkened, and the stars no longer shine.
+
+This applies especially to cases when you find that a potentially interesting / important spatial dataset is missing. I will appreciate your opening an issue; in a best case scenario with a pointer to a possible source.
+
+## Code of Conduct
+  
+Please note that the RCzechia project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

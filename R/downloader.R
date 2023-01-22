@@ -21,7 +21,9 @@
 
     # proceed to download via curl
     message("RCzechia: downloading remote dataset.")
-    curl::curl_download(url = remote_file, destfile = local_file, quiet = T)
+    curl::curl_download(url = remote_file,
+                        destfile = local_file,
+                        quiet = F)
    } # /if - local file exists
 
   # everything except rasters

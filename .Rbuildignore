@@ -12,4 +12,5 @@ generate-vignette\.R
 vignette\.Rmd\.orig
 \*.log$
 ^CRAN-SUBMISSION$
+^CODE_OF_CONDUCT\.md$
 ^LICENSE\.md$

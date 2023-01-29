@@ -29,42 +29,27 @@ not necessary to use them).
 
 All objects are implemented as \code{sf} data frames.
 }
-\section{Administrative regions}{
-\tabular{ll}{
-   asdf \tab asdf \cr
-   ema má mísu \tab psvz \cr
-   míla je emo \tab 500 \cr
-}
-
-
-\itemize{
-\item republika - borders of the Czech Republic
-\item kraje - regions / NUTS3 units
-\item okresy - districts / LAU1 units
-\item orp_polygony - municipalities with extended powers (obce s rozšířenou působností)
-\item obce_polygony - municipalities as polygons
-\item obce_body - municipalities as centroids (points)
-\item casti - city districts (for cities that implement them)
-}
-}
-
-\section{Natural objects}{
-
-\itemize{
-\item reky - rivers
-\item plochy - water bodies
-\item lesy - woodland areas (more than 30 ha in area)
-}
-}
-
-\section{Other objects}{
-
-\itemize{
-\item silnice - roads
-\item zeleznice - railroads
-\item KFME_grid - grid cells (faunistické čtverce) according to Kartierung
-der Flora Mitteleuropas methodology
-\item chr_uzemi - protected natural areas (chráněná území)
+\section{Data overview & download sizes}{
+\tabular{lllrr}{
+   \strong{Function call} \tab \strong{Description} \tab \strong{Data Source} \tab \strong{High-Res} \tab \strong{Low-Res} \cr
+   republika \tab borders of the Czech Republic \tab \href{https://www.cuzk.cz/ruian/RUIAN.aspx}{RÚIAN / ČÚZK} \tab 245.8 KB \tab internal \cr
+   kraje \tab 14 regions / NUTS3 units \tab \href{https://www.cuzk.cz/ruian/RUIAN.aspx}{RÚIAN / ČÚZK} \tab 982.2 KB \tab internal \cr
+   okresy \tab 76 + 1 districts / LAU1 units \tab \href{https://www.cuzk.cz/ruian/RUIAN.aspx}{RÚIAN / ČÚZK} \tab 2.1 MB \tab internal \cr
+   orp_polygony \tab 205 + 1 municipalities with extended powers \tab \href{https://www.cuzk.cz/ruian/RUIAN.aspx}{RÚIAN / ČÚZK} \tab 3.1 MB \tab \emph{NA} \cr
+   obce_polygony \tab 6.258 municipalities as polygons \tab \href{https://www.cuzk.cz/ruian/RUIAN.aspx}{RÚIAN / ČÚZK} \tab 13.3 MB \tab \emph{NA} \cr
+   obce_body \tab 6.258 municipalities as centroids (points) \tab \href{https://www.cuzk.cz/ruian/RUIAN.aspx}{RÚIAN / ČÚZK} \tab 252.0 KB \tab \emph{NA} \cr
+   casti \tab 57 city districts (where available) \tab \href{https://www.cuzk.cz/ruian/RUIAN.aspx}{RÚIAN / ČÚZK} \tab 1.5 MB \tab \emph{NA} \cr
+   senat_obvody \tab 81 senate districts \tab \href{https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu}{Czech Statistical Office} \tab 10.5 MB \tab 50.0 KB \cr
+   volebni_okrsky \tab 14.733 general election districts \tab \href{https://www.cuzk.cz/ruian/RUIAN.aspx}{RÚIAN / ČÚZK} \tab 75.8 MB \tab 5.0 MB \cr
+   zip_codes \tab 2.671 ZIP code areas \tab \href{https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu}{Czech Statistical Office} \tab 45.4 MB \tab 2.1 MB \cr
+   reky \tab rivers \tab \href{https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?lng=EN&menu=2292&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-VODSTVO-V}{Data200} \tab 4.4 MB \tab 301.4 KB \cr
+   plochy \tab water bodies \tab \href{https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?lng=EN&menu=2292&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-VODSTVO-V}{Data200} \tab 687.0 KB \tab \emph{NA} \cr
+   lesy \tab woodland areas \tab \href{https://www.arcdata.cz/produkty/geograficka-data/arccr-4}{ArcČR 500 v3.3} \tab 2.1 MB \tab \emph{NA} \cr
+   silnice \tab roads \tab \href{https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?menu=2296&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-DOPRAVA-V}{Data200} \tab 6.0 MB \tab \emph{NA} \cr
+   zeleznice \tab railroads \tab \href{https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?menu=2296&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-DOPRAVA-V}{Data200} \tab 805.8 KB \tab \emph{NA} \cr
+   KFME_grid \tab KFME grid cells (faunistické čtverce) \tab \emph{NA} \tab internal \tab \emph{NA} \cr
+   chr_uzemi \tab protected natural areas \tab \href{https://data.nature.cz/}{AOPK ČR} \tab 7.0 MB \tab \emph{NA} \cr
+   vyskopis \tab terrain relief \tab \href{https://land.copernicus.eu/imagery-in-situ/eu-dem}{Copernicus EU} \tab 68.8 MB \tab \emph{NA} \cr
 }
 }
 

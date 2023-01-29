@@ -13,3 +13,5 @@ vignette\.Rmd\.orig
 \*.log$
 ^CRAN-SUBMISSION$
 ^CODE_OF_CONDUCT\.md$
+^CONTRIBUTING\.md$
+

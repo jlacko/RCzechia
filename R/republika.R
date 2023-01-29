@@ -1,6 +1,6 @@
 #' Republika
 #'
-#' Boundaries of the Czech Republic as \code{sf} polygon.
+#' Boundaries of the Czech Republic as `sf` polygon.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
@@ -8,9 +8,9 @@
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
-#' @return \code{sf} data frame with 1 row of 1 variable + geometry:
+#' @return `sf` data frame with 1 row of 1 variable + geometry:
 #'
-#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2021 <https://vdp.cuzk.cz/>
 #'
 #' @examples
 #' library(sf)

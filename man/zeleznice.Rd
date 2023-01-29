@@ -13,9 +13,9 @@ zeleznice()
 \code{sf} data frame with 9.957 rows of 3 variables + geometry:
 
 \describe{
-  \item{ELEKTRIFIKACE}{is the railroad electrified?}
-  \item{KOLEJNOST}{track: single = jednokolejní, double = dvojkolejní, more = tří a vícekolejní}
-  \item{ROZCHODNOST}{gauge: standard = normální, narrow = úzkokolejka}
+\item{ELEKTRIFIKACE}{is the railroad electrified?}
+\item{KOLEJNOST}{track: single = jednokolejní, double = dvojkolejní, more = tří a vícekolejní}
+\item{ROZCHODNOST}{gauge: standard = normální, narrow = úzkokolejka}
 }
 }
 \description{

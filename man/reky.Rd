@@ -18,10 +18,10 @@ reky(scope = "global", resolution = "high")
 \code{sf} data frame with 3.617 rows of 4 variables + geometry:
 
 \describe{
-  \item{TYP}{Type of river}
-  \item{NAZEV}{Name, with Czech accents}
-  \item{Navigable}{Boolean indicating navigability of river.}
-  \item{Major}{Boolean indicating one of the major rivers.}
+\item{TYP}{Type of river}
+\item{NAZEV}{Name, with Czech accents}
+\item{Navigable}{Boolean indicating navigability of river.}
+\item{Major}{Boolean indicating one of the major rivers.}
 }
 }
 \description{

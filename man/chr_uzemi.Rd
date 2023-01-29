@@ -13,9 +13,9 @@ chr_uzemi()
 \code{sf} data frame with 2677 rows of 3 variables + geometry
 
 \describe{
-  \item{TYP}{Type of protected area}
-  \item{NAZEV}{Name, with Czech accents}
-  \item{PLOCHA}{type of protected area: large or small}
+\item{TYP}{Type of protected area}
+\item{NAZEV}{Name, with Czech accents}
+\item{PLOCHA}{type of protected area: large or small}
 }
 }
 \description{

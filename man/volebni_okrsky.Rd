@@ -16,12 +16,12 @@ volebni_okrsky(resolution = "high")
 \code{sf} data frame with 14 733 rows of 6 variables + geometry
 
 \describe{
-  \item{Kod}{Unique id of the district.}
-  \item{Cislo}{Id of the district within a given Obec / not globally unique.}
-  \item{ObecKod}{Id of obec - maps to obce_polygony()$KOD_OBEC.}
-  \item{MomcKod}{Id of městská část - maps to casti()$KOD.}
-  \item{KOD_LAU1}{Id of okres - maps to okresy()$KOD_LAU1.}
-  \item{KOD_CZNUTS3}{Id of kraj - maps to kraje()$KOD_CZNUTS3.}
+\item{Kod}{Unique id of the district.}
+\item{Cislo}{Id of the district within a given Obec / not globally unique.}
+\item{ObecKod}{Id of obec - maps to obce_polygony()$KOD_OBEC.}
+\item{MomcKod}{Id of městská část - maps to casti()$KOD.}
+\item{KOD_LAU1}{Id of okres - maps to okresy()$KOD_LAU1.}
+\item{KOD_CZNUTS3}{Id of kraj - maps to kraje()$KOD_CZNUTS3.}
 }
 }
 \description{

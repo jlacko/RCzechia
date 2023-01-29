@@ -16,8 +16,8 @@ zip_codes(resolution = "high")
 \code{sf} data frame with 2 671 rows of 2 variables + geometry
 
 \describe{
-  \item{PSC}{ZIP Code as string in format NNNNN.}
-  \item{NAZ_POSTA}{Responsible Post Office}
+\item{PSC}{ZIP Code as string in format NNNNN.}
+\item{NAZ_POSTA}{Responsible Post Office}
 }
 }
 \description{

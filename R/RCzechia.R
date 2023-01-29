@@ -6,8 +6,8 @@
 #' returning data frames instead.
 #'
 #' To save time (and bandwidth) the downloaded objects are saved locally in
-#' `tempdir` directory when requested, and downloaded at most once \emph{per R
-#' session}; out of respect to CRAN Repository Policy a more permanent caching
+#' `tempdir` directory when requested, and downloaded at most once *per R
+#' session*; out of respect to CRAN Repository Policy a more permanent caching
 #' on user's side is not attempted.
 #'
 #' This means that:
@@ -16,14 +16,21 @@
 #'   \item all objects need to be called with (possibly empty) braces
 #' }
 #'
-#' For the most frequently used objects - \strong{republika}, \strong{kraje} and
-#' \strong{okresy} - a low resolution version is also implemented. The low
+#' For the most frequently used objects - **republika**, **kraje** and
+#' **okresy** - a low resolution version is also implemented. The low
 #' resolution data sets are stored locally (and working internet connection is
 #' not necessary to use them).
 #'
-#' All objects are implemented as \code{sf} data frames.
+#' All objects are implemented as `sf` data frames.
 #'
 #' @section Administrative regions:
+#'
+#' | asdf | asdf |
+#' | ---- | ----- |
+#' | ema má mísu | psvz |
+#' | míla je emo | 500 |
+#'
+#'
 #' \itemize{
 #'   \item republika - borders of the Czech Republic
 #'   \item kraje - regions / NUTS3 units
@@ -60,7 +67,7 @@
 #' }
 #'
 #' @docType package
-#' @name RCzechia-package
+#' @name intro
 #'
 #' @import sf
 #' @importFrom httr http_error

@@ -87,4 +87,4 @@ This applies especially to cases when you find that a potentially interesting / 
 
 ## Code of Conduct
   
-Please note that the RCzechia project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the RCzechia project is released with a [Contributor Code of Conduct](https://github.com/jlacko/RCzechia/blob/master/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

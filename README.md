@@ -81,6 +81,8 @@ All objects are implemented as functions returning data frames, so must be follo
 
 The project is actively maintained, and ideas & suggestions to improve the package are greatly welcome. Should you feel more at ease with old fashioned email than the GitHub ticketing system - do drop me a line.
 
+But raising an issue is preferable, as I am human and I forget; GitHub does not suffer from such a failing, and will keep on reminding me till the sun and moon are darkened, and the stars no longer shine.
+
 More detailed information can be found in the [CONTRIBUTING](CONTRIBUTING.md) document.
 
 ## Code of Conduct

@@ -14,3 +14,5 @@ vignette\.Rmd\.orig
 ^CRAN-SUBMISSION$
 ^CODE_OF_CONDUCT\.md$
 ^LICENSE\.md$
+^CONTRIBUTING\.md$
+^CITATION\.cff$

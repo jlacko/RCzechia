@@ -83,8 +83,8 @@ The project is actively maintained, and ideas & suggestions to improve the packa
 
 But raising an issue is preferable, as I am human and I forget; GitHub does not suffer from such a failing, and will keep on reminding me till the sun and moon are darkened, and the stars no longer shine.
 
-This applies especially to cases when you find that a potentially interesting / important spatial dataset is missing. I will appreciate your opening an issue; in a best case scenario with a pointer to a possible source.
+More detailed information can be found in the [CONTRIBUTING](CONTRIBUTING.md) document.
 
 ## Code of Conduct
   
-Please note that the RCzechia project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the RCzechia project is released with a [Contributor Code of Conduct](https://github.com/jlacko/RCzechia/blob/master/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

@@ -16,9 +16,9 @@
 #'
 #' @param cropped Should the raster provide data over Czech Republic's bounding box (cropped = FALSE) or just actual borders (cropped = TRUE). Defaults to TRUE to preserve compatiblity with earlier versions.
 #'
-#' @return \code{terra} package SpatRaster
+#' @return `terra` package SpatRaster
 #'
-#' @source Copernicus Land Monitoring service, with funding by the European Union. \url{https://land.copernicus.eu/imagery-in-situ/eu-dem}
+#' @source Copernicus Land Monitoring service, with funding by the European Union. <https://land.copernicus.eu/imagery-in-situ/eu-dem>
 #'
 #' @examples
 #' \donttest{

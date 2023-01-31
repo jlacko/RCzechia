@@ -1,6 +1,6 @@
 #' Election Districts (Volební okrsky) of the Czech Republic
 #'
-#' Function returning data frame of the local election districts for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.
+#' Function returning data frame of the local election districts for the Czech Republic as `sf` polygons. It takes a single parameter resolution - high res (default) or low res polygons.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
@@ -8,7 +8,7 @@
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
-#' @return \code{sf} data frame with 14 733 rows of 6 variables + geometry
+#' @return `sf` data frame with 14 733 rows of 6 variables + geometry
 #'
 #' \describe{
 #'   \item{Kod}{Unique id of the district.}
@@ -19,7 +19,7 @@
 #'   \item{KOD_CZNUTS3}{Id of kraj - maps to kraje()$KOD_CZNUTS3.}
 #' }
 #'
-#' @source © ČÚZK, 2023 \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2023 <https://vdp.cuzk.cz/>
 #'
 #' @examples
 #' \donttest{

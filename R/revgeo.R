@@ -1,13 +1,13 @@
 #' Reversely Geocode a Czech Address
 #'
 #' This function connects to Czech State Administration of Land Surveying and
-#' Cadastre (\url{https://www.cuzk.cz/en}) API to reversely geocode an address.
+#' Cadastre (<https://www.cuzk.cz/en>) API to reversely geocode an address.
 #' As consequence it is implemented only for Czech addresses.
 #'
-#' Input of the function is a \code{sf} data frame of spatial points, and
+#' Input of the function is a `sf` data frame of spatial points, and
 #' output a vector of characters.
 #'
-#' The function returns the same \code{sf} data frame as input, with added field
+#' The function returns the same `sf` data frame as input, with added field
 #' revgeocoded; it contains the result of operation. Should the data frame contain
 #' a column named revgeocoded it will be overwritten.
 #'
@@ -17,12 +17,12 @@
 #' In case of API failures (CUZK down) the function returns NAs again, with a message.
 #'
 #' Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
-#' \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
+#' <https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf>.
 #'
-#' @param coords coordinates to be reverse geocoded; expected as \code{sf} data
+#' @param coords coordinates to be reverse geocoded; expected as `sf` data
 #'   frame of spatial points
 #'
-#' @return \code{sf} data frame as input, with column revgeocoded added (or overwritten)
+#' @return `sf` data frame as input, with column revgeocoded added (or overwritten)
 #'
 #' @examples
 #' \donttest{

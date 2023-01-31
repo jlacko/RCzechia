@@ -47,7 +47,7 @@
 #' | vyskopis | terrain relief | [Copernicus EU](https://land.copernicus.eu/imagery-in-situ/eu-dem) | 68.8 MB | *NA* |
 #'
 #' @section Utility functions:
-#' In addition three utility functions are implemented to support spatial
+#' In addition the following utility functions are implemented to support spatial
 #' workflow:
 #'
 #' \itemize{

@@ -1,4 +1,5 @@
-## version 1.10.9999 (TBD)
+
+## version 1.11 (2023-03-01)
 
  - MIT license formalized
  

@@ -1,7 +1,7 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2023-01-19"
+date: "2023-02-24"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -32,11 +32,12 @@ tf <- tempfile(fileext = ".xls") # a temporary xls file
 GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
     write_disk(tf))
 ## Response [https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls]
-##   Date: 2023-01-19 06:58
+##   Date: 2023-02-24 08:38
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 44.5 kB
-## <ON DISK>  /tmp/Rtmppxaay0/file3f0e77bcc05.xls
+## <ON DISK>  /tmp/RtmpWqnVtP/file19597494aefe.xls
+
 src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
 
 colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
@@ -296,7 +297,6 @@ relief <- vyskopis("rayshaded", cropped = TRUE)
 # report results
 ggplot() +
   tidyterra::geom_spatraster(data = relief) +
-
   scale_fill_gradientn(colors = hcl.colors(50, "Grays"), # 50 shades of Gray...
                        na.value = NA,
                        guide = "none") +

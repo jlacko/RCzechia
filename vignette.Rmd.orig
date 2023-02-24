@@ -286,7 +286,6 @@ relief <- vyskopis("rayshaded", cropped = TRUE)
 # report results
 ggplot() +
   tidyterra::geom_spatraster(data = relief) +
-
   scale_fill_gradientn(colors = hcl.colors(50, "Grays"), # 50 shades of Gray...
                        na.value = NA,
                        guide = "none") +

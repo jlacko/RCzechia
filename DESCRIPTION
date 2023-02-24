@@ -48,3 +48,4 @@ SystemRequirements:
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 NeedsCompilation: no
+Roxygen: list(markdown = TRUE)

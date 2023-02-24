@@ -1,12 +1,12 @@
 #' Railroad Network
 #'
-#' Function returning data frame of railroads of the Czech Republic as \code{sf} lines. It has no obligatory parameters.
+#' Function returning data frame of railroads of the Czech Republic as `sf` lines. It has no obligatory parameters.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
 #' The data is current to December 2020. Downloaded size is <1 MB.
 #'
-#' @return \code{sf} data frame with 9.957 rows of 3 variables + geometry:
+#' @return `sf` data frame with 9.957 rows of 3 variables + geometry:
 #'
 #' \describe{
 #'   \item{ELEKTRIFIKACE}{is the railroad electrified?}
@@ -14,7 +14,7 @@
 #'   \item{ROZCHODNOST}{gauge: standard = normální, narrow = úzkokolejka}
 #' }
 #'
-#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
+#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. <https://www.cuzk.cz>
 #'
 #' @export
 

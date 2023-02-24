@@ -4,7 +4,7 @@
 \alias{volebni_okrsky}
 \title{Election Districts (Volební okrsky) of the Czech Republic}
 \source{
-© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+© ČÚZK, 2023 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 volebni_okrsky(resolution = "high")
@@ -13,15 +13,15 @@ volebni_okrsky(resolution = "high")
 \item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
 }
 \value{
-\code{sf} data frame with 14 761 rows of 6 variables + geometry
+\code{sf} data frame with 14 733 rows of 6 variables + geometry
 
 \describe{
-  \item{Kod}{Unique id of the district.}
-  \item{Cislo}{Id of the district within a given Obec / not globally unique.}
-  \item{ObecKod}{Id of obec - maps to obce_polygony()$KOD_OBEC.}
-  \item{MomcKod}{Id of městská část - maps to casti()$KOD.}
-  \item{KOD_LAU1}{Id of okres - maps to okresy()$KOD_LAU1.}
-  \item{KOD_CZNUTS3}{Id of kraj - maps to kraje()$KOD_CZNUTS3.}
+\item{Kod}{Unique id of the district.}
+\item{Cislo}{Id of the district within a given Obec / not globally unique.}
+\item{ObecKod}{Id of obec - maps to obce_polygony()$KOD_OBEC.}
+\item{MomcKod}{Id of městská část - maps to casti()$KOD.}
+\item{KOD_LAU1}{Id of okres - maps to okresy()$KOD_LAU1.}
+\item{KOD_CZNUTS3}{Id of kraj - maps to kraje()$KOD_CZNUTS3.}
 }
 }
 \description{
@@ -30,7 +30,7 @@ Function returning data frame of the local election districts for the Czech Repu
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to February 2021 (reflecting the freeze between announcing the date of the general elections by the President in December 2020 and certifying the results sometime in October 2021). Downloaded size of high resolution shapefile is 76 MB, size of the low res object is 5 MB (so proceed with caution, and patience).
+The data is current to January 2023 (the presidential elections). Downloaded size of high resolution shapefile is 75 MB, size of the low res object is 5 MB (so proceed with caution, and patience).
 }
 \examples{
 \donttest{

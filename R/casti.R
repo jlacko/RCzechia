@@ -1,13 +1,13 @@
 #' City Parts
 #'
-#' Function taking no parameters and returning data frame of districts of Prague and other major cities as \code{sf} polygons.
+#' Function taking no parameters and returning data frame of districts of Prague and other major cities as `sf` polygons.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
 #' The data is current to June 2021. Downloaded size is 1.5 MB.
 #'
 #'
-#' @return \code{sf} data frame with 142 rows of 4 variables + geometry
+#' @return `sf` data frame with 142 rows of 4 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD}{Code of the city part / kod mestske casti}
@@ -16,7 +16,7 @@
 #'   \item{NAZ_OBEC}{Name of the city}
 #' }
 #'
-#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2021 <https://vdp.cuzk.cz/>
 #'
 #' @export
 

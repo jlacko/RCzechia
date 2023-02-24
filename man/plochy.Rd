@@ -13,8 +13,8 @@ plochy()
 \code{sf} data frame with 1.769 rows of 2 variables + geometry
 
 \describe{
-  \item{NAZEV}{Name, with Czech accents}
-  \item{VYSKA}{water level, meters above sea level}
+\item{NAZEV}{Name, with Czech accents}
+\item{VYSKA}{water level, meters above sea level}
 }
 }
 \description{

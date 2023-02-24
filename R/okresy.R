@@ -1,6 +1,6 @@
 #' Districts (okresy)
 #'
-#' Function returning data frame of LAU1 administrative units for the Czech Republic as \code{sf} polygons. It takes a single parameter resolution - high res (default) or low res polygons.
+#' Function returning data frame of LAU1 administrative units for the Czech Republic as `sf` polygons. It takes a single parameter resolution - high res (default) or low res polygons.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
@@ -8,7 +8,7 @@
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
-#' @return \code{sf} data frame with 77 rows of 6 variables + geometry
+#' @return `sf` data frame with 77 rows of 6 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD_OKRES}{Code of the district (okres).}
@@ -19,7 +19,7 @@
 #'   \item{NAZ_CZNUTS3}{Name of the region (kraj).}
 #' }
 #'
-#' @source © ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+#' @source © ČÚZK, 2021 <https://vdp.cuzk.cz/>
 #'
 #' @examples
 #' library(sf)

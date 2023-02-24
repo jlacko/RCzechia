@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-=======
-## version 1.10.9999 (TBD)
+
+## version 1.11 (2023-03-01)
 
  - MIT license formalized
  
@@ -10,7 +9,6 @@
 
  - the election districts - volebni_okrsky() - are updated to version as of January 2023 presidential elections
 
->>>>>>> master
 ## version 1.10.0 (2022-11-25)
 
  - rasters - vyskopis("actual") and vyskopis("rayshaded") - are based on EU-DEM data, instead of the former ARC ČR 500

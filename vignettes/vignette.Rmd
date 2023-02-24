@@ -37,6 +37,7 @@ GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.x
 ##   Content-Type: application/octet-stream
 ##   Size: 44.5 kB
 ## <ON DISK>  /tmp/RtmpWqnVtP/file19597494aefe.xls
+
 src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
 
 colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones

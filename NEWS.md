@@ -1,9 +1,11 @@
 
-## version 1.11 (2023-03-01)
+## version 1.11 (2023-03-03)
 
  - MIT license formalized
  
  - Code of Conduct formalized
+ 
+ - CITATION file updated
 
 ## version 1.10.1 (2023-01-20)
 

@@ -1,0 +1,14 @@
+citHeader("To cite RCzechia in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "RCzechia: Spatial Objects of the Czech Republic",
+  author   = "Lacko J.",
+  journal  = "Journal of Open Source Software",
+  year     = 2023,
+  volume   = 8,
+  number   = 83,
+  url      = "https://joss.theoj.org/papers/10.21105/joss.05082",
+  doi      = "10.21105/joss.05082",
+  textVersion = "Lacko, J., (2023). RCzechia: Spatial Objects of the Czech Republic. Journal of Open Source Software, 8(83), 5082, https://doi.org/10.21105/joss.05082"
+)

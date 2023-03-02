@@ -55,7 +55,8 @@ All objects are implemented as \code{sf} data frames.
 
 \section{Utility functions}{
 
-In addition the following utility functions are implemented to support spatial workflow:
+In addition the following utility functions are implemented to support spatial
+workflow:
 
 \itemize{
 \item geocode - geocoding (from address to coordinates)

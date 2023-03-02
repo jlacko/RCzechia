@@ -4,7 +4,6 @@ on:
   # 1) check every push regardless of branch (ignoring joss-paper)
   push:
     branches-ignore:
-      - joss-paper
       - data-backup
 
   # 2) every 4th day of month at CET noon last commit on default branch (i.e. master)

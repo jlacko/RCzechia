@@ -1,5 +1,6 @@
 citHeader("To cite RCzechia in publications use:")
 
+
 bibentry(
   bibtype  = "Article",
   title    = "RCzechia: Spatial Objects of the Czech Republic",

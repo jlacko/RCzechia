@@ -1,23 +1,37 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.4.0
+# CITATION file created with {cffr} R package, v0.4.1
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
- 
+
 cff-version: 1.2.0
 message: 'To cite package "RCzechia" in publications use:'
 type: software
 license: MIT
 title: 'RCzechia: Spatial Objects of the Czech Republic'
-version: 1.10.99999
+version: '1.11'
+doi: 10.21105/joss.05082
 abstract: Administrative regions and other spatial objects of the Czech Republic.
 authors:
 - family-names: Lacko
   given-names: Jindra
   email: jindra.lacko@gmail.com
   orcid: https://orcid.org/0000-0002-0375-5156
+preferred-citation:
+  type: article
+  title: 'RCzechia: Spatial Objects of the Czech Republic'
+  authors:
+  - family-names: Lacko
+    given-names: J.
+  journal: Journal of Open Source Software
+  year: '2023'
+  volume: '8'
+  issue: '83'
+  url: https://joss.theoj.org/papers/10.21105/joss.05082
+  doi: 10.21105/joss.05082
 repository: https://CRAN.R-project.org/package=RCzechia
 repository-code: https://github.com/jlacko/RCzechia
 url: https://github.com/jlacko/RCzechia
+date-released: '2023-03-03'
 contact:
 - family-names: Lacko
   given-names: Jindra
@@ -73,7 +87,7 @@ references:
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
   year: '2023'
 - type: software
   title: jsonlite
@@ -122,11 +136,11 @@ references:
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
     orcid: https://orcid.org/0000-0003-4757-117X
   - family-names: Bryan
     given-names: Jennifer
-    email: jenny@rstudio.com
+    email: jenny@posit.co
     orcid: https://orcid.org/0000-0002-6983-2759
   year: '2023'
 - type: software
@@ -159,7 +173,7 @@ references:
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
     orcid: https://orcid.org/0000-0003-4757-117X
   - family-names: Chang
     given-names: Winston
@@ -168,7 +182,7 @@ references:
     given-names: Lionel
   - family-names: Pedersen
     given-names: Thomas Lin
-    email: thomas.pedersen@rstudio.com
+    email: thomas.pedersen@posit.co
     orcid: https://orcid.org/0000-0002-5147-4711
   - family-names: Takahashi
     given-names: Kohske
@@ -358,7 +372,7 @@ references:
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
     orcid: https://orcid.org/0000-0003-4757-117X
   - family-names: François
     given-names: Romain
@@ -368,6 +382,10 @@ references:
   - family-names: Müller
     given-names: Kirill
     orcid: https://orcid.org/0000-0002-1416-3412
+  - family-names: Vaughan
+    given-names: Davis
+    email: davis@posit.co
+    orcid: https://orcid.org/0000-0003-4777-038X
   year: '2023'
 - type: software
   title: lwgeom

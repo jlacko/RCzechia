@@ -25,34 +25,74 @@
 #'
 #' @section Data overview & download sizes:
 #'
-#' |  **Function call**  |  **Description**  |  **Data Source**  |  **High-Res**  |  **Low-Res** |
-#' | -------- | ------- | ------- | -------------: | ------------: |
-#' | republika | borders of the Czech Republic | [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx) | 245.8 KB | internal |
-#' | kraje | 14 regions / NUTS3 units | [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx) | 982.2 KB | internal |
-#' | okresy | 76 + 1 districts / LAU1 units | [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx) | 2.1 MB | internal |
-#' | orp_polygony | 205 + 1 municipalities with extended powers | [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx) | 3.1 MB | *NA* |
-#' | obce_polygony | 6.258 municipalities as polygons | [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx) | 13.3 MB | *NA* |
-#' | obce_body | 6.258 municipalities as centroids (points) | [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx) | 252.0 KB | *NA* |
-#' | casti | 57 city districts (where available) | [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx) | 1.5 MB | *NA* |
-#' | senat_obvody | 81 senate districts | [Czech Statistical Office](https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu) | 10.5 MB | 50.0 KB |
-#' | volebni_okrsky | 14.733 general election districts | [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx)  | 75.8 MB | 5.0 MB |
-#' | zip_codes | 2.671 ZIP code areas | [Czech Statistical Office](https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu) | 45.4 MB | 2.1 MB |
-#' | reky | rivers | [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?lng=EN&menu=2292&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-VODSTVO-V) | 4.4 MB | 301.4 KB |
-#' | plochy | water bodies | [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?lng=EN&menu=2292&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-VODSTVO-V) | 687.0 KB | *NA* |
-#' | lesy | woodland areas | [ArcČR 500 v3.3](https://www.arcdata.cz/produkty/geograficka-data/arccr-4) | 2.1 MB | *NA* |
-#' | silnice | roads | [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?menu=2296&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-DOPRAVA-V) | 6.0 MB | *NA* |
-#' | zeleznice | railroads | [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?menu=2296&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-DOPRAVA-V) | 805.8 KB | *NA* |
-#' | KFME_grid | KFME grid cells (faunistické čtverce) | *NA* | internal | *NA* |
-#' | chr_uzemi | protected natural areas | [AOPK ČR](https://data.nature.cz/) | 7.0 MB | *NA* |
-#' | vyskopis | terrain relief | [Copernicus EU](https://land.copernicus.eu/imagery-in-situ/eu-dem) | 68.8 MB | *NA* |
+#' \itemize{
+#'  \item *republika* - borders of the Czech Republic
+#'
+#'   source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 245.8 KB, low res version internal
+#'
+#'  \item *kraje* - 14 regions / NUTS3 units
+#'
+#'  source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 982.2 KB, low res version internal
+#'  \item *okresy* - 76 + 1 districts / LAU1 units
+#'
+#'  source:  [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 2.1 MB, low res version internal
+#'  \item *orp_polygony* - 205 + 1 municipalities with extended powers
+#'
+#'  source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 3.1 MB, no low res version
+#'  \item *obce_polygony* - 6.258 municipalities as polygons
+#'
+#'  source:  [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 13.3 MB, no low res version
+#'  \item *obce_body* - 6.258 municipalities as centroids (points)
+#'
+#'  source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 252.0 KB, no low res version
+#'  \item *casti* - 57 city districts (where available)
+#'
+#'  source:  [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 1.5 MB, no low res version
+#'  \item *senat_obvody* - 81 senate districts
+#'
+#'  source:  [Czech Statistical Office](https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu), high res object: 10.5 MB, low res object: 50.0 KB
+#'  \item *volebni_okrsky* - 14.733 general election districts
+#'
+#'  source:  [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 75.8 MB, low res object:  5.0 MB
+#'  \item *zip_codes* - 2.671 ZIP code areas
+#'
+#'  source:  [Czech Statistical Office](https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu), high res object: 45.4 MB, low res object: 2.1 MB
+#'  \item *reky* - rivers
+#'
+#'  source:  [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?lng=EN&menu=2292&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-VODSTVO-V), high res object: 4.4 MB, low res object: 301.4 KB
+#'  \item *plochy* - water bodies
+#'
+#'  source:  [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?lng=EN&menu=2292&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-VODSTVO-V), high res object: 687.0 KB, no low res version
+#'  \item *lesy* - woodland areas
+#'
+#'  source:  [ArcČR 500 v3.3](https://www.arcdata.cz/produkty/geograficka-data/arccr-4), high res object: 2.1 MB, no low res version
+#'  \item *silnice* - roads
+#'
+#'  source:  [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?menu=2296&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-DOPRAVA-V), high res object: 6.0 MB, no low res version
+#'  \item *zeleznice* - railroads
+#'
+#'  source:  [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?menu=2296&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-DOPRAVA-V), high res object: 805.8 KB, no low res version
+#'  \item *KFME_grid* - KFME grid cells (faunistické čtverce)
+#'
+#'  source:  own work,  internal
+#'  \item *chr_uzemi* - protected natural areas
+#'
+#'  source:  [AOPK ČR](https://data.nature.cz/), high res object: 7.0 MB, no low res version
+#'  \item *vyskopis* - terrain relief
+#'
+#'  source:  [Copernicus EU](https://land.copernicus.eu/imagery-in-situ/eu-dem), high res object: 68.8 MB, no low res version
+#'  \item *geomorfo* - geomorphological divisions
+#'
+#'  source:  [CENIA / INSPIRE](https://www.arcgis.com/home/item.html?id=25813686a8564b0bbcdc951a5573cfa4), high res object: <1 MB, no low res version
+#' }
 #'
 #' @section Utility functions:
 #' In addition the following utility functions are implemented to support spatial
 #' workflow:
 #'
 #' \itemize{
-#'   \item geocode - geocoding (from address to coordinates)
-#'   \item revgeo - reverse geocoding (from coordinates to address)
+#'   \item *geocode* - geocoding (from address to coordinates)
+#'   \item *revgeo* - reverse geocoding (from coordinates to address)
 #' }
 #'
 #' @docType package

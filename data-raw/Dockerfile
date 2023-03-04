@@ -4,6 +4,9 @@ FROM rocker/rstudio:4.1.0
 # for GDAL use
 RUN apt-get update && apt-get -y install libexpat-dev
 
+# for GEOS use
+RUN apt-get update && apt-get -y install libsqlite3-dev
+
 # the big three - cruel & unusual versions from source (takes about forever; should be on top of the dockerfile)
 
 # PROJ

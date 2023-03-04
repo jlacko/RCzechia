@@ -70,6 +70,7 @@ natural:
 * **lesy**: woodland areas (more than 30 ha in area)
 * **KFME_grid**: KFME grid cells (faunistické čtverce)
 * **vyskopis**: terrain of the Czech republic as a {terra} package raster object
+* **geomorfo**: geomorphological division of the Czech Republic
 
 
 All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).

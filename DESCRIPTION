@@ -1,8 +1,8 @@
 Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
-Version: 1.11
-Date: 2023-03-03
+Version: 1.11.1
+Date: 2023-03-04
 Authors@R: c(
   person("Jindra", "Lacko", , "jindra.lacko@gmail.com", role = c("aut", "cre"),
   comment = c(ORCID = "0000-0002-0375-5156")),

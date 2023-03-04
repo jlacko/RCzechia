@@ -14,9 +14,7 @@
 ## R CMD check results
 Status: OK
 
-There is a WARNING on win builder old rel - checking PDF version of manual ... WARNING - that I believe is technical in nature. It is not present in the two other win builder results (release & devel) nor locally.
-
-Building the pdf version locally using devtools::build_manual() failed to reproduce the error; in fact the pdf version of the manual was produced without a glitch. 
+This release sidesteps the LaTeX errors ("checking PDF version of manual ... WARNING / LaTeX errors when creating PDF version.") that have developed on some - although not all - flavors of CRAN checks, e.g. r-release-macos and r-oldrel-macos.
 
 ## Downstream dependencies
 There are no downstream dependencies.

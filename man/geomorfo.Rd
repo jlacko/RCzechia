@@ -4,7 +4,7 @@
 \alias{geomorfo}
 \title{Geomorphological division of the Czech Republic}
 \source{
-CENIA / INSPIRE, via Mgr. Vojtěch Blažek, Ph.D. \url{https://old.pf.jcu.cz/structure/departments/kge/blazek.html}
+CENIA / INSPIRE, via Mgr. Vojtěch Blažek, Ph.D. \url{https://www.arcgis.com/home/item.html?id=25813686a8564b0bbcdc951a5573cfa4}
 }
 \usage{
 geomorfo(level)

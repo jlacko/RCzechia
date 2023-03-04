@@ -1,3 +1,8 @@
+## version 1.11.1 (2023-03-04)
+
+ - added geomorfo function providing geomorphological divisions of the Czech Republic
+ 
+ - corrected errors in LaTeX formating of PDF manual on some CRAN test flavors
 
 ## version 1.11 (2023-03-03)
 

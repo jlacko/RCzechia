@@ -50,6 +50,7 @@ All objects are implemented as \code{sf} data frames.
    KFME_grid \tab KFME grid cells (faunistické čtverce) \tab \emph{NA} \tab internal \tab \emph{NA} \cr
    chr_uzemi \tab protected natural areas \tab \href{https://data.nature.cz/}{AOPK ČR} \tab 7.0 MB \tab \emph{NA} \cr
    vyskopis \tab terrain relief \tab \href{https://land.copernicus.eu/imagery-in-situ/eu-dem}{Copernicus EU} \tab 68.8 MB \tab \emph{NA} \cr
+   geomorfo \tab geomorphological divisions \tab \href{https://geoportal.gov.cz/}{CENIA / INSPIRE} \tab <1 MB \tab \emph{NA} \cr
 }
 }
 

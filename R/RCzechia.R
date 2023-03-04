@@ -45,6 +45,7 @@
 #' | KFME_grid | KFME grid cells (faunistické čtverce) | *NA* | internal | *NA* |
 #' | chr_uzemi | protected natural areas | [AOPK ČR](https://data.nature.cz/) | 7.0 MB | *NA* |
 #' | vyskopis | terrain relief | [Copernicus EU](https://land.copernicus.eu/imagery-in-situ/eu-dem) | 68.8 MB | *NA* |
+#' | geomorfo | geomorphological divisions | [CENIA / INSPIRE](https://geoportal.gov.cz/) | <1 MB | *NA* |
 #'
 #' @section Utility functions:
 #' In addition the following utility functions are implemented to support spatial

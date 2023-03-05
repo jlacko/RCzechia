@@ -1,6 +1,6 @@
 #' Internal function - generic downloader, used to serve the rds files from S3
 #'
-#' The function utilizes environment variable RCZECHIA_MIRROR as a mirror location of remote files; to configure an alternative (possibly local) repository use `Sys.setenv("RCZECHIA_MIRROR" = "a path")`
+#' The function utilizes environment variable RCZECHIA_MIRROR as a mirror location of remote files; to configure an alternative (possibly local) repository use `Sys.setenv("RCZECHIA_MIRROR" = "file:///someplace/local")`
 #'
 #' @param file file to be downloaded (or not...) from S3
 #' @keywords internal
@@ -17,7 +17,7 @@
     message("RCzechia: using temporary local dataset.")
   } else {
     if (!.ok_to_proceed(remote_file) | !network) { # network is down
-      message("No internet connection.")
+#      message("No internet connection.")
       return(NULL)
     }
 

@@ -42,8 +42,8 @@ test_that("geocode", {
   expect_equal(st_crs(geocode(dos_sochoros[1], 5514))$epsg, 5514) # Křovák = Křovák
 
   # očekávaná hodnota souřadnic známého bodu
-  expect_equal(st_coordinates(geocode(dos_sochoros[1]))[, "X"], 14.4365531) # default = vrací WGS84
-  expect_equal(st_coordinates(geocode(dos_sochoros[1]))[, "Y"], 50.1000536) # dtto...
+  expect_equal(unname(st_coordinates(geocode(dos_sochoros[1]))[, "X"]), 14.4365531) # default = vrací WGS84
+  expect_equal(unname(st_coordinates(geocode(dos_sochoros[1]))[, "Y"]), 50.1000536, tolerance = 1/100) # dtto...
 
   # chybná adresa:
   expect_message(geocode(dos_sochoros[2]), "no match") # když nejde, tak nejde...
@@ -54,8 +54,8 @@ test_that("geocode", {
   expect_gt(nrow(geocode("pplk. Sochora 4")), 1) # jedna v Praze, jedna v Brandýse: ergo víc jak 1
 
   # v Českých Budějovicích by chtěl žít každý...
-  expect_equal(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "X"], 14.4749019) # podle mapy.cz na 5 desetinek
-  expect_equal(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "Y"], 48.9727519) # dtto...
+  expect_equal(unname(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "X"]), 14.4749019) # podle mapy.cz na 5 desetinek
+  expect_equal(unname(st_coordinates(geocode("Dr. Stejskala 426/15, České Budějovice 1, České Budějovice"))[, "Y"]), 48.9727519) # dtto...
 })
 
 

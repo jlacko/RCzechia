@@ -1,19 +1,24 @@
 #' Geomorphological division of the Czech Republic
 #'
-#' Bflm psvz boilerplate placeholder
+#' Function returning one of the 8 levels of Geomorphological division of the Czech Republic, as specified by the obligatory parameter **level**.
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to December 2020. Downloaded size is 6 MB.
+#' The data is current to 2014 (3rd edition of Demek & Mackovčin's *Zeměpisný lexikon ČR. Hory a nížiny.*) Downloaded size is < 1 MB for any of the hierarchy levels.
 #'
-#' @param level level of geomorphological division, one of system, subsystem, provincie, subprovincie, oblast, celek, podcelek, okrsek.
+#' @param level level of geomorphological division. One of system, subsystem, provincie, subprovincie, oblast, celek, podcelek, okrsek.
 #'
-#' @return `sf` data frame with 59.594 rows of 3 variables + geometry:
+#' @return `sf` data frame with geomorfo division names & codes + geometry; namely:
 #'
 #' \describe{
-#'   \item{TRIDA}{Class of the road: highway = dálnice, speedway = rychlostní silnice, 1st class road = silnice I. třídy, 2nd class road = silnice II. třídy, 3rd class road = silnice III. třídy, other road = neevidovaná silnice}
-#'   \item{CISLO_SILNICE}{Local road code}
-#'   \item{MEZINARODNI_OZNACENI}{International road code}
+#'   \item{system}{name of the system; 2 rows}
+#'   \item{subsystem}{names of the system, subsystem + kod; 4 rows}
+#'   \item{provincie}{name of the province; 4 rows}
+#'   \item{subprovincie}{name of the subprovince + kod; 10 rows}
+#'   \item{oblast}{name of the subprovince, oblast + kod; 27 rows}
+#'   \item{celek}{name of the subprovince, oblast, celek + kod; 93 rows}
+#'   \item{podcelek}{name of the subprovince, oblast, celek, podcelek + kod; 253 rows}
+#'   \item{okrsek}{name of the subprovince, oblast, celek, podcelek, okrsek  + kod; 933 rows}
 #' }
 #'
 #' @source CENIA / INSPIRE, via Mgr. Vojtěch Blažek, Ph.D. <https://www.arcgis.com/home/item.html?id=25813686a8564b0bbcdc951a5573cfa4>

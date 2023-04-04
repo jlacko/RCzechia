@@ -1,3 +1,7 @@
+## version 1.11.2 (2023-XX-XX)
+  
+ - updated documentation for the geomorfo function
+
 ## version 1.11.1 (2023-03-04)
 
  - added geomorfo function providing geomorphological divisions of the Czech Republic

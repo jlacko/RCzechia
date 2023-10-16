@@ -10,6 +10,8 @@
 #'
 #' The data is current to February 2021 (last update was in January 2020). Downloaded size of high resolution shapefile is 45 MB, size of the low res object is 2 MB.
 #'
+#' Raw version of the dataset is available for download for use in non-R setting on <https://rczechia.jla-data.net/zip_codes.gpkg>.
+#'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
 #' @return `sf` data frame with 2 671 rows of 2 variables + geometry

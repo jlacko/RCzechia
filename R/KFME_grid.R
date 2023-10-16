@@ -4,6 +4,8 @@
 #'
 #' The function returns a {sf} data frame of grid cells. Depending on the value of parameter `resolution` either low resolution (26×42 cells - default) with labels in 4 digit format (e.g. Hrčava = 6479) or high resolution (104×168 cells) with labels in 4 digit + 1 letter format (e.g Hrčava = 6479c).
 #'
+#' Raw version of the dataset is available for download for use in non-R setting on <https://rczechia.jla-data.net/kfme_czechia.gpkg>.
+#'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "low" and "high". Default is "low".
 #'
 #' @return `sf` data frame with 1092 rows in low resolution and 4368 rows in high resolution

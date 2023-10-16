@@ -31,6 +31,8 @@ The geometry type is MULTIPOLYGON, as there are a number of non continuous areas
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
 The data is current to February 2021 (last update was in January 2020). Downloaded size of high resolution shapefile is 45 MB, size of the low res object is 2 MB.
+
+Raw version of the dataset is available for download for use in non-R setting on \url{https://rczechia.jla-data.net/zip_codes.gpkg}.
 }
 \examples{
 \donttest{

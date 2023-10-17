@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-inst/doc
+/inst/doc
 /data-raw/*.xml
 /data-raw/komunikace/*
 /data-raw/vodstvo/*

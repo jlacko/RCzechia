@@ -5,6 +5,10 @@ on:
   push:
     branches-ignore:
       - data-backup
+  pull_request:
+    branches:
+      - master
+      - main
 
   # 2) every 4th day of month at CET noon last commit on default branch (i.e. master)
   schedule:
@@ -50,6 +54,3 @@ jobs:
       - uses: r-lib/actions/check-r-package@v2
         with:
           upload-snapshots: true
-
-
-

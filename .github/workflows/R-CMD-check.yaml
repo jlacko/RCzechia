@@ -5,6 +5,7 @@ on:
   push:
     branches-ignore:
       - joss-paper
+      - data-backup
   # 2) every 4th day of month at CET noon last commit on default branch (i.e. master)
   schedule:
     - cron:  "0 11 4 * *"

@@ -34,7 +34,18 @@ The data is current to June 2021 (i.e changes introduced by act 51/2020 Sb. are 
 \examples{
 library(sf)
 
-hranice <- kraje("low")
-plot(hranice["KOD_CZNUTS3"])
+colors <- rainbow(14) # legend colors
+
+hranice <- RCzechia::kraje("low")
+
+plot(hranice["KOD_CZNUTS3"],
+     col = colors,
+     main = "Czech Regions",
+     xlim = st_bbox(hranice)[c(1, 3)] * c(1, 1.1))
+
+legend("right",
+       hranice$KOD_CZNUTS3,
+       fill = colors,
+       bty = "n")
 
 }

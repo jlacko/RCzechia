@@ -13,7 +13,15 @@ silnice()
 \code{sf} data frame with 59.594 rows of 3 variables + geometry:
 
 \describe{
-\item{TRIDA}{Class of the road: highway = dálnice, speedway = rychlostní silnice, 1st class road = silnice I. třídy, 2nd class road = silnice II. třídy, 3rd class road = silnice III. třídy, other road = neevidovaná silnice}
+\item{TRIDA}{Class of the road:}
+\itemize{
+\item highway = dálnice,
+\item speedway = rychlostní silnice,
+\item 1st class road = silnice I. třídy,
+\item 2nd class road = silnice II. třídy,
+\item 3rd class road = silnice III. třídy,
+\item other road = neevidovaná silnice
+}
 \item{CISLO_SILNICE}{Local road code}
 \item{MEZINARODNI_OZNACENI}{International road code}
 }

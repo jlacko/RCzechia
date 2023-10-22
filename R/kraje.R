@@ -24,7 +24,7 @@
 #' library(sf)
 #'
 #' hranice <- kraje("low")
-#' plot(hranice["NAZ_CZNUTS3"])
+#' plot(hranice["KOD_CZNUTS3"])
 #'
 #' @export
 

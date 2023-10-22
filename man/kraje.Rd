@@ -35,6 +35,6 @@ The data is current to June 2021 (i.e changes introduced by act 51/2020 Sb. are 
 library(sf)
 
 hranice <- kraje("low")
-plot(hranice["NAZ_CZNUTS3"])
+plot(hranice["KOD_CZNUTS3"])
 
 }

@@ -24,7 +24,7 @@
 #' library(sf)
 #'
 #' hranice <- kraje("low")
-#' plot(hranice, col = "white", max.plot = 1)
+#' plot(hranice["NAZ_CZNUTS3"])
 #'
 #' @export
 

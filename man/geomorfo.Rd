@@ -41,7 +41,7 @@ library(sf)
 
 soustavy <- RCzechia::geomorfo("subprovincie")
 
-plot(soustavy["subprovincie"])
+plot(soustavy["kod"])
 
 }
 

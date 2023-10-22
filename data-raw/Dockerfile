@@ -53,19 +53,19 @@ RUN apt-get update && apt-get -y install libjpeg-dev
 RUN ldconfig
 
 # and finally! set up R packages / frozen in time to keep consistent
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('devtools')) install.packages(c('devtools'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('dplyr')) install.packages(c('dplyr'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('sp')) install.packages(c('sp'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('lwgeom')) install.packages(c('lwgeom'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('sf')) install.packages(c('sf'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('czso')) install.packages(c('czso'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('BH')) install.packages(c('BH'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('data.table')) install.packages(c('data.table'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('nngeo')) install.packages(c('nngeo'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('rmapshaper')) install.packages(c('rmapshaper'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('ggplot2')) install.packages(c('ggplot2'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('usethis')) install.packages(c('usethis'))"
-RUN R -e "options(repos = list(CRAN = 'http://mran.revolutionanalytics.com/snapshot/2022-09-30')); if(!require('rlang')) install.packages(c('rlang'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('devtools')) install.packages(c('devtools'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('dplyr')) install.packages(c('dplyr'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('sp')) install.packages(c('sp'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('lwgeom')) install.packages(c('lwgeom'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('sf')) install.packages(c('sf'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('czso')) install.packages(c('czso'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('BH')) install.packages(c('BH'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('data.table')) install.packages(c('data.table'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('nngeo')) install.packages(c('nngeo'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('rmapshaper')) install.packages(c('rmapshaper'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('ggplot2')) install.packages(c('ggplot2'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('usethis')) install.packages(c('usethis'))"
+RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('rlang')) install.packages(c('rlang'))"
 
 # bleeding edge RCzechia, current CRAN (not really frozen in time, but under control)
 RUN R -e "install.packages('RCzechia')"

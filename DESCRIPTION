@@ -10,7 +10,7 @@ Authors@R: c(
          comment = "Nick reviewed the package for JOSS, providing helpful comments leading to significant improvement of the package."))
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: Administrative regions and other spatial objects of the Czech Republic.
-URL: https://github.com/jlacko/RCzechia
+URL: https://rczechia.jla-data.net
 BugReports: https://github.com/jlacko/RCzechia/issues
 License: MIT + file LICENSE
 Encoding: UTF-8

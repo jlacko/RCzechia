@@ -30,7 +30,7 @@ Function returning data frame of LAU1 administrative units for the Czech Republi
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The dataset is based on RUIAN data by the Czech cadastral office. If necessary you can download the most up to date raw dataset in VFR format (a special case of XML which is understood by GDAL) on https://vdp.cuzk.cz/vdp/ruian/vymennyformat (in Czech only).
+The dataset is based on RUIAN data by the Czech cadastral office. If necessary you can download the most up to date raw dataset in VFR format (a special case of XML which is understood by GDAL) on \url{https://vdp.cuzk.cz/vdp/ruian/vymennyformat} (in Czech only).
 
 The data is current to June 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size of high resolution shapefile 2.1 MB.
 }

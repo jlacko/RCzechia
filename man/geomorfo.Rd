@@ -34,3 +34,15 @@ Due to package size constraints the data are stored externally (and a working in
 
 The data is current to 2014 (3rd edition of Demek & Mackovčin's \emph{Zeměpisný lexikon ČR. Hory a nížiny.}) Downloaded size is < 1 MB for any of the hierarchy levels.
 }
+\examples{
+
+\donttest{
+library(sf)
+
+soustavy <- RCzechia::geomorfo("subprovincie")
+
+plot(soustavy["subprovincie"])
+
+}
+
+}

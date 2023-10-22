@@ -46,5 +46,7 @@ brno <- obce_polygony() \%>\% # shapefile of Brno
 pupek_brna <- st_centroid(brno) # calculate centroid
 
 adresa_pupku <- revgeo(pupek_brna)$revgeocoded # address of the center
+
+print(adresa_pupku)
 }
 }

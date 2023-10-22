@@ -1,6 +1,8 @@
 ## version 1.11.2 (2023-XX-XX)
   
  - updated documentation for the geomorfo function
+ 
+ - introduced pkgdown documentation on https://rczechia.jla-data.net
 
 ## version 1.11.1 (2023-03-04)
 

@@ -4,6 +4,11 @@
 #' @keywords internal
 
 .ok_to_proceed <- function(remote_file) {
+
+  # local files are OK to proceed by definiton
+  if (grepl("file:///", remote_file))  return(TRUE)
+
+  # remote files require testing
   try_head <- function(x, ...) {
     tryCatch(
       httr::HEAD(url = x, httr::timeout(10), ...),

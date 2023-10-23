@@ -1,11 +1,13 @@
 Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
-Version: 1.10.0
-Date: 2022-11-25
-Authors@R: 
-    person("Jindra", "Lacko", , "jindra.lacko@gmail.com", role = c("aut", "cre"),
-    comment = c(ORCID = "0000-0002-0375-5156"))
+Version: 1.11.2.999999999
+Date: 2023-XX-XX
+Authors@R: c(
+  person("Jindra", "Lacko", , "jindra.lacko@gmail.com", role = c("aut", "cre"),
+  comment = c(ORCID = "0000-0002-0375-5156")),
+  person("Nick", "Bearman", role = "rev",
+         comment = "Nick reviewed the package for JOSS, providing helpful comments leading to significant improvement of the package."))
 Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: Administrative regions and other spatial objects of the Czech Republic.
 URL: https://github.com/jlacko/RCzechia
@@ -46,3 +48,4 @@ SystemRequirements:
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 NeedsCompilation: no
+Roxygen: list(markdown = TRUE)

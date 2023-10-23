@@ -280,27 +280,23 @@ library(terra)
 library(tidyterra)
 library(dplyr)
 
-
-
 # terrain cropped to "Czechia proper"
-relief <- vyskopis("actual", cropped = TRUE)
+relief <- vyskopis("rayshaded", cropped = TRUE)
 
 # report results
 ggplot() +
   tidyterra::geom_spatraster(data = relief) +
+  scale_fill_gradientn(colors = hcl.colors(50, "Grays"), # 50 shades of Gray...
+                       na.value = NA,
+                       guide = "none") +
   geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
           color = "steelblue", alpha = .5) +
-  scale_fill_gradientn(colors = hypso.colors2(10),
-                       labels = scales::label_number(suffix = " m"),
-                       limits = c(0, 1550),
-                       na.value = NA) +
   labs(title = "Czech Rivers & Their Basins",
        fill = "Altitude") +
   theme_bw() +
   theme(axis.title = element_blank(),
         legend.text.align = 1,
         legend.title.align = 0.5)
-
 ```
 
 
@@ -308,9 +304,9 @@ ggplot() +
 
 Visualizing election results is one of typical use cases of the RCzechia package.
 
-This example uses [`{rvest}`](https://rvest.tidyverse.org/) to scrape the official table of results of the 2020 fall Senate elections from the official [volby.cz](https://www.volby.cz/) results, and display a map of the party affiliation of the elected senator.
+This example uses [`{rvest}`](https://rvest.tidyverse.org/) to scrape the official table of results of the 2020 fall Senate elections from the official site of the Czech Statistical Office, and display a map of the party affiliation of the elected senator.
 
-Since not all districts were up for election in this cycle two thirds of the map contain NA's; that is expected behavior.
+Since not all districts were up for election in this cycle two thirds of the map contain NA's; that is expected behavior (the Czech senate elections are staggered, like in the US).
 
 ```{r senat, echo = T, eval = T, message = F, warning = F}
 

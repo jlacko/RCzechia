@@ -10,6 +10,6 @@
 \item{file}{file to be downloaded (or not...) from S3}
 }
 \description{
-Internal function - generic downloader, used to serve the rds files from S3
+The function utilizes environment variable RCZECHIA_MIRROR as a mirror location of remote files; to configure an alternative (possibly local) repository use \code{Sys.setenv("RCZECHIA_MIRROR" = "file:///someplace/local")}
 }
 \keyword{internal}

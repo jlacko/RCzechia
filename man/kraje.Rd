@@ -16,9 +16,9 @@ kraje(resolution = "high")
 \code{sf} data frame with 14 rows of 3 variables + geometry
 
 \describe{
-  \item{KOD_KRAJ}{Code of the region.}
-  \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
-  \item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
+\item{KOD_KRAJ}{Code of the region.}
+\item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
+\item{NAZ_CZNUTS3}{Name of the region as NUTS3 (kraj).}
 }
 }
 \description{

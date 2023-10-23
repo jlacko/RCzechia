@@ -4,6 +4,9 @@ FROM rocker/rstudio:4.1.0
 # for GDAL use
 RUN apt-get update && apt-get -y install libexpat-dev
 
+# for GEOS use
+RUN apt-get update && apt-get -y install libsqlite3-dev
+
 # the big three - cruel & unusual versions from source (takes about forever; should be on top of the dockerfile)
 
 # PROJ
@@ -52,20 +55,21 @@ RUN apt-get update && apt-get -y install libtiff5-dev
 RUN apt-get update && apt-get -y install libjpeg-dev
 RUN ldconfig
 
-# and finally! set up R packages / frozen in time to keep consistent
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('devtools')) install.packages(c('devtools'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('dplyr')) install.packages(c('dplyr'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('sp')) install.packages(c('sp'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('lwgeom')) install.packages(c('lwgeom'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('sf')) install.packages(c('sf'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('czso')) install.packages(c('czso'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('BH')) install.packages(c('BH'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('data.table')) install.packages(c('data.table'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('nngeo')) install.packages(c('nngeo'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('rmapshaper')) install.packages(c('rmapshaper'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('ggplot2')) install.packages(c('ggplot2'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('usethis')) install.packages(c('usethis'))"
-RUN R -e "options(repos = list(CRAN = 'https://packagemanager.rstudio.com/cran/2022-09-30')); if(!require('rlang')) install.packages(c('rlang'))"
+# and finally! set up R packages / frozen in time to keep consistent; source versions to align with local big 3
+RUN R -e "options(warn=2); install.packages('devtools', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('dplyr', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('sp', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('lwgeom', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('sf', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('czso', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('BH', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('data.table', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('nngeo', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('rmapshaper', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('ggplot2', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('usethis', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('rlang', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
+RUN R -e "options(warn=2); install.packages('terra', repos = 'https://packagemanager.rstudio.com/cran/2022-12-01')"
 
 # bleeding edge RCzechia, current CRAN (not really frozen in time, but under control)
 RUN R -e "install.packages('RCzechia')"

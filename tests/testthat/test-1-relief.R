@@ -17,21 +17,21 @@ test_that("reliéf", {
   expect_s4_class(vyskopis("rayshaded", FALSE), "SpatRaster")
 
   # test rozsahu
-  expect_equal(terra::expanse(vyskopis()), units::drop_units(st_area(republika("low"))), tolerance = 1/100)
-  expect_equal(terra::expanse(vyskopis("actual")), units::drop_units(st_area(republika("low"))), tolerance = 1/100)
-  expect_equal(terra::expanse(vyskopis("rayshaded")), units::drop_units(st_area(republika("low"))), tolerance = 1/100)
+  expect_equal(terra::expanse(vyskopis())$area, units::drop_units(st_area(republika("low"))), tolerance = 1/100)
+  expect_equal(terra::expanse(vyskopis("actual"))$area, units::drop_units(st_area(republika("low"))), tolerance = 1/100)
+  expect_equal(terra::expanse(vyskopis("rayshaded"))$area, units::drop_units(st_area(republika("low"))), tolerance = 1/100)
 
   # oříznutý raster je menší než surový
-  expect_gt(terra::expanse(vyskopis(cropped = F)), terra::expanse(vyskopis(cropped = T)))
-  expect_gt(terra::expanse(vyskopis("rayshaded", cropped = F)), terra::expanse(vyskopis("rayshaded", cropped = T)))
-  expect_gt(terra::expanse(vyskopis("actual", cropped = F)), terra::expanse(vyskopis("actual", cropped = T)))
+  expect_gt(terra::expanse(vyskopis(cropped = F))$area, terra::expanse(vyskopis(cropped = T))$area)
+  expect_gt(terra::expanse(vyskopis("rayshaded", cropped = F))$area, terra::expanse(vyskopis("rayshaded", cropped = T))$area)
+  expect_gt(terra::expanse(vyskopis("actual", cropped = F))$area, terra::expanse(vyskopis("actual", cropped = T))$area)
 
   # test projekce - WGS84 pure & unadultered
-  expect_equal(st_crs(vyskopis())$input, "WGS 84")
-  expect_equal(st_crs(vyskopis("actual"))$input, "WGS 84")
-  expect_equal(st_crs(vyskopis("rayshaded"))$input, "WGS 84")
-  expect_equal(st_crs(vyskopis("actual", FALSE))$input, "WGS 84")
-  expect_equal(st_crs(vyskopis("rayshaded", FALSE))$input, "WGS 84")
+  expect_true(grepl("WGS 84", st_crs(vyskopis())$input))
+  expect_true(grepl("WGS 84", st_crs(vyskopis("actual"))$input))
+  expect_true(grepl("WGS 84", st_crs(vyskopis("rayshaded"))$input))
+  expect_true(grepl("WGS 84", st_crs(vyskopis("actual", FALSE))$input))
+  expect_true(grepl("WGS 84", st_crs(vyskopis("rayshaded", FALSE))$input))
 
   # očekávaná chyba
   expect_error(vyskopis("bflm")) # neznámé rozlišení - očekávám actual / rayshaded

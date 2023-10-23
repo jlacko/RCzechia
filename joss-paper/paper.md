@@ -81,7 +81,8 @@ The package code is thoroughly tested, with 100% test coverage. In addition to t
 Czech population at the LAU1 level as per the 2011 census, accessed via `czso` package from API of Czech Statistical Office, and mapped using `RCzechia::okresy()` and a `ggplot2` @wickham16 call. Note the use of low resolution objects to achieve a more stylized look.
 
 ``` r
-
+library(tidyverse)
+library(RCzechia)
 library(czso)
 
 src <- czso::czso_get_table("SLDB-VYBER") %>% 
@@ -112,13 +113,16 @@ ggplot(data = okresni_data) +
 Terrain of the Czech Republic, accessed via `RCzechia::vyskopis()` call and displayed using `ggplot2` together with major rivers `RCzechia::reky()` for context.
 
 ``` r
+library(tidyverse)
+library(RCzechia)
+
 relief <- vyskopis("actual", cropped = TRUE)
 
 ggplot() +
   tidyterra::geom_spatraster(data = relief) +
   geom_sf(data = subset(RCzechia::reky(), Major == T), # major rivers
           color = "steelblue", alpha = .5) +
-  scale_fill_gradientn(colors = hypso.colors2(10),
+  scale_fill_gradientn(colors = tidyterra::hypso.colors2(10),
                        labels = scales::label_number(suffix = " m"),
                        limits = c(0, 1550),
                        na.value = NA) +

@@ -1,3 +1,25 @@
+## version 1.11.2 (2023-XX-XX)
+  
+ - updated documentation for the geomorfo function
+
+## version 1.11.1 (2023-03-04)
+
+ - added geomorfo function providing geomorphological divisions of the Czech Republic
+ 
+ - corrected errors in LaTeX formating of PDF manual on some CRAN test flavors
+
+## version 1.11 (2023-03-03)
+
+ - MIT license formalized
+ 
+ - Code of Conduct formalized
+ 
+ - CITATION file updated
+
+## version 1.10.1 (2023-01-20)
+
+ - the election districts - volebni_okrsky() - are updated to version as of January 2023 presidential elections
+
 ## version 1.10.0 (2022-11-25)
 
  - rasters - vyskopis("actual") and vyskopis("rayshaded") - are based on EU-DEM data, instead of the former ARC ČR 500

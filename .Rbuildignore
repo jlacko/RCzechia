@@ -6,8 +6,13 @@
 ^data-raw$
 ^data-backup$
 ^joss-paper$
-cran-comments.md
-pre-submission.R
-generate-vignette.R
-vignette.Rmd.orig
+cran-comments\.md
+pre-submission\.R
+generate-vignette\.R
+vignette\.Rmd\.orig
+\*.log$
 ^CRAN-SUBMISSION$
+^CODE_OF_CONDUCT\.md$
+^LICENSE\.md$
+^CONTRIBUTING\.md$
+^CITATION\.cff$

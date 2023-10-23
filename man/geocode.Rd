@@ -14,12 +14,12 @@ geocode(address, crs = 4326)
 \value{
 \code{sf} data frame with 3 variables + geometry
 
-\describe{
-\item{address}{the address searched (address input)}
-\item{type}{type of record matched by API}
-\item{result}{address as returned by API / recorded in RÚIAN}
-\item{geometry}{hidden column with spatial point data}
-}
+  \describe{
+    \item{address}{the address searched (address input)}
+    \item{type}{type of record matched by API}
+    \item{result}{address as returned by API / recorded in RÚIAN}
+    \item{geometry}{hidden column with spatial point data}
+  }
 }
 \description{
 This function connects to Czech State Administration of Land Surveying and
@@ -40,19 +40,19 @@ Depending on the outcome of matching the address to RÚIAN data there is a
 number of possible outcomes:
 
 \itemize{
-\item{All items were \emph{matched exactly}: the returned \code{sf} data
-frame has the same number of rows as there were elements in vector to
-be geocoded. The field \emph{target} will have zero duplicates.}
-\item{Some items had \emph{multiple matches}: the returned \code{sf} data
-frame has more rows than the there were elements in vector to be geocoded.
-In the field \emph{target} will be duplicate values. Note that the RÚIAN API
-limits multiple matches to 10.}
-\item{Some (but not all) items had \emph{no match} in RUIAN data: the returned
-\code{sf} data frame will have fewer rows than the vector sent.
-to be geocoded elements. Some values will be missing from field \emph{target}}.
-\item{No items were matched at all: the function returns empty data frame and a message.}
-\item{The CUZK API is down or overloaded: the function returns empty data frame and a message.}
-}
+   \item{All items were *matched exactly*: the returned \code{sf} data
+   frame has the same number of rows as there were elements in vector to
+   be geocoded. The field \emph{target} will have zero duplicates.}
+   \item{Some items had *multiple matches*: the returned \code{sf} data
+   frame has more rows than the there were elements in vector to be geocoded.
+   In the field \emph{target} will be duplicate values. Note that the RÚIAN API
+   limits multiple matches to 10.}
+   \item{Some (but not all) items had *no match* in RUIAN data: the returned
+   \code{sf} data frame will have fewer rows than the vector sent.
+   to be geocoded elements. Some values will be missing from field \emph{target}}.
+   \item{No items were matched at all: the function returns empty data frame and a message.}
+   \item{The CUZK API is down or overloaded: the function returns empty data frame and a message.}
+   }
 
 Note that character encoding is heavily platform dependent, and you may need to convert to UTF-8,
 e.g. by running \code{address <- iconv(address, from = "windows-1250", to = "UTF-8")}

@@ -25,7 +25,7 @@ The function returns a raster file of either actual terrain (values are meters a
 
 The raster is created from EU DEM 1.1 file by Copernicus Land Monitoring service. The original file has pixel resolution 25×25 meters, which is too detailed for purposes of the package and was downsampled by factor of 4.
 
-The extent of the raster file is bouding box of the Czech Republic; this is a change to prior versions in order to better facilitate use of the raster in natural sciences context. To preserve compatibility optional argument \code{cropped} has been created, defaulting to \code{TRUE} (i.e. behaviour before v1.10.0).
+The extent of the raster file is bouding box of the Czech Republic; this is a change to prior versions in order to better facilitate use of the raster in natural sciences context. To preserve compatibility optional argument `cropped` has been created, defaulting to `TRUE` (i.e. behaviour before v1.10.0).
 
 Due to package size constraints both versions are stored externally (and a working internet connection is required to use the package).
 

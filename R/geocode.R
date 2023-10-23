@@ -1,7 +1,7 @@
 #' Geocode a Czech Address
 #'
 #' This function connects to Czech State Administration of Land Surveying and
-#' Cadastre (<https://www.cuzk.cz/en>) API to geocode an address. As
+#' Cadastre (\url{https://www.cuzk.cz/en}) API to geocode an address. As
 #' consequence it is implemented only for Czech addresses.
 #'
 #' Input of the function are an address to geocode (or a vector of addresses)
@@ -11,37 +11,37 @@
 #'
 #' NA's in input are considered an error.
 #'
-#' Output is a `sf` data frame of spatial points.
+#' Output is a \code{sf} data frame of spatial points.
 #'
 #' Depending on the outcome of matching the address to RÚIAN data there is a
 #' number of possible outcomes:
 #'
 #' \itemize{
-#'    \item{All items were *matched exactly*: the returned `sf` data
+#'    \item{All items were *matched exactly*: the returned \code{sf} data
 #'    frame has the same number of rows as there were elements in vector to
-#'    be geocoded. The field *target* will have zero duplicates.}
-#'    \item{Some items had *multiple matches*: the returned `sf` data
+#'    be geocoded. The field \emph{target} will have zero duplicates.}
+#'    \item{Some items had *multiple matches*: the returned \code{sf} data
 #'    frame has more rows than the there were elements in vector to be geocoded.
-#'    In the field *target* will be duplicate values. Note that the RÚIAN API
+#'    In the field \emph{target} will be duplicate values. Note that the RÚIAN API
 #'    limits multiple matches to 10.}
 #'    \item{Some (but not all) items had *no match* in RUIAN data: the returned
-#'    `sf` data frame will have fewer rows than the vector sent.
-#'    to be geocoded elements. Some values will be missing from field *target*}.
+#'    \code{sf} data frame will have fewer rows than the vector sent.
+#'    to be geocoded elements. Some values will be missing from field \emph{target}}.
 #'    \item{No items were matched at all: the function returns empty data frame and a message.}
 #'    \item{The CUZK API is down or overloaded: the function returns empty data frame and a message.}
 #'    }
 #'
 #' Note that character encoding is heavily platform dependent, and you may need to convert to UTF-8,
-#' e.g. by running `address <- iconv(address, from = "windows-1250", to = "UTF-8")`
+#' e.g. by running \code{address <- iconv(address, from = "windows-1250", to = "UTF-8")}
 #' before calling the function.
 #'
 #' Usage of the ČÚZK API is governed by ČÚZK Terms & Conditions -
-#' <https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf>.
+#' \url{https://geoportal.cuzk.cz/Dokumenty/Podminky.pdf}.
 #'
 #' @param address point to be geocoded, as character (vector)
 #' @param crs coordinate reference system of output; default = WGS84
 #'
-#' @return `sf` data frame with 3 variables + geometry
+#' @return \code{sf} data frame with 3 variables + geometry
 #'
 #'   \describe{
 #'     \item{address}{the address searched (address input)}

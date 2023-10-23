@@ -16,12 +16,12 @@ okresy(resolution = "high")
 \code{sf} data frame with 77 rows of 6 variables + geometry
 
 \describe{
-\item{KOD_OKRES}{Code of the district (okres).}
-\item{KOD_LAU1}{Code of the district as LAU1 unit (okres).}
-\item{NAZ_LAU1}{Name of the district as LAU1 unit (okres).}
-\item{KOD_KRAJ}{Code of the region.}
-\item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
-\item{NAZ_CZNUTS3}{Name of the region (kraj).}
+  \item{KOD_OKRES}{Code of the district (okres).}
+  \item{KOD_LAU1}{Code of the district as LAU1 unit (okres).}
+  \item{NAZ_LAU1}{Name of the district as LAU1 unit (okres).}
+  \item{KOD_KRAJ}{Code of the region.}
+  \item{KOD_CZNUTS3}{Code of the region as NUTS3 (kraj).}
+  \item{NAZ_CZNUTS3}{Name of the region (kraj).}
 }
 }
 \description{

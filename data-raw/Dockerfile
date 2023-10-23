@@ -73,6 +73,3 @@ RUN R -e "options(warn=2); install.packages('terra', repos = 'https://packageman
 
 # bleeding edge RCzechia, current CRAN (not really frozen in time, but under control)
 RUN R -e "install.packages('RCzechia')"
-
-
-

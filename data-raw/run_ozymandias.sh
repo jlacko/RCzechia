@@ -4,7 +4,7 @@ docker run \
  -v $(pwd)/../:/home/rstudio/ \
  --rm \
  -p 8787:8787 \
- ozymandias
+ ghcr.io/jlacko/rczechia:latest
 
 # clean up detritus...
 rm -rf ../.config

@@ -11,3 +11,4 @@ inst/doc
 /data-raw/eu_dem*
 /joss-paper/*.pdf
 *.log
+/docs

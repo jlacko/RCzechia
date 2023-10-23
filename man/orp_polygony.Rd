@@ -13,11 +13,11 @@ orp_polygony()
 \code{sf} data frame with 206 rows of 5 variables + geometry
 
 \describe{
-\item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}
-\item{NAZ_ORP}{Full name of the level III commune (obec s rozsirenou pusobnosti).}
-\item{KOD_KRAJ}{Code of the region (kraj).}
-\item{KOD_CZNUTS3}{Code of the NUTS3 unit (kraj)}
-\item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
+  \item{KOD_ORP}{Code of the level III commune (obec s rozsirenou pusobnosti).}
+  \item{NAZ_ORP}{Full name of the level III commune (obec s rozsirenou pusobnosti).}
+  \item{KOD_KRAJ}{Code of the region (kraj).}
+  \item{KOD_CZNUTS3}{Code of the NUTS3 unit (kraj)}
+  \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
 }
 }
 \description{

@@ -7,7 +7,7 @@
 library(sf)
 library(dplyr)
 
-rozhodne_datum <- "2023-01"
+rozhodne_datum <- "2021-02"
 
 
 # CZSO číselník obcí - #043
@@ -58,7 +58,7 @@ obce <- cisob %>%
   inner_join(vazokr, by = "KOD_OKRES") %>%
   inner_join(ciskraj, by = "KOD_KRAJ")
 
-okrsky_high_res <- st_read("./data-raw/20230103_ST_UVOH.xml", stringsAsFactors = F) %>%
+okrsky_high_res <- st_read("./data-raw/20210203_ST_UVOH.xml", stringsAsFactors = F) %>%
   st_make_valid() %>%
   st_set_geometry("OriginalniHranice") %>%
   st_cast() %>%
@@ -75,7 +75,9 @@ st_geometry(okrsky_high_res) <- "geometry"
 okrsky_low_res <- okrsky_high_res %>%
   rmapshaper::ms_simplify(keep = 1/20,
                           keep_shapes = T) %>%
-  st_make_valid()
+  st_buffer(0)
+
+
 
 saveRDS(okrsky_high_res, paste0("./data-backup/Okrsky-high-", rozhodne_datum, ".rds"))
 saveRDS(okrsky_low_res, paste0("./data-backup/Okrsky-low-", rozhodne_datum, ".rds"))

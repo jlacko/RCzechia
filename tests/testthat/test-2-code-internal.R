@@ -38,4 +38,3 @@ test_that("očekávané chyby", {
 
 })
 
-

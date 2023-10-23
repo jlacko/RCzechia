@@ -72,7 +72,6 @@ natural:
 * **vyskopis**: terrain of the Czech republic as a {terra} package raster object
 * **geomorfo**: geomorphological division of the Czech Republic
 
-
 All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).
 
 ### In addition a number of utility functions is provided:  

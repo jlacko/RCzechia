@@ -16,5 +16,7 @@ TRUE for success and FALSE for failure; returned silently
 The function sets the environment variable RCZECHIA_HOME to be used as a local cache for RCzechia remote files; if unset tempdir() is used instead, with persistence for current session only.
 }
 \details{
-Note that when set (it is unset by default) the remote files will be cached to local file system, for good or bad. Also note that you can set the value of RCZECHIA_HOME environment variable directly, either via \code{Sys.setenv()} or via your .Rprofile.
+Note that when set (it is unset by default) the remote files will be cached to local file system and persist between R sessions, for good or bad.
+
+Also note that you can set the value of RCZECHIA_HOME environment variable directly, either via a \code{Sys.setenv()} call or via your \code{.Renviron} file.
 }

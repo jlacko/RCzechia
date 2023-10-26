@@ -13,7 +13,7 @@
   remote_file <- paste0(remote_path, file) # path to AWS S3
   local_file <- file.path(local_dir, file) # local file - in tempdir, or local cache if set
 
-  if (file.exists(local_file)) {
+  if (file.exists(local_file) & network) {
     message("RCzechia: using temporary local dataset.")
   } else {
     if (!.ok_to_proceed(remote_file) | !network) { # network is down
@@ -85,3 +85,11 @@
   TRUE
 }
 
+# check the environment variable & report back
+
+.onAttach <- function(libname, pkgname)  {
+
+  home <- Sys.getenv("RCZECHIA_HOME")
+
+  if(home != "") packageStartupMessage("Using local RCzechia cache at ", home, appendLF = TRUE)
+}

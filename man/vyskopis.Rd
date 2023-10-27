@@ -18,7 +18,7 @@ vyskopis(format = "rayshaded", cropped = TRUE)
 \code{terra} package SpatRaster
 }
 \description{
-Terrain of the Czech Republic as a {terra} package object.
+Terrain of the Czech Republic as a \code(terra) package object.
 }
 \details{
 The function returns a raster file of either actual terrain (values are meters above sea level) or rayshaded relief..

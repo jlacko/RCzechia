@@ -1,6 +1,6 @@
 #' Vyskopis
 #'
-#' Terrain of the Czech Republic as a {terra} package object.
+#' Terrain of the Czech Republic as a \code(terra) package object.
 #'
 #' The function returns a raster file of either actual terrain (values are meters above sea level) or rayshaded relief..
 #'

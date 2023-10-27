@@ -45,7 +45,7 @@ Credits:
 Function returning historical admin areas of the Czech Republic, together with relevant census data as specified by parameter  \strong{era}.
 }
 \details{
-Of notable interest is the 1930 census, which was the last pre-war - and thus the last one to include Czechoslovak citizens of German ethnicity.
+Of notable interest is the 1930 census, which was the last before WWII - and thus the last one to include Czechoslovak citizens of German ethnicity.
 
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 }
@@ -56,7 +56,7 @@ library(sf)
 
 pre_war <- RCzechia::historie("okresy_1930")
 
-plot(pre_war["národnost německá"])
+plot(pre_war[, 47])
 
 }
 

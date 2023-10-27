@@ -20,7 +20,7 @@ KFME_grid(resolution = "low")
 Function returning grid covering the Czech Republic according to the Kartierung der Flora Mitteleuropas methodology.
 }
 \details{
-The function returns a {sf} data frame of grid cells. Depending on the value of parameter \code{resolution} either low resolution (26×42 cells - default) with labels in 4 digit format (e.g. Hrčava = 6479) or high resolution (104×168 cells) with labels in 4 digit + 1 letter format (e.g Hrčava = 6479c).
+The function returns a \code(sf) data frame of grid cells. Depending on the value of parameter \code{resolution} either low resolution (26×42 cells - default) with labels in 4 digit format (e.g. Hrčava = 6479) or high resolution (104×168 cells) with labels in 4 digit + 1 letter format (e.g Hrčava = 6479c).
 
 Raw version of the dataset is available for download for use in non-R setting on \url{https://rczechia.jla-data.net/kfme_czechia.gpkg}.
 }

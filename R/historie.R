@@ -44,7 +44,7 @@
 #'
 #' pre_war <- RCzechia::historie("okresy_1930")
 #'
-#' plot(pre_war[, 47])
+#' plot(pre_war[, 47], main = "Residents of German ethnicity\n as of 1930-12-01")
 #'
 #' }
 #'

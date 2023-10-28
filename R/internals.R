@@ -14,7 +14,7 @@
   local_file <- file.path(local_dir, file) # local file - in tempdir, or local cache if set
 
   if (file.exists(local_file) & network) {
-    message("RCzechia: using temporary local dataset.")
+    message(paste("RCzechia: using dataset stored locally in", local_dir))
   } else {
     if (!.ok_to_proceed(remote_file) | !network) { # network is down
 #      message("No internet connection.")

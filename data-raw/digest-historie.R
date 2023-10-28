@@ -5,7 +5,7 @@ remote_target <- "https://services1.arcgis.com/LPm07959azIAvFRD/ArcGIS/rest/serv
 
 objekty <- list( "3" = "okresy_1921",
                  "4" = "okresy_1930",
-                 "5" = "okresy_1947",
+                 "2" = "okresy_1947",
                  "6" = "okresy_1950",
                  "7" = "okresy_1961",
                  "8" = "okresy_1970",

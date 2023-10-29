@@ -65,7 +65,7 @@
 #'  source:  [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?lng=EN&menu=2292&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-VODSTVO-V), high res object: 687.0 KB, no low res version
 #'  \item *lesy* - woodland areas
 #'
-#'  source:  [ArcČR 500 v3.3](https://www.arcdata.cz/produkty/geograficka-data/arccr-4), high res object: 2.1 MB, no low res version
+#'  source:  [ArcČR 500 v3.3](https://www.arcdata.cz/cs-cz/produkty/data/arccr?rsource=https%3A%2F%2Fwww.arcdata.cz%2Fprodukty%2Fgeograficka-data%2Farccr-4), high res object: 2.1 MB, no low res version
 #'  \item *silnice* - roads
 #'
 #'  source:  [Data200](https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?menu=2296&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-DOPRAVA-V), high res object: 6.0 MB, no low res version
@@ -80,7 +80,7 @@
 #'  source:  [AOPK ČR](https://data.nature.cz/), high res object: 7.0 MB, no low res version
 #'  \item *vyskopis* - terrain relief
 #'
-#'  source:  [Copernicus EU](https://land.copernicus.eu/imagery-in-situ/eu-dem), high res object: 68.8 MB, no low res version
+#'  source:  [Copernicus EU](https://land.copernicus.eu/en/products/products-that-are-no-longer-disseminated-on-the-clms-website), high res object: 68.8 MB, no low res version
 #'  \item *geomorfo* - geomorphological divisions
 #'
 #'  source:  [CENIA / INSPIRE](https://www.arcgis.com/home/item.html?id=25813686a8564b0bbcdc951a5573cfa4), high res object: <1 MB, no low res version

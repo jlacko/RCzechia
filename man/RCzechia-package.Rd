@@ -72,7 +72,7 @@ source:  \href{https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.a
 source:  \href{https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?lng=EN&menu=2292&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-VODSTVO-V}{Data200}, high res object: 687.0 KB, no low res version
 \item \emph{lesy} - woodland areas
 
-source:  \href{https://www.arcdata.cz/produkty/geograficka-data/arccr-4}{ArcČR 500 v3.3}, high res object: 2.1 MB, no low res version
+source:  \href{https://www.arcdata.cz/cs-cz/produkty/data/arccr?rsource=https\%3A\%2F\%2Fwww.arcdata.cz\%2Fprodukty\%2Fgeograficka-data\%2Farccr-4}{ArcČR 500 v3.3}, high res object: 2.1 MB, no low res version
 \item \emph{silnice} - roads
 
 source:  \href{https://geoportal.cuzk.cz/(S(ej02xjih2qfbe4ayjguzaidr))/Default.aspx?menu=2296&mode=TextMeta&side=mapy_data200&metadataID=CZ-CUZK-DATA200-DOPRAVA-V}{Data200}, high res object: 6.0 MB, no low res version
@@ -87,7 +87,7 @@ source:  own work,  internal
 source:  \href{https://data.nature.cz/}{AOPK ČR}, high res object: 7.0 MB, no low res version
 \item \emph{vyskopis} - terrain relief
 
-source:  \href{https://land.copernicus.eu/imagery-in-situ/eu-dem}{Copernicus EU}, high res object: 68.8 MB, no low res version
+source:  \href{https://land.copernicus.eu/en/products/products-that-are-no-longer-disseminated-on-the-clms-website}{Copernicus EU}, high res object: 68.8 MB, no low res version
 \item \emph{geomorfo} - geomorphological divisions
 
 source:  \href{https://www.arcgis.com/home/item.html?id=25813686a8564b0bbcdc951a5573cfa4}{CENIA / INSPIRE}, high res object: <1 MB, no low res version

@@ -12,7 +12,7 @@ vyskopis(format = "rayshaded", cropped = TRUE)
 \arguments{
 \item{format}{Should the function return actual terrain (meters above sea level) or shaded relief (rayshaded). Allowed values are "actual" and "rayshaded".}
 
-\item{cropped}{Should the raster provide data over Czech Republic's bounding box (cropped = FALSE) or just actual borders (cropped = TRUE). Defaults to TRUE to preserve compatiblity with earlier versions.}
+\item{cropped}{Should the raster provide data over Czech Republic's bounding box (cropped = FALSE) or just actual borders (cropped = TRUE). Defaults to TRUE to preserve compatibility with earlier versions.}
 }
 \value{
 \code{terra} package SpatRaster
@@ -25,7 +25,7 @@ The function returns a raster file of either actual terrain (values are meters a
 
 The raster is created from EU DEM 1.1 file by Copernicus Land Monitoring service. The original file has pixel resolution 25×25 meters, which is too detailed for purposes of the package and was downsampled by factor of 4.
 
-The extent of the raster file is bouding box of the Czech Republic; this is a change to prior versions in order to better facilitate use of the raster in natural sciences context. To preserve compatibility optional argument \code{cropped} has been created, defaulting to \code{TRUE} (i.e. behaviour before v1.10.0).
+The extent of the raster file is bounding box of the Czech Republic; this is a change to prior versions in order to better facilitate use of the raster in natural sciences context. To preserve compatibility optional argument \code{cropped} has been created, defaulting to \code{TRUE} (i.e. behavior before v1.10.0).
 
 Due to package size constraints both versions are stored externally (and a working internet connection is required to use the package).
 

@@ -53,7 +53,7 @@ test_that("envir variable", {
 
   expect_true(unset_home()) # vysazení projde
 
-  Sys.setenv("RCZECHIA_HOME" = envir_backup) # obnovit hodnotu ze zálohy
+  if(envir_backup != "") Sys.setenv("RCZECHIA_HOME" = envir_backup) # obnovit hodnotu ze zálohy, pokud dává smysl
 
 })
 

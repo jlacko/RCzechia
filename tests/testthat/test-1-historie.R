@@ -72,8 +72,8 @@ test_that("historie platí", {
 
 test_that("chyby zadání", {
 
-  expect_error(geomorfo("bflm")) # neznámá úroveň
-  expect_error(geomorfo()) # povinný argument bez defaultu
+  expect_error(historie("bflm")) # neznámá úroveň
+  expect_error(historie()) # povinný argument bez defaultu
 
 })
 

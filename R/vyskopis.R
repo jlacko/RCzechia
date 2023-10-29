@@ -18,7 +18,7 @@
 #'
 #' @return `terra` package SpatRaster
 #'
-#' @source Copernicus Land Monitoring service, with funding by the European Union. <https://land.copernicus.eu/imagery-in-situ/eu-dem>
+#' @source Copernicus Land Monitoring service, with funding by the European Union. <https://land.copernicus.eu/en/products/products-that-are-no-longer-disseminated-on-the-clms-website>
 #'
 #' @examples
 #' \donttest{

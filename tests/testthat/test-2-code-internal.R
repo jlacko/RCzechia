@@ -39,3 +39,23 @@ test_that("očekávané chyby", {
 })
 
 
+test_that("envir variable", {
+
+  skip_on_cran()
+
+  envir_backup <- Sys.getenv("RCZECHIA_HOME") # uložit systémovou hodnotu do zálohy
+
+  expect_true(set_home((tempdir()))) # nastavení na tempdir projde
+
+  expect_warning(set_home("bflm"), regexp = "path") # neexistiující cesta
+
+  expect_true(set_home((tempdir()))) # nastavení na tempdir projde
+
+  expect_true(unset_home()) # vysazení projde
+
+  if(envir_backup != "") Sys.setenv("RCZECHIA_HOME" = envir_backup) # obnovit hodnotu ze zálohy, pokud dává smysl
+
+})
+
+
+

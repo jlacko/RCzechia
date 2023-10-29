@@ -84,6 +84,10 @@
 #'  \item *geomorfo* - geomorphological divisions
 #'
 #'  source:  [CENIA / INSPIRE](https://www.arcgis.com/home/item.html?id=25813686a8564b0bbcdc951a5573cfa4), high res object: <1 MB, no low res version
+#'  \item *historie* - historical admin areas and census records, download size ~ 100 KB to 3.5 MB depending on object
+#'
+#'  source: [URRlab](https://www.historickygis.cz/)
+#'
 #' }
 #'
 #' @section Utility functions:

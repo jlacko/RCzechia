@@ -1,8 +1,8 @@
 #' Vyskopis
 #'
-#' Terrain of the Czech Republic as a {terra} package object.
+#' Terrain of the Czech Republic as a `terra` package object.
 #'
-#' The function returns a raster file of either actual terrain (values are meters above sea level) or rayshaded relief..
+#' The function returns a raster file of either actual terrain (values are meters above sea level) or rayshaded relief.
 #'
 #' The raster is created from EU DEM 1.1 file by Copernicus Land Monitoring service. The original file has pixel resolution 25×25 meters, which is too detailed for purposes of the package and was downsampled by factor of 4.
 #'

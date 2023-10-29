@@ -1,6 +1,12 @@
-## version 1.11.2 (2023-XX-XX)
+## version 1.12.0 (2023-10-29)
+
+ - [!] introduced an option for persistent local caching via setting the `RCZECHIA_HOME` environment variable; this has to be set manually - either directly or via a set_home() function call
+ 
+ - added history() function providing historical admin areas, together with census data
   
- - updated documentation for the geomorfo function
+ - updated documentation for the geomorfo() function
+ 
+ - introduced pkgdown documentation on https://rczechia.jla-data.net
 
 ## version 1.11.1 (2023-03-04)
 

@@ -16,3 +16,6 @@ vignette\.Rmd\.orig
 ^LICENSE\.md$
 ^CONTRIBUTING\.md$
 ^CITATION\.cff$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

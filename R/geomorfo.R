@@ -23,6 +23,17 @@
 #'
 #' @source CENIA / INSPIRE, via Mgr. Vojtěch Blažek, Ph.D. <https://www.arcgis.com/home/item.html?id=25813686a8564b0bbcdc951a5573cfa4>
 #'
+#' @examples
+#'
+#' \donttest{
+#' library(sf)
+#'
+#' soustavy <- RCzechia::geomorfo("subprovincie")
+#'
+#' plot(soustavy["kod"])
+#'
+#' }
+#'
 #' @export
 
 geomorfo <- function(level) {

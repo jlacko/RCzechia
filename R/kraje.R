@@ -4,6 +4,8 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
+#' The dataset is based on RUIAN data by the Czech cadastral office. If necessary you can download the most up to date raw dataset in VFR format (a special case of XML which is understood by GDAL) on <https://vdp.cuzk.cz/vdp/ruian/vymennyformat> (in Czech only).
+#'
 #' The data is current to June 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size of high resolution shapefile is <1 MB.
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
@@ -21,8 +23,19 @@
 #' @examples
 #' library(sf)
 #'
-#' hranice <- kraje("low")
-#' plot(hranice, col = "white", max.plot = 1)
+#' colors <- rainbow(14) # legend colors
+#'
+#' hranice <- RCzechia::kraje("low")
+#'
+#' plot(hranice["KOD_CZNUTS3"],
+#'      col = colors,
+#'      main = "Czech Regions",
+#'      xlim = st_bbox(hranice)[c(1, 3)] * c(1, 1.1))
+#'
+#' legend("right",
+#'        hranice$KOD_CZNUTS3,
+#'        fill = colors,
+#'        bty = "n")
 #'
 #' @export
 

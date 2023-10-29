@@ -91,6 +91,10 @@ source:  \href{https://land.copernicus.eu/imagery-in-situ/eu-dem}{Copernicus EU}
 \item \emph{geomorfo} - geomorphological divisions
 
 source:  \href{https://www.arcgis.com/home/item.html?id=25813686a8564b0bbcdc951a5573cfa4}{CENIA / INSPIRE}, high res object: <1 MB, no low res version
+\item \emph{historie} - historical admin areas and census records, download size ~ 100 KB to 3.5 MB depending on object
+
+source: \href{https://www.historickygis.cz/}{URRlab}
+
 }
 }
 

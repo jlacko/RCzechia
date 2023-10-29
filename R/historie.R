@@ -16,8 +16,8 @@
 #' \describe{
 #'   \item{okresy_1921}{soudní okresy + census 1921; 328 rows / 92 columns + geometry}
 #'   \item{okresy_1930}{soudní okresy + census 1931; 330 rows / 90 columns + geometry}
-#'   \item{okresy_1947}{politické okresy + census 1947; 162 rows / 16 columns + geometry}
-#'   \item{okresy_1950}{správní okresy + census 1950; 193 rows / 57 columns + geometry}
+#'   \item{okresy_1947}{politické okresy + census 1947; 163 rows / 68 columns + geometry}
+#'   \item{okresy_1950}{správní okresy + census 1950; 182 rows / 57 columns + geometry}
 #'   \item{okresy_1961}{správní okresy + census 1960; 76 rows / 105 columns + geometry}
 #'   \item{okresy_1970}{správní okresy + census 1970; 76 rows / 144 columns + geometry}
 #'   \item{okresy_1980}{správní okresy + census 1980; 76 rows / 148 columns + geometry}
@@ -35,7 +35,7 @@
 #'
 #' Credits:
 #' 1) „Tento výstup vznikl v rámci řešení projektu číslo DF12P01OVV033 Zpřístupnění historických prostorových a statistických dat v prostředí GIS řešeného v rámci programu Aplikovaného výzkumu a vývoje národní a kulturní identity (NAKI), jehož poskytovatel je Ministerstvo kultury České republiky.“
-#' 2) „JÍCHOVÁ, J., SOUKUP, M., NEMEŠKAL, J., OUŘEDNÍČEK, M., POSPÍŠILOVÁ, L., SVOBODA, P., ŠPAČKOVÁ, P. a kol. (2014): Geodatabáze historických statistických a prostorových dat Česka ze Sčítání lidu, domů a bytů 1921−2011. Urbánní a regionální laboratoř, Přírodovědecká fakulta Univerzity Karlovy v Praze, Praha.“
+#' 2) „JÍCHOVÁ, J., SOUKUP, M., NEMEŠKAL, J., OUŘEDNÍČEK, M., POSPÍŠILOVÁ, L., SVOBODA, P., ŠPAČKOVÁ, P. a kol. (2014): Geodatabáze historických statistických a prostorových dat Česka ze Sčítání lidu, domů a bytů 1921-2011. Urbánní a regionální laboratoř, Přírodovědecká fakulta Univerzity Karlovy v Praze, Praha.“
 #'
 #' @source Urbánní a regionální laboratoř (UrRlab) působící na katedře sociální geografie a regionálního rozvoje Přírodovědecké fakulty Univerzity Karlovy v Praze <https://www.historickygis.cz/>
 #'

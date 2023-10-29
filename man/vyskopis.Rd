@@ -4,7 +4,7 @@
 \alias{vyskopis}
 \title{Vyskopis}
 \source{
-Copernicus Land Monitoring service, with funding by the European Union. \url{https://land.copernicus.eu/imagery-in-situ/eu-dem}
+Copernicus Land Monitoring service, with funding by the European Union. \url{https://land.copernicus.eu/en/products/products-that-are-no-longer-disseminated-on-the-clms-website}
 }
 \usage{
 vyskopis(format = "rayshaded", cropped = TRUE)

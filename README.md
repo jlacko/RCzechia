@@ -59,7 +59,7 @@ administrative:
 * **senat_obvody**: 81 senate districts (volební obvody senátu)
 * **volebni_okrsky**: 14.733 general election districts (volební okrsky)
 * **zip_codes**: 2.671 ZIP code areas (poštovní směrovací čísla / PSČ)
-* **historie**: historical administrative areas + census data, notably including data on Czechoslovak residents of German nationality pre-WW2
+* **historie**: historical administrative areas + census data, notably including data on German speaking residents before the second world war
 
 natural:
 

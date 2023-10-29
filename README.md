@@ -27,7 +27,7 @@ For examples of RCzechia in action please see the package vignette:
 * [Terrain of the Czech Republic](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#terrain-of-the-czech-republic)
 * [Senate elections of 2020](https://CRAN.R-project.org/package=RCzechia/vignettes/vignette.html#senate-elections-of-2020)
 
-The administrative area polygons are based on the [RÚIAN register](https://cs.wikipedia.org/wiki/Registr_%C3%BAzemn%C3%AD_identifikace,_adres_a_nemovitost%C3%AD); the natural objects were based originally on [ArcČR 500](https://www.arcdata.cz/produkty/geograficka-data/arccr-4) by ARCDATA and later moved to [Data200](https://geoportal.cuzk.cz/Default.aspx?mode=TextMeta&side=mapy_data200&text=dSady_mapyData200) by ČÚZK.
+The administrative area polygons are based on the [RÚIAN register](https://cs.wikipedia.org/wiki/Registr_%C3%BAzemn%C3%AD_identifikace,_adres_a_nemovitost%C3%AD); the natural objects were based originally on [ArcČR 500]([https://www.arcdata.cz/produkty/geograficka-data/arccr-4](https://www.arcdata.cz/cs-cz/produkty/data/arccr?rsource=https%3A%2F%2Fwww.arcdata.cz%2Fprodukty%2Fgeograficka-data%2Farccr-4)) by ARCDATA and later moved to [Data200](https://geoportal.cuzk.cz/Default.aspx?mode=TextMeta&side=mapy_data200&text=dSady_mapyData200) by ČÚZK.
 
 The shapefiles are by necessity larger than the limits of a CRAN package size allow. The data are therefore stored remotely (on Amazon Cloud / AWS S3) and downloaded as required. As consequence a working internet connection is required to fully use the package.
 
@@ -43,7 +43,7 @@ The package is on CRAN (as of March 2018) so to get a stable version simply run:
 ```r 
 install.packages("RCzechia")
 ```
-You can also get the latest development version by running `remotes::install_github("jlacko/RCzechia")`. The main branch should be always reasonably stable, but I do not suggest cloning of development branches unless you know what you are doing - these are where the action is happening, raw in tooth and claw.
+You can also get the latest development version by running `remotes::install_github("jlacko/RCzechia")`. The main branch should be always reasonably stable, but I do not suggest cloning of development branches unless you know what you are doing - these are where the raw action is happening, red in tooth and claw.
 
 ### The following spatial objects are included:  
 
@@ -59,6 +59,7 @@ administrative:
 * **senat_obvody**: 81 senate districts (volební obvody senátu)
 * **volebni_okrsky**: 14.733 general election districts (volební okrsky)
 * **zip_codes**: 2.671 ZIP code areas (poštovní směrovací čísla / PSČ)
+* **historie**: historical administrative areas + census data, notably including data on Czechoslovak residents of German nationality pre-WW2
 
 natural:
 

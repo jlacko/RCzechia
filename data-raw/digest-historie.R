@@ -37,6 +37,10 @@ for (i in seq_along(objekty)) {
 
   st_geometry(clean_objekt) <- "geometry"
 
+  duplicity <- which(duplicated(colnames(clean_objekt))) # indexy duplictních názvů sloupců
+
+  clean_objekt <- clean_objekt[, -duplicity] # duplicitní sloupce ven!
+
   if((st_crs(clean_objekt)$input == "EPSG:4326") & all(st_is_valid(clean_objekt))) {
     saveRDS(clean_objekt, paste0("./data-backup/history_", objekty[i], ".rds"))
   } else {

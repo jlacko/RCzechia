@@ -2,6 +2,7 @@
 % Please edit documentation in R/RCzechia.R
 \docType{package}
 \name{RCzechia-package}
+\alias{RCzechia}
 \alias{RCzechia-package}
 \title{RCzechia: Spatial Objects of the Czech Republic}
 \description{
@@ -14,12 +15,21 @@ returning data frames instead.
 To save time (and bandwidth) the downloaded objects are saved locally in
 \code{tempdir} directory when requested, and downloaded at most once \emph{per R
 session}; out of respect to CRAN Repository Policy a more permanent caching
-on user's side is not attempted.
+on user's side is not attempted by default – but it can be actively introduced
+by the user either via a \code{RCzechia::set_home()} call or by setting the
+value of \code{RCZECHIA_HOME} environment variable directly, either using a
+\code{Sys.setenv()} call or via editing the \code{.Renviron} file.
 
 This means that:
 \itemize{
 \item a working internet connection is required to use the full resolution objects
-\item all objects need to be called with (possibly empty) braces
+\item the first call to an object in a R session will download
+the object from the internet (and thus take some time)
+\item the user an has an option to create a permanent local cache of the objects
+by setting the \code{RCZECHIA_HOME} environment variable in her  \code{.Renviron} file,
+gaining a faster access to the objects in the future and sidestepping the
+requirement of a working internet connection. Out of respect to CRAN
+Repository Policy this is not default behavior.
 }
 
 For the most frequently used objects - \strong{republika}, \strong{kraje} and
@@ -109,3 +119,23 @@ workflow:
 }
 }
 
+\references{
+Lacko J (2023). “RCzechia: Spatial Objects of the Czech Republic.” Journal of Open Source Software, 8(83). doi:10.21105/joss.05082, https://joss.theoj.org/papers/10.21105/joss.05082.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://rczechia.jla-data.net}
+  \item Report bugs at \url{https://github.com/jlacko/RCzechia/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Jindra Lacko \email{jindra.lacko@gmail.com} (\href{https://orcid.org/0000-0002-0375-5156}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Nick Bearman (\href{https://orcid.org/0000-0002-8396-4061}{ORCID}) (Nick reviewed the package for JOSS, providing helpful comments leading to significant improvement of the package.) [reviewer]
+}
+
+}

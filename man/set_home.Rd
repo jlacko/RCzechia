@@ -7,7 +7,7 @@
 set_home(path)
 }
 \arguments{
-\item{path}{file to be downloaded (or not...) from S3}
+\item{path}{path to local filesystem directory to be used as a cache; must exist and must be writable}
 }
 \value{
 TRUE for success and FALSE for failure; returned silently

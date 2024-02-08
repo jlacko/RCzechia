@@ -1,3 +1,8 @@
+## version 1.2.1 (tbd.)
+
+ - documentation updated in line with current roxygen2 and pkgdown standards
+
+
 ## version 1.12.0 (2023-10-29)
 
  - [!] introduced an option for persistent local caching via setting the `RCZECHIA_HOME` environment variable; this has to be set manually - either directly or via a set_home() function call

@@ -6,7 +6,7 @@
 #'
 #' Also note that you can set the value of RCZECHIA_HOME environment variable directly, either via a \code{Sys.setenv()} call or via your \code{.Renviron} file.
 #'
-#' @param path file to be downloaded (or not...) from S3
+#' @param path path to local filesystem directory to be used as a cache; must exist and must be writable
 #'
 #' @return TRUE for success and FALSE for failure; returned silently
 

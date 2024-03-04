@@ -1,7 +1,7 @@
-## version 1.2.1 (tbd.)
+## version 1.2.1 (2024-03-04)
 
  - documentation updated in line with current roxygen2 and pkgdown standards
-
+ - github actions updated to current standards
 
 ## version 1.12.0 (2023-10-29)
 

@@ -1,7 +1,7 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2023-02-24"
+date: "2024-03-04"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -16,7 +16,7 @@ vignette: >
 
 ### Visualizing Czech Population
 
-Population of the Czech Republic as per the [latest census](https://www.czso.cz/csu/czso/zakladni-vysledky-scitani-lidu-domu-a-bytu-2011-ceska-republika-2011-eihs9d4gp3) in 2011, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/) by Petr Bouchal.
+Population of the Czech Republic from the 2011 census, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/) by Petr Bouchal.
 
 As the population distributed highly unevenly a log scale is used.
 
@@ -32,12 +32,11 @@ tf <- tempfile(fileext = ".xls") # a temporary xls file
 GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
     write_disk(tf))
 ## Response [https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls]
-##   Date: 2023-02-24 08:38
+##   Date: 2024-03-04 13:47
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 44.5 kB
-## <ON DISK>  /tmp/RtmpWqnVtP/file19597494aefe.xls
-
+## <ON DISK>  /tmp/Rtmpa239co/file9a1ec35053513.xls
 src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
 
 colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
@@ -63,7 +62,10 @@ ggplot(data = okresni_data) +
         legend.title.align = 0.5)
 ```
 
-<img src="./census-1.png" alt="plot of chunk census" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="./census-1.png" alt="plot of chunk census" width="100%" />
+<p class="caption">plot of chunk census</p>
+</div>
 
 ## Geocoding Locations & Drawing them on a Map
 
@@ -103,7 +105,10 @@ ggplot() +
   theme_bw()
 ```
 
-<img src="./geocode-1.png" alt="plot of chunk geocode" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="./geocode-1.png" alt="plot of chunk geocode" width="100%" />
+<p class="caption">plot of chunk geocode</p>
+</div>
 
 
 ## Distance Between Prague and Brno
@@ -174,16 +179,17 @@ ggplot() +
   theme_bw()
 ```
 
-<img src="./brno-center-1.png" alt="plot of chunk brno-center" width="100%" style="display: block; margin: auto;" />
-
-
+<div class="figure" style="text-align: center">
+<img src="./brno-center-1.png" alt="plot of chunk brno-center" width="100%" />
+<p class="caption">plot of chunk brno-center</p>
+</div>
 ## Interactive Map
 
 Interactive maps are powerful tools for data visualization. They are easy to produce with the `leaflet` package.
 
-I found the stamen toner basemap a good company for interactive choropleths - it gives enough context without distracting from the story of your data.
+Since Stamen Toner basemap no longer sparkles joy I have found a new favorite - the [Positron by CartoDB](https://carto.com/blog/getting-to-know-positron-and-dark-matter).
 
-*Note*: it is technically impossible to make html in vignette interactive. As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
+*Note*: it is technically impossible to make html in vignette interactive (and for good reasons). As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
 
 
 ```r
@@ -192,7 +198,7 @@ library(RCzechia)
 library(leaflet)
 library(czso)
 
-# metrika pro mapování - uchazeči za říjen
+# map metrics - number of unemployed in October 2020
 metrika <- czso::czso_get_table("250169r20") %>%
    filter(obdobi == "20201031" & vuk == "NEZ0004")
 
@@ -203,12 +209,11 @@ podklad <- RCzechia::obce_polygony() %>% # obce_polygony = municipalities in RCz
 pal <- colorNumeric(palette = "viridis",  domain = podklad$hodnota)
 
 leaflet() %>%
-  addProviderTiles("Stamen.Toner") %>%
+  addProviderTiles("CartoDB.Positron") %>%
   addPolygons(data = podklad,
               fillColor = ~pal(hodnota),
               fillOpacity = 0.75,
               color = NA)
-
 ```
 <p align="center">
 <img src="https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/interactive-screenshot.png" alt="This is just a screenshot of the visualization, so it's not interactive. You can play with the interactive version by running the code shown.">
@@ -267,7 +272,10 @@ ggplot() +
   theme_bw()
 ```
 
-<img src="./ctverce-1.png" alt="plot of chunk ctverce" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="./ctverce-1.png" alt="plot of chunk ctverce" width="100%" />
+<p class="caption">plot of chunk ctverce</p>
+</div>
 
 
 ## Terrain of the Czech Republic
@@ -310,7 +318,10 @@ ggplot() +
         legend.title.align = 0.5)
 ```
 
-<img src="./relief-1.png" alt="plot of chunk relief" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="./relief-1.png" alt="plot of chunk relief" width="100%" />
+<p class="caption">plot of chunk relief</p>
+</div>
 
 
 ## Senate Elections of 2020
@@ -350,4 +361,7 @@ ggplot() +
   theme_bw()
 ```
 
-<img src="./senat-1.png" alt="plot of chunk senat" width="100%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="./senat-1.png" alt="plot of chunk senat" width="100%" />
+<p class="caption">plot of chunk senat</p>
+</div>

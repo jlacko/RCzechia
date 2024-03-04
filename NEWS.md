@@ -1,7 +1,10 @@
 ## version 1.2.1 (2024-03-04)
 
  - documentation updated in line with current roxygen2 and pkgdown standards
+ 
  - github actions updated to current standards
+ 
+ - minor update of the vignette / removing defunct Stamen Toner basemap
 
 ## version 1.12.0 (2023-10-29)
 

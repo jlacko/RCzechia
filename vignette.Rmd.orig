@@ -7,7 +7,7 @@ output:
     toc: true
 self_contained: no
 vignette: >
-  %\VignetteIndexEntry{Solving real world issues with RCzechia}
+  %\VignetteIndexEntry{Solving Real World Issues With RCzechia}
   %\VignetteDepends{readxl}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
@@ -26,7 +26,7 @@ library(roxygen2)
 ```
 ### Visualizing Czech Population
 
-Population of the Czech Republic as per the [latest census](https://www.czso.cz/csu/czso/zakladni-vysledky-scitani-lidu-domu-a-bytu-2011-ceska-republika-2011-eihs9d4gp3) in 2011, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/) by Petr Bouchal.
+Population of the Czech Republic from the 2011 census, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/) by Petr Bouchal.
 
 As the population distributed highly unevenly a log scale is used.
 
@@ -167,18 +167,14 @@ ggplot() +
   labs(title = "Geographical Center of Brno") +
   theme_bw()
 
-
-
 ```
-
-
 ## Interactive Map
 
 Interactive maps are powerful tools for data visualization. They are easy to produce with the `leaflet` package.
 
-I found the stamen toner basemap a good company for interactive choropleths - it gives enough context without distracting from the story of your data.
+Since Stamen Toner basemap no longer sparkles joy I have found a new favorite - the [Positron by CartoDB](https://carto.com/blog/getting-to-know-positron-and-dark-matter).
 
-*Note*: it is technically impossible to make html in vignette interactive. As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
+*Note*: it is technically impossible to make html in vignette interactive (and for good reasons). As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
 
 ```{r interactive, eval = F}
 library(dplyr)
@@ -186,7 +182,7 @@ library(RCzechia)
 library(leaflet)
 library(czso)
 
-# metrika pro mapování - uchazeči za říjen
+# map metrics - number of unemployed in October 2020
 metrika <- czso::czso_get_table("250169r20") %>%
    filter(obdobi == "20201031" & vuk == "NEZ0004")
 
@@ -197,12 +193,11 @@ podklad <- RCzechia::obce_polygony() %>% # obce_polygony = municipalities in RCz
 pal <- colorNumeric(palette = "viridis",  domain = podklad$hodnota)
 
 leaflet() %>%
-  addProviderTiles("Stamen.Toner") %>%
+  addProviderTiles("CartoDB.Positron") %>%
   addPolygons(data = podklad,
               fillColor = ~pal(hodnota),
               fillOpacity = 0.75,
               color = NA)
-
 ```
 <p align="center">
 <img src="https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/interactive-screenshot.png" alt="This is just a screenshot of the visualization, so it's not interactive. You can play with the interactive version by running the code shown.">

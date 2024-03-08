@@ -1,4 +1,4 @@
-## version 1.2.1 (2024-03-04)
+## version 1.12.1 (2024-03-04)
 
  - documentation updated in line with current roxygen2 and pkgdown standards
  

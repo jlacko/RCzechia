@@ -18,7 +18,7 @@ for (kod in unique(okresy_low_res$KOD_CZNUTS3)) {
 
 
   if (wrkKraj$KOD_CZNUTS3 == okresy_low_res$KOD_CZNUTS3[1]) {
-    kraje_low_res <- wrkKraj
+    kraje_low_res <- st_cast(wrkKraj, "POLYGON")
   } else {
     kraje_low_res <- rbind(
       kraje_low_res,

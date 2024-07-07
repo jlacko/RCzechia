@@ -58,6 +58,10 @@ test_that("integrace", {
   expect_equal(sum(st_area(subset(volebni_okrsky("high"), ObecKod == "554782"))),
                st_area(subset(obce_polygony(), NAZ_OBEC == "Praha")), tolerance = 1/1000)
 
+  # pražské katastry odpovídají Praze městu
+  expect_equal(sum(st_area(filter(katastry(), NAZ_OBEC == "Praha"))),
+               st_area(subset(obce_polygony(), NAZ_OBEC == "Praha")), tolerance = 1/1000)
+
 
   # Kramářova vila je v Praze / obci, orp, okresu i kraji
 

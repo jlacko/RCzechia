@@ -32,6 +32,7 @@ obce_body <- st_read(ruian_data,
                  geometry_column = "DefinicniBod") %>%
   select(KOD_OBEC = Kod)  %>% # , ruian_naz = Nazev) %>%
   mutate(KOD_OBEC = as.character(KOD_OBEC)) %>%
+  st_cast("POINT") %>%
   st_transform(4326)
 
 colnames(obce_body) <- c("KOD_OBEC", "geometry")

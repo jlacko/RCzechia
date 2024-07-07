@@ -20,6 +20,8 @@ test_that("systém", {
 
   expect_true(all(st_is_valid(geomorfo("system"))))
 
+  expect_true(all(st_geometry_type(geomorfo("system")) == "MULTIPOLYGON"))
+
   # sloupce se nerozbily...
   expect_equal(colnames(geomorfo("system")), c("system", "geometry"))
 
@@ -42,6 +44,8 @@ test_that("subsystem", {
   expect_equal(st_crs(geomorfo("subsystem"))$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(geomorfo("subsystem"))))
+
+  expect_true(all(st_geometry_type(geomorfo("subsystem")) == "MULTIPOLYGON"))
 
   # sloupce se nerozbily...
   expect_equal(colnames(geomorfo("subsystem")), c("system", "subsystem", "kod", "geometry"))
@@ -66,6 +70,8 @@ test_that("provincie", {
 
   expect_true(all(st_is_valid(geomorfo("provincie"))))
 
+  expect_true(all(st_geometry_type(geomorfo("provincie")) == "MULTIPOLYGON"))
+
   # sloupce se nerozbily...
   expect_equal(colnames(geomorfo("provincie")), c("provincie", "geometry"))
 
@@ -88,6 +94,8 @@ test_that("subprovincie", {
   expect_equal(st_crs(geomorfo("subprovincie"))$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(geomorfo("subprovincie"))))
+
+  expect_true(all(st_geometry_type(geomorfo("subprovincie")) == "MULTIPOLYGON"))
 
   # sloupce se nerozbily...
   expect_equal(colnames(geomorfo("subprovincie")), c("subprovincie", "kod", "geometry"))
@@ -112,6 +120,8 @@ test_that("oblast", {
 
   expect_true(all(st_is_valid(geomorfo("oblast"))))
 
+  expect_true(all(st_geometry_type(geomorfo("oblast")) == "MULTIPOLYGON"))
+
   # sloupce se nerozbily...
   expect_equal(colnames(geomorfo("oblast")), c("subprovincie", "oblast", "kod", "geometry"))
 
@@ -134,6 +144,8 @@ test_that("celek", {
   expect_equal(st_crs(geomorfo("celek"))$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(geomorfo("celek"))))
+
+  expect_true(all(st_geometry_type(geomorfo("celek")) == "MULTIPOLYGON"))
 
   # sloupce se nerozbily...
   expect_equal(colnames(geomorfo("celek")), c("subprovincie", "oblast", "celek", "kod", "geometry"))
@@ -158,6 +170,8 @@ test_that("podcelek", {
 
   expect_true(all(st_is_valid(geomorfo("podcelek"))))
 
+  expect_true(all(st_geometry_type(geomorfo("podcelek")) == "MULTIPOLYGON"))
+
   # sloupce se nerozbily...
   expect_equal(colnames(geomorfo("podcelek")), c("subprovincie", "oblast", "celek", "podcelek", "kod", "geometry"))
 
@@ -180,6 +194,8 @@ test_that("okrsek", {
   expect_equal(st_crs(geomorfo("okrsek"))$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(geomorfo("okrsek"))))
+
+  expect_true(all(st_geometry_type(geomorfo("okrsek")) == "MULTIPOLYGON"))
 
   # sloupce se nerozbily...
   expect_equal(colnames(geomorfo("okrsek")), c("subprovincie", "oblast", "celek", "podcelek", "okrsek", "kod", "geometry"))

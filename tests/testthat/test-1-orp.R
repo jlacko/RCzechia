@@ -20,6 +20,8 @@ test_that("ORP", {
 
   expect_true(all(st_is_valid(orp_polygony())))
 
+  expect_true(all(st_geometry_type(orp_polygony()) %in% c("POLYGON", "MULTIPOLYGON")))
+
   # sloupce se nerozbily...
   expect_equal(colnames(orp_polygony()), c("KOD_ORP", "NAZ_ORP", "KOD_KRAJ",
                                            "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))

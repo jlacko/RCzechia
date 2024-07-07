@@ -19,6 +19,8 @@ test_that("vodní plochy", {
 
   expect_true(all(st_is_valid(plochy())))
 
+  expect_true(all(st_geometry_type(plochy()) %in% c("MULTIPOLYGON", "POLYGON")))
+
   # sloupce se nerozbily...
   expect_equal(colnames(plochy()), c("NAZEV", "VYSKA", "geometry"))
 
@@ -68,8 +70,16 @@ test_that("řeky", {
   expect_equal(st_crs(reky("Brno"))$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(reky())))
+  expect_true(all(st_is_valid(reky(resolution = "high"))))
+  expect_true(all(st_is_valid(reky(resolution = "low"))))
   expect_true(all(st_is_valid(reky("Praha"))))
   expect_true(all(st_is_valid(reky("Brno"))))
+
+  expect_true(all(st_geometry_type(reky()) %in% c("MULTILINESTRING", "LINESTRING")))
+  expect_true(all(st_geometry_type(reky(resolution = "high")) %in% c("MULTILINESTRING", "LINESTRING")))
+  expect_true(all(st_geometry_type(reky(resolution = "low")) %in% c("MULTILINESTRING", "LINESTRING")))
+  expect_true(all(st_geometry_type(reky("Praha")) %in% c("MULTILINESTRING", "LINESTRING")))
+  expect_true(all(st_geometry_type(reky("Brno")) %in% c("MULTILINESTRING", "LINESTRING")))
 
   # sloupce se nerozbily...
   expect_equal(colnames(reky()), c("TYP", "NAZEV", "Navigable", "Major" , "geometry"))

@@ -27,6 +27,10 @@ test_that("okresy", {
   expect_true(all(st_is_valid(okresy("high"))))
   expect_true(all(st_is_valid(okresy("low"))))
 
+  expect_true(all(st_geometry_type(okresy("low")) %in% c("POLYGON", "MULTIPOLYGON")))
+  expect_true(all(st_geometry_type(okresy("high")) %in% c("POLYGON", "MULTIPOLYGON")))
+
+
   # sloupce se nerozbily...
   expect_equal(colnames(okresy()), c("KOD_OKRES", "KOD_LAU1", "NAZ_LAU1", "KOD_KRAJ",
                                      "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))

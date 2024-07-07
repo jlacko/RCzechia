@@ -19,6 +19,8 @@ test_that("obce body", {
 
   expect_true(all(st_is_valid(obce_body())))
 
+  expect_true(all(st_geometry_type(obce_body()) %in% c("POINT")))
+
   # sloupce se nerozbily...
   expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                            "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
@@ -43,6 +45,8 @@ test_that("obce polygony", {
   expect_equal(st_crs(obce_polygony())$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(obce_polygony())))
+
+  expect_true(all(st_geometry_type(obce_polygony()) %in% c("MULTIPOLYGON")))
 
   # sloupce se nerozbily...
   expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",

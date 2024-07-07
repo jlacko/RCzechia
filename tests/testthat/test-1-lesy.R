@@ -19,6 +19,8 @@ test_that("lesy", {
 
   expect_true(all(st_is_valid(lesy())))
 
+  expect_true(all(st_geometry_type(lesy()) %in% c("POLYGON")))
+
   # sloupce se nerozbily...
   expect_equal(colnames(lesy()), c("geometry"))
 })

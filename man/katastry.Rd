@@ -13,10 +13,11 @@ katastry()
 \code{sf} data frame with 142 rows of 4 variables + geometry
 
 \describe{
-\item{KOD}{Code of the city part / kod mestske casti}
-\item{NAZEV}{Name of the city part / nazev mestske casti}
-\item{KOD_OBEC}{Code of the city}
-\item{NAZ_OBEC}{Name of the city}
+\item{KOD}{Code of the cadastral area / kód katastrálního území}
+\item{NAZEV}{Name of the cadastral area / název katastrálního území}
+\item{KOD_OBEC}{Code of the municipality}
+\item{NAZ_OBEC}{Name of the municipality}
+\item{digi}{boolean indicating completed digitalization}
 }
 }
 \description{

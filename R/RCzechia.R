@@ -63,6 +63,10 @@
 #'  \item *volebni_okrsky* - 14.733 general election districts
 #'
 #'  source:  [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 75.8 MB, low res object:  5.0 MB
+#'  \item *katastry* - 13.076 cadastral areas of the Czech Republic
+#'
+#'  source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 26.1 MB, no low res version
+#'
 #'  \item *zip_codes* - 2.671 ZIP code areas
 #'
 #'  source:  [Czech Statistical Office](https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu), high res object: 45.4 MB, low res object: 2.1 MB

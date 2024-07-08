@@ -6,7 +6,7 @@
 #'
 #' The dataset is based on RUIAN data by the Czech cadastral office. If necessary you can download the most up to date raw dataset in VFR format (a special case of XML which is understood by GDAL) on <https://vdp.cuzk.cz/vdp/ruian/vymennyformat> (in Czech only).
 #'
-#' The data is current to June 2021 (i.e changes introduced by act 51/2020 Sb. are reflected). Downloaded size of high resolution shapefile 2.1 MB.
+#' The data is current to June 2024. Downloaded size of high resolution shapefile 2.1 MB; low resolution object is internal.
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
@@ -42,7 +42,7 @@ okresy <- function(resolution = "high") {
   if (resolution == "low") {
     return(okresy_low_res)
   } else {
-    result <- .downloader("Okresy-R-2021-06.rds")
+    result <- .downloader("Okresy-R-2024-06.rds")
     result
   }
 }

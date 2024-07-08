@@ -61,6 +61,8 @@ test_that("historie platí", {
 
     expect_true(all(st_is_valid(historie(doba))))
 
+    expect_true(all(st_geometry_type(historie(doba)) %in% c("POLYGON", "MULTIPOLYGON")))
+
     # sloupece obsahují geometrii (ne geom nebo x)
     expect_true("geometry" %in% colnames(historie(doba)))
 

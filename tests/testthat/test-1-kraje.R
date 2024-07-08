@@ -27,6 +27,9 @@ test_that("kraje", {
   expect_true(all(st_is_valid(kraje("high"))))
   expect_true(all(st_is_valid(kraje("low"))))
 
+  expect_true(all(st_geometry_type(kraje("low")) %in% c("POLYGON")))
+  expect_true(all(st_geometry_type(kraje("high")) %in% c("POLYGON")))
+
   # sloupce se nerozbily...
   expect_equal(colnames(kraje()), c("KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
 

@@ -27,6 +27,9 @@ test_that("PSČ", {
   expect_true(all(st_is_valid(zip_codes("high"))))
   expect_true(all(st_is_valid(zip_codes("low"))))
 
+  expect_true(all(st_geometry_type(zip_codes("high")) %in% c("POLYGON", "MULTIPOLYGON")))
+  expect_true(all(st_geometry_type(zip_codes("low")) %in% c("POLYGON", "MULTIPOLYGON")))
+
   # sloupce se nerozbily...
   expect_equal(colnames(zip_codes()), c("PSC", "NAZ_POSTA", "geometry"))
   expect_equal(colnames(zip_codes("high")), c("PSC", "NAZ_POSTA", "geometry"))

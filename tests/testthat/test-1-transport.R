@@ -20,6 +20,9 @@ test_that("silnice", {
 
   expect_true(all(st_is_valid(silnice())))
 
+  expect_true(all(st_geometry_type(silnice()) %in% c("MULTILINESTRING", "LINESTRING")))
+
+
   # dálnic je méně jak silnic
   expect_gt(sum(st_length(subset(silnice(), stringr::str_starts(silnice()$TRIDA, "Silnice")))),
             sum(st_length(subset(silnice(), stringr::str_starts(silnice()$TRIDA, "Dálnice")))))
@@ -45,6 +48,8 @@ test_that("železnice", {
   expect_equal(st_crs(zeleznice())$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(zeleznice())))
+
+  expect_true(all(st_geometry_type(zeleznice()) %in% c("MULTILINESTRING", "LINESTRING")))
 
   # normálních železnic je víc jak úzkokolejek
   expect_gt(sum(st_length(subset(zeleznice(), ROZCHODNOST == "standard"))),

@@ -20,6 +20,8 @@ test_that("chráněná území", {
 
   expect_true(all(st_is_valid(chr_uzemi())))
 
+  expect_true(all(st_geometry_type(chr_uzemi()) == "MULTIPOLYGON"))
+
   # sloupce se nerozbily...
   expect_equal(colnames(chr_uzemi()), c("TYP", "NAZEV", "PLOCHA", "geometry"))
 

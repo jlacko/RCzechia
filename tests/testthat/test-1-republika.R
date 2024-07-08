@@ -32,6 +32,9 @@ test_that("republika", {
   expect_true(all(st_is_valid(republika("high"))))
   expect_true(all(st_is_valid(republika("low"))))
 
+  expect_true(all(st_geometry_type(republika("low")) %in% c("POLYGON")))
+  expect_true(all(st_geometry_type(republika("high")) %in% c("POLYGON")))
+
   # sloupce se nerozbily...
   expect_equal(colnames(republika()), c("NAZ_STAT", "geometry"))
 

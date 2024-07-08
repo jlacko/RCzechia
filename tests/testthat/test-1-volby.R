@@ -27,6 +27,9 @@ test_that("obvody senátu", {
   expect_true(all(st_is_valid(senat_obvody("high"))))
   expect_true(all(st_is_valid(senat_obvody("low"))))
 
+  expect_true(all(st_geometry_type(senat_obvody("high")) == "MULTIPOLYGON"))
+  expect_true(all(st_geometry_type(senat_obvody("low")) == "MULTIPOLYGON"))
+
   # sloupce se nerozbily...
   expect_equal(colnames(senat_obvody()), c("OBVOD", "SIDLO", "NAZEV_VO", "geometry"))
   expect_equal(colnames(senat_obvody("high")), c("OBVOD", "SIDLO", "NAZEV_VO", "geometry"))
@@ -63,6 +66,9 @@ test_that("volební okrsky", {
 
   expect_true(all(st_is_valid(volebni_okrsky("high"))))
   expect_true(all(st_is_valid(volebni_okrsky("low"))))
+
+  expect_true(all(st_geometry_type(volebni_okrsky("high")) %in% c("MULTIPOLYGON", "POLYGON")))
+  expect_true(all(st_geometry_type(volebni_okrsky("low")) %in% c("MULTIPOLYGON", "POLYGON")))
 
   # sloupce se nerozbily...
   expect_equal(colnames(volebni_okrsky()), c("Kod", "Cislo", "ObecKod", "MomcKod", "KOD_LAU1", "KOD_CZNUTS3", "geometry"))

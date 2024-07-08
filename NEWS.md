@@ -1,3 +1,11 @@
+## version 1.12.2 (2024-07-07)
+
+ - katastry function added to serve cadastral areas / katastrální území
+ 
+ - admin areas based on June 2024 rather than June 2021 RUIAN dataset
+
+ - test coverage & (minor) documentation update
+
 ## version 1.12.1 (2024-03-04)
 
  - documentation updated in line with current roxygen2 and pkgdown standards

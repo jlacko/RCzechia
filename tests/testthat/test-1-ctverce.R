@@ -24,6 +24,11 @@ test_that("faunistické čtverce", {
   expect_true(all(st_is_valid(KFME_grid("high"))))
   expect_true(all(st_is_valid(KFME_grid("low"))))
 
+  expect_true(all(st_geometry_type(KFME_grid()) == "POLYGON"))
+  expect_true(all(st_geometry_type(KFME_grid("low")) == "POLYGON"))
+  expect_true(all(st_geometry_type(KFME_grid("high")) == "POLYGON"))
+
+
   expect_error(KFME_grid("bflm")) # neznámé rozlišení - očekávám high(default) / low
 
 })

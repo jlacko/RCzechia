@@ -19,6 +19,8 @@ test_that("městské části", {
 
   expect_true(all(st_is_valid(casti())))
 
+  expect_true(all(st_geometry_type(casti()) %in% c("POLYGON")))
+
   # sloupce se nerozbily...
   expect_equal(colnames(casti()), c("KOD", "NAZEV", "KOD_OBEC", "NAZ_OBEC", "geometry"))
 })

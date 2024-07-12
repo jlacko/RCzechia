@@ -32,8 +32,13 @@
 #'
 #' smallest <- which.min(sf::st_area(praha))
 #'
+#' plot(st_geometry(RCzechia::obce_polygony() |>
+#'    subset(NAZ_OBEC == "Praha")))
+#'
+#' plot(st_geometry(RCzechia::reky("Praha")), col = "navyblue", add = TRUE)
+#'
 #' # it is Josefov - the former Jewish Ghetto
-#' mapview::mapview(praha[smallest, ])
+#' plot(st_geometry(praha[smallest, ]), col = "red", add = TRUE)
 #'
 #' }
 #'

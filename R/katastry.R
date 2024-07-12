@@ -21,6 +21,27 @@
 #'
 #' @source © ČÚZK, 2024 <https://vdp.cuzk.cz/>
 #'
+#' @examples
+#'
+#' \donttest{
+#' library(sf)
+#'
+#' # which cadastral area of Prague is the smallest?
+#' praha <- RCzechia::katastry() |>
+#'    subset(NAZ_OBEC == "Praha")
+#'
+#' smallest <- which.min(sf::st_area(praha))
+#'
+#' plot(st_geometry(RCzechia::obce_polygony() |>
+#'    subset(NAZ_OBEC == "Praha")))
+#'
+#' plot(st_geometry(RCzechia::reky("Praha")), col = "navyblue", add = TRUE)
+#'
+#' # it is Josefov - the former Jewish Ghetto
+#' plot(st_geometry(praha[smallest, ]), col = "red", add = TRUE)
+#'
+#' }
+#'
 #' @export
 
 katastry <- function() {

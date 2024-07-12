@@ -30,3 +30,20 @@ The dataset is based on RUIAN data by the Czech cadastral office. If necessary y
 
 The data is current to June 2024. Downloaded size is 26.1 MB.
 }
+\examples{
+
+\donttest{
+library(sf)
+
+# which cadastral area of Prague is the smallest?
+praha <- RCzechia::katastry() |>
+   subset(NAZ_OBEC == "Praha")
+
+smallest <- which.min(sf::st_area(praha))
+
+# it is Josefov - the former Jewish Ghetto
+mapview::mapview(praha[smallest, ])
+
+}
+
+}

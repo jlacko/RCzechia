@@ -21,6 +21,22 @@
 #'
 #' @source © ČÚZK, 2024 <https://vdp.cuzk.cz/>
 #'
+#' @examples
+#'
+#' \donttest{
+#' library(sf)
+#'
+#' # which cadastral area of Prague is the smallest?
+#' praha <- RCzechia::katastry() |>
+#'    subset(NAZ_OBEC == "Praha")
+#'
+#' smallest <- which.min(sf::st_area(praha))
+#'
+#' # it is Josefov - the former Jewish Ghetto
+#' mapview::mapview(praha[smallest, ])
+#'
+#' }
+#'
 #' @export
 
 katastry <- function() {

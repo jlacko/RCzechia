@@ -67,7 +67,7 @@ test_that("historie platí", {
     expect_true("geometry" %in% colnames(historie(doba)))
 
     # území je pokryté
-    expect_equal(sum(st_area(historie(doba))), st_area(republika("high")), tolerance = 5/100)
+    expect_equal(sum(st_area(historie(doba))), st_area(republika("high")), tolerance = 1/1000)
 
   }
 

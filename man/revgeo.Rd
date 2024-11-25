@@ -15,7 +15,7 @@ frame of spatial points}
 }
 \description{
 This function connects to Czech State Administration of Land Surveying and
-Cadastre (\url{https://www.cuzk.cz/en}) API to reversely geocode an address.
+Cadastre (\url{https://cuzk.gov.cz/en}) API to reversely geocode an address.
 As consequence it is implemented only for Czech addresses.
 }
 \details{

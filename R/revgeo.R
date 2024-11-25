@@ -1,7 +1,7 @@
 #' Reversely Geocode a Czech Address
 #'
 #' This function connects to Czech State Administration of Land Surveying and
-#' Cadastre (<https://www.cuzk.cz/en>) API to reversely geocode an address.
+#' Cadastre (<https://cuzk.gov.cz/en>) API to reversely geocode an address.
 #' As consequence it is implemented only for Czech addresses.
 #'
 #' Input of the function is a `sf` data frame of spatial points, and

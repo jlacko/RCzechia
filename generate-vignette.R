@@ -5,3 +5,4 @@ system("rm ./vignettes/*")
 knit("./vignette.Rmd.orig",
      output = "./vignettes/vignette.Rmd")
 system("mv ./*.png ./vignettes/")
+

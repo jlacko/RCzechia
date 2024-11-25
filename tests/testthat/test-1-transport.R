@@ -24,8 +24,8 @@ test_that("silnice", {
 
 
   # dálnic je méně jak silnic
-  expect_gt(sum(st_length(subset(silnice(), stringr::str_starts(silnice()$TRIDA, "Silnice")))),
-            sum(st_length(subset(silnice(), stringr::str_starts(silnice()$TRIDA, "Dálnice")))))
+  expect_gt(sum(st_length(subset(silnice(), grepl("Silnice", silnice()$TRIDA)))),
+            sum(st_length(subset(silnice(), grepl("Dálnice",silnice()$TRIDA)))))
 
   # sloupce se nerozbily...
   expect_equal(colnames(silnice()), c("TRIDA", "CISLO_SILNICE", "MEZINARODNI_OZNACENI", "geometry"))

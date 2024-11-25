@@ -43,7 +43,7 @@ test_that("integrace", {
   expect_equal(sum(st_area(obce_polygony())), st_area(republika()), tolerance = 1/1000)
 
   # v újezdech se nevolí...
-  vojaci <- filter(obce_polygony(), stringr::str_starts(NAZ_POU, "Vojenský újezd"))
+  vojaci <- filter(obce_polygony(), grepl("Vojenský újezd", NAZ_POU))
   expect_equal(sum(st_area(volebni_okrsky("high"))), st_area(republika("high")) - sum(st_area(vojaci)), tolerance = 1/1000)
 
   expect_equal(sum(st_area(senat_obvody("high"))), st_area(republika("high")), tolerance = 1/1000)

@@ -8,7 +8,6 @@ output:
 self_contained: no
 vignette: >
   %\VignetteIndexEntry{Solving Real World Issues With RCzechia}
-  %\VignetteDepends{readxl}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -32,11 +31,11 @@ tf <- tempfile(fileext = ".xls") # a temporary xls file
 GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
     write_disk(tf))
 ## Response [https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls]
-##   Date: 2024-11-25 13:34
+##   Date: 2024-11-25 14:10
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 44.5 kB
-## <ON DISK>  /tmp/Rtmpv3hAd0/file2090d3053c0dd.xls
+## <ON DISK>  /tmp/Rtmpn3okFy/file20e11aee97ca.xls
 src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
 
 colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones

@@ -8,7 +8,6 @@ output:
 self_contained: no
 vignette: >
   %\VignetteIndexEntry{Solving Real World Issues With RCzechia}
-  %\VignetteDepends{readxl}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

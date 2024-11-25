@@ -1,14 +1,13 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2024-03-04"
+date: "2024-11-25"
 output:
   rmarkdown::html_vignette:
     toc: true
 self_contained: no
 vignette: >
   %\VignetteIndexEntry{Solving Real World Issues With RCzechia}
-  %\VignetteDepends{readxl}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,7 +20,7 @@ Population of the Czech Republic from the 2011 census, per district (okres). The
 As the population distributed highly unevenly a log scale is used.
 
 
-```r
+``` r
 library(RCzechia)
 library(ggplot2)
 library(readxl)
@@ -32,11 +31,11 @@ tf <- tempfile(fileext = ".xls") # a temporary xls file
 GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
     write_disk(tf))
 ## Response [https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls]
-##   Date: 2024-03-04 13:47
+##   Date: 2024-11-25 14:10
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 44.5 kB
-## <ON DISK>  /tmp/Rtmpa239co/file9a1ec35053513.xls
+## <ON DISK>  /tmp/Rtmpn3okFy/file20e11aee97ca.xls
 src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
 
 colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
@@ -58,8 +57,8 @@ ggplot(data = okresni_data) +
   labs(title = "Czech population",
        fill = "population\n(log scale)") +
   theme_bw() +
-  theme(legend.text.align = 1,
-        legend.title.align = 0.5)
+  theme(legend.text = element_text(hjust = 1),
+        legend.title = element_text(hjust = 0.5))
 ```
 
 <div class="figure" style="text-align: center">
@@ -74,7 +73,7 @@ Drawing a map: three semi-random landmarks on map, with rivers shown for better 
 To get the geocoded data frame function `RCzechia::geocode()` is used.
 
 
-```r
+``` r
 library(RCzechia)
 library(ggplot2)
 library(sf)
@@ -118,7 +117,7 @@ Calculate distance between two spatial objects; the `sf` package supports (via g
 Calculating distance from Prague (#1 Czech city) to Brno (#2 Czech city).
 
 
-```r
+``` r
 library(dplyr)
 library(RCzechia)
 library(sf)
@@ -135,7 +134,7 @@ vzdalenost <- sf::st_distance(praha, brno) %>%
 
 # report results
 print(vzdalenost[1])
-## 152.4636 [kilometers]
+## 152.4642 [kilometers]
 ```
 
 ## Geographical Center of the City of Brno
@@ -147,7 +146,7 @@ The center is calculated using `sf::st_centroid()` and reversely geocoded via `R
 Note the use of `reky("Brno")` to provide the parts of Svitava and Svratka relevant to a map of Brno city.
 
 
-```r
+``` r
 library(dplyr)
 library(RCzechia)
 library(ggplot2)
@@ -192,7 +191,7 @@ Since Stamen Toner basemap no longer sparkles joy I have found a new favorite - 
 *Note*: it is technically impossible to make html in vignette interactive (and for good reasons). As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
 
 
-```r
+``` r
 library(dplyr)
 library(RCzechia)
 library(leaflet)
@@ -233,7 +232,7 @@ This example covers a frequent use case:
 
 
 
-```r
+``` r
 library(RCzechia)
 library(ggplot2)
 library(dplyr)
@@ -292,7 +291,7 @@ Package RCzechia supports two versions of relief visualization:
 This example covers the first option.
 
 
-```r
+``` r
 library(RCzechia)
 library(ggplot2)
 library(terra)
@@ -333,7 +332,7 @@ This example uses [`{rvest}`](https://rvest.tidyverse.org/) to scrape the offici
 Since not all districts were up for election in this cycle two thirds of the map contain NA's; that is expected behavior (the Czech senate elections are staggered, like in the US).
 
 
-```r
+``` r
 
 library(RCzechia)
 library(ggplot2)

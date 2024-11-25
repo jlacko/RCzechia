@@ -8,7 +8,6 @@ output:
 self_contained: no
 vignette: >
   %\VignetteIndexEntry{Solving Real World Issues With RCzechia}
-  %\VignetteDepends{readxl}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -61,8 +60,8 @@ ggplot(data = okresni_data) +
   labs(title = "Czech population",
        fill = "population\n(log scale)") +
   theme_bw() +
-  theme(legend.text.align = 1,
-        legend.title.align = 0.5)
+  theme(legend.text = element_text(hjust = 1),
+        legend.title = element_text(hjust = 0.5))
 ```
 
 ## Geocoding Locations & Drawing them on a Map

@@ -62,6 +62,6 @@ historie <- function(era) {
     stop(paste(era, "is not a valid historical era!"))
   }
 
-  result <- .downloader(paste0("history_", era, ".rds"))
+  result <- .downloader(paste0("history_", era, "v2.rds"))
   result
 }

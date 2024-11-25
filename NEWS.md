@@ -1,3 +1,11 @@
+## version 1.12.3
+
+ - history objects updated to return cleaner geometry 
+ 
+ - minor updates in README + CITATION.cff
+ 
+ - removed unnecessary dependencies
+
 ## version 1.12.2 (2024-07-07)
 
  - katastry function added to serve cadastral areas / katastrální území

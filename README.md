@@ -55,7 +55,8 @@ administrative:
 * **orp_polygony** 205 municipalities with extended powers (in Czech: obce s rozšířenou působností) + Prague (legally not *a city* but *the capital*)  
 * **obce_polygony**: 6.258 municipalities of the Czech Republic  
 * **obce_body** the same as obce_polygony, but centroids instead of polygons  
-* **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava and other)  
+* **casti**: primarily 57 city parts of Prague, but also of other cities with defined parts (Brno, Ostrava and other)
+* **katastry**: 13.076 cadastral areas (katastrální území) of the Czech Republic
 * **senat_obvody**: 81 senate districts (volební obvody senátu)
 * **volebni_okrsky**: 14.733 general election districts (volební okrsky)
 * **zip_codes**: 2.671 ZIP code areas (poštovní směrovací čísla / PSČ)

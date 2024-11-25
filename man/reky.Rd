@@ -4,7 +4,7 @@
 \alias{reky}
 \title{Rivers}
 \source{
-Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
+Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. https://cuzk.gov.cz>
 }
 \usage{
 reky(scope = "global", resolution = "high")

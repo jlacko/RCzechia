@@ -37,35 +37,35 @@
 #' \itemize{
 #'  \item *republika* - borders of the Czech Republic
 #'
-#'   source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 245.8 KB, low res version internal
+#'   source: [RÚIAN / ČÚZK](https://cuzk.gov.cz/ruian/RUIAN.aspx), high res object: 245.8 KB, low res version internal
 #'
 #'  \item *kraje* - 14 regions / NUTS3 units
 #'
-#'  source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 982.2 KB, low res version internal
+#'  source: [RÚIAN / ČÚZK](https://cuzk.gov.cz/ruian/RUIAN.aspx), high res object: 982.2 KB, low res version internal
 #'  \item *okresy* - 76 + 1 districts / LAU1 units
 #'
-#'  source:  [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 2.1 MB, low res version internal
+#'  source:  [RÚIAN / ČÚZK](https://cuzk.gov.cz/ruian/RUIAN.aspx), high res object: 2.1 MB, low res version internal
 #'  \item *orp_polygony* - 205 + 1 municipalities with extended powers
 #'
-#'  source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 3.1 MB, no low res version
+#'  source: [RÚIAN / ČÚZK](https://cuzk.gov.cz/ruian/RUIAN.aspx), high res object: 3.1 MB, no low res version
 #'  \item *obce_polygony* - 6.258 municipalities as polygons
 #'
-#'  source:  [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 13.3 MB, no low res version
+#'  source:  [RÚIAN / ČÚZK](https://cuzk.gov.cz/ruian/RUIAN.aspx), high res object: 13.3 MB, no low res version
 #'  \item *obce_body* - 6.258 municipalities as centroids (points)
 #'
-#'  source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 252.0 KB, no low res version
+#'  source: [RÚIAN / ČÚZK](https://cuzk.gov.cz/ruian/RUIAN.aspx), high res object: 252.0 KB, no low res version
 #'  \item *casti* - 57 city districts (where available)
 #'
-#'  source:  [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 1.5 MB, no low res version
+#'  source:  [RÚIAN / ČÚZK](https://cuzk.gov.cz/ruian/RUIAN.aspx), high res object: 1.5 MB, no low res version
 #'  \item *senat_obvody* - 81 senate districts
 #'
 #'  source:  [Czech Statistical Office](https://www.czso.cz/csu/czso/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu), high res object: 10.5 MB, low res object: 50.0 KB
 #'  \item *volebni_okrsky* - 14.733 general election districts
 #'
-#'  source:  [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 75.8 MB, low res object:  5.0 MB
+#'  source:  [RÚIAN / ČÚZK](https://cuzk.gov.cz/ruian/RUIAN.aspx), high res object: 75.8 MB, low res object:  5.0 MB
 #'  \item *katastry* - 13.076 cadastral areas of the Czech Republic
 #'
-#'  source: [RÚIAN / ČÚZK](https://www.cuzk.cz/ruian/RUIAN.aspx), high res object: 26.1 MB, no low res version
+#'  source: [RÚIAN / ČÚZK](https://cuzk.gov.cz/ruian/RUIAN.aspx), high res object: 26.1 MB, no low res version
 #'
 #'  \item *zip_codes* - 2.671 ZIP code areas
 #'

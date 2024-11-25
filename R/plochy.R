@@ -13,7 +13,7 @@
 #'   \item{VYSKA}{water level, meters above sea level}
 #' }
 #'
-#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. <https://www.cuzk.cz>
+#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. <https://cuzk.gov.cz>
 #'
 #' @export
 

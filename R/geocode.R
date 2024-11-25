@@ -1,7 +1,7 @@
 #' Geocode a Czech Address
 #'
 #' This function connects to Czech State Administration of Land Surveying and
-#' Cadastre (<https://www.cuzk.cz/en>) API to geocode an address. As
+#' Cadastre (<https://cuzk.gov.cz/en>) API to geocode an address. As
 #' consequence it is implemented only for Czech addresses.
 #'
 #' Input of the function are an address to geocode (or a vector of addresses)

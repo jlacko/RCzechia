@@ -78,8 +78,8 @@ natural:
 All objects are implemented as functions returning data frames, so must be followed by brackets (i.e. `hranice <- republika()`).
 
 ### In addition a number of utility functions is provided:  
-* **geocode**: interfaces to geocoding API of [ČÚZK](https://cuzk.cz/en).
-* **revgeo**: interfaces to reverse geocoding API of [ČÚZK](https://cuzk.cz/en).
+* **geocode**: interfaces to geocoding API of [ČÚZK](https://cuzk.gov.cz/en).
+* **revgeo**: interfaces to reverse geocoding API of [ČÚZK](https://cuzk.gov.cz/en).
 
 ## Call for Action
 

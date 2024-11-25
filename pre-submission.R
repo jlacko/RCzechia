@@ -1,12 +1,15 @@
 # pre-submission routine
 
-rhub::platforms() # to find an appropriate macos version
-
-#rhub::check_on_windows()
-#rhub::check_for_cran(platforms = "macos-highsierra-release-cran")
 devtools::check_win_release()
 devtools::check_win_devel()
 devtools::check_win_oldrelease()
 
 # once ready
 devtools::release()
+
+# internet docs - package down
+pkgdown::build_site()
+
+# upload docs to interwebs
+system('aws s3 sync ./docs s3://rczechia.jla-data.net')
+system('aws cloudfront create-invalidation --distribution-id E18KZBS7UJYD5I --paths "/*"')

@@ -22,7 +22,7 @@
 #'   \item{MEZINARODNI_OZNACENI}{International road code}
 #' }
 #'
-#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. <https://www.cuzk.cz>
+#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. <https://cuzk.gov.cz>
 #'
 #' @export
 #' @md

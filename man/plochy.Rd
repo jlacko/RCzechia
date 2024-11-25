@@ -4,7 +4,7 @@
 \alias{plochy}
 \title{Water Bodies}
 \source{
-Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://www.cuzk.cz}
+Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. \url{https://cuzk.gov.cz}
 }
 \usage{
 plochy()

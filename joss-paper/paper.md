@@ -72,7 +72,7 @@ For some of the most commonly used objects (*republika*, *kraje*, *okresy*, *rek
 * **geocode**: geocodes an address to coordinates
 * **revgeo**: reverse geocodes coordinates to an address
 
-The utility functions interface API of the Czech State Administration of Land Surveying and Cadastre ([ČÚZK](https://cuzk.cz/en)) and are therefore limited in scope to the area of the Czech Republic.
+The utility functions interface API of the Czech State Administration of Land Surveying and Cadastre ([ČÚZK](https://cuzk.gov.cz/en)) and are therefore limited in scope to the area of the Czech Republic.
 
 The package code is thoroughly tested, with 100% test coverage. In addition to testing code the package implements unit tests on integrity of the datasets provided, such as topological validity and internal consistency between different levels of administrative units.
 

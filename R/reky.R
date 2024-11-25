@@ -26,7 +26,7 @@
 #' plot(st_geometry(subset(okresy(), KOD_LAU1 == "CZ0642"))) # Brno city
 #' plot(reky("Brno"), add = TRUE) # Svitava & Svratka added to Brno my city plot
 #'
-#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. <https://www.cuzk.cz>
+#' @source Mapový podklad – Data200, 2021 © Český úřad zeměměřický a katastrální. https://cuzk.gov.cz>
 #'
 #' @export
 

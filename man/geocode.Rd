@@ -23,7 +23,7 @@ geocode(address, crs = 4326)
 }
 \description{
 This function connects to Czech State Administration of Land Surveying and
-Cadastre (\url{https://www.cuzk.cz/en}) API to geocode an address. As
+Cadastre (\url{https://cuzk.gov.cz/en}) API to geocode an address. As
 consequence it is implemented only for Czech addresses.
 }
 \details{

@@ -1,8 +1,8 @@
 Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
-Version: 1.12.3
-Date: 2024-11-25
+Version: 1.12.4
+Date: 2025-01-07
 Authors@R: c(
   person("Jindra", "Lacko", , "jindra.lacko@gmail.com", role = c("aut", "cre"),
          comment = c(ORCID = "0000-0002-0375-5156")),
@@ -45,3 +45,6 @@ RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
+Config/testthat/edition: 3
+Config/testthat/parallel: true
+

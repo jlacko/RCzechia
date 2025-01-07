@@ -1,3 +1,7 @@
+## version 1.12.4
+
+- internal optimization of tests (paralell processing)
+
 ## version 1.12.3
 
  - history objects updated to return cleaner geometry 

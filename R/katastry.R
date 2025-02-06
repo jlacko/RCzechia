@@ -9,7 +9,7 @@
 #' The data is current to June 2024. Downloaded size is 26.1 MB.
 #'
 #'
-#' @return `sf` data frame with 142 rows of 4 variables + geometry
+#' @return `sf` data frame with 13076 rows of 5 variables + geometry
 #'
 #' \describe{
 #'   \item{KOD}{Code of the cadastral area / kód katastrálního území}

@@ -1,6 +1,11 @@
+
+## version 1.12.5
+
+ - update of GitHub actions to current best practices
+
 ## version 1.12.4
 
-- internal optimization of tests (paralell processing)
+- internal optimization of tests (parallel processing)
 
 ## version 1.12.3
 

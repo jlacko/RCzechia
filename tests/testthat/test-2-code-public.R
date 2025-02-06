@@ -16,11 +16,13 @@ test_that("geocode", {
 
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(geocode(dos_sochoros[1]), "internet") # není síť
+  expect_no_error(geocode(dos_sochoros[1])) # fail, but graceful
   expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
   Sys.setenv("NETWORK_UP" = TRUE)
 
   Sys.setenv("CUZK_UP" = FALSE)
   expect_message(geocode(dos_sochoros[1]), "API") # API down
+  expect_no_error(geocode(dos_sochoros[1])) # fail, but graceful
   expect_s3_class(geocode(dos_sochoros[1]), "sf") # vrací se class sf
   Sys.setenv("CUZK_UP" = TRUE)
 
@@ -85,10 +87,12 @@ test_that("revgeo", {
 
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(revgeo(sochor_wgs), "internet") # není síť
+  expect_no_error(revgeo(sochor_wgs)) # fail, but graceful
   Sys.setenv("NETWORK_UP" = TRUE)
 
   Sys.setenv("CUZK_UP" = FALSE)
   expect_message(revgeo(sochor_wgs), "API") # API down
+  expect_no_error(revgeo(sochor_wgs)) # fail, but graceful
   Sys.setenv("CUZK_UP" = TRUE)
   # vrací se sf objekt
   expect_s3_class(revgeo(sochor_wgs), "sf") # vrací se class sf

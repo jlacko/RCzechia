@@ -85,11 +85,26 @@
   TRUE
 }
 
-# check the environment variable & report back
 
-.onAttach <- function(libname, pkgname)  {
+#' Internal function - executes on load, and informs about state of the RCZECHIA_HOME environment variable
+#'
+#' The function takes no parameters; it serves the need to make the .onAttach code testable
+#'
+#' @keywords internal
+
+.rhome_state <- function() {
 
   home <- Sys.getenv("RCZECHIA_HOME")
 
   if(home != "") packageStartupMessage("Using local RCzechia cache at ", home, appendLF = TRUE)
+
+}
+
+
+# check the environment variable & report back
+
+.onAttach <- function(libname, pkgname)  {
+
+  .rhome_state()
+
 }

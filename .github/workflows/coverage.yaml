@@ -1,10 +1,10 @@
 # For help debugging build failures open an issue on the RStudio community with the 'github-actions' tag.
 # https://community.rstudio.com/new-topic?category=Package%20development&tags=github-actions
 on:
-  # either: pull request to master opened
+  # either: pull request to master merged
   pull_request:
     types:
-      - opened
+      - merged
     branches:
       - master
   # or: manual trigger from GitHub pages

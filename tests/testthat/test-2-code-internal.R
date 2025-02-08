@@ -59,9 +59,13 @@ test_that("envir variable", {
 
   expect_true(set_home((tempdir()))) # nastavení na tempdir projde
 
+  set_home((tempdir()))
+
+  expect_message(.rhome_state(), "Using local RCzechia cache at") # když je home nastaven, tak vyjde hláška
+
   expect_true(unset_home()) # vysazení projde
 
-  if(envir_backup != "") Sys.setenv("RCZECHIA_HOME" = envir_backup) # obnovit hodnotu ze zálohy, pokud dává smysl
+  if(envir_backup != "")  Sys.setenv("RCZECHIA_HOME" = envir_backup) # obnovit hodnotu ze zálohy, pokud dává smysl
 
 })
 

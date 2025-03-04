@@ -9,6 +9,7 @@
 #' @param path path to local filesystem directory to be used as a cache; must exist and must be writable
 #'
 #' @return TRUE for success and FALSE for failure; returned silently
+#' @export
 
 set_home <- function(path) {
 
@@ -27,6 +28,7 @@ set_home <- function(path) {
 #' The function unsets the environment variable RCZECHIA_HOME, meaning tempdir() will be used in future function calls, and no persistent data will be stored locally.
 #'
 #' @return TRUE for success and FALSE for failure; returned silently
+#' @export
 
 unset_home <- function() {
 

@@ -4,7 +4,7 @@ on:
   # either: pull request to master merged
   pull_request:
     types:
-      - merged
+      - closed
     branches:
       - master
   # or: manual trigger from GitHub pages

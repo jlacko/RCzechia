@@ -1,3 +1,6 @@
+## version 1.12.6
+
+ - reworked examples to avoid using R 4.1.0 syntax (and keep 3.3.0 as minimal version)
 
 ## version 1.12.5
 
@@ -5,7 +8,7 @@
 
 ## version 1.12.4
 
-- internal optimization of tests (parallel processing)
+ - internal optimization of tests (parallel processing)
 
 ## version 1.12.3
 

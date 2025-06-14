@@ -35,6 +35,7 @@ Suggests:
   rmarkdown,
   dplyr,
   s2,
+  lwgeom,
   covr
 SystemRequirements: 
   GDAL (>= 2.2.3), 

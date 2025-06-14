@@ -1,3 +1,7 @@
+## version 1.12.7
+
+ - chr_uzemi based on 2025 data
+
 ## version 1.12.6
 
  - reworked examples to avoid using R 4.1.0 syntax (and keep 3.3.0 as minimal version)

@@ -1,8 +1,8 @@
 Package: RCzechia
 Type: Package
 Title: Spatial Objects of the Czech Republic
-Version: 1.12.6
-Date: 2025-03-14
+Version: 1.12.7
+Date: 2025-06-14
 Authors@R: c(
   person("Jindra", "Lacko", , "jindra.lacko@gmail.com", role = c("aut", "cre"),
          comment = c(ORCID = "0000-0002-0375-5156")),
@@ -20,12 +20,12 @@ Depends:
   R (>= 3.3.0),
   sf
 Imports:
+  terra,
   curl,
   httr,
   jsonlite,
   magrittr
 Suggests:
-  terra,
   units,
   ggplot2,
   tidyterra,
@@ -34,8 +34,8 @@ Suggests:
   roxygen2,
   rmarkdown,
   dplyr,
-  lwgeom,
   s2,
+  lwgeom,
   covr
 SystemRequirements: 
   GDAL (>= 2.2.3), 

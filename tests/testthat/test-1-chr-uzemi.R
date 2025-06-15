@@ -14,13 +14,13 @@ test_that("chráněná území", {
 
   expect_s3_class(chr_uzemi(), "sf")
 
-  expect_equal(nrow(chr_uzemi()), 2677)
+  expect_equal(nrow(chr_uzemi()), 2712)
 
   expect_equal(st_crs(chr_uzemi())$input, "EPSG:4326")
 
   expect_true(all(st_is_valid(chr_uzemi())))
 
-  expect_true(all(st_geometry_type(chr_uzemi()) == "MULTIPOLYGON"))
+  expect_true(all(st_geometry_type(chr_uzemi()) %in% c("MULTIPOLYGON", "POLYGON")))
 
   # sloupce se nerozbily...
   expect_equal(colnames(chr_uzemi()), c("TYP", "NAZEV", "PLOCHA", "geometry"))

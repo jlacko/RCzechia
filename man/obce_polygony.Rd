@@ -4,7 +4,7 @@
 \alias{obce_polygony}
 \title{Municipalities / communes (obce) as polygons}
 \source{
-© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+© ČÚZK, 2025 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 obce_polygony()
@@ -25,6 +25,9 @@ obce_polygony()
 \item{KOD_KRAJ}{Code of the region (kraj).}
 \item{KOD_CZNUTS3}{Code of the NUTS3 unit (kraj)}
 \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
+\item{ICO}{ID number of the commune / ičo obce}
+\item{DIC}{tax ID of the commune / dič obce}
+
 }
 }
 \description{
@@ -35,7 +38,7 @@ Due to package size constraints the data are stored externally (and a working in
 
 The dataset is based on RUIAN data by the Czech cadastral office. If necessary you can download the most up to date raw dataset in VFR format (a special case of XML which is understood by GDAL) on \url{https://vdp.cuzk.cz/vdp/ruian/vymennyformat} (in Czech only).
 
-The data is current to June 2024. Downloaded size is 13.2 MB (so use with caution, and patience).
+The data is current to July 2025. Downloaded size is 13.3 MB (so use with caution, and patience).
 }
 \examples{
 \donttest{

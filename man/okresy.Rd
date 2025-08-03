@@ -4,7 +4,7 @@
 \alias{okresy}
 \title{Districts (okresy)}
 \source{
-© ČÚZK, 2021 \url{https://vdp.cuzk.cz/}
+© ČÚZK, 2025 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 okresy(resolution = "high")
@@ -32,7 +32,7 @@ Due to package size constraints the data are stored externally (and a working in
 
 The dataset is based on RUIAN data by the Czech cadastral office. If necessary you can download the most up to date raw dataset in VFR format (a special case of XML which is understood by GDAL) on \url{https://vdp.cuzk.cz/vdp/ruian/vymennyformat} (in Czech only).
 
-The data is current to June 2024. Downloaded size of high resolution shapefile 2.1 MB; low resolution object is internal.
+The data is current to July 2025. Downloaded size of high resolution shapefile 2.1 MB; low resolution object is internal.
 }
 \examples{
 library(sf)

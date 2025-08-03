@@ -23,8 +23,9 @@ test_that("obce body", {
 
   # sloupce se nerozbily...
   expect_equal(colnames(obce_body()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
-                                           "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
-                                           "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
+                                        "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
+                                        "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "ICO", "DIC",
+                                        "geometry"))
 })
 
 
@@ -51,6 +52,7 @@ test_that("obce polygony", {
   # sloupce se nerozbily...
   expect_equal(colnames(obce_polygony()), c("KOD_OBEC", "NAZ_OBEC", "KOD_POU", "NAZ_POU",
                                         "KOD_ORP", "NAZ_ORP", "KOD_OKRES", "KOD_LAU1", "NAZ_LAU1",
-                                        "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "geometry"))
+                                        "KOD_KRAJ", "KOD_CZNUTS3", "NAZ_CZNUTS3", "ICO", "DIC",
+                                        "geometry"))
 
 })

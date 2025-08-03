@@ -13,7 +13,7 @@ test_that("katastrální území", {
 
   expect_s3_class(katastry(), "sf")
 
-  expect_equal(nrow(katastry()), 13076)
+  expect_equal(nrow(katastry()), 13074)
 
   expect_equal(st_crs(katastry())$input, "EPSG:4326")
 

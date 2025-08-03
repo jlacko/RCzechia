@@ -6,7 +6,7 @@
 #'
 #' The dataset is based on RUIAN data by the Czech cadastral office. If necessary you can download the most up to date raw dataset in VFR format (a special case of XML which is understood by GDAL) on <https://vdp.cuzk.cz/vdp/ruian/vymennyformat> (in Czech only).
 #'
-#' The data is current to June 2024. Downloaded size is 3.1 MB.
+#' The data is current to July 2025. Downloaded size is 3.1 MB.
 #'
 #' @return `sf` data frame with 206 rows of 5 variables + geometry
 #'
@@ -18,11 +18,11 @@
 #'   \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
 #' }
 #'
-#' @source © ČÚZK, 2024 <https://vdp.cuzk.cz/>
+#' @source © ČÚZK, 2025 <https://vdp.cuzk.cz/>
 #'
 #' @export
 
 orp_polygony <- function() {
-  result <- .downloader("ORP-R-2024-06.rds")
+  result <- .downloader("ORP-R-2025-07.rds")
   result
 }

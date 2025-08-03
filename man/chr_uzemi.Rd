@@ -4,13 +4,13 @@
 \alias{chr_uzemi}
 \title{Protected Natural Areas}
 \source{
-© AOPK ČR, 2020 \url{https://data.nature.cz/}
+© AOPK ČR, 2025 \url{https://data.nature.cz/}
 }
 \usage{
 chr_uzemi()
 }
 \value{
-\code{sf} data frame with 2677 rows of 3 variables + geometry
+\code{sf} data frame with 2712 rows of 3 variables + geometry
 
 \describe{
 \item{TYP}{Type of protected area}
@@ -19,10 +19,10 @@ chr_uzemi()
 }
 }
 \description{
-Function returning data frame of protected natural areas (Chráněná území) of the Czech Republic as \code{sf} polygons. It has no obligatory parameters.
+Function returning data frame of protected natural areas (Chráněná území) of the Czech Republic as \code{sf} polygons. It has no obligatory parameters. 32 large (velkoplošná) and 2680 local (maloplošná) protected areas are provided.
 }
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to September 2020. Downloaded size is 7 MB  (so use with caution, and patience).
+The data is current to June 2025. Downloaded size is 7 MB  (so use with caution, and patience).
 }

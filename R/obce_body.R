@@ -6,7 +6,7 @@
 #'
 #' The dataset is based on RUIAN data by the Czech cadastral office. If necessary you can download the most up to date raw dataset in VFR format (a special case of XML which is understood by GDAL) on <https://vdp.cuzk.cz/vdp/ruian/vymennyformat> (in Czech only).
 #'
-#' The data is current to June 2024. Downloaded size is <1 MB.
+#' The data is current to July 2025. Downloaded size is <1 MB.
 #'
 #' @return `sf` data frame with 6.258 rows of 14 variables + geometry
 #'
@@ -23,13 +23,16 @@
 #'   \item{KOD_KRAJ}{Code of the region (kraj).}
 #'   \item{KOD_CZNUTS3}{Code of the NUTS3 unit (kraj)}
 #'   \item{NAZ_CZNUTS3}{Name of the NUTS3 unit (kraj)}
+#'   \item{ICO}{ID number of the commune / ičo obce}
+#'   \item{DIC}{tax ID of the commune / dič obce}
+
 #'   }
 #'
-#' @source © ČÚZK, 2021 <https://vdp.cuzk.cz/>
+#' @source © ČÚZK, 2025 <https://vdp.cuzk.cz/>
 #'
 #' @export
 
 obce_body <- function() {
-  result <- .downloader("ObceB-R-2024-06.rds")
+  result <- .downloader("ObceB-R-2025-07.rds")
   result
 }

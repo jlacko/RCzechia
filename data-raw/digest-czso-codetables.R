@@ -7,11 +7,12 @@
 
 library(sf)
 library(dplyr)
+library(statnipokladna)
 
-rozhodne_datum <- "2024-06"
+rozhodne_datum <- "2025-07"
 
 # aktuální RUIAN export - gitignorován, páč velký jak cyp...
-ruian_data <- "./data-raw/20240531_ST_UKSG.xml"
+ruian_data <- "./data-raw/20250731_ST_UKSG.xml"
 
 print(st_layers(ruian_data))
 
@@ -77,6 +78,11 @@ vazorp <- czso::czso_get_codelist("cis65vaz43") %>%
          CHODNOTA2 = as.character(chodnota2)) %>%
   select(KOD_OBEC = CHODNOTA2, KOD_ORP = CHODNOTA1, NAZ_ORP = text1)
 
+# iča ze státní pokladny
+spobce <- sp_get_codelist("ucjed") %>%
+  filter(druhuj_id == 4 & start_date < Sys.Date() & end_date > Sys.Date()) %>%
+  select(KOD_OBEC = zuj_id, ICO = ico, DIC = dic)
+
 # pospojování do zdroje všech zdrojů :)
 obce <- cisob %>%
   inner_join(vazpou, by = "KOD_OBEC") %>%
@@ -84,7 +90,8 @@ obce <- cisob %>%
   inner_join(vazob, by = "KOD_OBEC") %>%
   inner_join(cisokre, by = "KOD_OKRES") %>%
   inner_join(vazokr, by = "KOD_OKRES") %>%
-  inner_join(ciskraj, by = "KOD_KRAJ")
+  inner_join(ciskraj, by = "KOD_KRAJ") %>%
+  left_join(spobce, by = "KOD_OBEC") # left proto, že chybí 4 vojenské újezdy
 
 # očekávané rozdíly = geometry column
 setdiff(colnames(RCzechia::obce_polygony()), colnames(obce))

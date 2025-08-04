@@ -4,13 +4,11 @@ Title: Spatial Objects of the Czech Republic
 Version: 1.12.8
 Date: 2025-08-03
 Authors@R: c(
-  person("Jindra", "Lacko", , "jindra.lacko@gmail.com", role = c("aut", "cre"),
-         comment = c(ORCID = "0000-0002-0375-5156")),
-  person("Nick", "Bearman", role = "rev",
-         comment = c(ORCID = "0000-0002-8396-4061",
-                     "Nick reviewed the package for JOSS, providing helpful comments leading to significant improvement of the package."))
+    person(given = "Jindra", family = "Lacko", email = "jindra.lacko@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0375-5156")),
+    person(given = "Nick", family = "Bearman", role = "rev",
+           comment = c(ORCID = "0000-0002-8396-4061", "Nick reviewed the package for JOSS, providing helpful comments leading to significant improvement of the package."))
   )
-Maintainer: Jindra Lacko <jindra.lacko@gmail.com>
 Description: Administrative regions and other spatial objects of the Czech Republic.
 URL: https://rczechia.jla-data.net
 BugReports: https://github.com/jlacko/RCzechia/issues

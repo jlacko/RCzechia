@@ -4,7 +4,7 @@
 \alias{volebni_okrsky}
 \title{Election Districts (Volební okrsky) of the Czech Republic}
 \source{
-© ČÚZK, 2023 \url{https://vdp.cuzk.cz/}
+© ČÚZK, 2025 \url{https://vdp.cuzk.cz/}
 }
 \usage{
 volebni_okrsky(resolution = "high")
@@ -13,7 +13,7 @@ volebni_okrsky(resolution = "high")
 \item{resolution}{Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.}
 }
 \value{
-\code{sf} data frame with 14 733 rows of 6 variables + geometry
+\code{sf} data frame with 14 711 rows of 6 variables + geometry
 
 \describe{
 \item{Kod}{Unique id of the district.}
@@ -30,7 +30,7 @@ Function returning data frame of the local election districts for the Czech Repu
 \details{
 Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 
-The data is current to January 2023 (the presidential elections). Downloaded size of high resolution shapefile is 75 MB, size of the low res object is 5 MB (so proceed with caution, and patience).
+The data is current to July 2025. Downloaded size of high resolution shapefile is 75 MB, size of the low res object is 5 MB (so proceed with caution, and patience).
 }
 \examples{
 \donttest{

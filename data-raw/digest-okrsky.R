@@ -59,8 +59,8 @@ obce <- cisob %>%
   inner_join(ciskraj, by = "KOD_KRAJ")
 
 okrsky_high_res <- st_read("./data-raw/20250703_ST_UVOH.xml", stringsAsFactors = F) %>%
-  st_make_valid() %>%
   st_set_geometry("OriginalniHranice") %>%
+  st_make_valid() %>%
   st_transform("EPSG:4326") %>%
   mutate(across(where(is.numeric), as.character)) %>%
   inner_join(obce, by = c("ObecKod" = "KOD_OBEC")) %>%
@@ -72,7 +72,9 @@ st_geometry(okrsky_high_res) <- "geometry"
 
 okrsky_low_res <- okrsky_high_res %>%
   rmapshaper::ms_simplify(keep = 1/20,
-                          keep_shapes = T)
+                          keep_shapes = T) %>%
+  st_make_valid() %>%
+  select(Kod, Cislo, ObecKod, MomcKod, KOD_LAU1, KOD_CZNUTS3)
 
 
 

@@ -4,11 +4,11 @@
 #'
 #' Due to package size constraints the data are stored externally (and a working internet connection is required to use the package).
 #'
-#' The data is current to January 2023 (the presidential elections). Downloaded size of high resolution shapefile is 75 MB, size of the low res object is 5 MB (so proceed with caution, and patience).
+#' The data is current to July 2025. Downloaded size of high resolution shapefile is 75 MB, size of the low res object is 5 MB (so proceed with caution, and patience).
 #'
 #' @param resolution Should the function return high or low resolution shapefile? Allowed values are "high" (default) and "low". This parameter affects only the geometry column, all other fields remain the same.
 #'
-#' @return `sf` data frame with 14 733 rows of 6 variables + geometry
+#' @return `sf` data frame with 14 711 rows of 6 variables + geometry
 #'
 #' \describe{
 #'   \item{Kod}{Unique id of the district.}
@@ -19,7 +19,7 @@
 #'   \item{KOD_CZNUTS3}{Id of kraj - maps to kraje()$KOD_CZNUTS3.}
 #' }
 #'
-#' @source © ČÚZK, 2023 <https://vdp.cuzk.cz/>
+#' @source © ČÚZK, 2025 <https://vdp.cuzk.cz/>
 #'
 #' @examples
 #' \donttest{
@@ -36,9 +36,9 @@ volebni_okrsky <- function(resolution = "high") {
   }
 
   if (resolution == "low") {
-    result <- .downloader("Okrsky-low-2023-01.rds")
+    result <- .downloader("Okrsky-low-2025-07.rds")
   } else {
-    result <- .downloader("Okrsky-high-2023-01.rds")
+    result <- .downloader("Okrsky-high-2025-07.rds")
   }
   result
 }

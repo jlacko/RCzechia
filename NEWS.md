@@ -1,10 +1,12 @@
 ## version 1.12.9
 
- - volebni okrsky based on July 2025 data (relevant for the upcoming elections)
+ - volebni okrsky based on July 2025 data (relevant for the upcoming elections); this feature was omitted from v1.12.8 due to error
 
 ## version 1.12.8
 
  - katastry, obce & higher admin units based on July 2025 data
+ 
+ - ~~volebni okrsky based on July 2025 data (relevant for the upcoming elections)~~
  
  - obce_*() datasets include the ičo & dič of obce / relates #113
 

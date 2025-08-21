@@ -57,9 +57,9 @@ test_that("volební okrsky", {
   expect_s3_class(volebni_okrsky("high"), "sf")
   expect_s3_class(volebni_okrsky("low"), "sf")
 
-  expect_equal(nrow(volebni_okrsky()), 14733)
-  expect_equal(nrow(volebni_okrsky("low")), 14733)
-  expect_equal(nrow(volebni_okrsky("high")), 14733)
+  expect_equal(nrow(volebni_okrsky()), 14711)
+  expect_equal(nrow(volebni_okrsky("low")), 14711)
+  expect_equal(nrow(volebni_okrsky("high")), 14711)
 
   expect_equal(st_crs(volebni_okrsky("low"))$input, "EPSG:4326")
   expect_equal(st_crs(volebni_okrsky("high"))$input, "EPSG:4326")

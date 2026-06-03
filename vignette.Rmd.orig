@@ -25,32 +25,23 @@ library(roxygen2)
 ```
 ### Visualizing Czech Population
 
-Population of the Czech Republic from the 2011 census, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/index.html) by Petr Bouchal.
+Population of the Czech Republic from the 2021 census, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://github.com/petrbouchal/czso) by Petr Bouchal.
 
 As the population distributed highly unevenly a log scale is used.
 
 ```{r census, echo = T, eval = T, message = F}
 library(RCzechia)
 library(ggplot2)
-library(readxl)
 library(dplyr)
-library(httr)
+library(czso)
 
-tf <- tempfile(fileext = ".xls") # a temporary xls file
-GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
-    write_disk(tf))
-src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
-
-colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
-src <- src %>%
-  mutate(obyvatel = as.double(obyvatel)) %>%
-    # convert from text to number
-  mutate(NAZ_LAU1 = ifelse(NAZ_LAU1 == "Hlavní město Praha", "Praha", NAZ_LAU1))
-    # rename Prague (from The Capital to a regular city)
+src <- czso_get_table("sldb2021_pohlavi") %>% # latest census
+  filter(is.na(pohlavi_kod) & uzemi_cis == 101) %>%  # both sexes, districts only
+  select(KOD_OKRES = uzemi_kod, obyvatel = hodnota)
 
 okresni_data <- RCzechia::okresy("low") %>% # data shapefile
-  inner_join(src, by = "NAZ_LAU1")
-    # key for data connection - note the use of inner (i.e. filtering) join
+  inner_join(src, by = "KOD_OKRES")
+# key for data connection - note the use of inner (i.e. filtering) join
 
 # report results
 ggplot(data = okresni_data) +

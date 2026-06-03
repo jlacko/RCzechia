@@ -29,8 +29,8 @@
 #' library(dplyr)
 #' library(sf)
 #'
-#' brno <- obce_polygony() %>% # shapefile of Brno
-#'   filter(NAZ_OBEC == "Brno") %>%
+#' brno <- obce_polygony() |> # shapefile of Brno
+#'   filter(NAZ_OBEC == "Brno") |>
 #'   st_transform(5514) # planar CRS (eastings & northings)
 #'
 #' pupek_brna <- st_centroid(brno) # calculate centroid
@@ -97,8 +97,8 @@ revgeo <- function(coords) {
 
     # reverse geocoding was successful, now digest the json results!
 
-    adresa <- httr::content(resp) %>%
-      jsonlite::fromJSON() %>%
+    adresa <- httr::content(resp) |>
+      jsonlite::fromJSON() |>
       magrittr::extract2("address")
 
     if (is.null(adresa)) adresa["Address"]$Address <- NA # if no result was found then return NA (and not NULL)

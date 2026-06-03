@@ -43,8 +43,8 @@ library(dplyr)
 kramarova_vila <- RCzechia::geocode("Gogolova 212, Praha 1")
 
 # ZIP code of the PM residence
-kramarova_vila \%>\%
-   st_join(RCzechia::zip_codes("low"), left = FALSE) \%>\%
+kramarova_vila |>
+   st_join(RCzechia::zip_codes("low"), left = FALSE) |>
    pull(PSC)
 }
 }

@@ -137,6 +137,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Jindra Lacko \email{jindra.lacko@gmail.com} (\href{https://orcid.org/0000-0002-0375-5156}{ORCID})
 
+Authors:
+\itemize{
+  \item Jindra Lacko \email{jindra.lacko@gmail.com} (\href{https://orcid.org/0000-0002-0375-5156}{ORCID})
+}
+
 Other contributors:
 \itemize{
   \item Nick Bearman (\href{https://orcid.org/0000-0002-8396-4061}{ORCID}) (Nick reviewed the package for JOSS, providing helpful comments leading to significant improvement of the package.) [reviewer]

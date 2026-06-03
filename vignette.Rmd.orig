@@ -25,7 +25,7 @@ library(roxygen2)
 ```
 ### Visualizing Czech Population
 
-Population of the Czech Republic from the 2011 census, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/) by Petr Bouchal.
+Population of the Czech Republic from the 2011 census, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/index.html) by Petr Bouchal.
 
 As the population distributed highly unevenly a log scale is used.
 
@@ -171,7 +171,7 @@ ggplot() +
 
 Interactive maps are powerful tools for data visualization. They are easy to produce with the `leaflet` package.
 
-Since Stamen Toner basemap no longer sparkles joy I have found a new favorite - the [Positron by CartoDB](https://carto.com/blog/getting-to-know-positron-and-dark-matter).
+Since Stamen Toner basemap no longer sparkles joy I have found a new favorite - the [Positron by CartoDB](https://docs.carto.com/carto-user-manual/maps/basemaps).
 
 *Note*: it is technically impossible to make html in vignette interactive (and for good reasons). As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
 

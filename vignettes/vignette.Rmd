@@ -15,7 +15,7 @@ vignette: >
 
 ### Visualizing Czech Population
 
-Population of the Czech Republic from the 2011 census, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/) by Petr Bouchal.
+Population of the Czech Republic from the 2011 census, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://petrbouchal.xyz/czso/index.html) by Petr Bouchal.
 
 As the population distributed highly unevenly a log scale is used.
 
@@ -31,11 +31,11 @@ tf <- tempfile(fileext = ".xls") # a temporary xls file
 GET("https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls",
     write_disk(tf))
 ## Response [https://raw.githubusercontent.com/jlacko/RCzechia/master/data-raw/zvcr034.xls]
-##   Date: 2026-06-03 17:26
+##   Date: 2026-06-03 19:56
 ##   Status: 200
 ##   Content-Type: application/octet-stream
 ##   Size: 44.5 kB
-## <ON DISK>  /tmp/RtmpPy4aeA/file1a7873fd72fd.xls
+## <ON DISK>  /tmp/RtmpwrRYlw/file371f2449ce7e.xls
 src <- read_excel(tf, range = "Data!B5:C97") # read in with original column names
 
 colnames(src) <- c("NAZ_LAU1", "obyvatel") # meaningful names instead of the original ones
@@ -186,7 +186,7 @@ ggplot() +
 
 Interactive maps are powerful tools for data visualization. They are easy to produce with the `leaflet` package.
 
-Since Stamen Toner basemap no longer sparkles joy I have found a new favorite - the [Positron by CartoDB](https://carto.com/blog/getting-to-know-positron-and-dark-matter).
+Since Stamen Toner basemap no longer sparkles joy I have found a new favorite - the [Positron by CartoDB](https://docs.carto.com/carto-user-manual/maps/basemaps).
 
 *Note*: it is technically impossible to make html in vignette interactive (and for good reasons). As a consequence the result of code shown has been replaced by a static screenshot; the code itself is legit.
 

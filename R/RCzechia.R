@@ -117,5 +117,6 @@
 #' @import sf
 #' @importFrom httr http_error
 #' @importFrom curl curl_download
+#' @importFrom magrittr extract2
 
 "_PACKAGE"

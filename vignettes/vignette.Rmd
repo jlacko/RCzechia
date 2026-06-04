@@ -1,7 +1,7 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2026-06-03"
+date: "2026-06-04"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -26,11 +26,11 @@ library(ggplot2)
 library(dplyr)
 library(czso)
 
-src <- czso_get_table("sldb2021_pohlavi") %>% # latest census
-  filter(is.na(pohlavi_kod) & uzemi_cis == 101) %>%  # both sexes, districts only
+src <- czso_get_table("sldb2021_pohlavi") |> # latest census
+  filter(is.na(pohlavi_kod) & uzemi_cis == 101) |>  # both sexes, districts only
   select(KOD_OKRES = uzemi_kod, obyvatel = hodnota)
 
-okresni_data <- RCzechia::okresy("low") %>% # data shapefile
+okresni_data <- RCzechia::okresy("low") |> # data shapefile
   inner_join(src, by = "KOD_OKRES")
 # key for data connection - note the use of inner (i.e. filtering) join
 
@@ -114,7 +114,7 @@ praha <- subset(obce, NAZ_OBEC == "Praha")
 
 brno <- subset(obce, NAZ_OBEC == "Brno")
 
-vzdalenost <- sf::st_distance(praha, brno) %>%
+vzdalenost <- sf::st_distance(praha, brno) |>
   units::set_units("kilometers") # easier to interpret than meters, miles or decimal degrees..
 
 # report results
@@ -138,17 +138,17 @@ library(ggplot2)
 library(sf)
 
 # all districts
-brno <- RCzechia::okresy() %>%
+brno <- RCzechia::okresy() |>
   dplyr::filter(KOD_LAU1 == "CZ0642")
 
 # calculate centroid
-pupek_brna <- brno %>%
-  sf::st_transform(5514) %>% # planar CRS (eastings & northings)
+pupek_brna <- brno |>
+  sf::st_transform(5514) |> # planar CRS (eastings & northings)
   sf::st_centroid(brno) # calculate central point of a polygon
 
 # the revgeo() function takes a sf points data frame and returns it back
 # with address data in "revgeocoded" column
-adresa_pupku <- RCzechia::revgeo(pupek_brna) %>%
+adresa_pupku <- RCzechia::revgeo(pupek_brna) |>
   pull(revgeocoded)
 
 # report results
@@ -183,19 +183,20 @@ library(leaflet)
 library(czso)
 
 # map metrics - number of unemployed in October 2020
-metrika <- czso::czso_get_table("250169r20") %>%
-   filter(obdobi == "20201031" & vuk == "NEZ0004")
+metrika <- czso::czso_get_table("250169r20") |>
+  filter(obdobi == "20201031" & vuk == "NEZ0004")
 
-podklad <- RCzechia::obce_polygony() %>% # obce_polygony = municipalities in RCzechia package
-  inner_join(metrika, by = c("KOD_OBEC" = "uzemi_kod")) %>% # linking by key
+podklad <- RCzechia::obce_polygony() |> # obce_polygony = municipalities in RCzechia package
+  inner_join(metrika, by = c("KOD_OBEC" = "uzemi_kod")) |> # linking by key
   filter(KOD_CZNUTS3 == "CZ071") # Olomoucký kraj
 
 pal <- colorNumeric(palette = "viridis",  domain = podklad$hodnota)
 
-leaflet() %>%
-  addProviderTiles("CartoDB.Positron") %>%
+leaflet() |>
+  addProviderTiles("CartoDB.Positron") |>
   addPolygons(data = podklad,
               fillColor = ~pal(hodnota),
+              popup = ~paste0(uzemi_txt, ": nezaměstnanost ", hodnota, "%"),
               fillOpacity = 0.75,
               color = NA)
 ```
@@ -226,7 +227,7 @@ library(sf)
 obec <- "Humpolec" # a Czech location, as a string
 
 # geolocate the place
-place <- RCzechia::geocode(obec) %>%
+place <- RCzechia::geocode(obec) |>
   filter(type == "Obec")
 
 class(place) # a spatial data frame
@@ -234,14 +235,14 @@ class(place) # a spatial data frame
 
 # ID of the KFME square containg place geocoded (via spatial join)
 ctverec_id <- sf::st_join(RCzechia::KFME_grid(),
-                          place, left = FALSE) %>% # not left = inner (filtering) join
+                          place, left = FALSE) |> # not left = inner (filtering) join
   pull(ctverec)
 
 print(paste0("Location found in grid cell number ", ctverec_id, "."))
 ## [1] "Location found in grid cell number 6458."
 
 # a single KFME square to be highlighted as a polygon
-highlighted_cell <- KFME_grid() %>%
+highlighted_cell <- KFME_grid() |>
   filter(ctverec == ctverec_id)
 
 # report results
@@ -325,16 +326,15 @@ library(dplyr)
 library(rvest)
 
 # official result of elections from Czech Statistical Office
-vysledky <- "https://www.volby.cz/pls/senat/se1111?xjazyk=CZ&xdatum=20201002&xv=7&xt=2" %>%
-  xml2::read_html() %>%  # because rvest::html is deprecated
-  html_nodes(xpath = "//*[@id=\"se1111_t1\"]") %>%  # get the table by its xpath
-  html_table(fill = T) %>%
-  .[[1]] %>%
-  dplyr::select(OBVOD = Obvod, strana = `Volebnístrana`) %>%
+vysledky <- "https://www.volby.cz/pls/senat/se1111?xjazyk=CZ&xdatum=20201002&xv=7&xt=2" |>
+  xml2::read_html() |>  # because rvest::html is deprecated
+  html_element(xpath = "//*[@id=\"se1111_t1\"]") |>  # get the table by its xpath
+  html_table() |> # convert table from HTML to tibble dormat
+  dplyr::select(OBVOD = Obvod, strana = `Volebnístrana`) |>
   # pad OBVOD with zero to 2 places to align to RCzechia data format
   mutate(OBVOD = stringr::str_pad(OBVOD, 2, side = "left", pad = "0"))
 
-podklad <- RCzechia::senat_obvody("low") %>%
+podklad <- RCzechia::senat_obvody("low") |>
   # match by key; left to preserve geometry of off cycle districts (NAs)
   left_join(vysledky, by = "OBVOD")
 

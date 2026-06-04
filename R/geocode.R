@@ -78,7 +78,7 @@ geocode <- function(address, crs = 4326) {
     address = c(NA_character_),
     type = c(NA_character_),
     result = c(NA_character_)
-    ) %>%
+    ) |>
     sf::st_sf(geometry = sf::st_sfc(NULL,
                                     crs = 4326))
 
@@ -101,7 +101,7 @@ geocode <- function(address, crs = 4326) {
 
 
   for (i in seq_along(address)) {
-    cil <- gsub(" ", "+", address[i]) %>% # spaces to pluses (for url use)
+    cil <- gsub(" ", "+", address[i]) |> # spaces to pluses (for url use)
       utils::URLencode() # get rid of funny Czech characters
 
     query <- paste0(
@@ -121,28 +121,28 @@ geocode <- function(address, crs = 4326) {
 
     # geocoding was successful, now digest the json results!
 
-    typ <- httr::content(resp) %>%
-      jsonlite::fromJSON() %>%
-      magrittr::extract2("locations") %>%
-      magrittr::extract2("feature") %>%
+    typ <- httr::content(resp) |>
+      jsonlite::fromJSON() |>
+      magrittr::extract2("locations") |>
+      magrittr::extract2("feature") |>
       magrittr::extract2("attributes")
 
-    adresa <- httr::content(resp) %>%
-      jsonlite::fromJSON() %>%
-      magrittr::extract2("locations") %>%
-      magrittr::extract2("feature") %>%
+    adresa <- httr::content(resp) |>
+      jsonlite::fromJSON() |>
+      magrittr::extract2("locations") |>
+      magrittr::extract2("feature") |>
       magrittr::extract2("attributes")
 
-    s3 <- httr::content(resp) %>%
-      jsonlite::fromJSON() %>%
-      magrittr::extract2("locations") %>%
-      magrittr::extract2("feature") %>%
+    s3 <- httr::content(resp) |>
+      jsonlite::fromJSON() |>
+      magrittr::extract2("locations") |>
+      magrittr::extract2("feature") |>
       magrittr::extract2("geometry")
 
     if (!is.null(s3)) { # was the *current* geocoding successful?
 
       # if yes, rbind the current result to global
-      result <- result %>%
+      result <- result |>
         rbind(data.frame(
           target = address[i], # string queried
           typ = typ["Type"], # type of response, as per https://cuzk.cz/

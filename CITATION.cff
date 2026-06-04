@@ -8,7 +8,7 @@ message: 'To cite package "RCzechia" in publications use:'
 type: software
 license: MIT
 title: 'RCzechia: Spatial Objects of the Czech Republic'
-version: 1.12.7
+version: 1.12.10
 doi: 10.21105/joss.05082
 identifiers:
 - type: doi
@@ -36,7 +36,7 @@ preferred-citation:
 repository: https://CRAN.R-project.org/package=RCzechia
 repository-code: https://github.com/jlacko/RCzechia
 url: https://rczechia.jla-data.net
-date-released: '2025-06-14'
+date-released: '2026-06-04'
 contact:
 - family-names: Lacko
   given-names: Jindra
@@ -53,11 +53,14 @@ references:
   url: https://www.R-project.org/
   authors:
   - name: R Core Team
+    website: https://ror.org/02zz1nj61
   institution:
     name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
     address: Vienna, Austria
-  year: '2025'
-  version: '>= 3.3.0'
+  year: '2026'
+  doi: 10.32614/R.manuals
+  version: '>= 4.1.0'
 - type: software
   title: sf
   abstract: 'sf: Simple Features for R'
@@ -69,7 +72,7 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.sf
 - type: software
   title: terra
@@ -82,7 +85,13 @@ references:
     given-names: Robert J.
     email: r.hijmans@gmail.com
     orcid: https://orcid.org/0000-0001-5872-2872
-  year: '2025'
+  - family-names: Brown
+    given-names: Andrew
+    orcid: https://orcid.org/0000-0002-4565-533X
+  - family-names: Barbosa
+    given-names: Márcia
+    orcid: https://orcid.org/0000-0001-8972-7713
+  year: '2026'
   doi: 10.32614/CRAN.package.terra
 - type: software
   title: curl
@@ -95,7 +104,7 @@ references:
     given-names: Jeroen
     email: jeroenooms@gmail.com
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.curl
 - type: software
   title: httr
@@ -107,7 +116,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.httr
 - type: software
   title: jsonlite
@@ -120,7 +129,7 @@ references:
     given-names: Jeroen
     email: jeroenooms@gmail.com
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.jsonlite
 - type: software
   title: magrittr
@@ -134,8 +143,8 @@ references:
     email: stefan@stefanbache.dk
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
-  year: '2025'
+    email: hadley@posit.co
+  year: '2026'
   doi: 10.32614/CRAN.package.magrittr
 - type: software
   title: units
@@ -157,7 +166,7 @@ references:
     given-names: Iñaki
     email: iucar@fedoraproject.org
     orcid: https://orcid.org/0000-0001-6403-5550
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.units
 - type: software
   title: ggplot2
@@ -197,7 +206,7 @@ references:
     given-names: Teun
     name-particle: van den
     orcid: https://orcid.org/0000-0002-9335-7468
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.ggplot2
 - type: software
   title: tidyterra
@@ -211,7 +220,7 @@ references:
     given-names: Diego
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.tidyterra
 - type: software
   title: knitr
@@ -224,7 +233,7 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.knitr
 - type: software
   title: testthat
@@ -236,7 +245,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.testthat
 - type: software
   title: roxygen2
@@ -257,7 +266,7 @@ references:
     email: csardi.gabor@gmail.com
   - family-names: Eugster
     given-names: Manuel
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.roxygen2
 - type: software
   title: rmarkdown
@@ -301,7 +310,7 @@ references:
     given-names: Richard
     email: rich@posit.co
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.rmarkdown
 - type: software
   title: dplyr
@@ -326,7 +335,7 @@ references:
     given-names: Davis
     email: davis@posit.co
     orcid: https://orcid.org/0000-0003-4777-038X
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.dplyr
 - type: software
   title: s2
@@ -346,7 +355,7 @@ references:
   - family-names: Rubak
     given-names: Ege
     email: rubak@math.aau.dk
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.s2
 - type: software
   title: lwgeom
@@ -359,7 +368,7 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.lwgeom
 - type: software
   title: covr
@@ -371,6 +380,6 @@ references:
   - family-names: Hester
     given-names: Jim
     email: james.f.hester@gmail.com
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.covr
 

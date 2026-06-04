@@ -45,7 +45,7 @@ The data is current to July 2025. Downloaded size is 13.3 MB (so use with cautio
 library(sf)
 library(dplyr)
 
-praha <- obce_polygony() \%>\%
+praha <- obce_polygony() |>
   filter(NAZ_LAU1 == "Praha")
 
 plot(praha, max.plot = 1)

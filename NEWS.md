@@ -1,3 +1,11 @@
+## version 1.12.10
+
+ - replaced the old style {magrittr} %>% pipe with the new style |> pipe, following release version 1.1-1 of {sf} 
+ 
+ - upgraded minimal R version requirement from 3.3.0 to 4.1.0 (released May 2021) in line with upgrade of {sf}
+ 
+ - minor updates in README, vignette and CITATION.cff
+
 ## version 1.12.9
 
  - volebni okrsky based on July 2025 data (relevant for the upcoming elections); this feature was omitted from v1.12.8 due to error

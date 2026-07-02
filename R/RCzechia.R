@@ -110,10 +110,12 @@
 #' \itemize{
 #'   \item *geocode* - geocoding (from address to coordinates)
 #'   \item *revgeo* - reverse geocoding (from coordinates to address)
+#'   \item *datastat_catalogue* - access catalogue of datasets from DataStat
 #' }
 #' @references
 #' Lacko J (2023). “RCzechia: Spatial Objects of the Czech Republic.” Journal of Open Source Software, 8(83). doi:10.21105/joss.05082, https://joss.theoj.org/papers/10.21105/joss.05082.
 #'
+#' @name RCzechia-package
 #' @import sf
 #' @importFrom httr http_error
 #' @importFrom curl curl_download
@@ -121,3 +123,8 @@
 #' @importFrom purrr map_chr
 
 "_PACKAGE"
+
+# make returned column names of DataStat catalogue legal in R context
+utils::globalVariables(names = c("urovneTypObdobi", "urovneTypUzemi"))
+
+

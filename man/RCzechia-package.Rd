@@ -120,6 +120,7 @@ workflow:
 \itemize{
 \item \emph{geocode} - geocoding (from address to coordinates)
 \item \emph{revgeo} - reverse geocoding (from coordinates to address)
+\item \emph{datastat_catalogue} - access catalogue of datasets from DataStat
 }
 }
 

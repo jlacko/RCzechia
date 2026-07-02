@@ -3,6 +3,7 @@
 export(KFME_grid)
 export(casti)
 export(chr_uzemi)
+export(datastat_catalogue)
 export(geocode)
 export(geomorfo)
 export(historie)

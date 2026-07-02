@@ -40,6 +40,9 @@ datastat_catalogue <- function() {
 
   httr::stop_for_status(resp)
 
+  # make returned column names legal in R context
+  utils::globalVariables(c("urovneTypObdobi", "urovneTypUzemi"))
+
   # czso call was successful, now digest the json results!
   res <-  httr::content(resp, as = "text", encoding = "UTF-8") |>
     jsonlite::fromJSON() |>

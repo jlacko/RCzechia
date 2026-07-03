@@ -43,7 +43,10 @@ datastat_catalogue <- function() {
 
   resp <- httr::GET(query)
 
-  httr::stop_for_status(resp)
+  if (length(resp$content) == 0) { # no data in request
+    message("Error in CZSO response; try later...")
+    return(NA)
+  }
 
   # czso call was successful, now digest the json results!
   res <-  httr::content(resp, as = "text", encoding = "UTF-8") |>

@@ -111,6 +111,7 @@
 #'   \item *geocode* - geocoding (from address to coordinates)
 #'   \item *revgeo* - reverse geocoding (from coordinates to address)
 #'   \item *datastat_catalogue* - access catalogue of datasets from DataStat
+#'   \item *datastat_dataset* - access a dataset from DataStat by key
 #' }
 #' @references
 #' Lacko J (2023). “RCzechia: Spatial Objects of the Czech Republic.” Journal of Open Source Software, 8(83). doi:10.21105/joss.05082, https://joss.theoj.org/papers/10.21105/joss.05082.
@@ -121,6 +122,8 @@
 #' @importFrom curl curl_download
 #' @importFrom magrittr extract2
 #' @importFrom purrr map_chr
+#' @importFrom rjstat fromJSONstat
+
 
 "_PACKAGE"
 

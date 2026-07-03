@@ -1,3 +1,7 @@
+## version 1.13.0
+
+ - two functions were added to access data catalogue and a specific dataset from the new API of Czech Statistical Office (ČSÚ); as the new API in public trial (i.e. not full production) mode the functions are to be considered experimental and may be changed / deprecated in the future.
+
 ## version 1.12.10
 
  - replaced the old style {magrittr} %>% pipe with the new style |> pipe, following release version 1.1-1 of {sf} 

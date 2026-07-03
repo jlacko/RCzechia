@@ -121,6 +121,7 @@ workflow:
 \item \emph{geocode} - geocoding (from address to coordinates)
 \item \emph{revgeo} - reverse geocoding (from coordinates to address)
 \item \emph{datastat_catalogue} - access catalogue of datasets from DataStat
+\item \emph{datastat_dataset} - access a dataset from DataStat by key
 }
 }
 

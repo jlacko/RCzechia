@@ -11,8 +11,13 @@
 #' Usage of the CZSO DataStat API is governed by CZSO Terms & Conditions -
 #' \url{https://csu.gov.cz/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu}.
 #'
-#'
 #' @return data frame with codes and descriptions of DataStat datasets
+#'
+#' @examples
+#' # DataStat datasets related to unemployment ("nezaměstnanost" in Czech)
+#'
+#' datastat_catalogue() |>
+#'   subset(grepl("nezam", nazev))
 #'
 #'
 #' @export
@@ -29,7 +34,7 @@ datastat_catalogue <- function() {
     return(NA)
   }
 
-  query <- "https://data.csu.gov.cz/api/katalog/v1/sady?format=JSON_STAT"
+  query <- "https://data.csu.gov.cz/api/katalog/v1/sady"
 
   if (httr::http_error(query) | !czso) { # error in connection?
     message("Error in connection to CZSO API.")

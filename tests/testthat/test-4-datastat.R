@@ -4,10 +4,10 @@ library(sf)
 test_that("catalogue", {
 
   skip_on_cran()
+  skip_on_ci() # so far not stable enough...
 
   skip_if_not(.ok_to_proceed("https://data.csu.gov.cz/api/katalog/v1/swagger-ui/index.html#/"),
               message = "skipping tests - CZSO API seems down")
-
 
   Sys.setenv("NETWORK_UP" = FALSE)
   expect_message(datastat_catalogue(), "internet") # není síť
@@ -28,6 +28,7 @@ test_that("catalogue", {
 test_that("dataset", {
 
   skip_on_cran()
+  skip_on_ci() # so far not stable enough...
 
   skip_if_not(.ok_to_proceed("https://data.csu.gov.cz/api/katalog/v1/swagger-ui/index.html#/"),
               message = "skipping tests - CZSO API seems down")

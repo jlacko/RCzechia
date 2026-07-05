@@ -43,13 +43,13 @@ datastat_catalogue <- function() {
 
   resp <- httr::GET(query)
 
-  # CZSO API is not fully stable yet, a few retries may help
+  # CZSO API is not fully stable yet, so a few retries may help
 
   retries <- 0
 
-  while (length(resp$content) == 0 & retries <= 5) {
+  while (length(resp$content) == 0 & retries <= 6) {
 
-    Sys.sleep(5) # timeout in seconds
+    Sys.sleep(10) # timeout in seconds
 
     resp <- httr::GET(query)
 

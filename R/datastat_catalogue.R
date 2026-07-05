@@ -43,8 +43,24 @@ datastat_catalogue <- function() {
 
   resp <- httr::GET(query)
 
+  # CZSO API is not fully stable yet, a few retries may help
+
+  retries <- 0
+
+  while (length(resp$content) == 0 & retries <= 5) {
+
+    Sys.sleep(5) # timeout in seconds
+
+    resp <- httr::GET(query)
+
+    retries <- retries + 1
+
+  }
+
+
+
   if (length(resp$content) == 0) { # no data in request
-    message("Error in CZSO response; try later...")
+    message(paste("CZSO API is experiencing difficulties, quitting after", retries, "retries."))
     return(NA)
   }
 

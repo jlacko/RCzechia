@@ -51,22 +51,8 @@ datastat_dataset <- function(kod = "NEZ01", naming = "label") {
     return(NA)
   }
 
-  # is the dataset in local cache?
 
-  query <- paste0("https://data.csu.gov.cz/api/dotaz/v1/velikosti/sady/", kod, "?format=JSON_STAT")
-
-  if (httr::http_error(query) | !czso) { # error in connection?
-    message("Error in connection to CZSO API.")
-    return(NA)
-  }
-
-  resp <- httr::GET(query)
-
-  httr::stop_for_status(resp)
-
-  # TODO: implementovat načtení z keše když velikost remote stejná jako local
-
-  query <- paste0("https://data.csu.gov.cz/api/dotaz/v1/data/sady/", kod, "?format=JSON_STAT")
+  query <- paste0("https://data.csu.gov.cz/opendata/sady/", kod, "/distribuce/json")
 
   if (httr::http_error(query) | !czso) { # error in connection?
     message("Error in connection to CZSO API.")

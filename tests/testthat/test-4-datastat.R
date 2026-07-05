@@ -4,7 +4,7 @@ library(sf)
 test_that("catalogue", {
 
   skip_on_cran()
-  skip_on_ci() # so far not stable enough...
+#  skip_on_ci() # so far not stable enough...
 
   skip_if_not(.ok_to_proceed("https://data.csu.gov.cz/api/katalog/v1/swagger-ui/index.html#/"),
               message = "skipping tests - CZSO API seems down")
@@ -28,7 +28,7 @@ test_that("catalogue", {
 test_that("dataset", {
 
   skip_on_cran()
-  skip_on_ci() # so far not stable enough...
+#  skip_on_ci() # so far not stable enough...
 
   skip_if_not(.ok_to_proceed("https://data.csu.gov.cz/api/katalog/v1/swagger-ui/index.html#/"),
               message = "skipping tests - CZSO API seems down")
@@ -43,7 +43,6 @@ test_that("dataset", {
   expect_no_error(datastat_dataset("NEZ01")) # fail, but graceful
   Sys.setenv("CZSO_UP" = TRUE)
 
-  skip("Tohle je zatím rozbitý u nich...")
   expect_true(is.data.frame(datastat_dataset("NEZ01"))) # vrací dataframe ...
   expect_gt(nrow(datastat_dataset("NEZ01")), 0) # ... s více než 1 řádkem
 

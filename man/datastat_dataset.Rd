@@ -20,9 +20,9 @@ Experimental function to access the "new" DataStat API of Czech Statistical Offi
 \details{
 This function takes as argument code of the dataset, and returns its content as a data frame.
 
-The function returns the dataset "as it is", without attempting to translate structure or content from the original Czech language.
+The function leverages the functionality of JSON_STAT data format, so that either human readable labels, or machine readable codes are returned - this is driven by \code{naming} parameter to the function, which is passed directly to the \code{naming} parameter of the rjstat::fromJSONstat() function used internally.
 
-To save time & bandwidth attempt is made to cache the dataset, either to tempdir or RCZECHIA_HOME directory, if set.
+The function returns the dataset "as it is", without attempting to translate structure or content from the original Czech language.
 
 In case of API failures (CZSO down) the function returns NA, with a message.
 
@@ -33,7 +33,18 @@ Usage of the CZSO DataStat API is governed by CZSO Terms & Conditions -
 
 # Unemployment statistics of Czechia
 
-datastat_dataset("NEZ01")
+unempl <- datastat_dataset("NEZ01", "id") |>
+  subset(UZ023H2U == "CZ"  # the country as a whole
+         & IndicatorType == "5973DI"  # unemployement rate
+         )
 
 
+plot(value ~ CasR, data = unempl, main = "Unemployment in Czechia",
+     ylab = "value", xlab = "year")
+
+
+
+}
+\seealso{
+\code{\link[=datastat_metrics]{datastat_metrics()}} \code{\link[=datastat_dimensions]{datastat_dimensions()}} \code{\link[=datastat_catalogue]{datastat_catalogue()}} \code{\link[rjstat:fromJSONstat]{rjstat::fromJSONstat()}}
 }

@@ -108,3 +108,48 @@
   .rhome_state()
 
 }
+
+# common code to handle the CZSO API
+.get_czso <- function(query) {
+
+  network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
+  czso <- as.logical(Sys.getenv("CZSO_UP", unset = TRUE)) # dummy variable to allow testing of network
+  retries <- 0 # retries of API in case of empty return
+
+
+  if (!curl::has_internet() | !network) { # network is down
+    message("No internet connection.")
+    return(NA)
+  }
+
+  if (httr::http_error(query) | !czso) { # error in connection?
+    message("Error in connection to CZSO API.")
+    return(NA)
+  }
+
+  resp <- httr::GET(query)
+
+  # CZSO API is not fully stable yet, so a few retries may help
+
+  while (length(resp$content) == 0 & retries < 6) {
+
+    retries <- retries + 1
+
+    message(paste("CZSO reply malformed, attempting retry (attempt", retries, "of 6)"))
+
+    Sys.sleep(10) # timeout in seconds
+
+    resp <- httr::GET(query)
+
+  } # /retries
+
+  # did six retries help at all?
+
+  if (length(resp$content) == 0) { # no data in request
+    message(paste("CZSO API is experiencing difficulties, quitting after", retries, "retries."))
+    return(NA)
+  } # / final check
+
+  httr::content(resp, as = "text", encoding = "UTF-8")
+
+} # / funciton

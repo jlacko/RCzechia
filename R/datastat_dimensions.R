@@ -1,4 +1,4 @@
-#' Get Catalogue of DataStat Reports
+#' List DataStat Dimensions
 #'
 #' Experimental function to access the "new" DataStat API of Czech Statistical Office / ČSÚ.
 #'
@@ -16,20 +16,14 @@
 #' @examples
 #' # DataStat datasets related to unemployment ("nezaměstnanost" in Czech)
 #'
-#' result <- datastat_catalogue() |>
-#'   subset(grepl("nezam", nazev))
-#'
-#' result[,c("kod","nazev")]
-#'
 #'
 #' @export
 
 
 
-datastat_catalogue <- function() {
+datastat_dimensions <- function() {
 
-  query <- "https://data.csu.gov.cz/api/katalog/v1/sady"
-
+  query <- "https://data.csu.gov.cz/api/katalog/v1/dimenze"
 
   res <- .get_czso(query)
 
@@ -40,9 +34,7 @@ datastat_catalogue <- function() {
 
   # czso call was successful, now digest the json results!
   res <-  res |>
-    jsonlite::fromJSON() |>
-    dplyr::mutate(urovneTypObdobi = purrr::map_chr(urovneTypObdobi, ~ paste(.x$nazevUrovne, collapse = ", ")),
-                  urovneTypUzemi = purrr::map_chr(urovneTypUzemi, ~ paste(.x$nazevUrovne, collapse = ", ")))
+    jsonlite::fromJSON()
 
   # all clear, return the results...
   res

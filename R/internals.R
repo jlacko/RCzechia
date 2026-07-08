@@ -127,7 +127,7 @@
     return(NA)
   }
 
-  resp <- httr::GET(query)
+  resp <- httr::GET(query, user_agent("RCzechia"))
 
   # CZSO API is not fully stable yet, so a few retries may help
 

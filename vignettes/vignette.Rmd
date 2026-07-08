@@ -1,7 +1,7 @@
 ---
 title: "Solving Real World Issues With RCzechia"
 author: "Jindra Lacko"
-date: "2026-06-04"
+date: "2026-07-09"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -15,7 +15,7 @@ vignette: >
 
 ### Visualizing Czech Population
 
-Population of the Czech Republic from the 2021 census, per district (okres). The results can be easily accessed from the comfort of your R session using the excellent package [{czso}](https://github.com/petrbouchal/czso) by Petr Bouchal.
+Population of the Czech Republic as of 2025-01-01, per commune (obec). The results from CZSO [DataStat](https://data.csu.gov.cz/datastat) platform can be easily accessed from the comfort of your R session using the recently published API interface.
 
 As the population distributed highly unevenly a log scale is used.
 
@@ -24,26 +24,29 @@ As the population distributed highly unevenly a log scale is used.
 library(RCzechia)
 library(ggplot2)
 library(dplyr)
-library(czso)
 
-src <- czso_get_table("sldb2021_pohlavi") |> # latest census
-  filter(is.na(pohlavi_kod) & uzemi_cis == 101) |>  # both sexes, districts only
-  select(KOD_OKRES = uzemi_kod, obyvatel = hodnota)
+# map metrics - population dataset, using technical ids (instead of labels)
+src <- RCzechia::datastat_dataset("OBY02A", "id") |>
+  subset(CasR == "2025" & POHL2 == "0") |> # year 2025, both sexes
+  select(uzemi = UZ01234596C, hodnota = value)
 
-okresni_data <- RCzechia::okresy("low") |> # data shapefile
-  inner_join(src, by = "KOD_OKRES")
-# key for data connection - note the use of inner (i.e. filtering) join
+# municipal polygons
+obecni_data <- RCzechia::obce_polygony() |>
+  inner_join(src, by = c("KOD_OBEC" = "uzemi")) |> # linking by key
+  mutate(poparea = hodnota / sf::st_area(geometry) |> units::set_units("km2")) # population relative to area
 
 # report results
-ggplot(data = okresni_data) +
-  geom_sf(aes(fill = obyvatel), colour = NA) +
+ggplot(data = obecni_data) +
+  geom_sf(aes(fill = units::drop_units(poparea)), colour = NA) + # ggplot does not like units objects
   geom_sf(data = RCzechia::republika("low"), color = "gray30", fill = NA) +
-  scale_fill_viridis_c(trans = "log", labels = scales::comma) +
-  labs(title = "Czech population",
-       fill = "population\n(log scale)") +
+  scale_fill_viridis_c(labels = scales::comma, trans = "log2") +
+  labs(title = "Czech population density",
+       fill = "population\nper km²") +
   theme_bw() +
   theme(legend.text = element_text(hjust = 1),
         legend.title = element_text(hjust = 0.5))
+## Warning in scale_fill_viridis_c(labels = scales::comma, trans = "log2"): log-2
+## transformation introduced infinite values.
 ```
 
 <div class="figure" style="text-align: center">

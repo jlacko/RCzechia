@@ -112,10 +112,14 @@
 # common code to handle the CZSO API
 .get_czso <- function(query) {
 
+  # technical variables
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   czso <- as.logical(Sys.getenv("CZSO_UP", unset = TRUE)) # dummy variable to allow testing of network
-  retries <- 0 # retries of API in case of empty return
 
+  # functional variables
+  local_dir <- tempdir() # note to self: consider costs & benefits of persistent caching in a future release
+  retries <- 0 # retries of API in case of empty return
+  query_hash <- tools::md5sum(bytes = charToRaw(query))
 
   if (!curl::has_internet() | !network) { # network is down
     message("No internet connection.")
@@ -127,29 +131,43 @@
     return(NA)
   }
 
-  resp <- httr::GET(query, httr::user_agent("RCzechia"))
+  # is a cached response available?
+  if(file.exists(paste0(local_dir, .Platform$file.sep, query_hash, ".rds"))) {
+
+    # if yes, use the cache
+    resp <- readRDS(paste0(local_dir, .Platform$file.sep, query_hash, ".rds"))
+
+  } else {
+
+    # if not, get a fresh one
+    resp <- httr::GET(query, httr::user_agent("RCzechia"))
+
+  }# /if cache
+
 
   # CZSO API is not fully stable yet, so a few retries may help
-
   while (length(resp$content) == 0 & retries < 6) {
 
     retries <- retries + 1
 
     message(paste("CZSO reply malformed, attempting retry (attempt", retries, "of 6)"))
 
-    Sys.sleep(10) # timeout in seconds
+    Sys.sleep(15) # timeout in seconds
 
-    resp <- httr::GET(query)
+    resp <- httr::GET(query, httr::user_agent("RCzechia"))
 
   } # /retries
 
   # did six retries help at all?
-
   if (length(resp$content) == 0) { # no data in request
     message(paste("CZSO API is experiencing difficulties, quitting after", retries, "retries."))
     return(NA)
   } # / final check
 
+  # cache, or die!
+  saveRDS(resp, file = paste0(local_dir, .Platform$file.sep, query_hash, ".rds"))
+
+  # all clear; return the data
   httr::content(resp, as = "text", encoding = "UTF-8")
 
 } # / funciton

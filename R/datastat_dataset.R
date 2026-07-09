@@ -40,14 +40,6 @@
 
 datastat_dataset <- function(kod = "NEZ01", naming = "label") {
 
-  local_dir <- tempdir() # for session caching only; safer than permanent
-
-  # is the dataset cached? return early!
-  if(file.exists(paste0(local_dir, .Platform$file.sep, kod, ".rds"))) {
-    res <- readRDS(paste0(local_dir, .Platform$file.sep, kod, ".rds"))
-    return(res)
-  } # /if early return
-
   query <- paste0("https://data.csu.gov.cz/opendata/sady/", kod, "/distribuce/json")
 
   res <- .get_czso(query)
@@ -60,9 +52,6 @@ datastat_dataset <- function(kod = "NEZ01", naming = "label") {
   # czso call was successful, now digest the json results!
   res <-  res |>
     rjstat::fromJSONstat(naming = naming)
-
-  # cache, or die!
-  saveRDS(res, file = paste0(local_dir, .Platform$file.sep, kod, ".rds"))
 
   # all clear, return the results...
   res

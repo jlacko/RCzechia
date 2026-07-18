@@ -109,16 +109,17 @@
 
 }
 
-# common code to handle the CZSO API
+# common code to handle the CZSO API - downloads & caches the return of an API call; the exact endpoint depends on value of query parameter
 .get_czso <- function(query) {
 
-  # technical variables
+  # technical variables for testing
   network <- as.logical(Sys.getenv("NETWORK_UP", unset = TRUE)) # dummy variable to allow testing of network
   czso <- as.logical(Sys.getenv("CZSO_UP", unset = TRUE)) # dummy variable to allow testing of network
+  laggy <- as.logical(Sys.getenv("CZSO_LAGGY", unset = TRUE)) # dummy variable to allow testing API experiencing difficulties
 
   # functional variables
   local_dir <- tempdir() # note to self: consider costs & benefits of persistent caching in a future release
-  retries <- 0 # retries of API in case of empty return
+  retries <- 0 # init of retries of API in case of empty return
   query_hash <- tools::md5sum(bytes = charToRaw(query))
 
   if (!curl::has_internet() | !network) { # network is down
@@ -157,6 +158,9 @@
     resp <- httr::GET(query, httr::user_agent("RCzechia"))
 
   } # /retries
+
+  # testing for fake lag
+  if(!laggy) resp$content <- NULL
 
   # did six retries help at all?
   if (length(resp$content) == 0) { # no data in request

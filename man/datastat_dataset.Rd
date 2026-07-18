@@ -31,6 +31,7 @@ Usage of the CZSO DataStat API is governed by CZSO Terms & Conditions -
 }
 \examples{
 
+\donttest{
 # Unemployment statistics of Czechia
 
 unempl <- datastat_dataset("NEZ01", "id") |>
@@ -38,11 +39,9 @@ unempl <- datastat_dataset("NEZ01", "id") |>
          & IndicatorType == "5973DI"  # unemployement rate
          )
 
-
 plot(value ~ CasR, data = unempl, main = "Unemployment in Czechia",
      ylab = "value", xlab = "year")
-
-
+}
 
 }
 \seealso{

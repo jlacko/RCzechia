@@ -14,13 +14,15 @@
 #' @return data frame with codes and descriptions of DataStat datasets
 #'
 #' @examples
+#'
+#' \donttest{
 #' # DataStat datasets related to unemployment ("nezaměstnanost" in Czech)
 #'
 #' result <- datastat_catalogue() |>
 #'   subset(grepl("nezam", nazev))
 #'
 #' result[,c("kod","nazev")]
-#'
+#' }
 #'
 #' @export
 

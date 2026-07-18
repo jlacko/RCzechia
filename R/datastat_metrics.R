@@ -14,13 +14,15 @@
 #' @return data frame with codes and descriptions of DataStat datasets
 #'
 #' @examples
+#'
+#' \donttest{
 #' # DataStat metrics related to unemployment ("nezaměstnanost" in Czech)
 #'
 #' result <- datastat_metrics() |>
 #'   subset(grepl("nezam", nazev))
 #'
 #' result[,c("kod","nazev")]
-#'
+#' }
 #'
 #' @export
 

@@ -23,12 +23,14 @@ Usage of the CZSO DataStat API is governed by CZSO Terms & Conditions -
 \url{https://csu.gov.cz/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu}.
 }
 \examples{
+
+\donttest{
 # DataStat datasets related to unemployment ("nezaměstnanost" in Czech)
 
 result <- datastat_catalogue() |>
   subset(grepl("nezam", nazev))
 
 result[,c("kod","nazev")]
-
+}
 
 }

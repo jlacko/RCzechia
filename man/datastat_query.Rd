@@ -6,6 +6,11 @@
 \usage{
 datastat_query(dimension = NULL, metric = NULL)
 }
+\arguments{
+\item{dimension}{dimension ("dimenze" in Czech) to be queried}
+
+\item{metric}{metric ("ukazatel" in Czech) to be queried}
+}
 \value{
 data frame with codes and descriptions of DataStat datasets
 }

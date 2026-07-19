@@ -11,6 +11,9 @@
 #' Usage of the CZSO DataStat API is governed by CZSO Terms & Conditions -
 #' \url{https://csu.gov.cz/podminky_pro_vyuzivani_a_dalsi_zverejnovani_statistickych_udaju_csu}.
 #'
+#' @param dimension dimension ("dimenze" in Czech) to be queried
+#' @param metric metric ("ukazatel" in Czech) to be queried
+#'
 #' @return data frame with codes and descriptions of DataStat datasets
 #'
 #' @examples

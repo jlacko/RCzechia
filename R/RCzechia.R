@@ -128,6 +128,10 @@
 "_PACKAGE"
 
 # make returned column names of DataStat catalogue legal in R context
-utils::globalVariables(names = c("urovneTypObdobi", "urovneTypUzemi"))
+utils::globalVariables(names = c("urovneTypObdobi",
+                                 "urovneTypUzemi",
+                                 "urovneHierarchie",
+                                 "urovneDimenze",
+                                 "pouziteCiselnikyKody"))
 
 

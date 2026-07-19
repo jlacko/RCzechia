@@ -141,7 +141,10 @@
   } else {
 
     # if not, get a fresh one
-    resp <- httr::GET(query, httr::user_agent("RCzechia"))
+    resp <- httr::GET(query,
+                      httr::user_agent("RCzechia"),
+                      httr::accept_json(),
+                      httr::add_headers(`Accept-Language` = "cs"))
 
   }# /if cache
 

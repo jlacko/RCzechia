@@ -126,15 +126,12 @@ test_that("query", {
 
   # duplicitní zadání
   expect_warning(datastat_query(dimension = "DRUHTECHAI", metric = "6290"), "one") #
-  expect_no_error(datastat_query(dimension = "DRUHTECHAI", metric = "6290"))
 
   # dvě metriky
   expect_warning(datastat_query(metric = c("6290", "5973")), "single")
-  expect_no_error(datastat_query(metric = c("6290", "5973")))
 
   # dvě dimenze
   expect_warning(datastat_query(dimension = c("DRUHTECHAI", "UCELVYUZTECHAI")), "single")
-  expect_no_error(datastat_query(dimension = c("DRUHTECHAI", "UCELVYUZTECHAI")))
 
 
 })

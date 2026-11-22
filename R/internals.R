@@ -142,9 +142,9 @@
 
     # if not, get a fresh one
     resp <- httr::GET(query,
-                      httr::user_agent("RCzechia"),
-                      httr::accept_json(),
-                      httr::add_headers(`Accept-Language` = "cs"))
+                      httr::user_agent("RCzechia"), # say Hi! from logs
+                      httr::accept_json(), # type = JSON (STAT)
+                      httr::add_headers(`Accept-Language` = "cs")) # mind the encoding
 
   }# /if cache
 

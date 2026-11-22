@@ -13,7 +13,7 @@ data frame with codes and descriptions of DataStat datasets
 Experimental function to access the "new" DataStat API of Czech Statistical Office / ČSÚ.
 }
 \details{
-This function takes no arguments, and returns a data frame with data catalogue of DataStat data sets, the most important part of which is the code (kod) and description (nazev).
+This function takes no arguments, and returns a data frame with data catalogue of DataStat metrics (ukazatele in Czech), the most important parts of which are the code (kod) and description (nazev).
 
 The function returns the dataset "as it is", without attempting to translate structure or content from the original Czech language.
 

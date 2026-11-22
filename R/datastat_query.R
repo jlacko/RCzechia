@@ -2,7 +2,7 @@
 #'
 #' Experimental function to access the "new" DataStat API of Czech Statistical Office / ČSÚ.
 #'
-#' This function takes as argument either a dimension or a metric, and returns a data frame listing datasets using the supplied dimension or metric.
+#' This function takes as argument either a dimension or a metric (not both), and returns a data frame listing datasets using the supplied dimension or metric.
 #'
 #' The function returns the dataset "as it is", without attempting to translate structure or content from the original Czech language.
 #'
